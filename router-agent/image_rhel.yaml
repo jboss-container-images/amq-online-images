@@ -26,7 +26,7 @@ modules:
 ports:
     - value: 55672
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=ragent.tgz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=ragent.tgz
       name: ragent.tgz
 run:
       user: 185

@@ -24,7 +24,7 @@ modules:
           - name: broker.common.main 
 
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=artemis-image.tar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=artemis-image.tar
       name: artemis-image.tar
     - url: http://archive.apache.org/dist/activemq/activemq-artemis/2.4.0/apache-artemis-2.4.0-bin.tar.gz   
       name: apache-artemis-bin.tar.gz      

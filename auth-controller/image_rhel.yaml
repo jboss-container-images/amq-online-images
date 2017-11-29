@@ -24,7 +24,7 @@ modules:
           - name: common.java
           - name: keycloak-controller
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=keycloak-controller.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-controller.jar
       name: keycloak-controller.jar
 run:
       user: 185

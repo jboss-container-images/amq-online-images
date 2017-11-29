@@ -27,7 +27,7 @@ modules:
           - name: common.java          
 
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=address-controller.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=address-controller.jar
       name: address-controller.jar
       
 run:

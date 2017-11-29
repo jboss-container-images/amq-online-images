@@ -38,7 +38,7 @@ modules:
           - name: auth.install
           - name: common.java
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=keycloak-bin.tar.gz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-bin.tar.gz
       name: keycloak-bin.tar.gz
 ports:
     - value: 9990       

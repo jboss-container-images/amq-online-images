@@ -26,7 +26,7 @@ modules:
           - name: router
 
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=queue-scheduler.tgz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=queue-scheduler.tgz
       name: router.tgz
       
 run:
