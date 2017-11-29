@@ -1,0 +1,16 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift
+description: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas topic-forwarder"
+    - name: "io.openshift.tags"
+      value: "amqmaas, topic-forwarder"
+envs:
+    - name: "JAVA_HOME"
+      value: "/usr/lib/jvm/java"      

@@ -1,0 +1,13 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-auth-controller-openshift
+description: "AMQMaas SSO Controller for authentication"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "AMQMaas Authentication Controller using SSO"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Authentication Controller"
+    - name: "io.openshift.tags"
+      value: "amqmaas, sso-controller, authentication"

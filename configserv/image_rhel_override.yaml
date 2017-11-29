@@ -1,0 +1,13 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-configserv-openshift
+description: "AMQMaas configuration server."
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "configuration for amqmaas"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Configuration Server"
+    - name: "io.openshift.tags"
+      value: "amqmaas, configuration, configserv"

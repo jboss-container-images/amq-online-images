@@ -1,0 +1,41 @@
+IMAGE_FILE?=image.yaml
+COMMIT?=$(shell git rev-parse HEAD | cut -c1-8)
+IMAGE_VERSION?=latest
+DOCKERFILE_DIR?=build
+REPO?=$(shell cat $(IMAGE_FILE) | grep "^name:" | cut -d' ' -f2)
+DOGEN_VERSION?=2.0.1
+DOCKER_BUILD_OPTS?=
+DOCKER?=docker
+PRODUCT_DIR?=../../enmasse
+ARTIFACT_CACHE_DIR?="target/image"
+ABSOLUTE_LOCAL_ARTIFACT_DIR?=$(CURDIR)/$(PRODUCT_DIR)/$(LOCAL_ARTIFACT_DIR)
+
+
+all: build 
+	echo "Running docker centos build $(REPO)"
+	concreate build --descriptor $(IMAGE_FILE) 
+
+build_rhel:
+	echo "Running docker rhel build $(REPO)"
+	concreate build --descriptor image.yaml --overrides image_rhel_override.yaml --build-tech-preview
+
+push:
+	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
+	$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
+
+snapshot:
+	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)
+	$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)
+
+copyartifact:
+	echo "Copying local artifacts from $(ABSOLUTE_LOCAL_ARTIFACT_DIR)"
+	mkdir -p $(ARTIFACT_CACHE_DIR)
+	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(ARTIFACT_CACHE_DIR)
+
+## BEFORE Merging into master, update docker-build.sh to not pass version as an arg (assuming all docker files are being built by this repo
+#	curl -s https://raw.githubusercontent.com/EnMasseProject/travis-scripts/master/docker-build.sh | bash /dev/stdin $(REPO) $(DOCKERFILE_DIR)
+
+clean:
+	rm -rf build
+
+.PHONY: all push snapshot clean

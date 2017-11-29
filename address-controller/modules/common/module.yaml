@@ -1,0 +1,13 @@
+schema_version: 1
+
+name: addresscontroller.common.main
+version: '1.0'
+
+modules:
+    install:
+        - name: addresscontroller.platform.main
+packages:
+    install:
+        - openssl
+execute:
+    - script: install.sh

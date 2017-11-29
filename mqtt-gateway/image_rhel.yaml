@@ -1,0 +1,36 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-mqttgateway-openshift
+description: "AMQMaas mqttgateway"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "mqtt gateway for enmaase"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas mqtt gateway"
+    - name: "io.openshift.tags"
+      value: "amqmaas, mqtt-gateway"
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: common.java
+            path: ../modules/common/java
+          - name: mqtt-gateway
+            path: modules 
+      install:
+          - name: mqtt-gateway
+          - name: common.java
+ports:
+    - value: 1883 
+    - value: 8883
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=mqtt-gateway.jar
+      name: mqtt-gateway.jar
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"     
+          - "/opt/mqtt-gateway.jar"                 

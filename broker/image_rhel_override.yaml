@@ -1,0 +1,17 @@
+schema_version: 1
+
+name: jboss-amqmaas-1/amqmaas10-broker-openshift
+description: "amqmaas image for artemis broker."
+version: "1.0"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "implementation of the artemis broker"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Broker"
+    - name: "io.openshift.tags"
+      value: "amqmaas, broker, artemis"
+modules:
+      repositories:
+          - name: broker.platform
+            path: platform/rhel

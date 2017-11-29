@@ -1,0 +1,36 @@
+schema_version: 1
+
+version: "1.0"
+name: jboss-amqmaas-1/amqmaas10-configserv-openshift
+description: "AMQMaas configuration server."
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "configuration for amqmaas"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Configuration Server"
+    - name: "io.openshift.tags"
+      value: "amqmaas, configuration, configserv"
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: common.java
+            path: ../modules/common/java
+          - name: configserv
+            path: modules 
+      install:
+          - name: configserv
+          - name: common.java
+          
+ports:
+    - value: 5672
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=configserv.jar
+      name: configserv.jar
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh" 
+          - "/opt/configserv.jar"   

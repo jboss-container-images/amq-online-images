@@ -1,0 +1,22 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-routeragent-openshift
+description: "AMQMaas router agent"
+from: registry.access.redhat.com/rhscl/nodejs-4-rhel7:latest
+labels:
+    - name: "io.k8s.description"
+      value: "AMQMaas router agent"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas router agent"
+    - name: "io.openshift.tags"
+      value: "amqmaas,router-agent,messaging,jboss"
+modules:
+      repositories:
+          - name: rhea.platform.main
+            path: ../modules/rhel
+          - name: router-agent
+            path: modules 
+      install:
+          - name: router-agent
+          - name: rhea       

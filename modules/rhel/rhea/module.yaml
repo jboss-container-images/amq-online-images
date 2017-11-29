@@ -1,0 +1,11 @@
+schema_version: 1
+
+name: rhea
+version: '1.0'
+artifacts:
+    - path: nodejs-rhea-1.2.2-1.zip
+      md5: ac561e689e8ee96274b825dec10009b4
+      name: nodejs-rhea.zip
+execute:
+  - script: install.sh
+    user: '185'

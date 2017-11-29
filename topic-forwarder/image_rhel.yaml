@@ -1,0 +1,35 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift
+description: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas topic-forwarder"
+    - name: "io.openshift.tags"
+      value: "amqmaas, topic-forwarder"
+envs:
+    - name: "JAVA_HOME"
+      value: "/usr/lib/jvm/java" 
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: common.java
+            path: ../modules/common/java
+          - name: topic-forwarder
+            path: modules 
+      install:
+          - name: topic-forwarder
+          - name: common.java
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=topic-forwarder.jar
+      name: topic-forwarder.jar
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/topic-forwarder.jar"      

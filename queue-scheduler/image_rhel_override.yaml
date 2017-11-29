@@ -1,0 +1,13 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-queuescheduler-openshift
+description: "AMQMaas Queue Scheduler"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "AMQMaas queue scheduler"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas queue scheduler"
+    - name: "io.openshift.tags"
+      value: "amqmaas, queue-scheduler"

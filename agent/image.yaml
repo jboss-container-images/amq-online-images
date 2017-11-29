@@ -1,0 +1,33 @@
+schema_version: 1
+
+name: "enmasseproject/agent"
+description: "EnMasse console."
+version: "0.15.1"
+from: enmasseproject/nodejs-base:6
+labels:
+    - name: "io.k8s.description"
+      value: "console for enmaase"
+    - name: "io.k8s.display-name"
+      value: "Enmasse Console"
+    - name: "io.openshift.tags"
+      value: "enmasse, console, agent"
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: console
+            path: modules 
+      install:
+          - name: console
+ports:
+    - value: 56720 
+    - value: 8080
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=agent.tgz
+      name: agent.tgz
+run:
+      user: 185
+      cmd:
+          - "node"
+          - "/opt/app-root/src/bin/agent.js"    

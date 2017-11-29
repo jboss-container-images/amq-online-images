@@ -1,0 +1,13 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-interconnect-openshift
+description: "router with AMQMaas configuration"
+from: jboss-amqmaas-1-tech-preview/amqmaas10-qpidproton-openshift:latest
+labels:
+    - name: "io.k8s.description"
+      value: "router with AMQMaas configuration"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Router"
+    - name: "io.openshift.tags"
+      value: "amqmaas, router, message"

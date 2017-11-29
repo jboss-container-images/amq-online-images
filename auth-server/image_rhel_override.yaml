@@ -1,0 +1,36 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-auth-openshift
+description: "AMQMaas SSO for authentication"
+from: redhat-sso-7/sso72:latest
+labels:
+    - name: "io.k8s.description"
+      value: "AMQMaas Authentication using SSO"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Authentication"
+    - name: "io.openshift.tags"
+      value: "amqmaas, sso, authentication"
+packages:
+    repositories:
+      - jboss-os
+      - jboss-ocp
+      - jboss-epel
+      - jboss-rhscl
+      - jboss-optional
+    install:
+          - saxon
+modules:
+      repositories:
+          - name: keycloak.install
+            path: modules 
+          - name: keycloak.rhel.deploy
+            path: modules
+      install:
+          - name: keycloak.install
+          - name: keycloak.rhel.deploy
+          
+#run:
+#      user: 185
+#      cmd:
+#          - "/opt/jboss/keycloak/bin/init-keycloak.sh"            
