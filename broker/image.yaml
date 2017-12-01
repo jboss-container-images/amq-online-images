@@ -18,10 +18,14 @@ modules:
       repositories:     
           - name: broker.common
             path: modules/common
-          - name: broker.platform
-            path: platform/centos             
       install:
           - name: broker.common.main 
+
+packages:
+    repositories:
+        - centos-base
+    install:
+        - openssl 
 
 artifacts:
     - url: https://bintray.com/enmasse/snapshots/download_file?file_path=artemis-image.tar

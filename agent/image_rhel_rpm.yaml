@@ -24,7 +24,7 @@ ports:
     - value: 56720 
     - value: 8080
 artifacts:
-     - url: https://bintray.com/enmasse/releases/download_file?file_path=agent.jar
+     - url: https://bintray.com/enmasse/releases/download_file?file_path=agent-0.15.2.jar
        name: agent.jar
 run:
       user: 185

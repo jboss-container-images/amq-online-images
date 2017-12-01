@@ -30,16 +30,21 @@ modules:
       repositories:
           - name: auth.install
             path: modules 
-          - name: auth.platform.main
-            path: modules/platform/rhel
           - name: common.java
             path: ../modules/common/java
+          - name: auth.rhel.deploy
+            path: ../modules  
       install:
           - name: auth.install
           - name: common.java
+          - name: auth.rhel.deploy
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-bin.tar.gz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-0.15.2-bin.tar.gz
       name: keycloak-bin.tar.gz
 ports:
     - value: 9990       
-        
+    
+run:
+#      user: 185
+      entrypoint:
+          - "/opt/eap/bin/start-keycloak.sh"                    

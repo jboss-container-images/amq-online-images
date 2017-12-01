@@ -16,7 +16,7 @@ envs:
       value: "latest"
 modules:
       repositories:
-          - name: common.java
+          - name: keycloak-controller
             path: modules 
           - name: common.java
             path: ../modules/common/java
@@ -24,7 +24,7 @@ modules:
           - name: common.java
           - name: keycloak-controller
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-controller.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-controller-0.15.2.jar
       name: keycloak-controller.jar
 run:
       user: 185

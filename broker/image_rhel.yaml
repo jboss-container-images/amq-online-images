@@ -13,15 +13,30 @@ labels:
       value: "amqmaas, broker, artemis"
 envs:
     - name: "VERSION"
-      value: "latest"
+      value: "2.4.0"
+    - name: "ARTEMIS_HOME"
+      value: "/opt/apache-artemis-2.4.0"
+#    - name: "PATH"
+#      value: "${ARTEMIS_HOME}/bin:$PATH VERSION=${version}
+
+packages:
+    repositories:
+        - jboss-os
+    install:
+        - libaio 
+        - python 
+        - gettext 
+        - hostname 
+        - iputils
+        - openssl 
+        
+
 modules:
       repositories:     
           - name: broker.common
             path: modules/common
-          - name: broker.platform
-            path: platform/rhel             
       install:
-          - name: broker.common.main 
+          - name: broker.common
 
 artifacts:
     - url: https://bintray.com/enmasse/releases/download_file?file_path=artemis-image.tar

@@ -27,6 +27,12 @@ modules:
       install:
           - name: auth.install
           - name: common.java          
+
+packages:
+    repositories:
+        - centos-base
+    install:
+        - openssl
           
 artifacts:
     - url: https://bintray.com/enmasse/snapshots/download_file?file_path=keycloak-bin.tar.gz

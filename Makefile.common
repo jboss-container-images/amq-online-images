@@ -32,9 +32,6 @@ copyartifact:
 	mkdir -p $(ARTIFACT_CACHE_DIR)
 	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(ARTIFACT_CACHE_DIR)
 
-## BEFORE Merging into master, update docker-build.sh to not pass version as an arg (assuming all docker files are being built by this repo
-#	curl -s https://raw.githubusercontent.com/EnMasseProject/travis-scripts/master/docker-build.sh | bash /dev/stdin $(REPO) $(DOCKERFILE_DIR)
-
 clean:
 	rm -rf build
 

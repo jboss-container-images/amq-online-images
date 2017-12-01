@@ -1,18 +1,7 @@
 schema_version: 1
 
-name: broker.common.main
+name: broker.common
 version: '1.0'
 
-modules:
-    install:
-        - name: broker.platform.main
-packages:
-    install:
-#        - libaio 
-#        - python 
-#        - gettext 
-#        - hostname 
-#        - iputils
-        - openssl 
 execute:
   - script: install.sh

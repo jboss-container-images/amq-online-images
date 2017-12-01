@@ -15,7 +15,6 @@ DISTRO_NAME=agent
 
 cd /opt/app-root/src
 [ -f /opt/rh/rh-nodejs4/enable ] && . /opt/rh/rh-nodejs4/enable
-ls -lR
 npm install
 	
 chown -R 1001:root /opt/app-root

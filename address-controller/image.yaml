@@ -14,20 +14,25 @@ labels:
 envs:
   - name: "VERSION"
     value: "latest"
+
+packages:
+    repositories:
+        - centos-base
+    install:
+        - openssl        
+
 modules:
       repositories:
-          - name: addresscontroller.common.main
+          - name: addresscontroller.common
             path: modules/common
-          - name: addresscontroller.platform.main
-            path: platform/centos
           - name: common.java
             path: ../modules/common/java
       install:
-          - name: addresscontroller.common.main
+          - name: addresscontroller.common
           - name: common.java          
 
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=address-controller.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=address-controller-0.15.2.jar
       name: address-controller.jar
       
 run:

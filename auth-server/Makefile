@@ -1,4 +1,4 @@
-LOCAL_ARTIFACT_DIR:=keycloak/assembly/target/keycloak-bin.tar.gz
+LOCAL_ARTIFACT_DIR:=keycloak/assembly/target/keycloak-${VERSION}-bin.tar.gz
 IMAGE_NAME=keycloak
 
 include ../Makefile.common

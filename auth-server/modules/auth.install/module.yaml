@@ -2,11 +2,6 @@ schema_version: 1
 
 name: auth.install
 version: '1.0'
-modules:
-    install:
-        - name: auth.platform.main
-packages:
-    install:
-        - openssl
+
 execute:
   - script: install.sh

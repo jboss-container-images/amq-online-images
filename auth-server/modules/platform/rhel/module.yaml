@@ -1,8 +1,0 @@
-schema_version: 1
-
-version: '1.0'
-
-name: auth.platform.main
-packages:
-    repositories:
-        - jboss-os

@@ -14,20 +14,25 @@ labels:
 envs:
   - name: "VERSION"
     value: "latest"
+    
 modules:
       repositories:
-          - name: addresscontroller.common.main
+          - name: addresscontroller.common
             path: modules/common
-          - name: addresscontroller.platform.main
-            path: platform/rhel
           - name: common.java
             path: ../modules/common/java
       install:
-          - name: addresscontroller.common.main
+          - name: addresscontroller.common
           - name: common.java          
 
+packages:
+    repositories:
+        - jboss-os
+    install:
+        - openssl        
+
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=address-controller.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=address-controller-0.15.2.jar
       name: address-controller.jar
       
 run:

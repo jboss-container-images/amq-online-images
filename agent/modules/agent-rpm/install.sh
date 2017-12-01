@@ -14,12 +14,10 @@ rpm -ivh -r "${SOURCES_DIR}" "${SOURCES_DIR}/nodejs-amqmaas-agent-zip.rpm"
 
 cd /opt/app-root/src/nodejs-amqmaas-agent-1.0.0-1
 [ -f /opt/rh/rh-nodejs4/enable ] && . /opt/rh/rh-nodejs4/enable
-#ls -lR
 mv node_modules/agent/* .
 rm -rf node_modules/*
 
 
-#find / -name "package.json" 2>/dev/null
 npm install
 
 chown -R 1001:root /opt/app-root

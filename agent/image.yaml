@@ -24,7 +24,7 @@ ports:
     - value: 56720 
     - value: 8080
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=agent.tgz
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=agent-0.15.2.tgz
       name: agent.tgz
 run:
       user: 185
