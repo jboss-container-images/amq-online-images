@@ -1,0 +1,35 @@
+schema_version: 1
+
+name: "enmasseproject/none-authservice"
+description: "Enmasse none auth service"
+version: "0.15.1"
+from: enmasseproject/nodejs-base:6
+labels:
+    - name: "io.k8s.description"
+      value: "Enmasse none auth service"
+    - name: "io.k8s.display-name"
+      value: "Enmasse none auth service"
+    - name: "io.openshift.tags"
+      value: "enmasse,none-authservice,messaging"
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: rhea.platform.main
+            path: ../modules/centos
+          - name: none-authservice
+            path: modules 
+      install:
+          - name: none-authservice
+          - name: rhea    
+ports:
+    - value: 5671
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=none-authservice.tgz
+      name: none-authservice.tgz
+run:
+      user: 185
+      cmd:
+          - "node" 
+          - "/opt/app-root/src/none-authservice.js"                      

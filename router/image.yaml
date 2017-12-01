@@ -1,0 +1,38 @@
+schema_version: 1
+
+name: "enmasseproject/router"
+description: "router with EnMasse configuration"
+version: "0.15.1"
+from: enmasseproject/qdrouterd-base:1.0.0-alpha6
+labels:
+    - name: "io.k8s.description"
+      value: "router with EnMasse configuration"
+    - name: "io.k8s.display-name"
+      value: "EnMasse Router"
+    - name: "io.openshift.tags"
+      value: "enmasse, router, message"
+envs:
+  - name: "VERSION"
+    value: "latest"
+ports:
+    - value: 5672
+    - value: 55672
+    - value: 5671        
+modules:
+      repositories:
+          - name: router
+            path: modules 
+      install:
+          - name: router
+
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=router.tgz
+      name: router.tgz
+      
+run:
+#      user: 185
+      cmd:
+          - "/etc/qpid-dispatch/run_qdr.sh"          
+            
+
+              

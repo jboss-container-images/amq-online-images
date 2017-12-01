@@ -1,0 +1,42 @@
+schema_version: 1
+
+name: "enmasseproject/keycloak"
+description: "EnMasse keycloak"
+version: "0.15.1"
+from: jboss/keycloak:3.3.0.Final
+labels:
+    - name: "io.k8s.description"
+      value: "EnMasse keycloak"
+    - name: "io.k8s.display-name"
+      value: "EnMasse keycloak"
+    - name: "io.openshift.tags"
+      value: "enmasse, keycloak"
+envs:
+    - name: "VERSION"
+      value: "latest"
+    - name: "JAVA_OPTS"
+      value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
+modules:
+      repositories:
+          - name: auth.install
+            path: modules 
+          - name: auth.platform.main
+            path: modules/platform/centos
+          - name: common.java
+            path: ../modules/common/java
+      install:
+          - name: auth.install
+          - name: common.java          
+
+packages:
+    repositories:
+        - centos-base
+    install:
+        - openssl
+          
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=keycloak-bin.tar.gz
+      name: keycloak-bin.tar.gz
+ports:
+    - value: 9990       
+        
