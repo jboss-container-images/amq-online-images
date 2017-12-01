@@ -1,0 +1,19 @@
+schema_version: 1
+
+name: "enmasseproject/epel-base"
+version: "1"
+from: "enmasseproject/base"
+description: "Base image that includes the epel repository key"
+labels:
+    - name: maintainer
+      value: "Enmasse <enmasse@redhat.com>"
+packages:
+      repositories:
+          - centos-base
+          - centos-extras
+          - centos-updates
+      install:
+          - epel-release
+run:
+      user: 185
+      workdir: "/home/jboss"

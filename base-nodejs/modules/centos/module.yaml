@@ -1,0 +1,15 @@
+schema_version: 1
+
+name: basenodejs.platform.main
+version: '1.0'
+
+packages:
+      repositories:
+          - centos-base
+          - centos-extras
+          - centos-updates
+          - centos-epel
+      install:
+          - nodejs 
+          - cyrus-sasl-lib 
+          - npm   

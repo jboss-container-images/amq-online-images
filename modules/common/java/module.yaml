@@ -1,0 +1,7 @@
+schema_version: 1
+
+name: common.java
+version: '1.0'
+execute:
+  - script: install.sh
+#    user: '185'

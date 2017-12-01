@@ -1,0 +1,26 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-qpidproton-openshift
+from: jboss/base-rhel7:1.0
+
+packages:
+      repositories:
+          - jboss-os
+          - jboss-rhom
+      install:
+          - cmake
+          - cyrus-sasl-devel
+          - make
+          - python-qpid-proton
+          - qpid-dispatch-router 
+          - qpid-dispatch-tools
+          - swig
+          - gettext
+    
+run:
+#      user: 185
+      cmd:
+          - "bash"  
+    
+  

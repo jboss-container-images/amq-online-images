@@ -1,0 +1,33 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-agent-openshift
+description: "AMQMaas console"
+from: registry.access.redhat.com/rhscl/nodejs-4-rhel7:latest
+labels:
+    - name: "io.k8s.description"
+      value: "console for enmaase"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Console"
+    - name: "io.openshift.tags"
+      value: "amqmaas, console, agent"
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: agent
+            path: modules 
+      install:
+          - name: agent
+ports:
+    - value: 56720 
+    - value: 8080
+artifacts:
+     - url: https://bintray.com/enmasse/releases/download_file?file_path=agent-0.15.2.jar
+       name: agent.jar
+run:
+      user: 185
+      cmd:
+          - "node"
+          - "/opt/app-root/src/bin/agent.js"    

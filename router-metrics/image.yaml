@@ -1,0 +1,37 @@
+schema_version: 1
+
+name: "enmasseproject/router-metrics"
+description: "Metrics for EnMasse"
+version: "0.15.1"
+from: ppatierno/qpid-proton:0.17.0
+labels:
+    - name: "io.k8s.description"
+      value: "Metrics for EnMasse router"
+    - name: "io.k8s.display-name"
+      value: "EnMasse Router Metrics"
+    - name: "io.openshift.tags"
+      value: "enmasse, router-metrics, message"
+envs:
+  - name: "VERSION"
+    value: "latest"
+ports:
+    - value: 8080
+modules:
+      repositories:
+          - name: router-metrics
+            path: modules 
+      install:
+          - name: router-metrics
+
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=router-metrics.tgz
+      name: router-metrics.tgz
+    - url: https://github.com/prometheus/client_python/archive/v0.0.21.tar.gz
+      name: prometheus-client.tar.gz
+      
+run:
+      user: 185
+      cmd:
+          - "python"
+          - "/opt/router-metrics.py"    
+              

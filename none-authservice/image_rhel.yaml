@@ -1,0 +1,35 @@
+schema_version: 1
+
+name: "jboss-amqmaas-1/amqmaas10-noneauthservice-openshift"
+description: "AMQMaas none auth service"
+version: "1.0"
+from: registry.access.redhat.com/rhscl/nodejs-4-rhel7:latest
+labels:
+    - name: "io.k8s.description"
+      value: "AMQMaas none auth service"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas none auth service"
+    - name: "io.openshift.tags"
+      value: "amqmaas,noneauthservice,messaging"          
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: rhea.platform.main
+            path: ../modules/rhel
+          - name: none-authservice
+            path: modules 
+      install:
+          - name: none-authservice
+          - name: rhea    
+ports:
+    - value: 5671
+artifacts:
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=none-authservice.tgz
+      name: none-authservice.tgz
+run:
+      user: 185
+      cmd:
+          - "node" 
+          - "/opt/app-root/src/none-authservice.js"                      

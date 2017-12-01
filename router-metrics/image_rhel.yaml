@@ -1,0 +1,37 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-routermetrics-openshift
+description: "Metrics for AMQMaas"
+from: jboss-amqmaas-1-tech-preview/amqmaas10-qpidproton-openshift:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "Metrics for AMQMaas router"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Router Metrics"
+    - name: "io.openshift.tags"
+      value: "amqmaas, router-metrics, message"
+envs:
+  - name: "VERSION"
+    value: "latest"
+ports:
+    - value: 8080
+modules:
+      repositories:
+          - name: router-metrics
+            path: modules 
+      install:
+          - name: router-metrics
+
+artifacts:
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=router-metrics.tgz
+      name: router-metrics.tgz
+    - url: https://github.com/prometheus/client_python/archive/v0.0.21.tar.gz
+      name: prometheus-client.tar.gz
+      
+run:
+      user: 185
+      cmd:
+          - "python"
+          - "/opt/router-metrics.py"    
+              
