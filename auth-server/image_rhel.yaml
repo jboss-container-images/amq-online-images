@@ -1,0 +1,50 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-auth-openshift
+description: "AMQMaas SSO for authentication"
+from: redhat-sso-7/sso72:latest
+labels:
+    - name: "io.k8s.description"
+      value: "AMQMaas Authentication using SSO"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Authentication"
+    - name: "io.openshift.tags"
+      value: "amqmaas, sso, authentication"
+envs:
+    - name: "VERSION"
+      value: "latest"
+    - name: "JAVA_OPTS"
+      value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
+packages:
+    repositories:
+      - jboss-os
+      - jboss-ocp
+      - jboss-epel
+      - jboss-rhscl
+      - jboss-optional
+    install:
+          - openssl
+          - saxon
+modules:
+      repositories:
+          - name: auth.install
+            path: modules 
+          - name: common.java
+            path: ../modules/common/java
+          - name: auth.rhel.deploy
+            path: ../modules  
+      install:
+          - name: auth.install
+          - name: common.java
+          - name: auth.rhel.deploy
+artifacts:
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-0.15.2-bin.tar.gz
+      name: keycloak-bin.tar.gz
+ports:
+    - value: 9990       
+    
+run:
+#      user: 185
+      entrypoint:
+          - "/opt/eap/bin/start-keycloak.sh"                    

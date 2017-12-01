@@ -1,0 +1,35 @@
+schema_version: 1
+
+name: "enmasseproject/queue-scheduler"
+description: "Enmasse Queue Scheduler"
+version: "0.15.1"
+from: enmasseproject/java-base:8-3
+labels:
+    - name: "io.k8s.description"
+      value: "Enmasse queue scheduler"
+    - name: "io.k8s.display-name"
+      value: "Enmasse queue scheduler"
+    - name: "io.openshift.tags"
+      value: "enmasse, queue-scheduler"
+envs:
+    - name: "VERSION"
+      value: "latest"
+modules:
+      repositories:
+          - name: common.java
+            path: ../modules/common/java
+          - name: queue-scheduler
+            path: modules 
+      install:
+          - name: queue-scheduler
+          - name: common.java
+ports:
+    - value: 55667
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=queue-scheduler.jar
+      name: queue-scheduler.jar
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/opt/queue-scheduler.jar"                     
