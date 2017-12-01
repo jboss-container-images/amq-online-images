@@ -1,0 +1,38 @@
+schema_version: 1
+
+version: 1.0
+name: jboss-amqmaas-1/amqmaas10-interconnect-openshift
+description: "router with AMQMaas configuration"
+from: jboss-amqmaas-1-tech-preview/amqmaas10-qpidproton-openshift:latest
+labels:
+    - name: "io.k8s.description"
+      value: "router with AMQMaas configuration"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Router"
+    - name: "io.openshift.tags"
+      value: "amqmaas, router, message"
+envs:
+  - name: "VERSION"
+    value: "latest"
+ports:
+    - value: 5672
+    - value: 55672
+    - value: 5671        
+modules:
+      repositories:
+          - name: router
+            path: modules 
+      install:
+          - name: router
+
+artifacts:
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=router.tgz
+      name: router.tgz
+      
+run:
+#      user: 185
+      cmd:
+          - "/etc/qpid-dispatch/run_qdr.sh"          
+            
+
+              
