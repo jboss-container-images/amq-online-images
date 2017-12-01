@@ -1,0 +1,43 @@
+schema_version: 1
+
+name: jboss-amqmaas-1/amqmaas10-addresscontroller-openshift
+description: "global component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance."
+version: "1.0"
+from: jboss/openjdk18-rhel7:1.0
+labels:
+    - name: "io.k8s.description"
+      value: "component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance"
+    - name: "io.k8s.display-name"
+      value: "AMQ Maas Address Controller"
+    - name: "io.openshift.tags"
+      value: "amqmaas, address-controller"
+envs:
+  - name: "VERSION"
+    value: "latest"
+    
+modules:
+      repositories:
+          - name: addresscontroller.common
+            path: modules/common
+          - name: common.java
+            path: ../modules/common/java
+      install:
+          - name: addresscontroller.common
+          - name: common.java          
+
+packages:
+    repositories:
+        - jboss-os
+    install:
+        - openssl        
+
+artifacts:
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=address-controller-0.15.2.jar
+      name: address-controller.jar
+      
+run:
+#      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/opt/address-controller.jar"          
+              

@@ -1,0 +1,6 @@
+schema_version: 1
+
+name: keycloak-controller
+version: '1.0'
+execute:
+  - script: install.sh
