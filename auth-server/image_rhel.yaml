@@ -24,8 +24,8 @@ packages:
       - jboss-rhscl
       - jboss-optional
     install:
-          - openssl
-          - saxon
+      - openssl
+      - saxon
 modules:
       repositories:
           - name: auth.install
