@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: jboss-amqmaas-1/amqmaas10-queuescheduler-openshift
 description: "AMQMaas Queue Scheduler"
-from: jboss/openjdk18-rhel7:1.0
+from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "io.k8s.description"
       value: "AMQMaas queue scheduler"
