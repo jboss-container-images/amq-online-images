@@ -3,7 +3,7 @@ schema_version: 1
 name: jboss-amqmaas-1/amqmaas10-broker-openshift
 description: "amqmaas image for artemis broker."
 version: "1.0"
-from: jboss/openjdk18-rhel7:1.0
+from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "io.k8s.description"
       value: "implementation of the artemis broker"
@@ -16,8 +16,6 @@ envs:
       value: "2.4.0"
     - name: "ARTEMIS_HOME"
       value: "/opt/apache-artemis-2.4.0"
-#    - name: "PATH"
-#      value: "${ARTEMIS_HOME}/bin:$PATH VERSION=${version}
 
 packages:
     repositories:

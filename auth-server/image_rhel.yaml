@@ -19,9 +19,6 @@ envs:
 packages:
     repositories:
       - jboss-os
-      - jboss-ocp
-      - jboss-epel
-      - jboss-rhscl
       - jboss-optional
     install:
       - openssl

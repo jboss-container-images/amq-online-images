@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/topic-forwarder"
 description: "AMQP message forwarder for topics in EnMasse, currently used with the Artemis broker"
-version: "0.15.1"
+version: "0.15.2"
 from: enmasseproject/java-base:8-3
 labels:
     - name: "io.k8s.description"

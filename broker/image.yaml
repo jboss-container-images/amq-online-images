@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/artemis"
 description: "EnMasse image for artemis broker."
-version: "0.15.1"
+version: "0.15.2"
 from: enmasseproject/java-base:8-3
 labels:
     - name: "io.k8s.description"
@@ -19,7 +19,7 @@ modules:
           - name: broker.common
             path: modules/common
       install:
-          - name: broker.common.main 
+          - name: broker.common 
 
 packages:
     repositories:
