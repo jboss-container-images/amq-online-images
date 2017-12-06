@@ -2,7 +2,7 @@ schema_version: 1
 
 version: 1.0
 name: jboss-amqmaas-1/amqmaas10-qpidproton-openshift
-from: jboss/base-rhel7:1.0
+from: jboss/base-rhel7:1.1
 
 packages:
       repositories:

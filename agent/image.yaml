@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/agent"
 description: "EnMasse console."
-version: "0.15.1"
+version: "0.15.2"
 from: enmasseproject/nodejs-base:6
 labels:
     - name: "io.k8s.description"
@@ -24,7 +24,7 @@ ports:
     - value: 56720 
     - value: 8080
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=agent-0.15.2.tgz
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=agent.tgz
       name: agent.tgz
 run:
       user: 185
