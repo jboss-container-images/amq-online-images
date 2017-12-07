@@ -19,10 +19,8 @@ envs:
 packages:
     repositories:
       - jboss-os
-      - jboss-optional
     install:
       - openssl
-      - saxon
 modules:
       repositories:
           - name: auth.install
