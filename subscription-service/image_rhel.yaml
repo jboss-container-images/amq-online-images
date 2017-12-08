@@ -27,7 +27,7 @@ modules:
 ports:
     - value: 5672
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=subserv.tgz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=subserv-0.15.3.tgz
       name: subserv.tgz
 run:
       user: 185

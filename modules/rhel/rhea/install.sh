@@ -3,10 +3,12 @@
 set -e
 
 SOURCES_DIR=/tmp/artifacts/
-# unpack
+
+#install rhea
 {
+	rpm -iv "${SOURCES_DIR}/nodejs-rhea-zip.rpm"
 	cd /opt/app-root/src
-	unzip "$SOURCES_DIR/nodejs-rhea.zip"
+	unzip /usr/share/doc/nodejs-rhea-0.2.5-2.zip
 }
 
 . /opt/rh/rh-nodejs4/enable

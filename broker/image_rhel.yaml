@@ -37,10 +37,19 @@ modules:
           - name: broker.common
 
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=artemis-image.tar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=artemis-image-0.15.3.tar.gz
       name: artemis-image.tar
     - url: http://archive.apache.org/dist/activemq/activemq-artemis/2.4.0/apache-artemis-2.4.0-bin.tar.gz   
-      name: apache-artemis-bin.tar.gz      
+      name: apache-artemis-bin.tar.gz     
+    - path: shutdown-hook-0.15.3.rhom-001002-redhat-1.jar 
+      md5: 2b8420308b4c895d458f45ebdf40a6e5
+      name: shutdown-hook.jar
+    - path: amqp-connector-0.15.3.rhom-001002-redhat-1.jar
+      md5: 53af0505c91889ce1d1ad782186a4b19
+      name: amqp-connector.jar
+    - path: sasl-delegation-0.15.3.rhom-001002-redhat-1.jar
+      md5: ebb711a4ed244593a4b0d7cedbd1650d
+      name: sasl-delegation.jar
 volumes:
     - name: "volume.broker"
       path: "/var/run/artemis"  

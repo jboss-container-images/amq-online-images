@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/keycloak"
 description: "EnMasse keycloak"
-version: "0.15.2"
+version: "0.15.3"
 from: jboss/keycloak:3.3.0.Final
 labels:
     - name: "io.k8s.description"

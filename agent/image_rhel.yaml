@@ -16,18 +16,21 @@ envs:
       value: "latest"
 modules:
       repositories:
-          - name: console
+          - name: agent
             path: modules 
       install:
-          - name: console
+          - name: agent
 ports:
     - value: 56720 
     - value: 8080
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=agent-0.15.2.tgz
-      name: agent.tgz
+     - path: nodejs-amqmaas-agent-zip-1.0.0-4.el7.noarch.rpm
+       md5: 2f5fc6c1f41cda2ade96ef8c8805750e
+       name: nodejs-amqmaas-agent-zip.rpm
+
+
 run:
       user: 185
       cmd:
           - "node"
-          - "/opt/app-root/src/bin/agent.js"    
+          - "/opt/app-root/src/nodejs-amqmaas-agent-1.0.0-4/bin/agent.js"    

@@ -32,7 +32,8 @@ packages:
         - openssl        
 
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=address-controller-0.15.2.jar
+    - path: address-controller-0.15.3.rhom-001002-redhat-1.jar
+      md5: cdb58643b0cd018cafa6b475452ae431
       name: address-controller.jar
       
 run:

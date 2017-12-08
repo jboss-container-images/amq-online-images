@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/agent"
 description: "EnMasse console."
-version: "0.15.2"
+version: "0.15.3"
 from: enmasseproject/nodejs-base:6
 labels:
     - name: "io.k8s.description"

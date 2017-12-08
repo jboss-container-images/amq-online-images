@@ -3,16 +3,13 @@
 set -e
 
 SOURCES_DIR=/tmp/artifacts/
-
-DISTRO_NAME=keycloak-bin
-
 SCRIPT_DIR=$(dirname $0)
 ADDED_DIR=${SCRIPT_DIR}/added
 
-
 # unpack
 {
-	tar xzf "${SOURCES_DIR}/$DISTRO_NAME.tar.gz" -C $JBOSS_HOME
+	mkdir -p $JBOSS_HOME/providers/
+	mv "${SOURCES_DIR}/sasl-plugin.jar" $JBOSS_HOME/providers/sasl-plugin.jar
 	mv ${ADDED_DIR}/addSaslPlugin.xsl $JBOSS_HOME
 	mv ${ADDED_DIR}/removeFileLogging.xsl $JBOSS_HOME
 	mv ${ADDED_DIR}/addKeyStore.xsl $JBOSS_HOME
