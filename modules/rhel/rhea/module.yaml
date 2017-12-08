@@ -3,9 +3,8 @@ schema_version: 1
 name: rhea
 version: '1.0'
 artifacts:
-    - path: nodejs-rhea-0.2.5-2.zip
-      md5: 9df1f05f05759975f272c664a36ca40f
-      name: nodejs-rhea.zip
+    - path: nodejs-rhea-client-zip-0.2.5-2.el7.noarch.rpm
+      md5: 7780a73f5c2686b46d9cb031c075efcd
+      name: nodejs-rhea-zip.rpm
 execute:
   - script: install.sh
-    user: '185'

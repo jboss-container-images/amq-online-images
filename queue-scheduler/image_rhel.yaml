@@ -26,7 +26,7 @@ modules:
 ports:
     - value: 55667
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=queue-scheduler.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=queue-scheduler-0.15.3.jar
       name: queue-scheduler.jar
 run:
       user: 185
