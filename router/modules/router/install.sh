@@ -2,15 +2,12 @@
 
 set -e
 
-SOURCES_DIR=/tmp/artifacts/
+SCRIPT_DIR=$(dirname $0)
+ADDED_DIR=${SCRIPT_DIR}/added
 
-DISTRO_NAME=router
-
-
-# unpack
 {
 	mkdir -p /etc/qpid-dispatch/
-	tar xzf "${SOURCES_DIR}/$DISTRO_NAME.tgz" -C /etc/qpid-dispatch/
+	mv ${ADDED_DIR}/* /etc/qpid-dispatch/
 }
 
 chown -R 185:0 /etc/qpid-dispatch/

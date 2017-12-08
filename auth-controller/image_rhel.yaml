@@ -16,6 +16,9 @@ envs:
       value: "latest"
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
           - name: keycloak-controller
             path: modules 
           - name: common.java
@@ -31,4 +34,4 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"     
-          - "/opt/keycloak-controller.jar"          
+          - "/opt/keycloak-controller.jar"
