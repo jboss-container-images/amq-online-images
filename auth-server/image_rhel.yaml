@@ -34,8 +34,9 @@ modules:
           - name: common.java
           - name: auth.rhel.deploy
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=keycloak-0.15.2-bin.tar.gz
-      name: keycloak-bin.tar.gz
+    - path: sasl-plugin-0.15.3.rhom-001002-redhat-1.jar
+      md5: a7787f6ae273cd99506673cda0c3d0e3
+      name: sasl-plugin.jar
 ports:
     - value: 9990       
     

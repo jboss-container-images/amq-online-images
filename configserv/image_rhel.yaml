@@ -27,7 +27,8 @@ modules:
 ports:
     - value: 5672
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=configserv.jar
+    - path: 0.15.3.rhom-001002-redhat-1/configserv-0.15.3.rhom-001002-redhat-1.jar
+      md5: 72c157ffd4572132b826343afcf4443d
       name: configserv.jar
 run:
       user: 185

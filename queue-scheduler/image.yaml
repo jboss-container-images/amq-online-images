@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/queue-scheduler"
 description: "Enmasse Queue Scheduler"
-version: "0.15.2"
+version: "0.15.3"
 from: enmasseproject/java-base:8-3
 labels:
     - name: "io.k8s.description"

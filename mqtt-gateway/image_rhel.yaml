@@ -27,7 +27,7 @@ ports:
     - value: 1883 
     - value: 8883
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-gateway.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-gateway-0.15.3.jar
       name: mqtt-gateway.jar
 run:
       user: 185
