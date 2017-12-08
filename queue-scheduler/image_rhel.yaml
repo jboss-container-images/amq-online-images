@@ -16,6 +16,9 @@ envs:
       value: "latest"
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
           - name: common.java
             path: ../modules/common/java
           - name: queue-scheduler

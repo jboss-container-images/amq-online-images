@@ -17,13 +17,16 @@ envs:
     
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master      
           - name: addresscontroller.common
             path: modules/common
           - name: common.java
             path: ../modules/common/java
       install:
           - name: addresscontroller.common
-          - name: common.java          
+          - name: common.java
 
 packages:
     repositories:
@@ -37,7 +40,7 @@ artifacts:
       name: address-controller.jar
       
 run:
-#      user: 185
+      user: 185
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/address-controller.jar"          

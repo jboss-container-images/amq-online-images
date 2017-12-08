@@ -31,15 +31,22 @@ packages:
 
 modules:
       repositories:     
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master      
           - name: broker.common
             path: modules/common
+          - name: common.java
+            path: ../modules/common/java            
       install:
           - name: broker.common
+          - name: os-partition
+          - name: dynamic-resources
+          - name: os-java-run
 
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=artemis-image-0.15.3.tar.gz
-      name: artemis-image.tar
-    - url: http://archive.apache.org/dist/activemq/activemq-artemis/2.4.0/apache-artemis-2.4.0-bin.tar.gz   
+    - path: apache-artemis-2.4.0.amq-710001-redhat-1-bin.tar.gz
+      md5: cf161d5e6ee58658a7f9bb1bd43f8041
       name: apache-artemis-bin.tar.gz     
     - path: shutdown-hook-0.15.3.rhom-001002-redhat-1.jar 
       md5: 2b8420308b4c895d458f45ebdf40a6e5
@@ -56,4 +63,4 @@ volumes:
 run:
       user: 185
       cmd:
-          - "/opt/apache-artemis-2.4.0/bin/launch.sh"          
+          - "/opt/apache-artemis-2.4.0/bin/launch.sh"

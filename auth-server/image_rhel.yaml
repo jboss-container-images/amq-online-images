@@ -21,8 +21,12 @@ packages:
       - jboss-os
     install:
       - openssl
+      
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
           - name: auth.install
             path: modules 
           - name: common.java
@@ -41,6 +45,6 @@ ports:
     - value: 9990       
     
 run:
-#      user: 185
+      user: 185
       entrypoint:
           - "/opt/eap/bin/start-keycloak.sh"                    
