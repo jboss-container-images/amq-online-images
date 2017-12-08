@@ -26,6 +26,18 @@ modules:
 ports:
     - value: 1883 
     - value: 8883
+modules:
+      repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
+          - name: common.java
+            path: ../modules/common/java
+          - name: mqtt-gateway
+            path: modules 
+      install:
+          - name: mqtt-gateway
+          - name: common.java                  
 artifacts:
     - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-gateway-0.15.3.jar
       name: mqtt-gateway.jar
@@ -33,4 +45,4 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"     
-          - "/opt/mqtt-gateway.jar"                 
+          - "/opt/mqtt-gateway.jar"

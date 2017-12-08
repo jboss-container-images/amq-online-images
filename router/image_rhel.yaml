@@ -25,12 +25,8 @@ modules:
       install:
           - name: router
 
-artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=router-0.15.3.tgz
-      name: router.tgz
-      
 run:
-#      user: 185
+      user: 185
       cmd:
           - "/etc/qpid-dispatch/run_qdr.sh"          
             

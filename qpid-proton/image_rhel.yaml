@@ -19,8 +19,9 @@ packages:
           - gettext
     
 run:
-#      user: 185
+      user: 185
       cmd:
           - "bash"  
     
   
+`
