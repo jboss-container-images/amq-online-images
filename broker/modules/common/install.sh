@@ -22,7 +22,7 @@ DISTRO_NAME=apache-artemis
 	mv ${ADDED_DIR}/shutdown-hook.sh /shutdown-hook/shutdown-hook.sh	
 	mv ${ADDED_DIR}/launch.sh /opt/apache-artemis-2.4.0/bin/launch.sh
 	mv ${ADDED_DIR}/probe.sh /opt/apache-artemis-2.4.0/bin/probe.sh
-	mv ${ADDED_DIR}/dynamic-resources.sh /opt/apache-artemis-2.4.0/bin/dynamic_resources.sh
+	mv ${ADDED_DIR}/dynamic_resources.sh /opt/apache-artemis-2.4.0/bin/dynamic_resources.sh
 	mv ${ADDED_DIR}/partitionPV.sh /opt/apache-artemis-2.4.0/bin/partitionPV.sh
 		
 }
