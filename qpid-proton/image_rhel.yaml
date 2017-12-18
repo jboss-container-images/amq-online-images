@@ -22,6 +22,3 @@ run:
       user: 185
       cmd:
           - "bash"  
-    
-  
-`
