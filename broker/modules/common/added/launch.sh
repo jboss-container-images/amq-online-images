@@ -1,6 +1,12 @@
 #!/bin/sh
-. $ARTEMIS_HOME/bin/partitionPV.sh
-. $ARTEMIS_HOME/bin/dynamic_resources.sh
+
+if [ "${SCRIPT_DEBUG}" = "true" ] ; then
+    set -x
+    echo "Script debugging is enabled, allowing bash commands and their arguments to be printed as they are executed"
+fi
+
+source /opt/partition/partitionPV.sh
+source /usr/local/dynamic-resources/dynamic_resources.sh
 
 export BROKER_IP=`hostname -I | cut -f 1 -d ' '`
 CONFIG_TEMPLATES=/config_templates
@@ -12,13 +18,13 @@ then
     export QUEUE_SCHEDULER_SERVICE_PORT=$ADMIN_SERVICE_PORT_QUEUE_SCHEDULER
 fi
 
-MAX_HEAP=`get_heap_size`
-if [ -n "$MAX_HEAP" ]; then
-  JAVA_OPTS="-Xms${MAX_HEAP}m -Xmx${MAX_HEAP}m $JAVA_OPTS"
-fi
-
 # Make sure that we use /dev/urandom
 JAVA_OPTS="${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom"
+
+#Set the memory options
+JAVA_OPTS="$(adjust_java_options ${JAVA_OPTS})"
+#GC Option conflicts with the one already configured.
+JAVA_OPTS=$(echo $JAVA_OPTS | sed -e "s/-XX:+UseParallelGC/ /")
 
 function configure_brokered() {
     cp $CONFIG_TEMPLATES/brokered/broker.xml /tmp/broker.xml
@@ -46,7 +52,6 @@ function configure() {
     export CONTAINER_ID=$HOSTNAME
     if [ ! -d "$INSTANCE" ]; then
         $ARTEMIS_HOME/bin/artemis create $instanceDir --user admin --password admin --role admin --allow-anonymous --java-options "$JAVA_OPTS"
-
         if [ "$ADDRESS_SPACE_TYPE" == "brokered" ]; then
             configure_brokered
         else
@@ -71,19 +76,21 @@ function configure() {
         keytool -import -noprompt -file /etc/enmasse-certs/ca.crt -alias firstCA -deststorepass enmasse -keystore $TRUSTSTORE_PATH
 
         keytool -import -noprompt -file /etc/authservice-ca/tls.crt -alias firstCA -deststorepass enmasse -keystore $AUTH_TRUSTSTORE_PATH
-
         if [ -d /etc/external-certs ]
         then
             openssl pkcs12 -export -passout pass:enmasse -in /etc/external-certs/tls.crt -inkey /etc/external-certs/tls.key -name "io.enmasse" -out /tmp/external-keystore.p12
             keytool -importkeystore -srcstorepass enmasse -deststorepass enmasse -destkeystore $EXTERNAL_KEYSTORE_PATH -srckeystore /tmp/external-keystore.p12 -srcstoretype PKCS12
-
         fi
-
 
         #cp $CONFIG_TEMPLATES/logging.properties $instanceDir/etc/logging.properties
 
     fi
 
+}
+
+function init_data_dir() {
+# No init needed for Artemis
+  return
 }
 
 # Parameters are
