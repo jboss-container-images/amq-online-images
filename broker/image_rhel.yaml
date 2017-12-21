@@ -27,7 +27,6 @@ packages:
         - hostname 
         - iputils
         - openssl 
-        
 
 modules:
       repositories:     
