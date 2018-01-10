@@ -1,0 +1,129 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    labels:
+      app: enmasse
+    name: keycloak-pvc
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    labels:
+      app: enmasse
+    name: keycloak
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: enmasse
+          name: keycloak
+      spec:
+        containers:
+        - env:
+          - name: KEYCLOAK_USER
+            valueFrom:
+              secretKeyRef:
+                key: admin.username
+                name: keycloak-credentials
+          - name: KEYCLOAK_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: admin.password
+                name: keycloak-credentials
+          image: docker-registry.engineering.redhat.com/jboss-amqmaas-1/amqmaas10-auth-openshift:dev
+          livenessProbe:
+            httpGet:
+              path: /
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 120
+          name: keycloak
+          ports:
+          - containerPort: 5671
+            name: amqps
+          - containerPort: 8443
+            name: https
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 1Gi
+          volumeMounts:
+          - mountPath: /opt/eap/standalone/data
+            name: keycloak-persistence
+            readOnly: false
+          - mountPath: /opt/eap/standalone/cert
+            name: standard-authservice-cert
+            readOnly: false
+        volumes:
+        - name: standard-authservice-cert
+          secret:
+            secretName: standard-authservice-cert
+        - name: keycloak-persistence
+          persistentVolumeClaim:
+            claimName: keycloak-pvc
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    labels:
+      app: enmasse
+    name: keycloak-controller
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: enmasse
+          name: keycloak-controller
+      spec:
+        containers:
+        - env:
+          - name: STANDARD_AUTHSERVICE_ADMIN_USER
+            valueFrom:
+              secretKeyRef:
+                key: admin.username
+                name: keycloak-credentials
+          - name: STANDARD_AUTHSERVICE_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: admin.password
+                name: keycloak-credentials
+          - name: STANDARD_AUTHSERVICE_CA_CERT
+            valueFrom:
+              secretKeyRef:
+                key: tls.crt
+                name: standard-authservice-cert
+          image: docker-registry.engineering.redhat.com/jboss-amqmaas-1/amqmaas10-auth-controller-openshift:dev
+          name: keycloak-controller
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              memory: 256Mi
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: enmasse
+    name: standard-authservice
+  spec:
+    ports:
+    - name: amqps
+      port: 5671
+      protocol: TCP
+      targetPort: amqps
+    - name: https
+      port: 8443
+      protocol: TCP
+      targetPort: https
+    selector:
+      name: keycloak
+kind: List
