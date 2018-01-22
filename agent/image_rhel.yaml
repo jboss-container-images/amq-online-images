@@ -24,7 +24,7 @@ ports:
     - value: 56720 
     - value: 8080
 artifacts:
-     - path: nodejs-amqmaas-agent-zip-1.0.0-4.el7.noarch.rpm
+     - path: nodejs-amqmaas-agent-zip
        md5: 2f5fc6c1f41cda2ade96ef8c8805750e
        name: nodejs-amqmaas-agent-zip.rpm
 
