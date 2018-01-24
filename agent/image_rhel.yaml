@@ -25,7 +25,7 @@ ports:
     - value: 8080
 artifacts:
      - path: nodejs-amqmaas-agent-zip
-       md5: 2f5fc6c1f41cda2ade96ef8c8805750e
+       md5: 948d8f882e6623c57dd3f65961cf27b9
        name: nodejs-amqmaas-agent-zip.rpm
 
 
@@ -33,4 +33,4 @@ run:
       user: 185
       cmd:
           - "node"
-          - "/opt/app-root/src/nodejs-amqmaas-agent-1.0.0-4/bin/agent.js"    
+          - "/opt/app-root/src/nodejs-amqmaas-agent-1.0.0-5/bin/agent.js" 
