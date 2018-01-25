@@ -3,7 +3,7 @@
 set -e
 
 SOURCES_DIR=/tmp/artifacts/
-ARTIFACT_VERSION="1.0.0-5"
+ARTIFACT_VERSION="1.0.0-6"
 
 cd ${SOURCES_DIR}
 rpm -ih -r "${SOURCES_DIR}" "${SOURCES_DIR}/nodejs-amqmaas-agent-zip.rpm"
