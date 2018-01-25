@@ -27,8 +27,8 @@ modules:
           - name: common.java
           - name: keycloak-controller
 artifacts:
-    - path: keycloak-controller-0.15.3.rhom-001002-redhat-1.jar
-      md5: 03005aabfbfb2d01872e77d2d6217404
+    - path: keycloak-controller-0.16.1.rhom-001001-redhat-2.jar 
+      md5: 792a6fe3fd7d36974db1030632e0fa97
       name: keycloak-controller.jar
 run:
       user: 185

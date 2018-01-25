@@ -27,7 +27,7 @@ modules:
           - name: mqtt-lwt
           - name: common.java
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-lwt-0.15.3.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-lwt-0.16.1.jar
       name: mqtt-lwt.jar
 run:
       user: 185

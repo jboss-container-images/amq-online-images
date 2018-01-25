@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/agent"
 description: "EnMasse console."
-version: "0.15.3"
+version: "0.16.1"
 from: enmasseproject/nodejs-base:6
 labels:
     - name: "io.k8s.description"
@@ -16,10 +16,10 @@ envs:
       value: "latest"
 modules:
       repositories:
-          - name: console
-            path: modules 
+          - name: agent
+            path: modules/platform/centos 
       install:
-          - name: console
+          - name: agent
 ports:
     - value: 56720 
     - value: 8080

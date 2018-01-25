@@ -1,0 +1,7 @@
+schema_version: 1
+
+name: standardcontroller.common
+version: '1.0'
+
+execute:
+    - script: install.sh

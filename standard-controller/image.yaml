@@ -1,0 +1,40 @@
+schema_version: 1
+
+name: "enmasseproject/standard-controller"
+description: "global component that implements an API for creating and deleting EnMasse infrastructure instances, and modifying the address configuration per instance."
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
+labels:
+    - name: "io.k8s.description"
+      value: "component that implements an API for creating and deleting EnMaase infrastructure instances, and modifying the address configuration per instance"
+    - name: "io.k8s.display-name"
+      value: "Enmasse Address Controller"
+    - name: "io.openshift.tags"
+      value: "enmasse, address-controller"
+envs:
+  - name: "VERSION"
+    value: "latest"
+
+packages:
+    repositories:
+        - centos-base
+    install:
+        - openssl        
+
+modules:
+      repositories:
+          - name: standardcontroller.common
+            path: modules/common
+      install:
+          - name: standardcontroller.common
+
+artifacts:
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=standard-controller.jar
+      name: standard-controller.jar
+      
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/opt/standard-controller.jar"          
+              

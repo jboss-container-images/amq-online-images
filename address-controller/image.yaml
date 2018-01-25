@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/address-controller"
 description: "global component that implements an API for creating and deleting EnMasse infrastructure instances, and modifying the address configuration per instance."
-version: "0.15.3"
-from: enmasseproject/java-base:8-3
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
       value: "component that implements an API for creating and deleting EnMaase infrastructure instances, and modifying the address configuration per instance"
@@ -25,18 +25,15 @@ modules:
       repositories:
           - name: addresscontroller.common
             path: modules/common
-          - name: common.java
-            path: ../modules/common/java
       install:
           - name: addresscontroller.common
-          - name: common.java          
 
 artifacts:
     - url: https://bintray.com/enmasse/snapshots/download_file?file_path=address-controller.jar
       name: address-controller.jar
       
 run:
-#      user: 185
+      user: 185
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/address-controller.jar"          

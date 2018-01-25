@@ -1,0 +1,7 @@
+schema_version: 1
+
+name: broker.centos
+version: '1.0'
+
+execute:
+  - script: install.sh

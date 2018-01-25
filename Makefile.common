@@ -3,13 +3,14 @@ COMMIT?=$(shell git rev-parse HEAD | cut -c1-8)
 IMAGE_VERSION?=latest
 DOCKERFILE_DIR?=build
 REPO?=$(shell cat $(IMAGE_FILE) | grep "^name:" | cut -d' ' -f2)
-DOGEN_VERSION?=2.0.1
 DOCKER_BUILD_OPTS?=
 DOCKER?=docker
 PRODUCT_DIR?=../../enmasse
+
+NEW_ARTIFACT= $(shell echo $(LOCAL_ARTIFACT_DIR) | rev| cut -d '/' -f 1 |sed 's/\([^0-9]*[\.]\).*[0-9][-]\(.*\)/\1\2/' |rev)
 ARTIFACT_CACHE_DIR?="target/image"
 ABSOLUTE_LOCAL_ARTIFACT_DIR?=$(CURDIR)/$(PRODUCT_DIR)/$(LOCAL_ARTIFACT_DIR)
-
+NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 
 all: build 
 	echo "Running docker centos build $(REPO)"
@@ -28,9 +29,9 @@ snapshot:
 	$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)
 
 copyartifact:
-	echo "Copying local artifacts from $(ABSOLUTE_LOCAL_ARTIFACT_DIR)"
+	echo "Copying local artifacts from $(ABSOLUTE_LOCAL_ARTIFACT_DIR) TO $(NEW_ABSOLUTE_LOCAL_ARTIFACT)"
 	mkdir -p $(ARTIFACT_CACHE_DIR)
-	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(ARTIFACT_CACHE_DIR)
+	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(NEW_ABSOLUTE_LOCAL_ARTIFACT)
 
 clean:
 	rm -rf build

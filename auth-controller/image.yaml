@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/keycloak-controller"
 description: "EnMasse identity and access controller"
-version: "0.15.3"
-from: enmasseproject/java-base:8-3
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
       value: "EnMasse identity and access controller"
@@ -16,6 +16,9 @@ envs:
       value: "latest"
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master  
           - name: common.java
             path: ../modules/common/java
           - name: keycloak-controller
