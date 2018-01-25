@@ -35,8 +35,8 @@ packages:
         - openssl        
 
 artifacts:
-    - path: address-controller-0.15.3.rhom-001002-redhat-1.jar
-      md5: cdb58643b0cd018cafa6b475452ae431
+    - path: address-controller-0.16.1.rhom-001001-redhat-2.jar
+      md5: 11e0d77789a23526ac286dcfe6861963
       name: address-controller.jar
       
 run:

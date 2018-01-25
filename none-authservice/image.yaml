@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/none-authservice"
 description: "Enmasse none auth service"
-version: "0.15.3"
+version: "0.16.1"
 from: enmasseproject/nodejs-base:6
 labels:
     - name: "io.k8s.description"

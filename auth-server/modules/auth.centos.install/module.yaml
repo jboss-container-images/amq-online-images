@@ -1,0 +1,7 @@
+schema_version: 1
+
+name: auth.centos.install
+version: '1.0'
+
+execute:
+  - script: install.sh

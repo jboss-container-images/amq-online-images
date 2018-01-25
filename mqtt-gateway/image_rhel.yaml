@@ -39,7 +39,7 @@ modules:
           - name: mqtt-gateway
           - name: common.java                  
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-gateway-0.15.3.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=mqtt-gateway-0.16.1.jar
       name: mqtt-gateway.jar
 run:
       user: 185

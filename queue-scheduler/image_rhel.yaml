@@ -29,7 +29,8 @@ modules:
 ports:
     - value: 55667
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=queue-scheduler-0.15.3.jar
+    - path: queue-scheduler-0.16.1.rhom-001001-redhat-2.jar
+      md5: f90f530f8083e84197e71bb1584c679b 
       name: queue-scheduler.jar
 run:
       user: 185

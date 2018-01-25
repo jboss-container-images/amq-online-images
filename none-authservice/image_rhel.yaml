@@ -26,7 +26,7 @@ modules:
 ports:
     - value: 5671
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=none-authservice-0.15.3.tgz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=none-authservice-0.16.1.tgz
       name: none-authservice.tgz
 run:
       user: 185
