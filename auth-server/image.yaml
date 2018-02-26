@@ -1,40 +1,49 @@
 schema_version: 1
 
-name: "enmasseproject/keycloak"
-description: "EnMasse keycloak"
-version: "0.15.3"
-from: jboss/keycloak:3.3.0.Final
+name: "enmasseproject/keycloak-plugin"
+description: "EnMasse keycloak plugin"
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
-      value: "EnMasse keycloak"
+      value: "EnMasse keycloak plugin"
     - name: "io.k8s.display-name"
-      value: "EnMasse keycloak"
+      value: "EnMasse keycloak plugin"
     - name: "io.openshift.tags"
-      value: "enmasse, keycloak"
+      value: "enmasse, keycloak plugin"
 envs:
+    - name: "KEYCLOAK_DIR"
+      value: "/opt/jboss/keycloak/"
+    - name: "KEYCLOAK_PLUGIN_DIR"
+      value: "/keycloak-plugin"
     - name: "VERSION"
       value: "latest"
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 modules:
       repositories:
-          - name: auth.install
-            path: modules 
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master  
+          - name: auth.centos.install
+            path: modules
           - name: common.java
             path: ../modules/common/java
       install:
-          - name: auth.install
+          - name: auth.centos.install
           - name: common.java          
 
 packages:
     repositories:
         - centos-base
     install:
-        - openssl
+        - openssl           
           
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=keycloak-bin.tar.gz
-      name: keycloak-bin.tar.gz
-ports:
-    - value: 9990       
-        
+    - path: sasl-plugin-0.16.1.jar
+      name: sasl-plugin.jar
+
+run:
+      user: 185
+      entrypoint:
+          - "/keycloak-plugin/bin/init-keycloak.sh"

@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/router"
 description: "router with EnMasse configuration"
-version: "0.15.3"
-from: enmasseproject/qdrouterd-base:1.0.0-alpha6
+version: "0.16.1"
+from: enmasseproject/qdrouterd-base:1.0.0-fix5
 labels:
     - name: "io.k8s.description"
       value: "router with EnMasse configuration"
@@ -30,9 +30,6 @@ artifacts:
       name: router.tgz
       
 run:
-#      user: 185
+      user: 185
       cmd:
-          - "/etc/qpid-dispatch/run_qdr.sh"          
-            
-
-              
+          - "/etc/qpid-dispatch/run_qdr.sh"

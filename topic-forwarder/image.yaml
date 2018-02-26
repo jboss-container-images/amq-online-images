@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/topic-forwarder"
 description: "AMQP message forwarder for topics in EnMasse, currently used with the Artemis broker"
-version: "0.15.3"
-from: enmasseproject/java-base:8-3
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
       value: "AMQP message forwarder for topics in EnMasse, currently used with the Artemis broker"
@@ -16,13 +16,10 @@ envs:
       value: "latest"
 modules:
       repositories:
-          - name: common.java
-            path: ../modules/common/java
           - name: topic-forwarder
             path: modules 
       install:
           - name: topic-forwarder
-          - name: common.java
 artifacts:
     - url: https://bintray.com/enmasse/snapshots/download_file?file_path=topic-forwarder.jar
       name: topic-forwarder.jar

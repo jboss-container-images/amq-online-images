@@ -29,7 +29,7 @@ modules:
           - name: topic-forwarder
           - name: common.java
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=topic-forwarder-0.15.3.jar
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=topic-forwarder-0.16.1.jar
       name: topic-forwarder.jar
 run:
       user: 185

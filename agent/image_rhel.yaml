@@ -17,7 +17,7 @@ envs:
 modules:
       repositories:
           - name: agent
-            path: modules 
+            path: modules/platform/rhel
       install:
           - name: agent
 ports:
@@ -25,12 +25,11 @@ ports:
     - value: 8080
 artifacts:
      - path: nodejs-amqmaas-agent-zip
-       md5: f0d70247b9dc533c910b67686e2e2790
+       md5: fc724f152173a42811b2a9cb56e50b83
        name: nodejs-amqmaas-agent-zip.rpm
-
 
 run:
       user: 185
       cmd:
-          - "node"
-          - "/opt/app-root/src/nodejs-amqmaas-agent-1.0.0-6/bin/agent.js" 
+          - "/opt/app-root/src/bin/launch_node.sh"
+          - "/opt/app-root/src/bin/agent.js"    

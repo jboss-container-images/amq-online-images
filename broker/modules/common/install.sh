@@ -11,13 +11,12 @@ DISTRO_NAME=apache-artemis
 # unpack apache-artemis
 {
 	tar xzf "${SOURCES_DIR}/$DISTRO_NAME-bin.tar.gz" -C /opt
-	mv /opt/$DISTRO_NAME* /opt/apache-artemis-2.4.0
+	if [ ! -d /opt/apache-artemis-2.4.0 ]; then
+		mv /opt/$DISTRO_NAME* /opt/apache-artemis-2.4.0
+	fi
 	
 	mkdir -p /shutdown-hook
-	mkdir -p /opt/apache-artemis-2.4.0/bin
-	mv "${SOURCES_DIR}/shutdown-hook.jar" /shutdown-hook/shutdown-hook.jar
-	mv "${SOURCES_DIR}/amqp-connector.jar" /opt/apache-artemis-2.4.0/lib/amqp-connector.jar
-	mv "${SOURCES_DIR}/sasl-delegation.jar" /opt/apache-artemis-2.4.0/lib/sasl-delegation.jar
+#	mkdir -p /opt/apache-artemis-2.4.0/bin/launch.sh
 	mv "${ADDED_DIR}/config_templates" /
 	mv ${ADDED_DIR}/shutdown-hook.sh /shutdown-hook/shutdown-hook.sh	
 	mv ${ADDED_DIR}/launch.sh /opt/apache-artemis-2.4.0/bin/launch.sh
