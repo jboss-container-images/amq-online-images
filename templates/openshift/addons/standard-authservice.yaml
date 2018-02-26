@@ -29,6 +29,9 @@ objects:
       spec:
         containers:
         - env:
+          - name: JAVA_OPTS
+            value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
+              -Xms512m -Xmx1024m
           - name: KEYCLOAK_USER
             valueFrom:
               secretKeyRef:
@@ -42,7 +45,7 @@ objects:
           image: ${STANDARD_AUTHSERVICE_IMAGE}
           livenessProbe:
             httpGet:
-              path: /
+              path: /auth
               port: https
               scheme: HTTPS
             initialDelaySeconds: 120
@@ -52,25 +55,57 @@ objects:
             name: amqps
           - containerPort: 8443
             name: https
+          readinessProbe:
+            httpGet:
+              path: /auth
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 120
           resources:
             limits:
-              memory: 1Gi
+              memory: 2Gi
             requests:
-              memory: 1Gi
+              memory: 2Gi
           volumeMounts:
+          - mountPath: /opt/eap/providers
+            name: keycloak-providers
+            readOnly: false
+          - mountPath: /opt/eap/standalone/configuration
+            name: keycloak-configuration
+            readOnly: false
+          - mountPath: /opt/enmasse/cert
+            name: ${KEYCLOAK_CERT_SECRET_NAME}
+            readOnly: false
           - mountPath: /opt/eap/standalone/data
             name: keycloak-persistence
             readOnly: false
-          - mountPath: /opt/eap/standalone/cert
-            name: ${STANDARD_AUTHSERVICE_SECRET_NAME}
+        initContainers:
+        - env:
+          - name: KEYCLOAK_DIR
+            value: /opt/eap
+          image: ${KEYCLOAK_PLUGIN_IMAGE}
+          name: keycloak-plugin
+          volumeMounts:
+          - mountPath: /opt/eap/providers
+            name: keycloak-providers
+            readOnly: false
+          - mountPath: /opt/eap/standalone/configuration
+            name: keycloak-configuration
+            readOnly: false
+          - mountPath: /opt/enmasse/cert
+            name: ${KEYCLOAK_CERT_SECRET_NAME}
             readOnly: false
         volumes:
-        - name: ${STANDARD_AUTHSERVICE_SECRET_NAME}
+        - name: ${KEYCLOAK_CERT_SECRET_NAME}
           secret:
-            secretName: ${STANDARD_AUTHSERVICE_SECRET_NAME}
+            secretName: ${KEYCLOAK_CERT_SECRET_NAME}
         - name: keycloak-persistence
           persistentVolumeClaim:
             claimName: keycloak-pvc
+        - emptyDir: {}
+          name: keycloak-configuration
+        - emptyDir: {}
+          name: keycloak-providers
 - apiVersion: extensions/v1beta1
   kind: Deployment
   metadata:
@@ -87,21 +122,31 @@ objects:
       spec:
         containers:
         - env:
-          - name: STANDARD_AUTHSERVICE_ADMIN_USER
+          - name: KEYCLOAK_HOSTNAME
+            valueFrom:
+              configMapKeyRef:
+                key: hostname
+                name: ${KEYCLOAK_CONTROLLER_CONFIGMAP_NAME}
+          - name: KEYCLOAK_PORT
+            valueFrom:
+              configMapKeyRef:
+                key: port
+                name: ${KEYCLOAK_CONTROLLER_CONFIGMAP_NAME}
+          - name: KEYCLOAK_ADMIN_USER
             valueFrom:
               secretKeyRef:
                 key: admin.username
                 name: ${KEYCLOAK_SECRET_NAME}
-          - name: STANDARD_AUTHSERVICE_ADMIN_PASSWORD
+          - name: KEYCLOAK_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: admin.password
                 name: ${KEYCLOAK_SECRET_NAME}
-          - name: STANDARD_AUTHSERVICE_CA_CERT
+          - name: KEYCLOAK_CERT
             valueFrom:
               secretKeyRef:
                 key: tls.crt
-                name: ${STANDARD_AUTHSERVICE_SECRET_NAME}
+                name: ${KEYCLOAK_CERT_SECRET_NAME}
           image: ${KEYCLOAK_CONTROLLER_IMAGE}
           name: keycloak-controller
           resources:
@@ -109,6 +154,15 @@ objects:
               memory: 256Mi
             requests:
               memory: 256Mi
+- apiVersion: v1
+  data:
+    hostname: standard-authservice
+    port: '8443'
+  kind: ConfigMap
+  metadata:
+    labels:
+      app: enmasse
+    name: keycloak-controller-config
 - apiVersion: v1
   kind: Service
   metadata:
@@ -143,17 +197,23 @@ objects:
       kind: Service
       name: standard-authservice
 parameters:
+- description: The docker image to use for the keycloak plugin image
+  name: KEYCLOAK_PLUGIN_IMAGE
+  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:latest
 - description: The docker image to use for the 'standard' auth service
   name: STANDARD_AUTHSERVICE_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1/amqmaas10-auth-openshift:dev
+  value: redhat-sso-7/sso72
 - description: The secret where keycloak credentials are stored
   name: KEYCLOAK_SECRET_NAME
   value: keycloak-credentials
 - description: The docker image to use for the keycloak controller
   name: KEYCLOAK_CONTROLLER_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1/amqmaas10-auth-controller-openshift:dev
+  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:latest
+- description: The configmap used to configure the keycloak controller
+  name: KEYCLOAK_CONTROLLER_CONFIGMAP_NAME
+  value: keycloak-controller-config
 - description: The secret containing the tls certificate and key
-  name: STANDARD_AUTHSERVICE_SECRET_NAME
+  name: KEYCLOAK_CERT_SECRET_NAME
   value: standard-authservice-cert
 - description: The hostname to use for the public keycloak route
   name: KEYCLOAK_ROUTE_HOSTNAME

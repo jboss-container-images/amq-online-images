@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/mqtt-lwt"
 description: "Enmasse MQTT Last Will and Testament"
-version: "0.15.3"
-from: enmasseproject/java-base:8-3
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
       value: "mqtt last will and testament for enmaase"
@@ -16,13 +16,10 @@ envs:
       value: "latest"
 modules:
       repositories:
-          - name: common.java
-            path: ../modules/common/java
           - name: mqtt-lwt
             path: modules 
       install:
           - name: mqtt-lwt
-          - name: common.java
 artifacts:
     - url: https://bintray.com/enmasse/snapshots/download_file?file_path=mqtt-lwt.jar
       name: mqtt-lwt.jar

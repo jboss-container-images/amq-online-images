@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/queue-scheduler"
 description: "Enmasse Queue Scheduler"
-version: "0.15.3"
-from: enmasseproject/java-base:8-3
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
       value: "Enmasse queue scheduler"
@@ -16,13 +16,10 @@ envs:
       value: "latest"
 modules:
       repositories:
-          - name: common.java
-            path: ../modules/common/java
           - name: queue-scheduler
             path: modules 
       install:
           - name: queue-scheduler
-          - name: common.java
 ports:
     - value: 55667
 artifacts:

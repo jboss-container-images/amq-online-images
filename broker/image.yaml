@@ -2,8 +2,8 @@ schema_version: 1
 
 name: "enmasseproject/artemis"
 description: "EnMasse image for artemis broker."
-version: "0.15.3"
-from: enmasseproject/java-base:8-3
+version: "0.16.1"
+from: enmasseproject/java-base:8-5
 labels:
     - name: "io.k8s.description"
       value: "implementation of the artemis broker"
@@ -18,18 +18,21 @@ modules:
       repositories:     
           - name: broker.common
             path: modules/common
+          - name: broker.centos
+            path: modules/centos
       install:
-          - name: broker.common 
+          - name: broker.common
+          - name: broker.centos 
 
 packages:
     repositories:
         - centos-base
     install:
-        - openssl 
+        - openssl
 
 artifacts:
     - url: https://bintray.com/enmasse/snapshots/download_file?file_path=artemis-image.tar
-      name: artemis-image.tar
+      name: artemis-image.tar.gz
     - url: http://archive.apache.org/dist/activemq/activemq-artemis/2.4.0/apache-artemis-2.4.0-bin.tar.gz   
       name: apache-artemis-bin.tar.gz      
 volumes:
@@ -38,4 +41,4 @@ volumes:
 run:
       user: 185
       cmd:
-          - "/opt/apache-artemis-2.4.0/bin/launch.sh"          
+          - "/opt/apache-artemis-2.4.0/bin/launch.sh"

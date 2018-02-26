@@ -1,7 +1,7 @@
 schema_version: 1
 
 name: "enmasseproject/java-base"
-version: "8-3"
+version: "8-5"
 from: "enmasseproject/base:1"
 description: "Base image for all enmasse java images"
 labels:
@@ -12,10 +12,13 @@ envs:
       value: "/usr/lib/jvm/java"
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
           - name: common.java
             path: ../modules/common/java
       install:
-          - name: common.java          
+          - name: common.java
     
 packages:
       repositories:

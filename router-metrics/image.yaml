@@ -2,7 +2,7 @@ schema_version: 1
 
 name: "enmasseproject/router-metrics"
 description: "Metrics for EnMasse"
-version: "0.15.3"
+version: "0.16.1"
 from: ppatierno/qpid-proton:0.17.0
 labels:
     - name: "io.k8s.description"

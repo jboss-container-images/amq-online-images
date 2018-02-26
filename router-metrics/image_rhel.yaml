@@ -24,7 +24,7 @@ modules:
           - name: router-metrics
 
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=router-metrics-0.15.3.tgz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=router-metrics-0.16.1.tgz
       name: router-metrics.tgz
     - url: https://github.com/prometheus/client_python/archive/v0.0.21.tar.gz
       name: prometheus-client.tar.gz

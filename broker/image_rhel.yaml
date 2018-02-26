@@ -35,6 +35,8 @@ modules:
                   ref: master      
           - name: broker.common
             path: modules/common
+          - name: broker.rhel
+            path: modules/rhel
           - name: common.java
             path: ../modules/common/java            
       install:
@@ -44,17 +46,17 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: apache-artemis-2.4.0.amq-710001-redhat-1-bin.tar.gz
-      md5: cf161d5e6ee58658a7f9bb1bd43f8041
+    - path: apache-artemis-2.4.0.amq-710004-redhat-1-bin.tar.gz
+      md5: 375dcc908973f148334133167d214c12
       name: apache-artemis-bin.tar.gz     
-    - path: shutdown-hook-0.15.3.rhom-001002-redhat-1.jar 
-      md5: 2b8420308b4c895d458f45ebdf40a6e5
+    - path: shutdown-hook-0.16.1.rhom-001001-redhat-4.jar
+      md5: 413bd97c873d13928ce5ebd1d71c829c
       name: shutdown-hook.jar
-    - path: amqp-connector-0.15.3.rhom-001002-redhat-1.jar
-      md5: 53af0505c91889ce1d1ad782186a4b19
+    - path: amqp-connector-0.16.1.rhom-001001-redhat-4.jar
+      md5: e769bb83f4e2abff0f7ed9b4918e75dc
       name: amqp-connector.jar
-    - path: sasl-delegation-0.15.3.rhom-001002-redhat-1.jar
-      md5: ebb711a4ed244593a4b0d7cedbd1650d
+    - path: sasl-delegation-0.16.1.rhom-001001-redhat-4.jar
+      md5: e8fdae0e7782fb28109681fa3ebca694
       name: sasl-delegation.jar
 volumes:
     - name: "volume.broker"
