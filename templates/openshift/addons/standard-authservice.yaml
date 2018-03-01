@@ -42,6 +42,8 @@ objects:
               secretKeyRef:
                 key: admin.password
                 name: ${KEYCLOAK_SECRET_NAME}
+          command:
+          - /opt/eap/standalone/bin/start-keycloak.sh        
           image: ${STANDARD_AUTHSERVICE_IMAGE}
           livenessProbe:
             httpGet:
@@ -70,6 +72,9 @@ objects:
           - mountPath: /opt/eap/providers
             name: keycloak-providers
             readOnly: false
+          - mountPath: /opt/eap/standalone/bin
+            name: keycloak-bin
+            readOnly: false
           - mountPath: /opt/eap/standalone/configuration
             name: keycloak-configuration
             readOnly: false
@@ -89,6 +94,9 @@ objects:
           - mountPath: /opt/eap/providers
             name: keycloak-providers
             readOnly: false
+          - mountPath: /opt/eap/standalone/bin
+            name: keycloak-bin
+            readOnly: false
           - mountPath: /opt/eap/standalone/configuration
             name: keycloak-configuration
             readOnly: false
@@ -104,6 +112,8 @@ objects:
             claimName: keycloak-pvc
         - emptyDir: {}
           name: keycloak-configuration
+        - emptyDir: {}
+          name: keycloak-bin
         - emptyDir: {}
           name: keycloak-providers
 - apiVersion: extensions/v1beta1
@@ -199,7 +209,7 @@ objects:
 parameters:
 - description: The docker image to use for the keycloak plugin image
   name: KEYCLOAK_PLUGIN_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:latest
+  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:1.0-3
 - description: The docker image to use for the 'standard' auth service
   name: STANDARD_AUTHSERVICE_IMAGE
   value: redhat-sso-7/sso72
@@ -208,7 +218,7 @@ parameters:
   value: keycloak-credentials
 - description: The docker image to use for the keycloak controller
   name: KEYCLOAK_CONTROLLER_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:latest
+  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0-3
 - description: The configmap used to configure the keycloak controller
   name: KEYCLOAK_CONTROLLER_CONFIGMAP_NAME
   value: keycloak-controller-config
