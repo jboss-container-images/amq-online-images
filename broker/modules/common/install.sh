@@ -21,6 +21,12 @@ DISTRO_NAME=apache-artemis
 	mv ${ADDED_DIR}/shutdown-hook.sh /shutdown-hook/shutdown-hook.sh	
 	mv ${ADDED_DIR}/launch.sh /opt/apache-artemis-2.4.0/bin/launch.sh
 	mv ${ADDED_DIR}/probe.sh /opt/apache-artemis-2.4.0/bin/probe.sh
+
+    mv ${SOURCES_DIR}/amqp-connector.jar /opt/apache-artemis-2.4.0/lib/amqp-connector.jar
+    mv ${SOURCES_DIR}/sasl-delegation.jar /opt/apache-artemis-2.4.0/lib/sasl-delegation.jar
+
+    mkdir -p /jmx_exporter
+    mv ${SOURCES_DIR}/jmx-exporter.jar /jmx_exporter/jmx-exporter.jar
 }
 
 #For volume

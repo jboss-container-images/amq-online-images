@@ -58,6 +58,9 @@ artifacts:
     - path: sasl-delegation-0.16.1.rhom-001001-redhat-4.jar
       md5: e8fdae0e7782fb28109681fa3ebca694
       name: sasl-delegation.jar
+    - path: jmx_exporter-0.16.1.rhom-001001-redhat-4.jar
+      md5: 4846cb0d03d923e36a3f18f682ecc62b
+      name: jmx-exporter.jar
 volumes:
     - name: "volume.broker"
       path: "/var/run/artemis"  
