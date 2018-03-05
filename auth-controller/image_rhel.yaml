@@ -35,3 +35,7 @@ run:
       cmd:
           - "/bin/launch_java.sh"     
           - "/opt/keycloak-controller.jar"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-auth-controller-dev-rhel-7          

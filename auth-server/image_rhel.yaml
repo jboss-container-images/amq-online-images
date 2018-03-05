@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-auth-openshift
+name: jboss-amqmaas-1/amqmaas10-auth-plugin-openshift
 description: "AMQMaas SSO for authentication"
 from: jboss/openjdk18-rhel7:1.1
 labels:
@@ -47,3 +47,7 @@ run:
       user: 185
       entrypoint:
           - "/keycloak-plugin/bin/init-keycloak.sh"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-auth-plugin-dev-rhel-7

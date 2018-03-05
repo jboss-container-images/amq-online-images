@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-qpidproton-openshift
+name: jboss-amqmaas-1/amqmaas10-qpid-proton-openshift
 from: jboss/base-rhel7:1.1
 
 packages:
@@ -21,4 +21,8 @@ packages:
 run:
       user: 185
       cmd:
-          - "bash"  
+          - "bash"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-qpid-proton-dev-rhel-7

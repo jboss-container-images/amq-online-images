@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-queuescheduler-openshift
+name: jboss-amqmaas-1/amqmaas10-queue-scheduler-openshift
 description: "AMQMaas Queue Scheduler"
 from: jboss/openjdk18-rhel7:1.1
 labels:
@@ -36,4 +36,8 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/queue-scheduler.jar"                     
+          - "/opt/queue-scheduler.jar"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-queue-scheduler-dev-rhel-7
