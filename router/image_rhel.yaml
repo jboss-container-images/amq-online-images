@@ -1,9 +1,9 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-interconnect-openshift
+name: jboss-amqmaas-1/amqmaas10-router-openshift
 description: "router with AMQMaas configuration"
-from: jboss-amqmaas-1-tech-preview/amqmaas10-qpidproton-openshift:latest
+from: jboss-amqmaas-1-tech-preview/amqmaas10-qpid-proton-openshift:latest
 labels:
     - name: "io.k8s.description"
       value: "router with AMQMaas configuration"
@@ -29,6 +29,7 @@ run:
       user: 185
       cmd:
           - "/etc/qpid-dispatch/run_qdr.sh"          
-            
-
-              
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-router-dev-rhel-7

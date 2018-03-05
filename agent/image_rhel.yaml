@@ -32,4 +32,8 @@ run:
       user: 185
       cmd:
           - "/opt/app-root/src/bin/launch_node.sh"
-          - "/opt/app-root/src/bin/agent.js"    
+          - "/opt/app-root/src/bin/agent.js"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-agent-dev-rhel-7          

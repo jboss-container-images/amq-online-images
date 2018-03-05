@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-mqttlwt-openshift
+name: jboss-amqmaas-1/amqmaas10-mqtt-lwt-openshift
 description: "AMQMaas MQTT Last Will and Testament"
 from: jboss/openjdk18-rhel7:1.1
 labels:
@@ -33,4 +33,8 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/mqtt-lwt.jar"                   
+          - "/mqtt-lwt.jar"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-mqtt-lwt-dev-rhel-7

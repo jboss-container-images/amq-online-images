@@ -32,4 +32,8 @@ run:
       user: 185
       cmd:
           - "node" 
-          - "/opt/app-root/src/none-authservice.js"                      
+          - "/opt/app-root/src/none-authservice.js"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-none-authservice-dev-rhel-7

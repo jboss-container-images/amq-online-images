@@ -46,8 +46,8 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: apache-artemis-2.4.0.amq-710004-redhat-1-bin.tar.gz
-      md5: 375dcc908973f148334133167d214c12
+    - path: apache-artemis-2.4.0.amq-710005-redhat-1-bin.tar.gz
+      md5: d775d9a87f08beeb74768407797006fb
       name: apache-artemis-bin.tar.gz     
     - path: shutdown-hook-0.16.1.rhom-001001-redhat-4.jar
       md5: 413bd97c873d13928ce5ebd1d71c829c
@@ -68,3 +68,7 @@ run:
       user: 185
       cmd:
           - "/opt/apache-artemis-2.4.0/bin/launch.sh"
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-broker-dev-rhel-7          

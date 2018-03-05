@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: jboss-amqmaas-1/amqmaas10-addresscontroller-openshift
+name: jboss-amqmaas-1/amqmaas10-address-controller-openshift
 description: "global component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
@@ -44,4 +44,8 @@ run:
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/address-controller.jar"          
-              
+
+osbs:
+      repository:
+            name: jboss-amqmaas-1-docker
+            branch: jb-amqmaas-1.0-address-controller-dev-rhel-7
