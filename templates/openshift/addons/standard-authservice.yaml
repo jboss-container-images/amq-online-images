@@ -207,18 +207,18 @@ objects:
       kind: Service
       name: standard-authservice
 parameters:
-- description: The docker image to use for the keycloak plugin image
+- description: The container image to use for the keycloak plugin image
   name: KEYCLOAK_PLUGIN_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:latest
-- description: The docker image to use for the 'standard' auth service
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:1.0-4
+- description: The container image to use for the 'standard' auth service
   name: STANDARD_AUTHSERVICE_IMAGE
-  value: docker-registry.engineering.redhat.com/redhat-sso-7/sso72:latest
+  value: redhat-sso-7/sso72:latest
 - description: The secret where keycloak credentials are stored
   name: KEYCLOAK_SECRET_NAME
   value: keycloak-credentials
-- description: The docker image to use for the keycloak controller
+- description: The container image to use for the keycloak controller
   name: KEYCLOAK_CONTROLLER_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0-3
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0-4
 - description: The configmap used to configure the keycloak controller
   name: KEYCLOAK_CONTROLLER_CONFIGMAP_NAME
   value: keycloak-controller-config
