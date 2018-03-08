@@ -704,15 +704,15 @@ objects:
     - description: Storage capacity required for volume claims
       name: STORAGE_CAPACITY
       value: 2Gi
-    - description: The docker image to use for the message broker
+    - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-4
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-4
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-4
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -895,15 +895,15 @@ objects:
     - description: Storage capacity required for volume claims
       name: STORAGE_CAPACITY
       value: 2Gi
-    - description: The docker image to use for the message broker
+    - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-4
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-4
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-4
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1145,15 +1145,15 @@ objects:
     - description: Storage capacity required for volume claims
       name: STORAGE_CAPACITY
       value: 2Gi
-    - description: The docker image to use for the message broker
+    - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-4
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-4
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-4
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1409,15 +1409,15 @@ objects:
     - description: Storage capacity required for volume claims
       name: STORAGE_CAPACITY
       value: 2Gi
-    - description: The docker image to use for the message broker
+    - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-4
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-4
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-3
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-4
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1459,30 +1459,30 @@ objects:
     value: ''
   - description: The image to use for the router
     name: ROUTER_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-4
   - description: The image to use for the router metrics collector
     name: ROUTER_METRICS_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-routermetrics-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-routermetrics-openshift:1.0-4
   - description: The link capacity setting for router
     name: ROUTER_LINK_CAPACITY
     value: '50'
   - description: The image to use for the configuration service
     name: CONFIGSERV_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-configserv-openshift:1.0-3
-  - description: The docker image to use for the queue scheduler
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-configserv-openshift:1.0-4
+  - description: The container image to use for the queue scheduler
     name: QUEUE_SCHEDULER_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-queuescheduler-openshift:1.0-3
-  - description: The docker image to use for the standard controller
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-queuescheduler-openshift:1.0-4
+  - description: The container image to use for the standard controller
     name: STANDARD_CONTROLLER_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-standardcontroller-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-standardcontroller-openshift:1.0-4
   - description: The image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-4
   - description: The hostname to use for the exposed route for messaging
     name: MESSAGING_HOSTNAME
   - description: The image to use for the MQTT gateway
     name: MQTT_GATEWAY_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-mqttgateway-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttgateway-openshift:1.0-4
   - description: The hostname to use for the exposed route for MQTT
     name: MQTT_GATEWAY_HOSTNAME
   - description: The hostname to use for the exposed route for the messaging console
@@ -1498,7 +1498,7 @@ objects:
     required: true
   - description: The image to use for the MQTT LWT
     name: MQTT_LWT_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-mqttlwt-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttlwt-openshift:1.0-4
   - description: The address space this infrastructure is deployed for
     name: ADDRESS_SPACE
     required: true
@@ -1808,12 +1808,12 @@ objects:
   - description: Hostname where API server can be reached
     name: ADDRESS_SPACE_SERVICE_HOST
     value: ''
-  - description: The docker image to use for the message broker
+  - description: The container image to use for the message broker
     name: BROKER_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-3
-  - description: The docker image to use for the enmasse agent
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-4
+  - description: The container image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-3
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-4
   - description: Storage capacity required for volume claims
     name: STORAGE_CAPACITY
     value: 2Gi
@@ -1939,9 +1939,9 @@ parameters:
 - description: The service account to use for the address controller
   name: ADDRESS_CONTROLLER_SA
   value: enmasse-admin
-- description: The docker image to use for the address controller
+- description: The container image to use for the address controller
   name: ADDRESS_CONTROLLER_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-addresscontroller-openshift:1.0-3
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-addresscontroller-openshift:1.0-4
 - description: Name of the secret containing the address controller certificate
   name: ADDRESS_CONTROLLER_CERT_SECRET
   value: address-controller-cert

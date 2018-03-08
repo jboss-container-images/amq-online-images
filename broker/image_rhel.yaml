@@ -46,8 +46,8 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: apache-artemis-2.4.0.amq-710004-redhat-1-bin.tar.gz
-      md5: 375dcc908973f148334133167d214c12
+    - path: apache-artemis-2.4.0.amq-710005-redhat-1-bin.tar.gz
+      md5: d775d9a87f08beeb74768407797006fb
       name: apache-artemis-bin.tar.gz     
     - path: shutdown-hook-0.16.1.rhom-001001-redhat-4.jar
       md5: 413bd97c873d13928ce5ebd1d71c829c
@@ -58,8 +58,8 @@ artifacts:
     - path: sasl-delegation-0.16.1.rhom-001001-redhat-4.jar
       md5: e8fdae0e7782fb28109681fa3ebca694
       name: sasl-delegation.jar
-    - path: jmx_exporter-0.16.1.rhom-001001-redhat-4.jar
-      md5: 4846cb0d03d923e36a3f18f682ecc62b
+    - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
+      md5: 89e83b40f70c9ca43a409e5b485555bc
       name: jmx-exporter.jar
 volumes:
     - name: "volume.broker"
