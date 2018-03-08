@@ -24,7 +24,7 @@ JAVA_OPTS="${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom"
 #Set the memory options
 JAVA_OPTS="$(adjust_java_options ${JAVA_OPTS})"
 #GC Option conflicts with the one already configured.
-JAVA_OPTS=$(echo $JAVA_OPTS | sed -e "s/-XX:+UseParallelGC/ /")
+JAVA_OPTS=$(echo $JAVA_OPTS | sed -e "s/-XX:+UseParallelOldGC/ /")
 
 
 function configure_brokered() {
@@ -43,7 +43,6 @@ function configure_standard() {
         cat $CONFIG_TEMPLATES/standard/broker_queue_colocated.xml >> /tmp/broker.xml
     fi
     cat $CONFIG_TEMPLATES/standard/broker_footer.xml >> /tmp/broker.xml
-    cp $CONFIG_TEMPLATES/standard/login.config /tmp/login.config
     export HAWTIO_ROLE=manage
 }
 
@@ -75,8 +74,9 @@ function configure() {
         fi
     
         envsubst < /tmp/broker.xml > $instanceDir/etc/broker.xml
-        envsubst < /tmp/login.config > $instanceDir/etc/login.config
-
+        if [ -f /tmp/login.config ]; then
+            envsubst < /tmp/login.config > $instanceDir/etc/login.config		 +
+        fi
         cp $CONFIG_TEMPLATES/bootstrap.xml $instanceDir/etc/bootstrap.xml
         cp $CONFIG_TEMPLATES/jolokia-access.xml $instanceDir/etc/jolokia-access.xml
 
