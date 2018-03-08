@@ -56,9 +56,9 @@ objects:
     selector:
       name: none-authservice
 parameters:
-- description: The docker image to use for the 'none' auth service
+- description: The container image to use for the 'none' auth service
   name: NONE_AUTHSERVICE_IMAGE
-  value: docker-registry.engineering.redhat.com/jboss-amqmaas-1-tech-preview/amqmaas10-noneauthservice-openshift:1.0-3
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-noneauthservice-openshift:1.0-4
 - description: The secret to use for the none-authservice certificate
   name: NONE_AUTHSERVICE_CERT_SECRET_NAME
   value: none-authservice-cert
