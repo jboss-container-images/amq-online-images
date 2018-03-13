@@ -1,4 +1,4 @@
-SUBDIRS=standard-controller address-controller agent mqtt-gateway mqtt-lwt queue-scheduler router router-metrics topic-forwarder none-authservice broker auth-controller auth-server
+SUBDIRS=standard-controller address-controller agent mqtt-gateway mqtt-lwt router router-metrics topic-forwarder none-authservice broker auth-controller auth-server
 CENTOS_SUBDIRS=base base-epel base-java base-nodejs
 RHEL_SUBDIRS= qpid-proton
 #
