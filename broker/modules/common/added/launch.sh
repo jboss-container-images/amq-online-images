@@ -5,7 +5,6 @@ if [ "${SCRIPT_DEBUG}" = "true" ] ; then
     echo "Script debugging is enabled, allowing bash commands and their arguments to be printed as they are executed"
 fi
 
-source /opt/partition/partitionPV.sh
 source /usr/local/dynamic-resources/dynamic_resources.sh
 
 export BROKER_IP=`hostname -I | cut -f 1 -d ' '`
@@ -34,15 +33,13 @@ function configure_brokered() {
 }
 
 function configure_standard() {
-    cp $CONFIG_TEMPLATES/standard/broker_header.xml /tmp/broker.xml
     if [ -n "$TOPIC_NAME" ]; then
-        cat $CONFIG_TEMPLATES/standard/broker_topic.xml >> /tmp/broker.xml
+    	cp $CONFIG_TEMPLATES/standard/sharded-topic/broker.xml /tmp/broker.xml
     elif [ -n $QUEUE_NAME ] && [ "$QUEUE_NAME" != "" ]; then
-        cat $CONFIG_TEMPLATES/standard/broker_queue.xml >> /tmp/broker.xml
+		cp $CONFIG_TEMPLATES/standard/sharded-queue/broker.xml /tmp/broker.xml
     else
-        cat $CONFIG_TEMPLATES/standard/broker_queue_colocated.xml >> /tmp/broker.xml
+        cp $CONFIG_TEMPLATES/standard/colocated/broker.xml /tmp/broker.xml
     fi
-    cat $CONFIG_TEMPLATES/standard/broker_footer.xml >> /tmp/broker.xml
     export HAWTIO_ROLE=manage
 }
 
@@ -51,57 +48,63 @@ function configure_standard() {
 # - instance id
 function configure() {
     local instanceDir=$1
-    local instanceId=$2
     export CONTAINER_ID=$HOSTNAME
-    if [ ! -d "$INSTANCE" ]; then
 
-        export KEYSTORE_PATH=$instanceDir/etc/enmasse-keystore.jks
-        export TRUSTSTORE_PATH=$instanceDir/etc/enmasse-truststore.jks
-        export AUTH_TRUSTSTORE_PATH=$instanceDir/etc/enmasse-authtruststore.jks
-        export EXTERNAL_KEYSTORE_PATH=$instanceDir/etc/external-keystore.jks
-        TRUSTSTORE_PASS=enmasse
-        KEYSTORE_PASS=enmasse
+    export KEYSTORE_PATH=$instanceDir/etc/enmasse-keystore.jks
+    export TRUSTSTORE_PATH=$instanceDir/etc/enmasse-truststore.jks
+    export AUTH_TRUSTSTORE_PATH=$instanceDir/etc/enmasse-authtruststore.jks
+    export EXTERNAL_KEYSTORE_PATH=$instanceDir/etc/external-keystore.jks
+    TRUSTSTORE_PASS=enmasse
+    KEYSTORE_PASS=enmasse
 
 
-        export JAVA_OPTS="${JAVA_OPTS} -Djavax.net.ssl.keyStore=${KEYSTORE_PATH} -Djavax.net.ssl.keyStorePassword=${KEYSTORE_PASS} -Djavax.net.ssl.trustStore=${TRUSTSTORE_PATH} -Djavax.net.ssl.trustStorePassword=${TRUSTSTORE_PASS}"
+    export JAVA_OPTS="${JAVA_OPTS} -Djavax.net.ssl.keyStore=${KEYSTORE_PATH} -Djavax.net.ssl.keyStorePassword=${KEYSTORE_PASS} -Djavax.net.ssl.trustStore=${TRUSTSTORE_PATH} -Djavax.net.ssl.trustStorePassword=${TRUSTSTORE_PASS}"
 
+    if [ ! -d "${instanceDir}" ]; then
+        echo "Creating instance in directory $instanceDir"
         $ARTEMIS_HOME/bin/artemis create $instanceDir --user admin --password admin --role admin --allow-anonymous --java-options "$JAVA_OPTS"
-
-        if [ "$ADDRESS_SPACE_TYPE" == "brokered" ]; then
-            configure_brokered
-        else
-            configure_standard
-        fi
-    
-        envsubst < /tmp/broker.xml > $instanceDir/etc/broker.xml
-        if [ -f /tmp/login.config ]; then
-            envsubst < /tmp/login.config > $instanceDir/etc/login.config		 +
-        fi
-        cp $CONFIG_TEMPLATES/bootstrap.xml $instanceDir/etc/bootstrap.xml
-        cp $CONFIG_TEMPLATES/jolokia-access.xml $instanceDir/etc/jolokia-access.xml
-
-        # Convert certs
-        openssl pkcs12 -export -passout pass:${KEYSTORE_PASS} -in /etc/enmasse-certs/tls.crt -inkey /etc/enmasse-certs/tls.key -chain -CAfile /etc/enmasse-certs/ca.crt -name "io.enmasse" -out /tmp/enmasse-keystore.p12
-
-        keytool -importkeystore -srcstorepass ${KEYSTORE_PASS} -deststorepass ${KEYSTORE_PASS} -destkeystore $KEYSTORE_PATH -srckeystore /tmp/enmasse-keystore.p12 -srcstoretype PKCS12
-        keytool -import -noprompt -file /etc/enmasse-certs/ca.crt -alias firstCA -deststorepass ${TRUSTSTORE_PASS} -keystore $TRUSTSTORE_PATH
-
-        keytool -import -noprompt -file /etc/authservice-ca/tls.crt -alias firstCA -deststorepass ${TRUSTSTORE_PASS} -keystore $AUTH_TRUSTSTORE_PATH
-
-        if [ -d /etc/external-certs ]
-        then
-            openssl pkcs12 -export -passout pass:${KEYSTORE_PASS} -in /etc/external-certs/tls.crt -inkey /etc/external-certs/tls.key -name "io.enmasse" -out /tmp/external-keystore.p12
-            keytool -importkeystore -srcstorepass ${KEYSTORE_PASS} -deststorepass ${KEYSTORE_PASS} -destkeystore $EXTERNAL_KEYSTORE_PATH -srckeystore /tmp/external-keystore.p12 -srcstoretype PKCS12
-
-        fi
-
-        export ARTEMIS_INSTANCE=${instanceDir}
-        export ARTEMIS_INSTANCE_URI=file:${instanceDir}/
-        envsubst < $CONFIG_TEMPLATES/artemis.profile > $instanceDir/etc/artemis.profile
-
-        # cp $CONFIG_TEMPLATES/logging.properties $instanceDir/etc/logging.properties
+    else
+        echo "Reusing existing instance in directory $instanceDir"
     fi
 
+    if [ "$ADDRESS_SPACE_TYPE" == "brokered" ]; then
+        configure_brokered
+    else
+        configure_standard
+    fi
+
+    envsubst < /tmp/broker.xml > $instanceDir/etc/broker.xml
+	if [ -f /tmp/login.config ]; then
+		envsubst < /tmp/login.config > $instanceDir/etc/login.config		 +
+	fi    
+
+    cp $CONFIG_TEMPLATES/bootstrap.xml $instanceDir/etc/bootstrap.xml
+    cp $CONFIG_TEMPLATES/jolokia-access.xml $instanceDir/etc/jolokia-access.xml
+
+    # Recreate certs in case they have been updated
+    rm -rf ${TRUSTSTORE_PATH} ${KEYSTORE_PATH} ${AUTH_TRUSTSTORE_PATH} ${EXTERNAL_KEYSTORE_PATH}
+
+    # Convert certs
+    openssl pkcs12 -export -passout pass:${KEYSTORE_PASS} -in /etc/enmasse-certs/tls.crt -inkey /etc/enmasse-certs/tls.key -chain -CAfile /etc/enmasse-certs/ca.crt -name "io.enmasse" -out /tmp/enmasse-keystore.p12
+
+    keytool -importkeystore -srcstorepass ${KEYSTORE_PASS} -deststorepass ${KEYSTORE_PASS} -destkeystore $KEYSTORE_PATH -srckeystore /tmp/enmasse-keystore.p12 -srcstoretype PKCS12
+    keytool -import -noprompt -file /etc/enmasse-certs/ca.crt -alias firstCA -deststorepass ${TRUSTSTORE_PASS} -keystore $TRUSTSTORE_PATH
+
+    keytool -import -noprompt -file /etc/authservice-ca/tls.crt -alias firstCA -deststorepass ${TRUSTSTORE_PASS} -keystore $AUTH_TRUSTSTORE_PATH
+
+    if [ -d /etc/external-certs ]
+    then
+        openssl pkcs12 -export -passout pass:${KEYSTORE_PASS} -in /etc/external-certs/tls.crt -inkey /etc/external-certs/tls.key -name "io.enmasse" -out /tmp/external-keystore.p12
+        keytool -importkeystore -srcstorepass ${KEYSTORE_PASS} -deststorepass ${KEYSTORE_PASS} -destkeystore $EXTERNAL_KEYSTORE_PATH -srckeystore /tmp/external-keystore.p12 -srcstoretype PKCS12
+    fi
+
+    export ARTEMIS_INSTANCE=${instanceDir}
+    export ARTEMIS_INSTANCE_URI=file:${instanceDir}/
+    envsubst < $CONFIG_TEMPLATES/artemis.profile > $instanceDir/etc/artemis.profile
+
+    if [ "$DEBUG_LOGGING" == "true" ]; then
+        cp $CONFIG_TEMPLATES/logging.properties $instanceDir/etc/logging.properties
+    fi
 }
 
 function init_data_dir() {
@@ -114,10 +117,7 @@ function init_data_dir() {
 # - instance id
 function runServer() {
   local instanceDir=$1
-  local instanceId=$2
-  echo "Configuring instance $instanceId in directory $instanceDir"
-  configure $instanceDir $instanceId
-  echo "Running instance $instanceId"
+  configure $instanceDir
   exec $instanceDir/bin/artemis run
 }
 
@@ -127,5 +127,4 @@ if [ "$ADDRESS_SPACE_TYPE" != "brokered" ]; then
     trap "" TERM INT
 fi
 
-DATA_DIR="/var/run/artemis/"
-partitionPV "${DATA_DIR}" "${ARTEMIS_LOCK_TIMEOUT:-30}"
+runServer "/var/run/artemis/split-1/serverData"

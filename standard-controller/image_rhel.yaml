@@ -35,7 +35,8 @@ packages:
         - openssl        
 
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=standard-controller-0.16.1.jar
+    - path: standard-controller-0.17.1.redhat-1.jar
+      md5: ae06e0e7491f50b0046b55989a414ba8
       name: standard-controller.jar
       
 run:
