@@ -29,7 +29,8 @@ modules:
           - name: topic-forwarder
           - name: common.java
 artifacts:
-    - url: https://bintray.com/enmasse/releases/download_file?file_path=topic-forwarder-0.16.1.jar
+    - path: topic-forwarder-0.17.1.redhat-1.jar
+      md5: 8450958e2e1b35c47e6950b4a06c40c1
       name: topic-forwarder.jar
 run:
       user: 185
