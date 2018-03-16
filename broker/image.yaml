@@ -42,3 +42,4 @@ run:
       user: 185
       cmd:
           - "/opt/apache-artemis-2.4.0/bin/launch.sh"
+          

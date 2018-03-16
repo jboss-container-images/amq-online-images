@@ -33,4 +33,4 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"     
-          - "/opt/keycloak-controller.jar"          
+          - "/opt/keycloak-controller.jar"

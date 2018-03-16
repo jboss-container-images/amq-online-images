@@ -1,20 +1,21 @@
 schema_version: 1
 
-name: jboss-amqmaas-1/amqmaas10-standardcontroller-openshift
-description: "global component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance."
+name: jboss-amqmaas-1/amqmaas10-standard-controller-openshift
+description: "global component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the standard address configuration per instance."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-standard-controller-openshift-container"
     - name: "io.k8s.description"
-      value: "component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance"
+      value: "component that implements an API for creating and deleting AMQMaas infrastructure instances, and modifying the standard address configuration per instance"
     - name: "io.k8s.display-name"
-      value: "AMQ Maas Address Controller"
+      value: "AMQ Maas Standard Controller"
     - name: "io.openshift.tags"
-      value: "amqmaas, address-controller"
+      value: "amqmaas, standard-controller"
 envs:
   - name: "VERSION"
     value: "latest"
-    
 modules:
       repositories:
           - git:
@@ -27,21 +28,21 @@ modules:
       install:
           - name: standardcontroller.common
           - name: common.java          
-
 packages:
     repositories:
         - jboss-os
     install:
         - openssl        
-
 artifacts:
     - path: standard-controller-0.17.1.redhat-1.jar
       md5: ae06e0e7491f50b0046b55989a414ba8
       name: standard-controller.jar
-      
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/standard-controller.jar"          
-              
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-standard-controller-openshift-rhel-7
