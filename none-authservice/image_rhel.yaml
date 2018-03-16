@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: "jboss-amqmaas-1/amqmaas10-noneauthservice-openshift"
+name: "jboss-amqmaas-1/amqmaas10-none-auth-service-openshift"
 description: "AMQMaas none auth service"
 version: "1.0"
 from: rhscl/nodejs-4-rhel7:latest
@@ -10,7 +10,7 @@ labels:
     - name: "io.k8s.display-name"
       value: "AMQMaas none auth service"
     - name: "io.openshift.tags"
-      value: "amqmaas,noneauthservice,messaging"          
+      value: "amqmaas,none-auth-service,messaging"          
 envs:
     - name: "VERSION"
       value: "latest"

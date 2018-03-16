@@ -30,4 +30,4 @@ run:
       user: 185
       cmd:
           - "node"
-          - "/opt/app-root/src/bin/agent.js"    
+          - "/opt/app-root/src/bin/agent.js"

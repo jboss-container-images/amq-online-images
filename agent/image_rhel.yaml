@@ -4,7 +4,9 @@ version: 1.0
 name: jboss-amqmaas-1/amqmaas10-agent-openshift
 description: "AMQMaas console"
 from: rhscl/nodejs-4-rhel7:latest
-labels:
+labels:    
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-agent-openshift-container"
     - name: "io.k8s.description"
       value: "console for enmaase"
     - name: "io.k8s.display-name"
@@ -33,3 +35,7 @@ run:
       cmd:
           - "/opt/app-root/src/bin/launch_node.sh"
           - "/opt/app-root/src/bin/agent.js"    
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-agent-openshift-rhel-7

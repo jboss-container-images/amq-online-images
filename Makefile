@@ -1,4 +1,4 @@
-SUBDIRS=standard-controller address-controller agent mqtt-gateway mqtt-lwt router router-metrics topic-forwarder none-authservice broker auth-controller auth-server
+SUBDIRS=standard-controller address-controller agent mqtt-gateway mqtt-lwt router router-metrics topic-forwarder none-authservice broker auth-controller auth-plugin
 CENTOS_SUBDIRS=base base-epel base-java base-nodejs
 RHEL_SUBDIRS= qpid-proton
 #
@@ -9,7 +9,6 @@ all:
 	done
 
 buildrhel:
-#	$(MAKE) -C $$dir build_rhel
 	for dir in $(SUBDIRS); do \
 		$(MAKE) build_rhel -C $$dir; \
 	done	
