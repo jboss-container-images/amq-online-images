@@ -39,8 +39,8 @@ modules:
           - name: mqtt-gateway
           - name: common.java                  
 artifacts:
-    - path: mqtt-gateway-0.17.1.redhat-1.jar
-      md5: a56e646c5816182c580bd36e11005b46
+    - path: mqtt-gateway-0.17.2.amqmaas-001001-redhat-2.jar
+      md5: 984fd645f047592ab6e0ea86dcc1483e
       name: mqtt-gateway.jar
 run:
       user: 185
