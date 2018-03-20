@@ -5,7 +5,7 @@ set -e
 SOURCES_DIR=/tmp/artifacts/
 SCRIPT_DIR=$(dirname $0)
 ADDED_DIR=${SCRIPT_DIR}/added
-DIST_NAME="nodejs-amqmaas-agent-1.0.0-8"
+DIST_NAME="nodejs-amqmaas-agent-1.0.0-9"
 {
 	cd ${SOURCES_DIR}
 	rpm -ih -r "${SOURCES_DIR}" "${SOURCES_DIR}/nodejs-amqmaas-agent-zip.rpm"
