@@ -12,7 +12,7 @@ items:
           name: grafana
       spec:
         containers:
-        - image: enmasseproject/grafana:1.0-5
+        - image: enmasseproject/grafana:1.0-6
           name: grafana
           ports:
           - containerPort: 3000
