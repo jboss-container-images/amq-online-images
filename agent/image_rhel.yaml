@@ -21,11 +21,11 @@ modules:
       install:
           - name: agent
 ports:
-    - value: 56720 
+    - value: 56720
     - value: 8080
 artifacts:
      - path: nodejs-amqmaas-agent-zip
-       md5: 90892ec7768b5e623570347a53f4da7b
+       md5: 11826b00e3554be21ba59864f71fc68a
        name: nodejs-amqmaas-agent-zip.rpm
 
 run:
