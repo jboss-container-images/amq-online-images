@@ -35,8 +35,8 @@ packages:
         - openssl        
 
 artifacts:
-    - path: address-controller-0.17.2.amqmaas-001001-redhat-2.jar
-      md5: 5610ce29835686973cf3e068e57fddc3
+    - path: address-controller-0.19.0.amqmaas-001002-redhat-3.jar
+      md5: e6ae8ded8b6062cbd911a826ed34cf96
       name: address-controller.jar
       
 run:

@@ -17,6 +17,8 @@ objects:
     metadata:
       annotations:
         addressSpace: ${ADDRESS_SPACE}
+        enmasse.io/service-port.amqp: 5672
+        enmasse.io/service-port.amqps: 5671
         io.enmasse.endpointPort: amqps
         service.alpha.openshift.io/dependencies: '[{"kind": "Service", "name": "queue-scheduler",
           "namespace": ""}, {"kind": "Service", "name": "configuration", "namespace":
@@ -105,6 +107,8 @@ objects:
           - env:
             - name: LINK_CAPACITY
               value: ${ROUTER_LINK_CAPACITY}
+            - name: ALLOW_DURABLE_SUBSCRIPTIONS
+              value: ${ALLOW_DURABLE_SUBSCRIPTIONS}
             - name: AUTHENTICATION_SERVICE_HOST
               value: ${AUTHENTICATION_SERVICE_HOST}
             - name: AUTHENTICATION_SERVICE_PORT
@@ -113,6 +117,8 @@ objects:
               value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
             - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
               value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+            - name: AUTHENTICATION_SERVICE_OAUTH_URL
+              value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
             image: ${ROUTER_IMAGE}
             livenessProbe:
               initialDelaySeconds: 60
@@ -212,6 +218,12 @@ objects:
               value: /etc/enmasse-certs
             - name: ADDRESS_SPACE
               value: ${ADDRESS_SPACE}
+            - name: RESYNC_INTERVAL
+              value: ${CONTROLLER_RESYNC_INTERVAL}
+            - name: CHECK_INTERVAL
+              value: ${CONTROLLER_CHECK_INTERVAL}
+            - name: EVENT_QUEUE_SIZE
+              value: ${CONTROLLER_EVENT_QUEUE_SIZE}
             - name: ENABLE_EVENT_LOGGER
               value: ${ENABLE_EVENT_LOGGER}
             - name: AUTHENTICATION_SERVICE_HOST
@@ -267,6 +279,8 @@ objects:
               value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
             - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
               value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+            - name: AUTHENTICATION_SERVICE_OAUTH_URL
+              value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
             - name: ADDRESS_SPACE
               value: ${ADDRESS_SPACE}
             - name: MESSAGING_CERT
@@ -275,10 +289,14 @@ objects:
             livenessProbe:
               httpGet:
                 path: /probe
-                port: https
-                scheme: HTTPS
+                port: http
+                scheme: HTTP
+              periodSeconds: 30
+              timeoutSeconds: 5
             name: agent
             ports:
+            - containerPort: 8888
+              name: http
             - containerPort: 8080
               name: https
             - containerPort: 56720
@@ -286,11 +304,13 @@ objects:
             readinessProbe:
               httpGet:
                 path: /probe
-                port: https
-                scheme: HTTPS
+                port: http
+                scheme: HTTP
+              periodSeconds: 30
+              timeoutSeconds: 5
             resources:
               limits:
-                memory: 128Mi
+                memory: 512Mi
               requests:
                 memory: 128Mi
             volumeMounts:
@@ -425,6 +445,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -433,6 +455,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -500,13 +524,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -539,9 +563,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: v1
     kind: Template
     metadata:
@@ -601,6 +629,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -609,6 +639,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -690,13 +722,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -729,9 +761,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: v1
     kind: Template
     metadata:
@@ -791,6 +827,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -799,6 +837,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -850,6 +890,8 @@ objects:
                 value: ${ADDRESS}
               - name: LINK_CAPACITY
                 value: ${ROUTER_LINK_CAPACITY}
+              - name: ALLOW_DURABLE_SUBSCRIPTIONS
+                value: ${ALLOW_DURABLE_SUBSCRIPTIONS}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -858,6 +900,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${ROUTER_IMAGE}
               livenessProbe:
                 initialDelaySeconds: 60
@@ -939,13 +983,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -978,9 +1022,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: v1
     kind: Template
     metadata:
@@ -1040,6 +1088,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -1048,6 +1098,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -1099,6 +1151,8 @@ objects:
                 value: ${ADDRESS}
               - name: LINK_CAPACITY
                 value: ${ROUTER_LINK_CAPACITY}
+              - name: ALLOW_DURABLE_SUBSCRIPTIONS
+                value: ${ALLOW_DURABLE_SUBSCRIPTIONS}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -1107,6 +1161,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${ROUTER_IMAGE}
               livenessProbe:
                 initialDelaySeconds: 60
@@ -1202,13 +1258,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1241,36 +1297,43 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   parameters:
   - description: The image to use for the router
     name: ROUTER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
   - description: The image to use for the router metrics collector
     name: ROUTER_METRICS_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-routermetrics-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-routermetrics-openshift:1.0-7
   - description: The link capacity setting for router
     name: ROUTER_LINK_CAPACITY
     value: '50'
+  - description: Whether AMQP based durable subscriptions to topics are allowed
+    name: ALLOW_DURABLE_SUBSCRIPTIONS
+    value: 'true'
   - description: The image to use for the configuration service
     name: CONFIGSERV_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-configserv-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/configserv:1.0-7
   - description: The container image to use for the queue scheduler
     name: QUEUE_SCHEDULER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-queuescheduler-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/queue-scheduler:1.0-7
   - description: The container image to use for the standard controller
     name: STANDARD_CONTROLLER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-standardcontroller-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-standardcontroller-openshift:1.0-7
   - description: The image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-7
   - description: The hostname to use for the exposed route for messaging
     name: MESSAGING_HOSTNAME
   - description: The image to use for the MQTT gateway
     name: MQTT_GATEWAY_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttgateway-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttgateway-openshift:1.0-7
   - description: The hostname to use for the exposed route for MQTT
     name: MQTT_GATEWAY_HOSTNAME
   - description: The hostname to use for the exposed route for the messaging console
@@ -1286,7 +1349,7 @@ objects:
     required: true
   - description: The image to use for the MQTT LWT
     name: MQTT_LWT_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttlwt-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttlwt-openshift:1.0-7
   - description: The address space this infrastructure is deployed for
     name: ADDRESS_SPACE
     required: true
@@ -1303,9 +1366,20 @@ objects:
     name: AUTHENTICATION_SERVICE_CLIENT_SECRET
   - description: The hostname to use in sasl init
     name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
+  - description: The URL to use for OAUTH (if not set, OAUTH is not used)
+    name: AUTHENTICATION_SERVICE_OAUTH_URL
   - description: Enable logging of kubernetes events
     name: ENABLE_EVENT_LOGGER
     value: 'false'
+  - description: Interval (in seconds) to use between controller resync
+    name: CONTROLLER_RESYNC_INTERVAL
+    value: '600'
+  - description: Interval (in seconds) to use between status checks
+    name: CONTROLLER_CHECK_INTERVAL
+    value: '30'
+  - description: Max number of events queued up for controller
+    name: CONTROLLER_EVENT_QUEUE_SIZE
+    value: '10000'
   - description: The service account with address space admin privileges
     name: ADDRESS_SPACE_ADMIN_SA
     value: address-space-admin
@@ -1321,6 +1395,8 @@ objects:
     metadata:
       annotations:
         addressSpace: ${ADDRESS_SPACE}
+        enmasse.io/service-port.amqp: 5672
+        enmasse.io/service-port.amqps: 5671
         io.enmasse.endpointPort: amqps
         service.alpha.openshift.io/dependencies: '[{"kind": "Service", "name": "queue-scheduler",
           "namespace": ""}, {"kind": "Service", "name": "configuration", "namespace":
@@ -1409,6 +1485,8 @@ objects:
           - env:
             - name: LINK_CAPACITY
               value: ${ROUTER_LINK_CAPACITY}
+            - name: ALLOW_DURABLE_SUBSCRIPTIONS
+              value: ${ALLOW_DURABLE_SUBSCRIPTIONS}
             - name: AUTHENTICATION_SERVICE_HOST
               value: ${AUTHENTICATION_SERVICE_HOST}
             - name: AUTHENTICATION_SERVICE_PORT
@@ -1417,6 +1495,8 @@ objects:
               value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
             - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
               value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+            - name: AUTHENTICATION_SERVICE_OAUTH_URL
+              value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
             image: ${ROUTER_IMAGE}
             livenessProbe:
               initialDelaySeconds: 60
@@ -1516,6 +1596,12 @@ objects:
               value: /etc/enmasse-certs
             - name: ADDRESS_SPACE
               value: ${ADDRESS_SPACE}
+            - name: RESYNC_INTERVAL
+              value: ${CONTROLLER_RESYNC_INTERVAL}
+            - name: CHECK_INTERVAL
+              value: ${CONTROLLER_CHECK_INTERVAL}
+            - name: EVENT_QUEUE_SIZE
+              value: ${CONTROLLER_EVENT_QUEUE_SIZE}
             - name: ENABLE_EVENT_LOGGER
               value: ${ENABLE_EVENT_LOGGER}
             - name: AUTHENTICATION_SERVICE_HOST
@@ -1571,6 +1657,8 @@ objects:
               value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
             - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
               value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+            - name: AUTHENTICATION_SERVICE_OAUTH_URL
+              value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
             - name: ADDRESS_SPACE
               value: ${ADDRESS_SPACE}
             - name: MESSAGING_CERT
@@ -1579,10 +1667,14 @@ objects:
             livenessProbe:
               httpGet:
                 path: /probe
-                port: https
-                scheme: HTTPS
+                port: http
+                scheme: HTTP
+              periodSeconds: 30
+              timeoutSeconds: 5
             name: agent
             ports:
+            - containerPort: 8888
+              name: http
             - containerPort: 8080
               name: https
             - containerPort: 56720
@@ -1590,11 +1682,13 @@ objects:
             readinessProbe:
               httpGet:
                 path: /probe
-                port: https
-                scheme: HTTPS
+                port: http
+                scheme: HTTP
+              periodSeconds: 30
+              timeoutSeconds: 5
             resources:
               limits:
-                memory: 128Mi
+                memory: 512Mi
               requests:
                 memory: 128Mi
             volumeMounts:
@@ -1729,6 +1823,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -1737,6 +1833,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -1804,13 +1902,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1843,9 +1941,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: v1
     kind: Template
     metadata:
@@ -1905,6 +2007,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -1913,6 +2017,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -1994,13 +2100,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2033,9 +2139,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: v1
     kind: Template
     metadata:
@@ -2095,6 +2205,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -2103,6 +2215,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -2154,6 +2268,8 @@ objects:
                 value: ${ADDRESS}
               - name: LINK_CAPACITY
                 value: ${ROUTER_LINK_CAPACITY}
+              - name: ALLOW_DURABLE_SUBSCRIPTIONS
+                value: ${ALLOW_DURABLE_SUBSCRIPTIONS}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -2162,6 +2278,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${ROUTER_IMAGE}
               livenessProbe:
                 initialDelaySeconds: 60
@@ -2243,13 +2361,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2282,9 +2400,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: v1
     kind: Template
     metadata:
@@ -2344,6 +2466,8 @@ objects:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -2352,6 +2476,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${BROKER_IMAGE}
               lifecycle:
                 preStop:
@@ -2403,6 +2529,8 @@ objects:
                 value: ${ADDRESS}
               - name: LINK_CAPACITY
                 value: ${ROUTER_LINK_CAPACITY}
+              - name: ALLOW_DURABLE_SUBSCRIPTIONS
+                value: ${ALLOW_DURABLE_SUBSCRIPTIONS}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -2411,6 +2539,8 @@ objects:
                 value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+              - name: AUTHENTICATION_SERVICE_OAUTH_URL
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               image: ${ROUTER_IMAGE}
               livenessProbe:
                 initialDelaySeconds: 60
@@ -2506,13 +2636,13 @@ objects:
       value: 2Gi
     - description: The container image to use for the message broker
       name: BROKER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+      value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-topicforwarder-openshift:1.0-7
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+      value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2545,9 +2675,13 @@ objects:
       name: AUTHENTICATION_SERVICE_CLIENT_SECRET
     - description: The hostname to use in sasl init
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
-    - description: Memory limits for Artemis
+    - description: Memory limits for container
       name: BROKER_MEMORY_LIMIT
       value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb
   - apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
@@ -2570,7 +2704,7 @@ objects:
         spec:
           containers:
           - command:
-            - /opt/app-root/src/bin/launch_node.sh
+            - node
             - /opt/app-root/src/bin/subserv.js
             image: ${AGENT_IMAGE}
             livenessProbe:
@@ -2600,6 +2734,8 @@ objects:
     metadata:
       annotations:
         addressSpace: ${ADDRESS_SPACE}
+        enmasse.io/service-port.mqtt: 1883
+        enmasse.io/service-port.mqtts: 8883
         io.enmasse.endpointPort: secure-mqtt
       labels:
         app: enmasse
@@ -2715,30 +2851,33 @@ objects:
   parameters:
   - description: The image to use for the router
     name: ROUTER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-interconnect-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-router-openshift:1.0-7
   - description: The image to use for the router metrics collector
     name: ROUTER_METRICS_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-routermetrics-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-routermetrics-openshift:1.0-7
   - description: The link capacity setting for router
     name: ROUTER_LINK_CAPACITY
     value: '50'
+  - description: Whether AMQP based durable subscriptions to topics are allowed
+    name: ALLOW_DURABLE_SUBSCRIPTIONS
+    value: 'true'
   - description: The image to use for the configuration service
     name: CONFIGSERV_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-configserv-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/configserv:1.0-7
   - description: The container image to use for the queue scheduler
     name: QUEUE_SCHEDULER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-queuescheduler-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/queue-scheduler:1.0-7
   - description: The container image to use for the standard controller
     name: STANDARD_CONTROLLER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-standardcontroller-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-standardcontroller-openshift:1.0-7
   - description: The image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-7
   - description: The hostname to use for the exposed route for messaging
     name: MESSAGING_HOSTNAME
   - description: The image to use for the MQTT gateway
     name: MQTT_GATEWAY_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttgateway-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttgateway-openshift:1.0-7
   - description: The hostname to use for the exposed route for MQTT
     name: MQTT_GATEWAY_HOSTNAME
   - description: The hostname to use for the exposed route for the messaging console
@@ -2754,7 +2893,7 @@ objects:
     required: true
   - description: The image to use for the MQTT LWT
     name: MQTT_LWT_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttlwt-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-mqttlwt-openshift:1.0-7
   - description: The address space this infrastructure is deployed for
     name: ADDRESS_SPACE
     required: true
@@ -2771,9 +2910,20 @@ objects:
     name: AUTHENTICATION_SERVICE_CLIENT_SECRET
   - description: The hostname to use in sasl init
     name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
+  - description: The URL to use for OAUTH (if not set, OAUTH is not used)
+    name: AUTHENTICATION_SERVICE_OAUTH_URL
   - description: Enable logging of kubernetes events
     name: ENABLE_EVENT_LOGGER
     value: 'false'
+  - description: Interval (in seconds) to use between controller resync
+    name: CONTROLLER_RESYNC_INTERVAL
+    value: '600'
+  - description: Interval (in seconds) to use between status checks
+    name: CONTROLLER_CHECK_INTERVAL
+    value: '30'
+  - description: Max number of events queued up for controller
+    name: CONTROLLER_EVENT_QUEUE_SIZE
+    value: '10000'
   - description: The service account with address space admin privileges
     name: ADDRESS_SPACE_ADMIN_SA
     value: address-space-admin
@@ -2855,6 +3005,8 @@ objects:
               value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
             - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
               value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+            - name: AUTHENTICATION_SERVICE_OAUTH_URL
+              value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
             image: ${BROKER_IMAGE}
             livenessProbe:
               exec:
@@ -2898,6 +3050,11 @@ objects:
             - mountPath: /etc/prometheus-config
               name: broker-prometheus-config
               readOnly: true
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 1Gi
           volumes:
           - name: data
             persistentVolumeClaim:
@@ -2983,6 +3140,8 @@ objects:
               value: /etc/console-certs
             - name: MESSAGING_CERT
               value: /opt/agent/messaging-cert/tls.crt
+            - name: PROBE_PORT
+              value: '8088'
             - name: AUTHENTICATION_SERVICE_HOST
               value: ${AUTHENTICATION_SERVICE_HOST}
             - name: AUTHENTICATION_SERVICE_PORT
@@ -2991,21 +3150,25 @@ objects:
               value: ${AUTHENTICATION_SERVICE_CLIENT_SECRET}
             - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
               value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
+            - name: AUTHENTICATION_SERVICE_OAUTH_URL
+              value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
             image: ${AGENT_IMAGE}
             livenessProbe:
               httpGet:
                 path: /probe
-                port: https
-                scheme: HTTPS
+                port: http
+                scheme: HTTP
             name: agent
             ports:
             - containerPort: 8080
               name: https
+            - containerPort: 8088
+              name: http
             readinessProbe:
               httpGet:
                 path: /probe
-                port: https
-                scheme: HTTPS
+                port: http
+                scheme: HTTP
             volumeMounts:
             - mountPath: /opt/agent/authservice-ca
               name: authservice-ca
@@ -3052,10 +3215,10 @@ objects:
   parameters:
   - description: The container image to use for the message broker
     name: BROKER_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0-6
+    value: docker.io/enmasseproject/artemis:0.19.0
   - description: The container image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-6
+    value: jboss-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0-7
   - description: Storage capacity required for volume claims
     name: STORAGE_CAPACITY
     value: 2Gi
@@ -3081,6 +3244,8 @@ objects:
     name: AUTHENTICATION_SERVICE_CLIENT_SECRET
   - description: The hostname to use in sasl init
     name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
+  - description: The URL to use for OAUTH (if not set, OAUTH is not used)
+    name: AUTHENTICATION_SERVICE_OAUTH_URL
   - description: Enable logging of kubernetes events
     name: ENABLE_EVENT_LOGGER
     value: 'false'
@@ -3114,12 +3279,20 @@ objects:
             value: ${ENABLE_EVENT_LOGGER}
           - name: ENVIRONMENT
             value: ${ENVIRONMENT}
+          - name: IMPERSONATE_USER
+            value: ${IMPERSONATE_USER}
           - name: ADDRESS_CONTROLLER_SA
             value: ${ADDRESS_CONTROLLER_SA}
           - name: ADDRESS_SPACE_ADMIN_SA
             value: ${ADDRESS_SPACE_ADMIN_SA}
+          - name: STANDARD_AUTHSERVICE_CONFIG
+            value: ${STANDARD_AUTHSERVICE_CONFIG}
           - name: WILDCARD_ENDPOINT_CERT_SECRET
             value: ${WILDCARD_ENDPOINT_CERT_SECRET}
+          - name: RESYNC_INTERVAL
+            value: ${CONTROLLER_RESYNC_INTERVAL}
+          - name: CHECK_INTERVAL
+            value: ${CONTROLLER_CHECK_INTERVAL}
           image: ${ADDRESS_CONTROLLER_IMAGE}
           livenessProbe:
             httpGet:
@@ -3190,7 +3363,7 @@ parameters:
   value: enmasse-admin
 - description: The container image to use for the address controller
   name: ADDRESS_CONTROLLER_IMAGE
-  value: jboss-amqmaas-1-tech-preview/amqmaas10-addresscontroller-openshift:1.0-6
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-addresscontroller-openshift:1.0-7
 - description: Name of the secret containing the address controller certificate
   name: ADDRESS_CONTROLLER_CERT_SECRET
   value: address-controller-cert
@@ -3204,3 +3377,15 @@ parameters:
 - description: The service account with address space admin privileges
   name: ADDRESS_SPACE_ADMIN_SA
   value: address-space-admin
+- description: Interval (in seconds) to use between controller resync
+  name: CONTROLLER_RESYNC_INTERVAL
+  value: '600'
+- description: Interval (in seconds) to use between status checks
+  name: CONTROLLER_CHECK_INTERVAL
+  value: '30'
+- description: User to impersonate when creating resources (uses service-account if
+    not set)
+  name: IMPERSONATE_USER
+- description: Name of configmap containing standard authservice config
+  name: STANDARD_AUTHSERVICE_CONFIG
+  value: keycloak-config

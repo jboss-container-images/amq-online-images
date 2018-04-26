@@ -1,4 +1,5 @@
-SUBDIRS=standard-controller address-controller agent mqtt-gateway mqtt-lwt router router-metrics topic-forwarder none-authservice broker auth-controller auth-server
+SUBDIRS=standard-controller address-controller agent mqtt-gateway mqtt-lwt router router-metrics topic-forwarder none-authservice auth-controller auth-server
+# TODO: enable broker when we have working artifacts
 CENTOS_SUBDIRS=base base-epel base-java base-nodejs
 RHEL_SUBDIRS= qpid-proton
 #
