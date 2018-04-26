@@ -35,8 +35,8 @@ packages:
         - openssl        
 
 artifacts:
-    - path: standard-controller-0.17.2.amqmaas-001001-redhat-2.jar 
-      md5: 545e3a09c8ee0945f498c2b303ad5b09
+    - path: standard-controller-0.19.0.amqmaas-001002-redhat-3.jar
+      md5: 4b680d17db4e9561059d5f24362b8b00
       name: standard-controller.jar
       
 run:
