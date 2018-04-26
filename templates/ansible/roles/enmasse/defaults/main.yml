@@ -1,0 +1,8 @@
+---
+namespace: enmasse
+multitenant: true
+enable_rbac: true
+keycloak_admin_user: admin
+service_catalog: false
+authentication_services:
+  - none
