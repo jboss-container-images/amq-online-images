@@ -28,9 +28,7 @@ objects:
           name: keycloak
       spec:
         containers:
-        - command:
-          - /opt/eap/standalone/bin/start-keycloak.sh
-          env:
+        - env:
           - name: JAVA_OPTS
             value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
               -Xms512m -Xmx1024m
@@ -44,6 +42,11 @@ objects:
               secretKeyRef:
                 key: admin.password
                 name: ${KEYCLOAK_SECRET_NAME}
+          - name: KEYCLOAK_SASL_XOAUTH_BASE_URI
+            valueFrom:
+              configMapKeyRef:
+                key: httpUrl
+                name: ${KEYCLOAK_CONFIGMAP_NAME}
           image: ${STANDARD_AUTHSERVICE_IMAGE}
           livenessProbe:
             httpGet:
@@ -62,7 +65,7 @@ objects:
               path: /auth
               port: https
               scheme: HTTPS
-            initialDelaySeconds: 120
+            initialDelaySeconds: 60
           resources:
             limits:
               memory: 2Gi
@@ -81,9 +84,6 @@ objects:
           - mountPath: /opt/eap/standalone/data
             name: keycloak-persistence
             readOnly: false
-          - mountPath: /opt/eap/standalone/bin
-            name: keycloak-bin
-            readOnly: false
         initContainers:
         - env:
           - name: KEYCLOAK_DIR
@@ -100,9 +100,6 @@ objects:
           - mountPath: /opt/enmasse/cert
             name: ${KEYCLOAK_CERT_SECRET_NAME}
             readOnly: false
-          - mountPath: /opt/eap/standalone/bin
-            name: keycloak-bin
-            readOnly: false
         volumes:
         - name: ${KEYCLOAK_CERT_SECRET_NAME}
           secret:
@@ -114,8 +111,6 @@ objects:
           name: keycloak-configuration
         - emptyDir: {}
           name: keycloak-providers
-        - emptyDir: {}
-          name: keycloak-bin
 - apiVersion: extensions/v1beta1
   kind: Deployment
   metadata:
@@ -132,16 +127,23 @@ objects:
       spec:
         containers:
         - env:
-          - name: KEYCLOAK_HOSTNAME
+          - name: KEYCLOAK_URI
             valueFrom:
               configMapKeyRef:
-                key: hostname
-                name: ${KEYCLOAK_CONTROLLER_CONFIGMAP_NAME}
-          - name: KEYCLOAK_PORT
+                key: httpUrl
+                name: ${KEYCLOAK_CONFIGMAP_NAME}
+          - name: OAUTH_IDENTITY_PROVIDER_CLIENT_ID
             valueFrom:
               configMapKeyRef:
-                key: port
-                name: ${KEYCLOAK_CONTROLLER_CONFIGMAP_NAME}
+                key: identityProviderClientId
+                name: ${KEYCLOAK_CONFIGMAP_NAME}
+                optional: true
+          - name: OAUTH_IDENTITY_PROVIDER_CLIENT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                key: identityProviderClientSecret
+                name: ${KEYCLOAK_CONFIGMAP_NAME}
+                optional: true
           - name: KEYCLOAK_ADMIN_USER
             valueFrom:
               secretKeyRef:
@@ -164,15 +166,6 @@ objects:
               memory: 256Mi
             requests:
               memory: 256Mi
-- apiVersion: v1
-  data:
-    hostname: standard-authservice
-    port: '8443'
-  kind: ConfigMap
-  metadata:
-    labels:
-      app: enmasse
-    name: keycloak-controller-config
 - apiVersion: v1
   kind: Service
   metadata:
@@ -209,19 +202,19 @@ objects:
 parameters:
 - description: The container image to use for the keycloak plugin image
   name: KEYCLOAK_PLUGIN_IMAGE
-  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:1.0-6
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:1.0-7
 - description: The container image to use for the 'standard' auth service
   name: STANDARD_AUTHSERVICE_IMAGE
-  value: redhat-sso-7/sso72:latest
+  value: redhat-sso-7/sso72-openshift
 - description: The secret where keycloak credentials are stored
   name: KEYCLOAK_SECRET_NAME
   value: keycloak-credentials
 - description: The container image to use for the keycloak controller
   name: KEYCLOAK_CONTROLLER_IMAGE
-  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0-6
+  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0-7
 - description: The configmap used to configure the keycloak controller
-  name: KEYCLOAK_CONTROLLER_CONFIGMAP_NAME
-  value: keycloak-controller-config
+  name: KEYCLOAK_CONFIGMAP_NAME
+  value: keycloak-config
 - description: The secret containing the tls certificate and key
   name: KEYCLOAK_CERT_SECRET_NAME
   value: standard-authservice-cert
