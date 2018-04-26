@@ -29,8 +29,8 @@ modules:
           - name: topic-forwarder
           - name: common.java
 artifacts:
-    - path: topic-forwarder-0.17.2.amqmaas-001001-redhat-2.jar
-      md5: f5bf189d1cf6d87906fcde427973af42
+    - path: topic-forwarder-0.19.0.amqmaas-001002-redhat-3.jar
+      md5: d8fc779fe91dc4608100561eaecf4547
       name: topic-forwarder.jar
 run:
       user: 185
