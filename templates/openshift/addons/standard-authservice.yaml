@@ -100,6 +100,13 @@ objects:
           - mountPath: /opt/enmasse/cert
             name: ${KEYCLOAK_CERT_SECRET_NAME}
             readOnly: false
+        - image: busybox
+          command: [ "sh", "-c", "cp /opt/eap/standalone/configuration/standalone.xml /opt/eap/standalone/configuration/standalone-openshift.xml" ]
+          name: config-copy
+          volumeMounts:
+          - mountPath: /opt/eap/standalone/configuration
+            name: keycloak-configuration
+            readOnly: false
         volumes:
         - name: ${KEYCLOAK_CERT_SECRET_NAME}
           secret:
@@ -202,16 +209,16 @@ objects:
 parameters:
 - description: The container image to use for the keycloak plugin image
   name: KEYCLOAK_PLUGIN_IMAGE
-  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-openshift:1.0-7
+  value: jboss-amqmaas-1/amqmaas10-auth-openshift:dev
 - description: The container image to use for the 'standard' auth service
   name: STANDARD_AUTHSERVICE_IMAGE
-  value: redhat-sso-7/sso72-openshift
+  value: redhat-sso-7/sso72-openshift:pipeline
 - description: The secret where keycloak credentials are stored
   name: KEYCLOAK_SECRET_NAME
   value: keycloak-credentials
 - description: The container image to use for the keycloak controller
   name: KEYCLOAK_CONTROLLER_IMAGE
-  value: jboss-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0-7
+  value: jboss-amqmaas-1/amqmaas10-auth-controller-openshift:dev
 - description: The configmap used to configure the keycloak controller
   name: KEYCLOAK_CONFIGMAP_NAME
   value: keycloak-config
