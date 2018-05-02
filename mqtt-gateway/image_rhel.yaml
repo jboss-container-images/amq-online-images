@@ -1,10 +1,12 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-mqttgateway-openshift
+name: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift
 description: "AMQMaas mqttgateway"
 from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-mqtt-gateway-openshift-container"
     - name: "io.k8s.description"
       value: "mqtt gateway for enmaase"
     - name: "io.k8s.display-name"
@@ -47,3 +49,8 @@ run:
       cmd:
           - "/bin/launch_java.sh"     
           - "/opt/mqtt-gateway.jar"
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-mqtt-gateway-openshift-rhel-7

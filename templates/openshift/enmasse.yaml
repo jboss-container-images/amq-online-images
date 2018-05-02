@@ -527,10 +527,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -725,10 +725,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -986,10 +986,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1261,10 +1261,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -1307,10 +1307,10 @@ objects:
   parameters:
   - description: The image to use for the router
     name: ROUTER_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
   - description: The image to use for the router metrics collector
     name: ROUTER_METRICS_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-routermetrics-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-router-metrics-openshift:dev
   - description: The link capacity setting for router
     name: ROUTER_LINK_CAPACITY
     value: '50'
@@ -1325,15 +1325,15 @@ objects:
     value: jboss-amqmaas-1/queue-scheduler:dev
   - description: The container image to use for the standard controller
     name: STANDARD_CONTROLLER_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-standardcontroller-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-standard-controller-openshift:dev
   - description: The image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-agent-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:dev
   - description: The hostname to use for the exposed route for messaging
     name: MESSAGING_HOSTNAME
   - description: The image to use for the MQTT gateway
     name: MQTT_GATEWAY_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-mqttgateway-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:dev
   - description: The hostname to use for the exposed route for MQTT
     name: MQTT_GATEWAY_HOSTNAME
   - description: The hostname to use for the exposed route for the messaging console
@@ -1349,7 +1349,7 @@ objects:
     required: true
   - description: The image to use for the MQTT LWT
     name: MQTT_LWT_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-mqttlwt-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-lwt-openshift:dev
   - description: The address space this infrastructure is deployed for
     name: ADDRESS_SPACE
     required: true
@@ -1905,10 +1905,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2103,10 +2103,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2364,10 +2364,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2639,10 +2639,10 @@ objects:
       value: docker.io/enmasseproject/artemis:0.19.0
     - description: The default image to use as topic forwarder
       name: TOPIC_FORWARDER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:dev
     - description: The image to use for the router
       name: ROUTER_IMAGE
-      value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+      value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
     - description: The link capacity setting for router
       name: ROUTER_LINK_CAPACITY
       value: '50'
@@ -2704,7 +2704,7 @@ objects:
         spec:
           containers:
           - command:
-            - node
+            - /opt/app-root/src/bin/launch_node.sh
             - /opt/app-root/src/bin/subserv.js
             image: ${AGENT_IMAGE}
             livenessProbe:
@@ -2851,7 +2851,7 @@ objects:
   parameters:
   - description: The image to use for the router
     name: ROUTER_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-router-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-router-openshift:dev
   - description: The image to use for the router metrics collector
     name: ROUTER_METRICS_IMAGE
     value: jboss-amqmaas-1/amqmaas10-routermetrics-openshift:dev
@@ -2869,15 +2869,15 @@ objects:
     value: jboss-amqmaas-1/queue-scheduler:dev
   - description: The container image to use for the standard controller
     name: STANDARD_CONTROLLER_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-standardcontroller-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-standard-controller-openshift:dev
   - description: The image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-agent-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:dev
   - description: The hostname to use for the exposed route for messaging
     name: MESSAGING_HOSTNAME
   - description: The image to use for the MQTT gateway
     name: MQTT_GATEWAY_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-mqttgateway-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:dev
   - description: The hostname to use for the exposed route for MQTT
     name: MQTT_GATEWAY_HOSTNAME
   - description: The hostname to use for the exposed route for the messaging console
@@ -2893,7 +2893,7 @@ objects:
     required: true
   - description: The image to use for the MQTT LWT
     name: MQTT_LWT_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-mqttlwt-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-lwt-openshift:dev
   - description: The address space this infrastructure is deployed for
     name: ADDRESS_SPACE
     required: true
@@ -3218,7 +3218,7 @@ objects:
     value: docker.io/enmasseproject/artemis:0.19.0
   - description: The container image to use for the enmasse agent
     name: AGENT_IMAGE
-    value: jboss-amqmaas-1/amqmaas10-agent-openshift:dev
+    value: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:dev
   - description: Storage capacity required for volume claims
     name: STORAGE_CAPACITY
     value: 2Gi
@@ -3363,7 +3363,7 @@ parameters:
   value: enmasse-admin
 - description: The container image to use for the address controller
   name: ADDRESS_CONTROLLER_IMAGE
-  value: jboss-amqmaas-1/amqmaas10-addresscontroller-openshift:dev
+  value: rh-amqmaas-1-tech-preview/amqmaas10-address-controller-openshift:dev
 - description: Name of the secret containing the address controller certificate
   name: ADDRESS_CONTROLLER_CERT_SECRET
   value: address-controller-cert

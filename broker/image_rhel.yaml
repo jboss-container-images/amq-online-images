@@ -1,10 +1,12 @@
 schema_version: 1
 
-name: jboss-amqmaas-1/amqmaas10-broker-openshift
+name: rh-amqmaas-1/amqmaas10-broker-openshift
 description: "amqmaas image for artemis broker."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-broker-openshift-container"
     - name: "io.k8s.description"
       value: "implementation of the artemis broker"
     - name: "io.k8s.display-name"
@@ -67,3 +69,7 @@ run:
       user: 185
       cmd:
           - "/opt/apache-artemis-2.4.0/bin/launch.sh"
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-broker-openshift-rhel-7

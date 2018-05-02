@@ -30,7 +30,7 @@ objects:
         containers:
         - env:
           - name: JAVA_OPTS
-            value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
+            value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager -Djava.net.preferIPv4Stack=true
               -Xms512m -Xmx1024m
           - name: KEYCLOAK_USER
             valueFrom:
@@ -209,16 +209,16 @@ objects:
 parameters:
 - description: The container image to use for the keycloak plugin image
   name: KEYCLOAK_PLUGIN_IMAGE
-  value: jboss-amqmaas-1/amqmaas10-auth-openshift:dev
+  value: rh-amqmaas-1-tech-preview/amqmaas10-auth-plugin-openshift:dev
 - description: The container image to use for the 'standard' auth service
   name: STANDARD_AUTHSERVICE_IMAGE
-  value: redhat-sso-7/sso72-openshift:pipeline
+  value: redhat-sso-7/sso72-openshift:1.1
 - description: The secret where keycloak credentials are stored
   name: KEYCLOAK_SECRET_NAME
   value: keycloak-credentials
 - description: The container image to use for the keycloak controller
   name: KEYCLOAK_CONTROLLER_IMAGE
-  value: jboss-amqmaas-1/amqmaas10-auth-controller-openshift:dev
+  value: rh-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:dev
 - description: The configmap used to configure the keycloak controller
   name: KEYCLOAK_CONFIGMAP_NAME
   value: keycloak-config

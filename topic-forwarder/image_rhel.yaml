@@ -1,10 +1,12 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-topicforwarder-openshift
+name: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift
 description: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
 from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-topic-forwarder-openshift-container"
     - name: "io.k8s.description"
       value: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
     - name: "io.k8s.display-name"
@@ -37,3 +39,8 @@ run:
       cmd:
           - "/bin/launch_java.sh"
           - "/topic-forwarder.jar"      
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-topic-forwarder-openshift-rhel-7

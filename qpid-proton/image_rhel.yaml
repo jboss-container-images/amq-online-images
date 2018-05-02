@@ -1,8 +1,12 @@
 schema_version: 1
 
 version: 1.0
-name: jboss-amqmaas-1/amqmaas10-qpidproton-openshift
+name: rh-amqmaas-1/amqmaas10-qpid-proton-openshift
 from: jboss/base-rhel7:1.1
+
+labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-qpid-proton-openshift-container"
 
 packages:
       repositories:
@@ -22,3 +26,8 @@ run:
       user: 185
       cmd:
           - "bash"  
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-qpid-proton-openshift-rhel-7

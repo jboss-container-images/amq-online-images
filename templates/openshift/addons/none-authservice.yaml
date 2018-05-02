@@ -58,7 +58,7 @@ objects:
 parameters:
 - description: The container image to use for the 'none' auth service
   name: NONE_AUTHSERVICE_IMAGE
-  value: jboss-amqmaas-1-tech-preview/none-authservice:1.0-7
+  value: rh-amqmaas-1-tech-preview/amqmaas10-none-auth-openshift:dev
 - description: The secret to use for the none-authservice certificate
   name: NONE_AUTHSERVICE_CERT_SECRET_NAME
   value: none-authservice-cert
