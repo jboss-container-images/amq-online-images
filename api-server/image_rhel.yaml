@@ -1,0 +1,52 @@
+schema_version: 1
+
+name: rh-amqmaas-1/amqmaas10-api-server-openshift
+description: "global component that implements an API for creating and deleting AMQ Maas address spaces and addresses."
+version: "1.0"
+from: jboss/openjdk18-rhel7:1.1
+labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-api-server-openshift-container"
+    - name: "io.k8s.description"
+      value: "component that implements an API for creating and deleting AMQ Maas address spaces and addresses."
+    - name: "io.k8s.display-name"
+      value: "AMQ Maas API Server"
+    - name: "io.openshift.tags"
+      value: "amqmaas, api-server"
+envs:
+  - name: "VERSION"
+    value: "latest"
+    
+modules:
+      repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master      
+          - name: apiserver.common
+            path: modules/common
+          - name: common.java
+            path: ../modules/common/java
+      install:
+          - name: apiserver.common
+          - name: common.java
+
+packages:
+    repositories:
+        - jboss-os
+    install:
+        - openssl        
+
+artifacts:
+    - path: api-server.jar
+      md5: e6ae8ded8b6062cbd911a826ed34cf96
+      name: api-server.jar
+      
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/opt/api-server.jar"          
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-api-server-openshift-rhel-7              
