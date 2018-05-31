@@ -8,9 +8,9 @@ labels:
     - name: "io.k8s.description"
       value: "component that implements an API for creating and deleting EnMaase infrastructure instances, and modifying the address configuration per instance"
     - name: "io.k8s.display-name"
-      value: "Enmasse Address Controller"
+      value: "Enmasse Standard Controller"
     - name: "io.openshift.tags"
-      value: "enmasse, address-controller"
+      value: "enmasse, standard-controller"
 envs:
   - name: "VERSION"
     value: "latest"
@@ -37,4 +37,3 @@ run:
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/standard-controller.jar"          
-              
