@@ -1,0 +1,7 @@
+schema_version: 1
+
+name: servicebroker.common
+version: '1.0'
+
+execute:
+    - script: install.sh
