@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: "enmasseproject/address-controller"
+name: "enmasseproject/address-space-controller"
 description: "global component that implements an API for creating and deleting EnMasse infrastructure instances, and modifying the address configuration per instance."
 version: "0.16.1"
 from: enmasseproject/java-base:8-5
@@ -8,9 +8,9 @@ labels:
     - name: "io.k8s.description"
       value: "component that implements an API for creating and deleting EnMaase infrastructure instances, and modifying the address configuration per instance"
     - name: "io.k8s.display-name"
-      value: "Enmasse Address Controller"
+      value: "EnMasse Address Space Controller"
     - name: "io.openshift.tags"
-      value: "enmasse, address-controller"
+      value: "enmasse, address-space-controller"
 envs:
   - name: "VERSION"
     value: "latest"
@@ -29,12 +29,11 @@ modules:
           - name: addresscontroller.common
 
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=address-controller.jar
-      name: address-controller.jar
+    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=address-space-controller.jar
+      name: address-space-controller.jar
       
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/address-controller.jar"          
-              
+          - "/opt/address-space-controller.jar"
