@@ -10,9 +10,9 @@ labels:
     - name: "io.k8s.description"
       value: "component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance"
     - name: "io.k8s.display-name"
-      value: "AMQ Maas Address Controller"
+      value: "AMQ Maas Standard Controller"
     - name: "io.openshift.tags"
-      value: "amqmaas, address-controller"
+      value: "amqmaas, standard-controller"
 envs:
   - name: "VERSION"
     value: "latest"
