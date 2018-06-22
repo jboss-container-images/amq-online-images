@@ -3,25 +3,26 @@ kind: Deployment
 metadata:
   labels:
     app: enmasse
-  name: sso
+  name: keycloak
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: enmasse
-        name: sso
+        name: keycloak
     spec:
       containers:
       - env:
-        - name: JAVA_OPTS_APPEND
+        - name: JAVA_OPTS
           value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
-        - name: SSO_ADMIN_USERNAME
+            -Xms512m -Xmx1024m
+        - name: KEYCLOAK_USER
           valueFrom:
             secretKeyRef:
               key: admin.username
               name: keycloak-credentials
-        - name: SSO_ADMIN_PASSWORD
+        - name: KEYCLOAK_PASSWORD
           valueFrom:
             secretKeyRef:
               key: admin.password
@@ -31,67 +32,54 @@ spec:
             configMapKeyRef:
               key: httpUrl
               name: keycloak-config
-        - name: DB_DATABASE
-          valueFrom:
-            secretKeyRef:
-              key: database-name
-              name: postgresql
-        - name: DB_USERNAME
-          valueFrom:
-            secretKeyRef:
-              key: database-user
-              name: postgresql
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: database-password
-              name: postgresql
-        image: redhat-sso-7/sso72-openshift:1.1
+        image: jboss/keycloak-openshift:3.4.3.Final
         livenessProbe:
           httpGet:
             path: /auth
             port: https
             scheme: HTTPS
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /auth
-            port: https
-            scheme: HTTPS
-          initialDelaySeconds: 30
+          initialDelaySeconds: 120
         name: keycloak
         ports:
         - containerPort: 5671
           name: amqps
         - containerPort: 8443
           name: https
+        readinessProbe:
+          httpGet:
+            path: /auth
+            port: https
+            scheme: HTTPS
+          initialDelaySeconds: 60
         resources:
           limits:
             memory: 2Gi
+          requests:
+            memory: 2Gi
         volumeMounts:
-        - mountPath: /opt/eap/providers
+        - mountPath: /opt/jboss/keycloak/providers
           name: keycloak-providers
           readOnly: false
-        - mountPath: /opt/eap/standalone/configuration
+        - mountPath: /opt/jboss/keycloak/standalone/configuration
           name: keycloak-configuration
           readOnly: false
         - mountPath: /opt/enmasse/cert
           name: standard-authservice-cert
           readOnly: false
-        - mountPath: /opt/eap/standalone/data
+        - mountPath: /opt/jboss/keycloak/standalone/data
           name: keycloak-persistence
           readOnly: false
       initContainers:
       - env:
         - name: KEYCLOAK_DIR
-          value: /opt/eap
-        image: docker.io/lulf/auth-plugin:latest
+          value: /opt/jboss/keycloak
+        image: rh-amqmaas-1-tech-preview/keycloak-plugin:latest
         name: keycloak-plugin
         volumeMounts:
-        - mountPath: /opt/eap/providers
+        - mountPath: /opt/jboss/keycloak/providers
           name: keycloak-providers
           readOnly: false
-        - mountPath: /opt/eap/standalone/configuration
+        - mountPath: /opt/jboss/keycloak/standalone/configuration
           name: keycloak-configuration
           readOnly: false
         - mountPath: /opt/enmasse/cert
