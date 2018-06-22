@@ -1,0 +1,46 @@
+schema_version: 1
+
+name: rh-amqmaas-1/amqmaas10-service-broker-openshift
+description: "global component that implements the Open Service Broker API for provisioning messaging."
+version: "1.0"
+from: jboss/openjdk18-rhel7:1.1
+labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-service-broker-openshift-container"
+    - name: "io.k8s.description"
+      value: "component that implements the Open Service Broker API for provisioning messaging."
+    - name: "io.k8s.display-name"
+      value: "AMQ Maas Service Broker"
+    - name: "io.openshift.tags"
+      value: "amqmaas, service-broker"
+envs:
+  - name: "VERSION"
+    value: "latest"
+    
+modules:
+      repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master      
+          - name: servicebroker.common
+            path: modules/common
+          - name: common.java
+            path: ../modules/common/java
+      install:
+          - name: servicebroker.common
+          - name: common.java
+
+artifacts:
+    - path: service-broker-0.21.0.jbossorg-1-redhat-1.jar
+      md5: dd808b63b0f640685ff637d41239a18b
+      name: service-broker.jar
+      
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/opt/service-broker.jar"          
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-service-broker-openshift-rhel-7              

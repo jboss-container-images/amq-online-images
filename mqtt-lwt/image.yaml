@@ -1,30 +1,44 @@
 schema_version: 1
 
-name: "enmasseproject/mqtt-lwt"
-description: "Enmasse MQTT Last Will and Testament"
-version: "0.16.1"
-from: enmasseproject/java-base:8-5
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-mqtt-lwt-openshift
+description: "AMQMaas MQTT Last Will and Testament"
+from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-mqtt-lwt-openshift-container"
     - name: "io.k8s.description"
-      value: "mqtt last will and testament for enmaase"
+      value: "mqtt gateway for enmaase"
     - name: "io.k8s.display-name"
-      value: "Enmasse mqtt lwt"
+      value: "AMQMaas mqtt gateway"
     - name: "io.openshift.tags"
-      value: "enmasse, mqtt-lwt"
+      value: "amqmaas, mqtt-gateway"
 envs:
     - name: "VERSION"
       value: "latest"
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
           - name: mqtt-lwt
             path: modules 
+          - name: common.java
+            path: ../modules/common/java
       install:
           - name: mqtt-lwt
+          - name: common.java
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=mqtt-lwt.jar
+    - path: mqtt-lwt-0.21.0.jbossorg-1-redhat-1.jar
+      md5: a8013a3b7ede02aef0519052fb9995e7
       name: mqtt-lwt.jar
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
           - "/mqtt-lwt.jar"                   
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-mqtt-lwt-openshift-rhel-7

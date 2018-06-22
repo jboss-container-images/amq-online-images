@@ -15,6 +15,11 @@ function runcmd() {
     fi
 }
 
+function die() {
+    echo "$*" 1>&2
+    exit 1
+}
+
 function docmd() {
     local cmd=$1
     if [ -z $GUIDE ] || [ "$GUIDE" == "false" ]; then
@@ -34,17 +39,23 @@ function create_address_space() {
   local CMD=$1
   local name=$2
   local namespace=$3
+  local address_space_ns=${4:-${namespace}}
 
-  payload="{ \\\"kind\\\":\\\"AddressSpace\\\", \\\"apiVersion\\\": \\\"enmasse.io/v1\\\", \\\"metadata\\\": { \\\"name\\\": \\\"$name\\\", \\\"namespace\\\": \\\"$namespace\\\" }, \\\"spec\\\": { \\\"type\\\": \\\"standard\\\", \\\"plan\\\": \\\"unlimited-standard\\\" } }"
+  payload="{ \\\"kind\\\":\\\"AddressSpace\\\", \\\"apiVersion\\\": \\\"enmasse.io/v1alpha1\\\", \\\"metadata\\\": { \\\"name\\\": \\\"$name\\\", \\\"namespace\\\": \\\"${namespace}\\\", \\\"labels\\\": {\\\"namespace\\\": \\\"$namespace\\\" }, \\\"annotations\\\": {\\\"enmasse.io/namespace\\\": \\\"${address_space_ns}\\\", \\\"enmasse.io/realm-name\\\": \\\"${address_space_ns}\\\"} }, \\\"spec\\\": { \\\"type\\\": \\\"standard\\\", \\\"plan\\\": \\\"unlimited-standard\\\" } }"
 
-  runcmd "cat <<EOF | $CMD create -n ${NAMESPACE} -f -
+  runcmd "cat <<EOF | $CMD create -n ${namespace} -f -
 {
     \"apiVersion\": \"v1\",
     \"kind\": \"ConfigMap\",
     \"metadata\": {
-        \"name\": \"${name}\",
+        \"annotations\": {
+            \"enmasse.io/namespace\": \"${address_space_ns}\",
+            \"enmasse.io/realm-name\": \"${address_space_ns}\"
+        },
+        \"name\": \"${namespace}.${name}\",
         \"labels\": {
-            \"type\": \"address-space\"
+            \"type\": \"address-space\",
+            \"namespace\": \"${namespace}\"
         }
     },
     \"data\": {
@@ -79,7 +90,7 @@ function sign_csr() {
   local CSRFILE=$3
   local CERTFILE=$4
 
-  runcmd "openssl x509 -req -days 11000 -in ${CSRFILE} -CA ${CA_CERT} -CAkey ${CA_KEY} -CAcreateserial -out ${CERTFILE}" "Sign address-controller certificate with CA key"
+  runcmd "openssl x509 -req -days 11000 -in ${CSRFILE} -CA ${CA_CERT} -CAkey ${CA_KEY} -CAcreateserial -out ${CERTFILE}" "Sign certificate with CA key"
 }
 
 function create_tls_secret() {
@@ -89,6 +100,7 @@ function create_tls_secret() {
   local CERTFILE=$4
 
   runcmd "$CMD create secret tls ${SECRET_NAME} -n ${NAMESPACE} --cert=${CERTFILE} --key=${KEYFILE}" "Create $SECRET_NAME TLS secret"
+  runcmd "$CMD label -n ${NAMESPACE} secret ${SECRET_NAME} app=enmasse"
 }
 
 function create_and_sign_cert() {

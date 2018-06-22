@@ -1,3 +1,0 @@
-include ../Makefile.common
-
-build:

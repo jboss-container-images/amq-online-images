@@ -1,16 +1,18 @@
 schema_version: 1
 
-name: "enmasseproject/router-metrics"
-description: "Metrics for EnMasse"
-version: "0.16.1"
-from: ppatierno/qpid-proton:0.17.0
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-router-metrics-openshift
+description: "Metrics for AMQMaas"
+from: rh-amqmaas-1/amqmaas10-qpid-proton-openshift:1.0
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-router-metrics-openshift-container"
     - name: "io.k8s.description"
-      value: "Metrics for EnMasse router"
+      value: "Metrics for AMQMaas router"
     - name: "io.k8s.display-name"
-      value: "EnMasse Router Metrics"
+      value: "AMQMaas Router Metrics"
     - name: "io.openshift.tags"
-      value: "enmasse, router-metrics, message"
+      value: "amqmaas, router-metrics, message"
 envs:
   - name: "VERSION"
     value: "latest"
@@ -24,7 +26,7 @@ modules:
           - name: router-metrics
 
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=router-metrics.tgz
+    - url: https://bintray.com/enmasse/releases/download_file?file_path=router-metrics-0.17.2.tgz
       name: router-metrics.tgz
     - url: https://github.com/prometheus/client_python/archive/v0.0.21.tar.gz
       name: prometheus-client.tar.gz
@@ -35,3 +37,7 @@ run:
           - "python"
           - "/opt/router-metrics.py"    
               
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-router-metrics-openshift-rhel-7
