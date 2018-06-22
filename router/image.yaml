@@ -1,16 +1,18 @@
 schema_version: 1
 
-name: "enmasseproject/router"
-description: "router with EnMasse configuration"
-version: "0.16.1"
-from: enmasseproject/qdrouterd-base:1.0.0-fix5
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-router-openshift
+description: "router with AMQMaas configuration"
+from: rh-amqmaas-1-tech-preview/amqmaas10-qpid-proton-openshift:latest
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-router-openshift-container"
     - name: "io.k8s.description"
-      value: "router with EnMasse configuration"
+      value: "router with AMQMaas configuration"
     - name: "io.k8s.display-name"
-      value: "EnMasse Router"
+      value: "AMQMaas Router"
     - name: "io.openshift.tags"
-      value: "enmasse, router, message"
+      value: "amqmaas, router, message"
 envs:
   - name: "VERSION"
     value: "latest"
@@ -25,11 +27,12 @@ modules:
       install:
           - name: router
 
-artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=router.tgz
-      name: router.tgz
-      
 run:
       user: 185
       cmd:
-          - "/etc/qpid-dispatch/run_qdr.sh"
+          - "/etc/qpid-dispatch/run_qdr.sh"          
+            
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-router-openshift-rhel-7

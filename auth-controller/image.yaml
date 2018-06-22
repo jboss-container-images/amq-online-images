@@ -1,16 +1,18 @@
 schema_version: 1
 
-name: "enmasseproject/keycloak-controller"
-description: "EnMasse identity and access controller"
-version: "0.16.1"
-from: enmasseproject/java-base:8-5
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-auth-controller-openshift
+description: "AMQMaas SSO Controller for authentication"
+from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-auth-controller-openshift-container"
     - name: "io.k8s.description"
-      value: "EnMasse identity and access controller"
+      value: "AMQMaas Authentication Controller using SSO"
     - name: "io.k8s.display-name"
-      value: "Enmasse keycloak controller"
+      value: "AMQMaas Authentication Controller"
     - name: "io.openshift.tags"
-      value: "enmasse, keycloak"
+      value: "amqmaas, sso-controller, authentication"
 envs:
     - name: "VERSION"
       value: "latest"
@@ -18,19 +20,24 @@ modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master  
+                  ref: master    
+          - name: keycloak-controller
+            path: modules 
           - name: common.java
             path: ../modules/common/java
-          - name: keycloak-controller
-            path: modules            
       install:
           - name: common.java
           - name: keycloak-controller
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=keycloak-controller.jar
+    - path: keycloak-controller-0.19.0.amqmaas-001002-redhat-3.jar
+      md5: 1dfaf763cc37ea80327e53608ca2ba36
       name: keycloak-controller.jar
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"     
-          - "/opt/keycloak-controller.jar"          
+          - "/opt/keycloak-controller.jar"
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-auth-controller-openshift-rhel-7

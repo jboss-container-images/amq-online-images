@@ -13,12 +13,8 @@ ABSOLUTE_LOCAL_ARTIFACT_DIR?=$(CURDIR)/$(PRODUCT_DIR)/$(LOCAL_ARTIFACT_DIR)
 NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 
 all: build 
-	echo "Running docker centos build $(REPO)"
-	concreate build --descriptor $(IMAGE_FILE) 
-
-build_rhel:
 	echo "Running docker rhel build $(REPO)"
-	concreate build --descriptor image_rhel.yaml --build-tech-preview
+	concreate build --descriptor $(IMAGE_FILE) --build-tech-preview
 
 push:
 	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
