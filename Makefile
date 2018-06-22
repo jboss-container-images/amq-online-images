@@ -1,18 +1,11 @@
 SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt router router-metrics topic-forwarder none-authservice auth-controller auth-plugin api-server service-broker
 # TODO: enable broker when we have working artifacts
-CENTOS_SUBDIRS=base base-epel base-java base-nodejs
 RHEL_SUBDIRS= qpid-proton
 #
 
 all:
-	for dir in $(CENTOS_SUBDIRS) $(SUBDIRS); do \
-		$(MAKE) -C $$dir; \
-	done
-
-buildrhel:
-#	$(MAKE) -C $$dir build_rhel
 	for dir in $(SUBDIRS); do \
-		$(MAKE) build_rhel -C $$dir; \
+		$(MAKE) -C $$dir; \
 	done	
 
 pushall:
@@ -37,6 +30,5 @@ copyartifactall:
 
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
-#	curl -s https://raw.githubusercontent.com/EnMasseProject/travis-scripts/master/trigger-travis.sh | bash /dev/stdin
 
 .PHONY: all $(SUBDIRS) push snapshot clean pushall snapshotall cleanall

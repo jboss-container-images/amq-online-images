@@ -1,30 +1,46 @@
 schema_version: 1
 
-name: "enmasseproject/topic-forwarder"
-description: "AMQP message forwarder for topics in EnMasse, currently used with the Artemis broker"
-version: "0.16.1"
-from: enmasseproject/java-base:8-5
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift
+description: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
+from: jboss/openjdk18-rhel7:1.1
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-topic-forwarder-openshift-container"
     - name: "io.k8s.description"
-      value: "AMQP message forwarder for topics in EnMasse, currently used with the Artemis broker"
+      value: "AMQP message forwarder for topics in AMQMaas, currently used with the Artemis broker"
     - name: "io.k8s.display-name"
-      value: "Enmasse topic-forwarder"
+      value: "AMQMaas topic-forwarder"
     - name: "io.openshift.tags"
-      value: "enmasse, topic-forwarder"
+      value: "amqmaas, topic-forwarder"
 envs:
+    - name: "JAVA_HOME"
+      value: "/usr/lib/jvm/java" 
     - name: "VERSION"
       value: "latest"
 modules:
       repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
+          - name: common.java
+            path: ../modules/common/java
           - name: topic-forwarder
             path: modules 
       install:
           - name: topic-forwarder
+          - name: common.java
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=topic-forwarder.jar
+    - path: topic-forwarder-0.19.0.amqmaas-001002-redhat-3.jar
+      md5: d8fc779fe91dc4608100561eaecf4547
       name: topic-forwarder.jar
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
           - "/topic-forwarder.jar"      
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-topic-forwarder-openshift-rhel-7
