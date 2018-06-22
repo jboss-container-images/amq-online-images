@@ -2,18 +2,15 @@
 
 set -e
 
+SOURCES_DIR=/tmp/artifacts/
 SCRIPT_DIR=$(dirname $0)
 ADDED_DIR=${SCRIPT_DIR}/added
-DIST_NAME="nodejs-amqmaas-agent-1.0.0-*"
 {
 	mkdir -p /opt/app-root/src/
-	unzip "/usr/share/${DIST_NAME}.zip" -d /opt/app-root/src/
+	unzip "${SOURCES_DIR}/agent-dist.zip" -d /opt/app-root/src/
 }
 
 {
-	cd /opt/app-root/src/${DIST_NAME}
-	mv node_modules/agent/* /opt/app-root/src
-	mv node_modules /opt/app-root/src
 	mv "${ADDED_DIR}/launch_node.sh" /opt/app-root/src/bin/
 }
 
