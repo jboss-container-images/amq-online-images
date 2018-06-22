@@ -1,0 +1,55 @@
+schema_version: 1
+
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-auth-plugin-openshift
+description: "AMQMaas SSO for authentication"
+from: jboss/openjdk18-rhel7:1.1
+labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-auth-plugin-openshift-container"
+    - name: "io.k8s.description"
+      value: "AMQMaas Authentication using SSO"
+    - name: "io.k8s.display-name"
+      value: "AMQMaas Authentication"
+    - name: "io.openshift.tags"
+      value: "amqmaas, sso, authentication"
+envs:
+    - name: "KEYCLOAK_DIR"
+      value: "/opt/eap/"
+    - name: "KEYCLOAK_PLUGIN_DIR"
+      value: "/keycloak-plugin"      
+    - name: "VERSION"
+      value: "latest"
+    - name: "JAVA_OPTS"
+      value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
+packages:
+    repositories:
+      - jboss-os
+    install:
+      - openssl
+      
+modules:
+      repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master    
+          - name: auth.rhel.install
+            path: modules
+          - name: common.java
+            path: ../modules/common/java  
+      install:
+          - name: auth.rhel.install
+          - name: common.java
+artifacts:
+    - path: sasl-plugin-0.21.0.jbossorg-1-redhat-1.jar
+      md5: 07af737b1540dd6aef2a959d932f57c2
+      name: sasl-plugin.jar
+    
+run:
+      user: 185
+      entrypoint:
+          - "/keycloak-plugin/bin/init-keycloak.sh"
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-auth-plugin-openshift-rhel-7

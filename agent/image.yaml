@@ -1,33 +1,44 @@
 schema_version: 1
 
-name: "enmasseproject/agent"
-description: "EnMasse console."
-version: "0.16.1"
-from: enmasseproject/nodejs-base:6
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-agent-openshift
+description: "AMQMaas console"
+from: rhscl/nodejs-4-rhel7:latest
 labels:
+    - name: "com.redhat.component"
+      value: "amqmaas-1-amqmaas10-agent-openshift-container"
     - name: "io.k8s.description"
       value: "console for enmaase"
     - name: "io.k8s.display-name"
-      value: "Enmasse Console"
+      value: "AMQMaas Console"
     - name: "io.openshift.tags"
-      value: "enmasse, console, agent"
+      value: "amqmaas, console, agent"
 envs:
     - name: "VERSION"
       value: "latest"
 modules:
       repositories:
           - name: agent
-            path: modules/platform/centos 
+            path: modules/platform/rhel
       install:
           - name: agent
-ports:
-    - value: 56720 
-    - value: 8080
+          
 artifacts:
-    - url: https://bintray.com/enmasse/snapshots/download_file?file_path=agent.tgz
-      name: agent.tgz
+    - path: agent-0.21.0.jbossorg-1-redhat-1-dist.zip
+      md5: 7a0bc55970a88ba2d69251af885f733f
+      name: agent-dist.zip
+
+ports:
+    - value: 56720
+    - value: 8080
+
 run:
       user: 185
       cmd:
-          - "node"
+          - "/opt/app-root/src/bin/launch_node.sh"
           - "/opt/app-root/src/bin/agent.js"    
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-agent-openshift-rhel-7
