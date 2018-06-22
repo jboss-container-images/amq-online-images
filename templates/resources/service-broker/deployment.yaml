@@ -51,7 +51,7 @@ spec:
           value: /service-broker-cert
         - name: LISTEN_PORT
           value: '8443'
-        image: rh-amqmaas-1-tech-preview/service-broker:latest
+        image: rh-amqmaas-1/service-broker:latest
         livenessProbe:
           httpGet:
             path: /healthz

@@ -1,7 +1,7 @@
 #!/bin/sh
 ENMASSE_DIR=${1}
 pushd $ENMASSE_DIR/templates
-make DOCKER_ORG=rh-amqmaas-1-tech-preview \
+make DOCKER_ORG=rh-amqmaas-1 \
     DOCKER_REGISTRY=""
     ADDRESS_SPACE_CONTROLLER_IMAGE=amqmaas10-address-space-controller-openshift \
     API_SERVER_IMAGE=amqmaas10-api-server-openshift \

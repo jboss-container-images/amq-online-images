@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: rh-amqmaas-1/amqmaas10-router-openshift
 description: "router with AMQMaas configuration"
-from: rh-amqmaas-1-tech-preview/amqmaas10-qpid-proton-openshift:latest
+from: rh-amqmaas-1/amqmaas10-qpid-proton-openshift:latest
 labels:
     - name: "com.redhat.component"
       value: "amqmaas-1-amqmaas10-router-openshift-container"

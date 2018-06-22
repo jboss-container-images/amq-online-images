@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: rh-amqmaas-1/amqmaas10-router-metrics-openshift
 description: "Metrics for AMQMaas"
-from: rh-amqmaas-1-tech-preview/amqmaas10-qpid-proton-openshift:1.0
+from: rh-amqmaas-1/amqmaas10-qpid-proton-openshift:1.0
 labels:
     - name: "com.redhat.component"
       value: "amqmaas-1-amqmaas10-router-metrics-openshift-container"
