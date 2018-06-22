@@ -52,7 +52,7 @@ spec:
             secretKeyRef:
               key: tls.crt
               name: standard-authservice-cert
-        image: rh-amqmaas-1/keycloak-controller:latest
+        image: rh-amqmaas-1-tech-preview/keycloak-controller:latest
         name: keycloak-controller
         resources:
           limits:
