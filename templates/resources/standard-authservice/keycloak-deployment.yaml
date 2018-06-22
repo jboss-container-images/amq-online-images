@@ -73,7 +73,7 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/jboss/keycloak
-        image: rh-amqmaas-1-tech-preview/keycloak-plugin:latest
+        image: rh-amqmaas-1/keycloak-plugin:latest
         name: keycloak-plugin
         volumeMounts:
         - mountPath: /opt/jboss/keycloak/providers
