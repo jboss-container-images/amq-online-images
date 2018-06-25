@@ -1,8 +1,8 @@
 #!/bin/sh
 ENMASSE_DIR=${1}
-pushd $ENMASSE_DIR/templates
-make DOCKER_ORG=rh-amqmaas-1-tech-preview \
-    DOCKER_REGISTRY=""
+pushd $ENMASSE_DIR
+make DOCKER_ORG=rh-amqmaas-1 \
+    DOCKER_REGISTRY="" \
     ADDRESS_SPACE_CONTROLLER_IMAGE=amqmaas10-address-space-controller-openshift \
     API_SERVER_IMAGE=amqmaas10-api-server-openshift \
     STANDARD_CONTROLLER_IMAGE=amqmaas10-standard-controller-openshift \
@@ -17,4 +17,5 @@ make DOCKER_ORG=rh-amqmaas-1-tech-preview \
     KEYCLOAK_IMAGE=redhat-sso-7/sso72-openshift:1.1 \
     KEYCLOAK_PLUGIN_IMAGE=amqmaas10-auth-plugin-openshift \
     KEYCLOAK_CONTROLLER_IMAGE=amqmaas10-auth-controller-openshift \
-    SERVICE_BROKER_IMAGE=amqmaas10-service-broker-openshift
+    SERVICE_BROKER_IMAGE=amqmaas10-service-broker-openshift -C templates
+popd

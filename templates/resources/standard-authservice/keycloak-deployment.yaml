@@ -32,7 +32,7 @@ spec:
             configMapKeyRef:
               key: httpUrl
               name: keycloak-config
-        image: jboss/keycloak-openshift:3.4.3.Final
+        image: redhat-sso-7/sso72-openshift:1.1
         livenessProbe:
           httpGet:
             path: /auth
@@ -73,7 +73,7 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/jboss/keycloak
-        image: rh-amqmaas-1-tech-preview/keycloak-plugin:latest
+        image: rh-amqmaas-1/amqmaas10-auth-plugin-openshift:latest
         name: keycloak-plugin
         volumeMounts:
         - mountPath: /opt/jboss/keycloak/providers
