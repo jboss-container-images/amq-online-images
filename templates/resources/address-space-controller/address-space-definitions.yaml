@@ -104,7 +104,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1-tech-preview/router:latest
+              image: rh-amqmaas-1/amqmaas10-router-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -143,7 +143,7 @@ data:
                 value: '55671'
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              image: rh-amqmaas-1-tech-preview/router-metrics:latest
+              image: rh-amqmaas-1/amqmaas10-router-metrics-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -230,7 +230,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: MESSAGING_SECRET
                 value: ${MESSAGING_SECRET}
-              image: rh-amqmaas-1-tech-preview/standard-controller:latest
+              image: rh-amqmaas-1/amqmaas10-standard-controller-openshift:latest
               livenessProbe:
                 httpGet:
                   path: /health
@@ -280,7 +280,7 @@ data:
                 value: ${ADDRESS_SPACE_NAMESPACE}
               - name: MESSAGING_CERT
                 value: /opt/agent/messaging-cert/tls.crt
-              image: rh-amqmaas-1-tech-preview/agent:latest
+              image: rh-amqmaas-1/amqmaas10-agent-openshift:latest
               livenessProbe:
                 httpGet:
                   path: /probe
@@ -462,7 +462,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1-tech-preview/artemis:latest
+                    image: rh-amqmaas-1/amqmaas10-broker-openshift:latest
                     lifecycle:
                       preStop:
                         exec:
@@ -652,7 +652,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1-tech-preview/artemis:latest
+                    image: rh-amqmaas-1/amqmaas10-broker-openshift:latest
                     lifecycle:
                       preStop:
                         exec:
@@ -715,7 +715,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1-tech-preview/router:latest
+                    image: rh-amqmaas-1/amqmaas10-router-openshift:latest
                     livenessProbe:
                       initialDelaySeconds: 60
                       tcpSocket:
@@ -759,7 +759,7 @@ data:
                       value: ${NAME}
                     - name: CERT_DIR
                       value: /etc/enmasse-certs
-                    image: rh-amqmaas-1-tech-preview/topic-forwarder:latest
+                    image: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift:latest
                     livenessProbe:
                       httpGet:
                         path: /health
@@ -1023,7 +1023,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1-tech-preview/router:latest
+              image: rh-amqmaas-1/amqmaas10-router-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1062,7 +1062,7 @@ data:
                 value: '55671'
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              image: rh-amqmaas-1-tech-preview/router-metrics:latest
+              image: rh-amqmaas-1/amqmaas10-router-metrics-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1149,7 +1149,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: MESSAGING_SECRET
                 value: ${MESSAGING_SECRET}
-              image: rh-amqmaas-1-tech-preview/standard-controller:latest
+              image: rh-amqmaas-1/amqmaas10-standard-controller-openshift:latest
               livenessProbe:
                 httpGet:
                   path: /health
@@ -1199,7 +1199,7 @@ data:
                 value: ${ADDRESS_SPACE_NAMESPACE}
               - name: MESSAGING_CERT
                 value: /opt/agent/messaging-cert/tls.crt
-              image: rh-amqmaas-1-tech-preview/agent:latest
+              image: rh-amqmaas-1/amqmaas10-agent-openshift:latest
               livenessProbe:
                 httpGet:
                   path: /probe
@@ -1381,7 +1381,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1-tech-preview/artemis:latest
+                    image: rh-amqmaas-1/amqmaas10-broker-openshift:latest
                     lifecycle:
                       preStop:
                         exec:
@@ -1571,7 +1571,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1-tech-preview/artemis:latest
+                    image: rh-amqmaas-1/amqmaas10-broker-openshift:latest
                     lifecycle:
                       preStop:
                         exec:
@@ -1634,7 +1634,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1-tech-preview/router:latest
+                    image: rh-amqmaas-1/amqmaas10-router-openshift:latest
                     livenessProbe:
                       initialDelaySeconds: 60
                       tcpSocket:
@@ -1678,7 +1678,7 @@ data:
                       value: ${NAME}
                     - name: CERT_DIR
                       value: /etc/enmasse-certs
-                    image: rh-amqmaas-1-tech-preview/topic-forwarder:latest
+                    image: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift:latest
                     livenessProbe:
                       httpGet:
                         path: /health
@@ -1793,7 +1793,7 @@ data:
             - command:
               - node
               - /opt/app-root/src/bin/subserv.js
-              image: rh-amqmaas-1-tech-preview/agent:latest
+              image: rh-amqmaas-1/amqmaas10-agent-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1870,7 +1870,7 @@ data:
                 value: '8883'
               - name: ENMASSE_MQTT_MAXMESSAGESIZE
                 value: ${MQTT_MAXMESSAGESIZE}
-              image: rh-amqmaas-1-tech-preview/mqtt-gateway:latest
+              image: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1884,7 +1884,7 @@ data:
               - mountPath: /etc/mqtt-gateway/ssl
                 name: ssl-certs
                 readOnly: true
-            - image: rh-amqmaas-1-tech-preview/mqtt-gateway:latest
+            - image: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift:latest
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1926,7 +1926,7 @@ data:
                 value: $(MESSAGING_SERVICE_PORT_AMQPS_NORMAL)
               - name: MESSAGING_SERVICE_ROUTE_CONTAINER_PORT
                 value: $(MESSAGING_SERVICE_PORT_AMQPS_BROKER)
-              image: rh-amqmaas-1-tech-preview/mqtt-lwt:latest
+              image: rh-amqmaas-1/amqmaas10-mqtt-lwt-openshift:latest
               name: mqtt-lwt
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -2080,7 +2080,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1-tech-preview/artemis:latest
+              image: rh-amqmaas-1/amqmaas10-broker-openshift:latest
               livenessProbe:
                 exec:
                   command:
@@ -2221,7 +2221,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1-tech-preview/agent:latest
+              image: rh-amqmaas-1/amqmaas10-agent-openshift:latest
               livenessProbe:
                 httpGet:
                   path: /probe
