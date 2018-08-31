@@ -31,8 +31,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: service-broker-0.21.0.jbossorg-1-redhat-1.jar
-      md5: dd808b63b0f640685ff637d41239a18b
+    - path: service-broker-0.21.2.redhat-00006.jar
+      md5: edec3ab0db22894b3c6dc71a583deac9
       name: service-broker.jar
       
 run:
