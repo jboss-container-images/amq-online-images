@@ -35,7 +35,7 @@ spec:
               key: enableRbac
               name: api-server-config
               optional: true
-        image: rh-amqmaas-1/amqmaas10-api-server-openshift:latest
+        image: /rh-amqmaas-1/amqmaas10-api-server-openshift:latest
         livenessProbe:
           httpGet:
             path: /healthz

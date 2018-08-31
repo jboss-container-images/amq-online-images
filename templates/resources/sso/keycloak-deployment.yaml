@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   labels:
     app: enmasse
-  name: sso
+  name: keycloak
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: enmasse
-        name: sso
+        name: keycloak
     spec:
       containers:
       - env:
@@ -85,7 +85,7 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/eap
-        image: rh-amqmaas-1/amqmaas10-auth-plugin-openshift:latest
+        image: /rh-amqmaas-1/amqmaas10-auth-plugin-openshift
         name: keycloak-plugin
         volumeMounts:
         - mountPath: /opt/eap/providers
