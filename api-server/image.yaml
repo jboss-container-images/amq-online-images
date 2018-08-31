@@ -31,8 +31,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: api-server-0.21.0.jbossorg-1-redhat-1.jar
-      md5: fced9411f3425a6732f70cb1b4c75d5f
+    - path: api-server-0.21.2.redhat-00006.jar
+      md5: 047cded086dcc4ae6ab3bc7db781f1aa
       name: api-server.jar
       
 run:
