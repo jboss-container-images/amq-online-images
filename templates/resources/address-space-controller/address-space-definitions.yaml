@@ -104,7 +104,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+              image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -715,7 +715,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+                    image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
                     livenessProbe:
                       initialDelaySeconds: 60
                       tcpSocket:
@@ -1023,7 +1023,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+              image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1634,7 +1634,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+                    image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
                     livenessProbe:
                       initialDelaySeconds: 60
                       tcpSocket:
