@@ -24,8 +24,8 @@ modules:
           - name: agent
           
 artifacts:
-    - path: agent-0.21.2.redhat-00006-dist.tar.gz
-      md5: 681437acbcf421c91a56db0bcf84a476
+    - path: agent-0.21.2.redhat-00006-dist.zip
+      md5: 28a0e6f9430924e7c1394007145a7289
       name: agent-dist.zip
 
 ports:
