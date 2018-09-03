@@ -104,7 +104,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+              image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -497,7 +497,7 @@ data:
                         memory: ${BROKER_MEMORY_LIMIT}
                     volumeMounts:
                     - mountPath: /var/run/artemis
-                      name: broker-data
+                      name: data
                       readOnly: false
                     - mountPath: /etc/enmasse-certs
                       name: broker-internal-cert
@@ -530,7 +530,7 @@ data:
                     cluster_id: ${CLUSTER_ID}
                   labels:
                     app: enmasse
-                  name: broker-data
+                  name: data
                 spec:
                   accessModes:
                   - ReadWriteOnce
@@ -687,7 +687,7 @@ data:
                         memory: ${BROKER_MEMORY_LIMIT}
                     volumeMounts:
                     - mountPath: /var/run/artemis
-                      name: broker-data
+                      name: data
                       readOnly: false
                     - mountPath: /etc/enmasse-certs
                       name: broker-internal-cert
@@ -715,7 +715,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+                    image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
                     livenessProbe:
                       initialDelaySeconds: 60
                       tcpSocket:
@@ -800,7 +800,7 @@ data:
                     cluster_id: ${CLUSTER_ID}
                   labels:
                     app: enmasse
-                  name: broker-data
+                  name: data
                 spec:
                   accessModes:
                   - ReadWriteOnce
@@ -1023,7 +1023,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-              image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+              image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -1416,7 +1416,7 @@ data:
                         memory: ${BROKER_MEMORY_LIMIT}
                     volumeMounts:
                     - mountPath: /var/run/artemis
-                      name: broker-data
+                      name: data
                       readOnly: false
                     - mountPath: /etc/enmasse-certs
                       name: broker-internal-cert
@@ -1449,7 +1449,7 @@ data:
                     cluster_id: ${CLUSTER_ID}
                   labels:
                     app: enmasse
-                  name: broker-data
+                  name: data
                 spec:
                   accessModes:
                   - ReadWriteOnce
@@ -1606,7 +1606,7 @@ data:
                         memory: ${BROKER_MEMORY_LIMIT}
                     volumeMounts:
                     - mountPath: /var/run/artemis
-                      name: broker-data
+                      name: data
                       readOnly: false
                     - mountPath: /etc/enmasse-certs
                       name: broker-internal-cert
@@ -1634,7 +1634,7 @@ data:
                       value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                     - name: AUTHENTICATION_SERVICE_OAUTH_URL
                       value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
-                    image: rh-amqmaas-1/amqmaas10-router-openshift:latest
+                    image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-2
                     livenessProbe:
                       initialDelaySeconds: 60
                       tcpSocket:
@@ -1719,7 +1719,7 @@ data:
                     cluster_id: ${CLUSTER_ID}
                   labels:
                     app: enmasse
-                  name: broker-data
+                  name: data
                 spec:
                   accessModes:
                   - ReadWriteOnce
@@ -1791,7 +1791,7 @@ data:
           spec:
             containers:
             - command:
-              - node
+              - /opt/app-root/src/bin/launch_node.sh
               - /opt/app-root/src/bin/subserv.js
               image: rh-amqmaas-1/amqmaas10-agent-openshift:latest
               livenessProbe:
@@ -2070,6 +2070,8 @@ data:
                 value: brokered
               - name: CERT_DIR
                 value: /etc/enmasse-certs
+              - name: GLOBAL_MAX_SIZE
+                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -2107,6 +2109,11 @@ data:
                   - -c
                   - $ARTEMIS_HOME/bin/probe.sh
                 initialDelaySeconds: 10
+              resources:
+                limits:
+                  memory: ${BROKER_MEMORY_LIMIT}
+                requests:
+                  memory: ${BROKER_MEMORY_LIMIT}
               volumeMounts:
               - mountPath: /var/run/artemis
                 name: data
@@ -2317,3 +2324,10 @@ data:
     - description: The service account with address space admin privileges
       name: ADDRESS_SPACE_ADMIN_SA
       value: address-space-admin
+    - description: Memory limits for container
+      name: BROKER_MEMORY_LIMIT
+      value: 512Mi
+    - description: Global max size for all addresses in broker. Cannot be larger than
+        a quarter of BROKER_MEMORY_LIMIT
+      name: GLOBAL_MAX_SIZE
+      value: 128Mb

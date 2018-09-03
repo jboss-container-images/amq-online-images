@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   labels:
     app: enmasse
-  name: sso
+  name: keycloak
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: enmasse
-        name: sso
+        name: keycloak
     spec:
       containers:
       - env:
