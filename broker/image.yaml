@@ -15,9 +15,9 @@ labels:
       value: "amqmaas, broker, artemis"
 envs:
     - name: "VERSION"
-      value: "2.4.0"
+      value: "2.6.1"
     - name: "ARTEMIS_HOME"
-      value: "/opt/apache-artemis-2.4.0"
+      value: "/opt/apache-artemis-2.6.1"
 
 packages:
     repositories:
