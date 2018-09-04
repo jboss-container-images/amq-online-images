@@ -136,32 +136,6 @@ data:
               - mountPath: /etc/enmasse-certs
                 name: router-internal-cert
                 readOnly: true
-            - env:
-              - name: ROUTER_HOST
-                value: 127.0.0.1
-              - name: ROUTER_PORT
-                value: '55671'
-              - name: CERT_DIR
-                value: /etc/enmasse-certs
-              image: rh-amqmaas-1/amqmaas10-router-metrics-openshift:latest
-              livenessProbe:
-                initialDelaySeconds: 60
-                tcpSocket:
-                  port: routermetrics
-              name: metrics
-              ports:
-              - containerPort: 8080
-                name: routermetrics
-                protocol: TCP
-              resources:
-                limits:
-                  memory: 32Mi
-                requests:
-                  memory: 32Mi
-              volumeMounts:
-              - mountPath: /etc/enmasse-certs
-                name: router-internal-cert
-                readOnly: true
             volumes:
             - name: ssl-certs
               secret:
@@ -1052,32 +1026,6 @@ data:
               - mountPath: /etc/qpid-dispatch/authservice-ca
                 name: authservice-ca
                 readOnly: true
-              - mountPath: /etc/enmasse-certs
-                name: router-internal-cert
-                readOnly: true
-            - env:
-              - name: ROUTER_HOST
-                value: 127.0.0.1
-              - name: ROUTER_PORT
-                value: '55671'
-              - name: CERT_DIR
-                value: /etc/enmasse-certs
-              image: rh-amqmaas-1/amqmaas10-router-metrics-openshift:latest
-              livenessProbe:
-                initialDelaySeconds: 60
-                tcpSocket:
-                  port: routermetrics
-              name: metrics
-              ports:
-              - containerPort: 8080
-                name: routermetrics
-                protocol: TCP
-              resources:
-                limits:
-                  memory: 32Mi
-                requests:
-                  memory: 32Mi
-              volumeMounts:
               - mountPath: /etc/enmasse-certs
                 name: router-internal-cert
                 readOnly: true

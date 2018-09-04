@@ -9,7 +9,6 @@ make DOCKER_ORG=rh-amqmaas-1 \
     ROUTER_IMAGE=amqmaas10-router-openshift \
     ARTEMIS_IMAGE=amqmaas10-broker-openshift \
     TOPIC_FORWARDER_IMAGE=amqmaas10-topic-forwarder-openshift \
-    ROUTER_METRICS_IMAGE=amqmaas10-router-metrics-openshift \
     AGENT_IMAGE=amqmaas10-agent-openshift \
     MQTT_GATEWAY_IMAGE=amqmaas10-mqtt-gateway-openshift \
     MQTT_LWT_IMAGE=amqmaas10-mqtt-lwt-openshift \
