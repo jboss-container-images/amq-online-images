@@ -1,4 +1,4 @@
-SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt router-metrics topic-forwarder auth-controller auth-plugin api-server service-broker
+SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt topic-forwarder auth-controller auth-plugin api-server service-broker
 # TODO: enable broker when we have working artifacts
 RHEL_SUBDIRS= qpid-proton
 #
