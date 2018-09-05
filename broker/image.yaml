@@ -62,6 +62,13 @@ artifacts:
     - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
       md5: 89e83b40f70c9ca43a409e5b485555bc
       name: jmx-exporter.jar
+    - path: netty-tcnative-boringssl-static-2.0.7.Final.jar
+      md5: 5da2f900047b0a53bf526dd9f37d4ffd
+      name: netty-tcnative-boringssl-static.jar
+    - path: netty-tcnative-boringssl-static-2.0.7.Final-linux-x86_64.jar
+      md5: f9410ba141f63cff9202149efc321657
+      name: netty-tcnative-boringssl-static-linux-x86_64.jar
+
 volumes:
     - name: "volume.broker"
       path: "/var/run/artemis"  

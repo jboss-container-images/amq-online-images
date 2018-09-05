@@ -27,6 +27,9 @@ DISTRO_NAME=apache-artemis
 
     mkdir -p /jmx_exporter
     mv ${SOURCES_DIR}/jmx-exporter.jar /jmx_exporter/jmx-exporter.jar
+
+    mv ${SOURCES_DIR}/netty-tcnative-boringssl-static.jar /opt/apache-artemis-2.6.1/lib/
+    mv ${SOURCES_DIR}/netty-tcnative-boringssl-static-linux-x86_64.jar /opt/apache-artemis-2.6.1/lib/
 }
 
 #For volume
