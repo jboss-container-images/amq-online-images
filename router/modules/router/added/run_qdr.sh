@@ -12,10 +12,13 @@ if [ -z "$RAGENT_SERVICE_HOST" ]; then
     fi
 fi
 if [ -z "$LINK_CAPACITY" ]; then
-    export LINK_CAPACITY=50
+    export LINK_CAPACITY=250
 fi
 if [ -z "$WORKER_THREADS" ]; then
     export WORKER_THREADS=4
+fi
+if [ -z "$ALLOW_DURABLE_SUBSCRIPTIONS" ]; then
+    export ALLOW_DURABLE_SUBSCRIPTIONS="true"
 fi
 if [ -z "$AUTHENTICATION_SERVICE_SASL_INIT_HOST" ]; then
     export AUTHENTICATION_SERVICE_SASL_INIT_HOST=$AUTHENTICATION_SERVICE_HOST
