@@ -1,10 +1,5 @@
 #!/bin/sh
 
-if [ "${SCRIPT_DEBUG}" = "true" ] ; then
-    set -x
-    echo "Script debugging is enabled, allowing bash commands and their arguments to be printed as they are executed"
-fi
-
 source /usr/local/dynamic-resources/dynamic_resources.sh
 
 export BROKER_IP=`hostname -I | cut -f 1 -d ' '`
@@ -27,6 +22,14 @@ JAVA_OPTS=$(echo $JAVA_OPTS | sed -e "s/-XX:+UseParallelOldGC/ /")
 
 
 function configure_brokered() {
+
+    DISABLE_AUTHORIZATION=$(echo ${DISABLE_AUTHORIZATION-false} | tr '[:upper:]' '[:lower:]')
+    if [ "${DISABLE_AUTHORIZATION}" == "true" ]
+    then
+        export KEYCLOAK_GROUP_PERMISSIONS=false
+    else
+        export KEYCLOAK_GROUP_PERMISSIONS=true
+    fi
     cp $CONFIG_TEMPLATES/brokered/broker.xml /tmp/broker.xml
     cp $CONFIG_TEMPLATES/brokered/login.config /tmp/login.config
     export HAWTIO_ROLE=admin
@@ -34,12 +37,13 @@ function configure_brokered() {
 
 function configure_standard() {
     if [ -n "$TOPIC_NAME" ]; then
-    	cp $CONFIG_TEMPLATES/standard/sharded-topic/broker.xml /tmp/broker.xml
+        cp $CONFIG_TEMPLATES/standard/sharded-topic/broker.xml /tmp/broker.xml
     elif [ -n $QUEUE_NAME ] && [ "$QUEUE_NAME" != "" ]; then
-		cp $CONFIG_TEMPLATES/standard/sharded-queue/broker.xml /tmp/broker.xml
+        cp $CONFIG_TEMPLATES/standard/sharded-queue/broker.xml /tmp/broker.xml
     else
         cp $CONFIG_TEMPLATES/standard/colocated/broker.xml /tmp/broker.xml
     fi
+    cp $CONFIG_TEMPLATES/standard/login.config /tmp/login.config
     export HAWTIO_ROLE=manage
 }
 
@@ -74,9 +78,7 @@ function configure() {
     fi
 
     envsubst < /tmp/broker.xml > $instanceDir/etc/broker.xml
-	if [ -f /tmp/login.config ]; then
-		envsubst < /tmp/login.config > $instanceDir/etc/login.config		 +
-	fi    
+    envsubst < /tmp/login.config > $instanceDir/etc/login.config
 
     cp $CONFIG_TEMPLATES/bootstrap.xml $instanceDir/etc/bootstrap.xml
     cp $CONFIG_TEMPLATES/jolokia-access.xml $instanceDir/etc/jolokia-access.xml
@@ -100,6 +102,9 @@ function configure() {
 
     export ARTEMIS_INSTANCE=${instanceDir}
     export ARTEMIS_INSTANCE_URI=file:${instanceDir}/
+    export ARTEMIS_DATA_DIR=${instanceDir}/data
+    export ARTEMIS_INSTANCE_ETC_URI=file:${instanceDir}/etc/
+
     envsubst < $CONFIG_TEMPLATES/artemis.profile > $instanceDir/etc/artemis.profile
 
     if [ "$DEBUG_LOGGING" == "true" ]; then
