@@ -1,0 +1,6 @@
+schema_version: 1
+
+name: router
+version: '1.0'
+execute:
+  - script: install.sh
