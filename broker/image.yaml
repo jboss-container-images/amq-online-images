@@ -50,14 +50,14 @@ artifacts:
     - path: apache-artemis-2.6.1.amq-720004-redhat-1-bin.tar.gz
       md5: b87bd36a8bed2725a86ab8af57709af9
       name: apache-artemis-bin.tar.gz
-    - path: shutdown-hook-0.21.2.redhat-00006.jar
-      md5: 5d317b5657de99deb26a2e68b901eae0
+    - path: shutdown-hook-0.21.2.redhat-00007.jar
+      md5: 7343acab3bd87d9b9c44f2a5a03b87ec
       name: shutdown-hook.jar
-    - path: amqp-connector-0.21.2.redhat-00006.jar
-      md5: 38fc05c450d6018fded13de893ebd626
+    - path: amqp-connector-0.21.2.redhat-00007.jar
+      md5: 5f36d119849a843fd913d153477ee8e1
       name: amqp-connector.jar
-    - path: sasl-delegation-0.21.2.redhat-00006.jar
-      md5: 98c2f86b4bd35c5a636bcfffa771756a
+    - path: sasl-delegation-0.21.2.redhat-00007.jar
+      md5: 4967da7eaab411ce831cf40935ebc40a
       name: sasl-delegation.jar
     - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
       md5: 89e83b40f70c9ca43a409e5b485555bc
