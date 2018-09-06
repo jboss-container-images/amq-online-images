@@ -37,8 +37,8 @@ packages:
         - openssl        
 
 artifacts:
-    - path: standard-controller-0.21.2.redhat-00006.jar
-      md5: 5d32dd340c45ad41c189129e384575a7
+    - path: standard-controller-0.21.2.redhat-00007.jar
+      md5: 25ca81d86df90b922fef6ca5c23d50ab
       name: standard-controller.jar
       
 run:
