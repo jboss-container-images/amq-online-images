@@ -9,3 +9,7 @@ api_server=True
 service_catalog=True
 keycloak_admin_password=admin
 authentication_services=["standard"]
+standard_authservice_resources=standard_authservice_sso
+postgresql_db_name=tatooine
+postgresql_db_username=emperor_palpatine
+postgresql_db_password=unlimitedpower
