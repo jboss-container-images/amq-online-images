@@ -73,7 +73,7 @@ spec:
               key: recheckInterval
               name: address-space-controller-config
               optional: true
-        image: rh-amqmaas-1/amqmaas10-address-space-controller-openshift:latest
+        image: rh-amqmaas-1/amqmaas10-address-space-controller-openshift:dev
         livenessProbe:
           httpGet:
             path: /healthz
