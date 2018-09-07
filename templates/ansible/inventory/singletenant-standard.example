@@ -6,3 +6,7 @@ namespace=enmasse
 multitenant=False
 address_space_type=standard
 address_space_plan=unlimited-standard
+standard_authservice_resources=standard_authservice_sso
+postgresql_db_name=tatooine
+postgresql_db_username=emperor_palpatine
+postgresql_db_password=unlimitedpower
