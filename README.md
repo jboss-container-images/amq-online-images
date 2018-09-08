@@ -4,7 +4,7 @@
 
 See link:LICENSE[LICENSE] file.
 
-# Prerequistes
+# Prerequisites
 
 * Cekit - https://cekit.readthedocs.io/en/latest/
 
