@@ -1,7 +1,6 @@
 ---
 enmasse_serviceaccount: enmasse-admin
 enmasse_environment: development
-multitenant: true
 enable_rbac: true
 keycloak_admin_user: admin
 service_catalog: false
@@ -10,5 +9,6 @@ standard_authservice_resources: standard_authservice_keycloak
 secure_api_server: false
 enable_address_space_management: false
 api_server: true
+install_tenant_clusterroles: true
 authentication_services:
   - none
