@@ -21,33 +21,33 @@ modules:
           - name: common.java
             path: ../modules/common/java
           - name: mqtt-gateway
-            path: modules 
+            path: modules
       install:
           - name: mqtt-gateway
           - name: common.java
 ports:
-    - value: 1883 
+    - value: 1883
     - value: 8883
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master    
+                  ref: master
           - name: common.java
             path: ../modules/common/java
           - name: mqtt-gateway
-            path: modules 
+            path: modules
       install:
           - name: mqtt-gateway
-          - name: common.java                  
+          - name: common.java
 artifacts:
-    - path: mqtt-gateway-0.21.2.redhat-00007.jar
-      md5: b3b98cc1e7b890194b6590254a278af4
+    - path: mqtt-gateway-0.23.0.redhat-00003.jar
+      md5: 5b7928d6ac198d35c562b69e4a53a225
       name: mqtt-gateway.jar
 run:
       user: 185
       cmd:
-          - "/bin/launch_java.sh"     
+          - "/bin/launch_java.sh"
           - "/opt/mqtt-gateway.jar"
 
 osbs:
