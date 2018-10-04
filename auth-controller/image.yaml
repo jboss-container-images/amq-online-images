@@ -20,22 +20,22 @@ modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master    
+                  ref: master
           - name: keycloak-controller
-            path: modules 
+            path: modules
           - name: common.java
             path: ../modules/common/java
       install:
           - name: common.java
           - name: keycloak-controller
 artifacts:
-    - path: keycloak-controller-0.21.2.redhat-00007.jar
-      md5: c8ac208bb1aecc0c4f4ac540035e81e1
+    - path: keycloak-controller-0.23.0.redhat-00003.jar
+      md5: 59caaef144889893a665a015820e00c3
       name: keycloak-controller.jar
 run:
       user: 185
       cmd:
-          - "/bin/launch_java.sh"     
+          - "/bin/launch_java.sh"
           - "/opt/keycloak-controller.jar"
 osbs:
       repository:

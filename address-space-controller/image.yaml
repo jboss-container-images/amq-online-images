@@ -16,12 +16,12 @@ labels:
 envs:
   - name: "VERSION"
     value: "latest"
-    
+
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master      
+                  ref: master
           - name: addresscontroller.common
             path: modules/common
           - name: common.java
@@ -34,19 +34,19 @@ packages:
     repositories:
         - jboss-os
     install:
-        - openssl        
+        - openssl
 
 artifacts:
-    - path: address-space-controller-0.21.2.redhat-00007.jar
-      md5: 37d6e7cb2207c90f33f288b8a4260da2
+    - path: address-space-controller-0.23.0.redhat-00003.jar
+      md5: 1a269a61923e1ba5cd4d7d4f36b93e56
       name: address-space-controller.jar
-      
+
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/address-space-controller.jar"          
+          - "/opt/address-space-controller.jar"
 osbs:
       repository:
             name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-address-space-controller-openshift-rhel-7              
+            branch: rh-amqmaas-1.0-address-space-controller-openshift-rhel-7

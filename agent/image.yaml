@@ -22,10 +22,10 @@ modules:
             path: modules/platform/rhel
       install:
           - name: agent
-          
+
 artifacts:
-    - path: agent-0.21.2.redhat-00007-dist.zip
-      md5: db9f1da51996668edc6891b4c39f61b7
+    - path: agent-0.23.0.redhat-00003-dist.zip
+      md5: 67582be53369aade5c61ddf2a4cb561f
       name: agent-dist.zip
 
 ports:
@@ -36,7 +36,7 @@ run:
       user: 185
       cmd:
           - "/opt/app-root/src/bin/launch_node.sh"
-          - "/opt/app-root/src/bin/agent.js"    
+          - "/opt/app-root/src/bin/agent.js"
 
 osbs:
       repository:

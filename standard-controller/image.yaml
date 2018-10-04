@@ -16,37 +16,37 @@ labels:
 envs:
   - name: "VERSION"
     value: "latest"
-    
+
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master      
+                  ref: master
           - name: standardcontroller.common
             path: modules/common
           - name: common.java
             path: ../modules/common/java
       install:
           - name: standardcontroller.common
-          - name: common.java          
+          - name: common.java
 
 packages:
     repositories:
         - jboss-os
     install:
-        - openssl        
+        - openssl
 
 artifacts:
-    - path: standard-controller-0.21.2.redhat-00007.jar
-      md5: 25ca81d86df90b922fef6ca5c23d50ab
+    - path: standard-controller-0.23.0.redhat-00003.jar
+      md5: ba78b62f95d09338743d4423df657bad
       name: standard-controller.jar
-      
+
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/standard-controller.jar"          
-              
+          - "/opt/standard-controller.jar"
+
 osbs:
       repository:
             name: containers/amqmaas-1
