@@ -16,12 +16,12 @@ labels:
 envs:
   - name: "VERSION"
     value: "latest"
-    
+
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master      
+                  ref: master
           - name: servicebroker.common
             path: modules/common
           - name: common.java
@@ -31,16 +31,16 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: service-broker-0.21.2.redhat-00007.jar
-      md5: f00c6816ae8a051786a6ecc2eaf299a5
+    - path: service-broker-0.23.0.redhat-00003.jar
+      md5: db7ac113a6bf755fb53e6a0d70819b40
       name: service-broker.jar
-      
+
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/service-broker.jar"          
+          - "/opt/service-broker.jar"
 osbs:
       repository:
             name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-service-broker-openshift-rhel-7              
+            branch: rh-amqmaas-1.0-service-broker-openshift-rhel-7

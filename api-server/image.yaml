@@ -16,12 +16,12 @@ labels:
 envs:
   - name: "VERSION"
     value: "latest"
-    
+
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master      
+                  ref: master
           - name: apiserver.common
             path: modules/common
           - name: common.java
@@ -31,16 +31,16 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: api-server-0.21.2.redhat-00007.jar
-      md5: ae349bb555087a65a9f12f0bcd5c2bf0
+    - path: api-server-0.23.0.redhat-00003.jar
+      md5: 3b2e0fa4041bcd70fe43794e6ed0aaec
       name: api-server.jar
-      
+
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/api-server.jar"          
+          - "/opt/api-server.jar"
 osbs:
       repository:
             name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-api-server-openshift-rhel-7              
+            branch: rh-amqmaas-1.0-api-server-openshift-rhel-7

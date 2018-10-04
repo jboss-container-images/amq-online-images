@@ -17,7 +17,7 @@ envs:
     - name: "KEYCLOAK_DIR"
       value: "/opt/eap/"
     - name: "KEYCLOAK_PLUGIN_DIR"
-      value: "/keycloak-plugin"      
+      value: "/keycloak-plugin"
     - name: "VERSION"
       value: "latest"
     - name: "JAVA_OPTS"
@@ -27,24 +27,24 @@ packages:
       - jboss-os
     install:
       - openssl
-      
+
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master    
+                  ref: master
           - name: auth.rhel.install
             path: modules
           - name: common.java
-            path: ../modules/common/java  
+            path: ../modules/common/java
       install:
           - name: auth.rhel.install
           - name: common.java
 artifacts:
-    - path: sasl-plugin-0.21.2.redhat-00007.jar
-      md5: 54ffc782b7fcc651d6c5e67e14f92f7e
+    - path: sasl-plugin-0.23.0.redhat-00003.jar
+      md5: 56a7a9b40287388d8623285c2946c62d
       name: sasl-plugin.jar
-    
+
 run:
       user: 185
       entrypoint:

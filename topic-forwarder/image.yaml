@@ -15,30 +15,30 @@ labels:
       value: "amqmaas, topic-forwarder"
 envs:
     - name: "JAVA_HOME"
-      value: "/usr/lib/jvm/java" 
+      value: "/usr/lib/jvm/java"
     - name: "VERSION"
       value: "latest"
 modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master    
+                  ref: master
           - name: common.java
             path: ../modules/common/java
           - name: topic-forwarder
-            path: modules 
+            path: modules
       install:
           - name: topic-forwarder
           - name: common.java
 artifacts:
-    - path: topic-forwarder-0.21.2.redhat-00007.jar
-      md5: ca29aa4d7daa67305adbb4e738bdab2b
+    - path: topic-forwarder-0.23.0.redhat-00003.jar
+      md5: c713790601d4fda6f9d16c186c4ef754
       name: topic-forwarder.jar
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/topic-forwarder.jar"      
+          - "/topic-forwarder.jar"
 
 osbs:
       repository:
