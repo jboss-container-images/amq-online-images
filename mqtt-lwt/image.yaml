@@ -20,23 +20,23 @@ modules:
       repositories:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master    
+                  ref: master
           - name: mqtt-lwt
-            path: modules 
+            path: modules
           - name: common.java
             path: ../modules/common/java
       install:
           - name: mqtt-lwt
           - name: common.java
 artifacts:
-    - path: mqtt-lwt-0.21.2.redhat-00007.jar
-      md5: d7a9bec60c1ffcb15ed67d7ae0a2c39f
+    - path: mqtt-lwt-0.23.0.redhat-00003.jar
+      md5: 5762e05e3209d1f185e33eea8582b375
       name: mqtt-lwt.jar
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/mqtt-lwt.jar"                   
+          - "/mqtt-lwt.jar"
 
 osbs:
       repository:
