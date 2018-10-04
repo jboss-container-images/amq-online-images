@@ -1,4 +1,3 @@
-- name: Apply the none authentication service service
-  shell: oc apply -n {{ namespace }} -f {{ playbook_dir }}/resources/none-authservice/service.yaml
-- name: Apply the none authentication service deployment
-  shell: oc apply -n {{ namespace }} -f {{ playbook_dir }}/resources/none-authservice/deployment.yaml
+---
+- name: Apply the None Authentication Service configuration
+  shell: oc apply -n {{ namespace }} -f {{ playbook_dir }}/install/none-authservice

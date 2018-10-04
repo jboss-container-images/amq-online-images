@@ -1,15 +1,7 @@
 ---
-- name: Check if api-server-config exists
-  shell: oc get configmap -n {{ namespace }} api-server-config
-  register: config_exists
-  ignore_errors: True
 - name: Create API Server Config
-  when: config_exists.failed
   shell: oc create -n {{ namespace }} configmap api-server-config --from-literal=enableRbac={{ enable_rbac }}
-- name: Create EnMasse API Server Deployment
-  shell: oc apply -n {{ namespace }} -f "{{ playbook_dir }}/resources/api-server/deployment.yaml"
-- name: Create EnMasse API Server Service
-  shell: oc apply -n {{ namespace }} -f "{{ playbook_dir }}/resources/api-server/service.yaml"
-- name: Create route for API server
-  shell: oc apply -n {{ namespace }} -f "{{ playbook_dir }}/resources/api-server/route.yaml"
-  when: not register_api_server
+  register: config_exists
+  failed_when: config_exists.stderr != '' and 'already exists' not in config_exists.stderr
+- name: Apply the API Server configuration
+  shell: oc apply -f "{{ playbook_dir }}/install/api-server"
