@@ -1,0 +1,70 @@
+diff --git a/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml b/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml
+index b5d4583..43bcdf0 100644
+--- a/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml
++++ b/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml
+@@ -262,32 +262,6 @@ data:
+                 readOnly: true
+               - mountPath: /etc/qpid-dispatch/config
+                 name: qdrouterd-config
+-            - env:
+-              - name: ROUTER_HOST
+-                value: 127.0.0.1
+-              - name: ROUTER_PORT
+-                value: '55671'
+-              - name: CERT_DIR
+-                value: /etc/enmasse-certs
+-              image: ${ROUTER_METRICS_IMAGE}
+-              livenessProbe:
+-                initialDelaySeconds: 60
+-                tcpSocket:
+-                  port: routermetrics
+-              name: metrics
+-              ports:
+-              - containerPort: 8080
+-                name: routermetrics
+-                protocol: TCP
+-              resources:
+-                limits:
+-                  memory: 32Mi
+-                requests:
+-                  memory: 32Mi
+-              volumeMounts:
+-              - mountPath: /etc/enmasse-certs
+-                name: router-internal-cert
+-                readOnly: true
+             volumes:
+             - name: ssl-certs
+               secret:
+@@ -909,32 +883,6 @@ data:
+                 readOnly: true
+               - mountPath: /etc/qpid-dispatch/config
+                 name: qdrouterd-config
+-            - env:
+-              - name: ROUTER_HOST
+-                value: 127.0.0.1
+-              - name: ROUTER_PORT
+-                value: '55671'
+-              - name: CERT_DIR
+-                value: /etc/enmasse-certs
+-              image: ${ROUTER_METRICS_IMAGE}
+-              livenessProbe:
+-                initialDelaySeconds: 60
+-                tcpSocket:
+-                  port: routermetrics
+-              name: metrics
+-              ports:
+-              - containerPort: 8080
+-                name: routermetrics
+-                protocol: TCP
+-              resources:
+-                limits:
+-                  memory: 32Mi
+-                requests:
+-                  memory: 32Mi
+-              volumeMounts:
+-              - mountPath: /etc/enmasse-certs
+-                name: router-internal-cert
+-                readOnly: true
+             volumes:
+             - name: ssl-certs
+               secret:
