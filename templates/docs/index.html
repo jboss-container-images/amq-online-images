@@ -480,34 +480,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#address_space_and_address_plans">3. Address space and address plans</a>
+<li><a href="#address_spaces_and_addresses">3. Address spaces and addresses</a>
 <ul class="sectlevel2">
-<li><a href="#plans-messaging">3.1. Plans</a>
+<li><a href="#con-address-space-messaging">3.1. Address space</a></li>
+<li><a href="#con-address-messaging">3.2. Address</a></li>
+<li><a href="#con-standard-address-space-messaging">3.3. Standard Address Space</a>
 <ul class="sectlevel3">
-<li><a href="#con-address-space-plans-messaging">3.1.1. Address space plans</a></li>
-<li><a href="#con-address-plans-messaging">3.1.2. Address plans</a></li>
-<li><a href="#con-resource-definitions-messaging">3.1.3. Resource definitions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#monitoring">4. Monitoring</a>
-<ul class="sectlevel2">
-<li><a href="#monitoring-oc-oc">4.1. Monitoring AMQ Online on OpenShift</a></li>
-<li><a href="#deploy-prometheus-oc">4.2. Deploying Prometheus</a></li>
-<li><a href="#deploy-grafana-oc">4.3. Deploying Grafana</a></li>
-<li><a href="#monitoring-kube-kube">4.4. Monitoring AMQ Online on Kubernetes</a></li>
-<li><a href="#deploy-prometheus-kube">4.5. Deploying Prometheus</a></li>
-<li><a href="#deploy-grafana-kube">4.6. Deploying Grafana</a></li>
-</ul>
-</li>
-<li><a href="#managing_address_spaces_and_addresses">5. Managing address spaces and addresses</a>
-<ul class="sectlevel2">
-<li><a href="#con-address-space-messaging">5.1. Address space</a></li>
-<li><a href="#con-address-messaging">5.2. Address</a></li>
-<li><a href="#con-standard-address-space-messaging">5.3. Standard Address Space</a>
-<ul class="sectlevel3">
-<li><a href="#assembly-standard-address-types-messaging">5.3.1. Standard address types</a>
+<li><a href="#assembly-standard-address-types-messaging">3.3.1. Standard address types</a>
 <ul class="sectlevel4">
 <li><a href="#con-standard-queue-messaging">Queue</a></li>
 <li><a href="#con-standard-topic-messaging">Topic</a></li>
@@ -518,9 +497,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#con-brokered-address-space-messaging">5.4. Brokered address space</a>
+<li><a href="#con-brokered-address-space-messaging">3.4. Brokered address space</a>
 <ul class="sectlevel3">
-<li><a href="#assembly-brokered-address-types-messaging">5.4.1. Brokered address types</a>
+<li><a href="#assembly-brokered-address-types-messaging">3.4.1. Brokered address types</a>
 <ul class="sectlevel4">
 <li><a href="#con-brokered-queue-messaging">Queue</a></li>
 <li><a href="#con-brokered-topic-messaging">Topic</a></li>
@@ -528,26 +507,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#configure-address-spaces-addresses-cli-kube-kube">5.5. Configuring address spaces and addresses from the command line on Kubernetes</a>
+<li><a href="#configure-address-spaces-addresses-cli-oc-okd">3.5. Configuring address spaces and addresses from the command line on OpenShift</a>
 <ul class="sectlevel3">
-<li><a href="#create-address-space-cli-kube">5.5.1. Creating an address space</a></li>
-<li><a href="#create-address-cli-kube">5.5.2. Creating an address</a></li>
+<li><a href="#create-address-space-cli-okd">3.5.1. Creating an address space</a></li>
+<li><a href="#create-address-cli-okd">3.5.2. Creating an address</a></li>
 </ul>
 </li>
-<li><a href="#configure-address-spaces-addresses-cli-oc-okd">5.6. Configuring address spaces and addresses from the command line on OpenShift</a>
+<li><a href="#configure-address-spaces-addresses-cli-kube-kube">3.6. Configuring address spaces and addresses from the command line on Kubernetes</a>
 <ul class="sectlevel3">
-<li><a href="#create-address-space-cli-okd">5.6.1. Creating an address space</a></li>
-<li><a href="#create-address-cli-okd">5.6.2. Creating an address</a></li>
+<li><a href="#create-address-space-cli-kube">3.6.1. Creating an address space</a></li>
+<li><a href="#create-address-cli-kube">3.6.2. Creating an address</a></li>
 </ul>
 </li>
-<li><a href="#configure-address-spaces-addresses-restapi-messaging">5.7. Configuring address spaces and addresses using the REST API</a>
+<li><a href="#configure-address-spaces-addresses-restapi-messaging">3.7. Configuring address spaces and addresses using the REST API</a>
 <ul class="sectlevel3">
-<li><a href="#create-address-space-restapi-messaging">5.7.1. Creating an address space</a>
+<li><a href="#create-address-space-restapi-messaging">3.7.1. Creating an address space</a>
 <ul class="sectlevel4">
 <li><a href="#viewing_address_space_status">Viewing address space status</a></li>
 </ul>
 </li>
-<li><a href="#create-address-restapi-messaging">5.7.2. Creating addresses</a>
+<li><a href="#create-address-restapi-messaging">3.7.2. Creating addresses</a>
 <ul class="sectlevel4">
 <li><a href="#viewing_configured_addresses">Viewing configured addresses</a></li>
 </ul>
@@ -556,37 +535,63 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#managing-users-managing-users">6. Managing users</a>
+<li><a href="#managing-users-managing-users">4. Managing users</a>
 <ul class="sectlevel2">
-<li><a href="#con-user-model-managing-users">6.1. User model</a>
+<li><a href="#con-user-model-managing-users">4.1. User model</a>
 <ul class="sectlevel3">
-<li><a href="#authentication">6.1.1. Authentication</a>
+<li><a href="#authentication">4.1.1. Authentication</a>
 <ul class="sectlevel4">
 <li><a href="#password_authentication_type">Password authentication type</a></li>
 <li><a href="#federated_authentication_type">Federated authentication type</a></li>
 </ul>
 </li>
-<li><a href="#authorization">6.1.2. Authorization</a></li>
+<li><a href="#authorization">4.1.2. Authorization</a></li>
 </ul>
 </li>
-<li><a href="#proc-creating-users-cli-managing-users">6.2. Creating users using the command line</a></li>
-<li><a href="#proc-deleting-users-cli-managing-users">6.3. Deleting users using the command line</a></li>
+<li><a href="#proc-creating-users-cli-managing-users">4.2. Creating users using the command line</a></li>
+<li><a href="#proc-deleting-users-cli-managing-users">4.3. Deleting users using the command line</a></li>
 </ul>
 </li>
-<li><a href="#connecting_applications_to_amq_online">7. Connecting applications to AMQ Online</a>
+<li><a href="#assembly-connecting-applications-messaging">5. Connecting applications to AMQ Online</a>
 <ul class="sectlevel2">
-<li><a href="#connecting">7.1. Connecting to AMQ Online</a>
+<li><a href="#client-examples-messaging">5.1. Client examples</a></li>
+<li><a href="#ref-python-example-messaging">5.2. Apache Qpid Proton Python example</a>
 <ul class="sectlevel3">
-<li><a href="#client_examples">7.1.1. Client Examples</a>
+<li><a href="#ref-jms-example-messaging">5.2.1. Apache Qpid JMS example</a></li>
+<li><a href="#ref-javascript-example-messaging">5.2.2. Rhea JavaScript Client example</a>
 <ul class="sectlevel4">
-<li><a href="#amq_python">AMQ Python</a></li>
-<li><a href="#amq_jms">AMQ JMS</a></li>
-<li><a href="#amq_javascript">AMQ JavaScript</a></li>
-<li><a href="#amq_javascript_using_websockets">AMQ JavaScript using WebSockets</a></li>
-<li><a href="#amq_c">AMQ C++</a></li>
-<li><a href="#amq_net">AMQ .NET</a></li>
+<li><a href="#rhea_javascript_client_example_using_websockets">Rhea JavaScript Client example using WebSockets</a></li>
 </ul>
 </li>
+<li><a href="#ref-cpp-example-messaging">5.2.3. Apache Qpid Proton C++ example</a></li>
+<li><a href="#ref-dotnet-example-messaging">5.2.4. AMQP.Net Lite example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#address_space_and_address_plans">6. Address space and address plans</a>
+<ul class="sectlevel2">
+<li><a href="#plans-messaging">6.1. Plans</a>
+<ul class="sectlevel3">
+<li><a href="#con-address-space-plans-messaging">6.1.1. Address space plans</a></li>
+<li><a href="#con-address-plans-messaging">6.1.2. Address plans</a></li>
+<li><a href="#con-resource-definitions-messaging">6.1.3. Resource definitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#monitoring">7. Monitoring</a>
+<ul class="sectlevel2">
+<li><a href="#monitoring-oc-oc">7.1. Monitoring AMQ Online on OpenShift</a>
+<ul class="sectlevel3">
+<li><a href="#deploy-prometheus-oc">7.1.1. Deploying Prometheus</a></li>
+<li><a href="#deploy-grafana-oc">7.1.2. Deploying Grafana</a></li>
+</ul>
+</li>
+<li><a href="#monitoring-kube-kube">7.2. Monitoring AMQ Online on Kubernetes</a>
+<ul class="sectlevel3">
+<li><a href="#deploy-prometheus-kube">7.2.1. Deploying Prometheus</a></li>
+<li><a href="#deploy-grafana-kube">7.2.2. Deploying Grafana</a></li>
 </ul>
 </li>
 </ul>
@@ -596,7 +601,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#quickstart-on-openshift">A.1. AMQ Online on OpenShift</a>
 <ul class="sectlevel3">
 <li><a href="#installing-openshift">A.1.1. Installing AMQ Online</a></li>
-<li><a href="#getting-started-configuring-address-spaces-quickstartopenshift">A.1.2. Configuring address spaces</a></li>
+<li><a href="#create-address-space-cli-quickstartopenshift">A.1.2. Creating an address space</a></li>
 <li><a href="#getting-started-configuring-addresses-quickstartopenshift">A.1.3. Configuring addresses</a></li>
 <li><a href="#sending-and-receiving-messages-openshift">A.1.4. Sending and receiving messages</a>
 <ul class="sectlevel4">
@@ -610,7 +615,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#quickstart-on-kubernetes">A.2. AMQ Online on Kubernetes</a>
 <ul class="sectlevel3">
 <li><a href="#installing_amq_online">A.2.1. Installing AMQ Online</a></li>
-<li><a href="#getting-started-configuring-address-spaces-quickstartkube">A.2.2. Configuring address spaces</a></li>
+<li><a href="#create-address-space-cli-quickstartkube">A.2.2. Creating an address space</a></li>
 <li><a href="#getting-started-configuring-addresses-quickstartkube">A.2.3. Configuring addresses</a>
 <ul class="sectlevel4">
 <li><a href="#sending-and-receiving-messages-kubernetes">Sending and receiving messages</a></li>
@@ -812,7 +817,7 @@ on your machine.</p>
 <p>Deploy using <code>enmasse-with-standard-authservice</code> template</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc process -f examples/templates/enmasse-with-standard-authservice.yaml NAMESPACE=enmasse | oc apply -f -</pre>
+<pre class="nowrap">oc process -f install/templates/enmasse-with-standard-authservice.yaml NAMESPACE=enmasse | oc apply -f -</pre>
 </div>
 </div>
 </li>
@@ -966,7 +971,7 @@ can be <code>none</code> (allow all), <code>standard</code> (Keycloak), or <code
 <p>Create the <code>none</code> authentication service:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc create -f ./examples/install/none-authservice</pre>
+<pre class="nowrap">oc create -f ./install/components/none-authservice</pre>
 </div>
 </div>
 </li>
@@ -982,7 +987,7 @@ can be <code>none</code> (allow all), <code>standard</code> (Keycloak), or <code
 <p>Modify the installation files according to the namespace the Standard Authservice is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/standard-authservice/*RoleBinding*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/standard-authservice/<strong>RoleBinding</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -995,7 +1000,7 @@ can be <code>none</code> (allow all), <code>standard</code> (Keycloak), or <code
 <p>Create the <code>standard</code> authentication service:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc create -f ./examples/install/standard-authservice</pre>
+<pre class="nowrap">oc create -f ./install/components/standard-authservice</pre>
 </div>
 </div>
 </li>
@@ -1015,7 +1020,7 @@ can be <code>none</code> (allow all), <code>standard</code> (Keycloak), or <code
 <p>Modify the installation files according to the namespace the Address Space Controller is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/address-space-controller/*RoleBinding*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/address-space-controller/<strong>RoleBinding</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -1028,7 +1033,7 @@ can be <code>none</code> (allow all), <code>standard</code> (Keycloak), or <code
 <p>Deploy the Address Space Controller</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc apply -f examples/install/address-space-controller</pre>
+<pre class="nowrap">oc apply -f install/components/address-space-controller</pre>
 </div>
 </div>
 </li>
@@ -1053,8 +1058,8 @@ which restricts AMQ Online to using templates, see <a href="#installing-without-
 <p>Modify the installation files according to the namespace the API Server is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/api-service/*.yaml
-sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/api-server/*RoleBinding*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/api-service/<strong>.yaml
+sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/api-server/*RoleBinding</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -1067,7 +1072,7 @@ sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/inst
 <p>Register API service</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc apply -f examples/install/api-service</pre>
+<pre class="nowrap">oc apply -f install/components/api-service</pre>
 </div>
 </div>
 </li>
@@ -1075,7 +1080,7 @@ sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/inst
 <p>Deploy the API Server</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc apply -f examples/install/api-server/</pre>
+<pre class="nowrap">oc apply -f install/components/api-server/</pre>
 </div>
 </div>
 </li>
@@ -1103,8 +1108,8 @@ which restricts AMQ Online to using templates, see <a href="#installing-without-
 <p>Modify the installation files according to the namespace the Service Broker is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/service-broker/*.yaml
-sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/cluster-service-broker/*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/service-broker/<strong>.yaml
+sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/cluster-service-broker/</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -1117,7 +1122,7 @@ sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/inst
 <p>Deploy the Service Broker:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc apply -f examples/install/service-broker</pre>
+<pre class="nowrap">oc apply -f install/components/service-broker</pre>
 </div>
 </div>
 </li>
@@ -1125,7 +1130,7 @@ sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/inst
 <p>Register the Service Broker with the OpenShift Service Catalog:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc apply -f examples/install/cluster-service-broker</pre>
+<pre class="nowrap">oc apply -f install/components/cluster-service-broker</pre>
 </div>
 </div>
 </li>
@@ -1269,7 +1274,7 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=none-au
 <p>Create the <code>none</code> authentication service:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl create -f ./examples/install/none-authservice</pre>
+<pre class="nowrap">kubectl create -f ./install/components/none-authservice</pre>
 </div>
 </div>
 </li>
@@ -1285,7 +1290,7 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=none-au
 <p>Modify the installation files according to the namespace the Standard Authservice is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/standard-authservice/*RoleBinding*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/standard-authservice/<strong>RoleBinding</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -1315,7 +1320,7 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=standar
 <p>Create the <code>standard</code> authentication service:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl create -f ./examples/install/standard-authservice</pre>
+<pre class="nowrap">kubectl create -f ./install/components/standard-authservice</pre>
 </div>
 </div>
 </li>
@@ -1335,7 +1340,7 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=standar
 <p>Modify the installation files according to the namespace the Address Space Controller is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/address-space-controller/*RoleBinding*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/address-space-controller/<strong>RoleBinding</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -1348,7 +1353,7 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=standar
 <p>Deploy the Address Space Controller</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl apply -f examples/install/address-space-controller</pre>
+<pre class="nowrap">kubectl apply -f install/components/address-space-controller</pre>
 </div>
 </div>
 </li>
@@ -1367,8 +1372,8 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=standar
 <p>Modify the installation files according to the namespace the API Server is going to be installed in</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/api-service/*.yaml
-sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/install/api-server/*RoleBinding*.yaml</code></pre>
+<pre class="highlightjs highlight"><code>sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/api-service/<strong>.yaml
+sed -i 's/myproject/<em>&lt;my-namespace&gt;</em>/' install/components/api-server/*RoleBinding</strong>.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -1381,7 +1386,7 @@ sed -i 's/namespace: .*/namespace: <em>&lt;my-namespace&gt;</em>/' examples/inst
 <p>Register API service</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl apply -f examples/install/api-service</pre>
+<pre class="nowrap">kubectl apply -f install/components/api-service</pre>
 </div>
 </div>
 </li>
@@ -1406,7 +1411,7 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=api-ser
 <p>Deploy the API Server</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl apply -f examples/install/api-server/</pre>
+<pre class="nowrap">kubectl apply -f install/components/api-server/</pre>
 </div>
 </div>
 </li>
@@ -1418,401 +1423,29 @@ openssl req -new -x509 -batch -nodes -days 11000 -subj "/O=io.enmasse/CN=api-ser
 </div>
 </div>
 <div class="sect1">
-<h2 id="address_space_and_address_plans">3. Address space and address plans</h2>
+<h2 id="address_spaces_and_addresses">3. Address spaces and addresses</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="plans-messaging">3.1. Plans</h3>
-<div class="paragraph">
-<p>Plans are used to configure quotas and control the resources consumed by a particular deployment. Plans are configured by the AMQ Online service operator and are selected when creating an address space and an address.</p>
-</div>
-<div class="paragraph">
-<p>Resource definitions are a description of resources referenced by the plans, which can be configured with a template and parameters to be used when instantiating the template.</p>
-</div>
-<div class="paragraph">
-<p>By default, AMQ Online comes with a set of plans and resource definitions that are
-sufficient for most use cases.</p>
-</div>
-<div class="sect3">
-<h4 id="con-address-space-plans-messaging">3.1.1. Address space plans</h4>
-<div class="paragraph">
-<p>Address space plans specify the quota available to a given address space. By default, AMQ Online includes an unlimited quota plan for both the standard and brokered address spaces.</p>
-</div>
-<div class="paragraph">
-<p>Plans are configured as <code>ConfigMaps</code>. Following is an example plan for the standard address space:</p>
-</div>
-<div class="listingblock">
-<div class="title"><a href="service_admin/restrictive-plan.yaml">restrictive-plan.yaml</a></div>
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: restrictive-plan
-  labels:
-    type: address-space-plan
-data:
-  definition: |-
-    {
-      "apiVersion": "enmasse.io/v1",
-      "kind": "AddressSpacePlan",
-      "metadata": {
-        "name": "restrictive-plan"
-        "annotations": {
-          "defined-by": "standard-space"
-        }
-      },
-      "displayName": "Restrictive Plan",
-      "displayOrder": 0,
-      "shortDescription": "A plan with restrictive quotas",
-      "longDescription": "A plan with restrictive quotas for the standard address space",
-      "uuid": "74b9a40e-117e-11e8-b4e1-507b9def37d9",
-      "addressSpaceType": "standard",
-      "addressPlans": [
-        "small-queue",
-        "small-anycast"
-      ],
-      "resources": [
-        {
-          "name": "router",
-          "min": "0.0",
-          "max": "2.0"
-        },
-        {
-          "name": "broker",
-          "min": "0.0",
-          "max": "2.0"
-        },
-        {
-          "name": "aggregate",
-          "min": "0.0",
-          "max": "2.0"
-        }
-      ]
-    }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following fields are required:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>metadata.name</code></p>
-</li>
-<li>
-<p><code>resources</code></p>
-</li>
-<li>
-<p><code>addressPlans</code></p>
-</li>
-<li>
-<p><code>addressSpaceType</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The other fields are used by the AMQ Online console UI. Note the annotation <code>defined-by</code>, which points to a resource definition describing the infrastructure that must be deployed when an address space using this plan is created.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="con-address-plans-messaging">3.1.2. Address plans</h4>
-<div class="paragraph">
-<p>Address plans specify the expected resource usage of a given address. The sum of the resource usage for all resource types determines the amount of infrastructure provisioned for an address space. A single router and broker pod has a maximum usage of one. If a new address requires additional resources and the resource consumption is within the address space plan limits, a new pod will be created automatically to handle the increased load.</p>
-</div>
-<div class="paragraph">
-<p>In the <a href="#con-address-space-plans-messaging">Address space plans</a> section, the address space plan references two address plans: <code>small-queue</code> and <code>small-anycast</code>. These address plans are stored as <code>ConfigMaps</code> and are defined as follows:</p>
-</div>
-<div class="listingblock">
-<div class="title"><a href="service_admin/small-queue-plan.yaml">small-queue-plan.yaml</a></div>
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: small-queue-plan
-  labels:
-    type: address-plan
-data:
-  definition: |-
-    {
-      "apiVersion": "enmasse.io/v1",
-      "kind": "AddressPlan",
-      "metadata": {
-        "name": "small-queue"
-      },
-      "displayName": "Small queue plan",
-      "displayOrder": 0,
-      "shortDescription": "A plan for small queues",
-      "longDescription": "A plan for small queues that consume little resources",
-      "uuid": "98feabb6-1183-11e8-a769-507b9def37d9",
-      "addressType": "queue",
-      "requiredResources": [
-        {
-          "name": "router",
-          "credit": 0.2
-        },
-        {
-          "name": "broker",
-          "credit": 0.3
-        }
-      ]
-    }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following fields are required:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>metadata.name</code></p>
-</li>
-<li>
-<p><code>requiredResources</code></p>
-</li>
-<li>
-<p><code>addressType</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>A single router can support five instances of addresses and broker can support three instances of addresses with this plan. If the number of addresses with this plan increases to four, another broker is created. If it increases further to six, another router is created as well.</p>
-</div>
-<div class="paragraph">
-<p>Note, however, that although the address space plan allows two routers and two brokers to be deployed, it only allows two pods to be deployed in total. This means that the address space is restricted to three addresses with the <code>small-queue</code> plan.</p>
-</div>
-<div class="paragraph">
-<p>The <code>small-anycast</code> plan does not consume any broker resources, and can provision two routers at the expense of not being able to create any brokers:</p>
-</div>
-<div class="listingblock">
-<div class="title"><a href="service_admin/small-anycast-plan.yaml">small-anycast-plan.yaml</a></div>
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: small-anycast-plan
-  labels:
-    type: address-plan
-data:
-  definition: |-
-    {
-      "apiVersion": "enmasse.io/v1",
-      "kind": "AddressPlan",
-      "metadata": {
-        "name": "small-anycast"
-      },
-      "displayName": "Small anycast plan",
-      "displayOrder": 0,
-      "shortDescription": "A plan for small anycast addresses",
-      "longDescription": "A plan for small anycast addresses that consume little resources",
-      "uuid": "cb61f440-1184-11e8-adda-507b9def37d9",
-      "addressType": "anycast",
-      "requiredResources": [
-        {
-          "name": "router",
-          "credit": 0.2
-        }
-      ]
-    }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>With this plan, up to 10 addresses can be created.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="con-resource-definitions-messaging">3.1.3. Resource definitions</h4>
-<div class="paragraph">
-<p>A resource describes a template along with a set of parameters. The resource definition is referenced from the plans. At present, only three resource definitions are supported:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>router</code></p>
-</li>
-<li>
-<p><code>broker</code></p>
-</li>
-<li>
-<p><code>broker-topic</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Resource definitions with other names will not work with AMQ Online. It is, however, possible to modify these resource definitions to change the template and template parameters used when instantiating the infrastructure. For instance, the following configuration map that increases the memory available for brokers can replace the default one provided by AMQ Online:</p>
-</div>
-<div class="listingblock">
-<div class="title"><a href="service_admin/broker-resource.yaml">broker-resource.yaml</a></div>
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: broker-resource
-  labels:
-    type: resource-definition
-data:
-  definition: |-
-    {
-      "apiVersion": "enmasse.io/v1",
-      "kind": "ResourceDefinition",
-      "metadata": {
-        "name": "broker"
-      },
-      "template": "queue-persisted",
-      "parameters": [
-        {
-          "name": "BROKER_MEMORY_LIMIT",
-          "value": "2Gi"
-        }
-      ]
-    }</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="monitoring">4. Monitoring</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="monitoring-oc-oc">4.1. Monitoring AMQ Online on OpenShift</h3>
-<div class="paragraph">
-<p>You can use Prometheus and Grafana for monitoring the AMQ Online service.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deploy-prometheus-oc">4.2. Deploying Prometheus</h3>
-<div class="ulist">
-<div class="title">Prerequisites</div>
-<ul>
-<li>
-<p>For Prometheus to monitor pods in the cluster, <code>cluster-admin</code> privileges are required.</p>
-</li>
-</ul>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Create the Prometheus deployment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">oc create -f ./resources/prometheus/prometheus.yaml -n enmasse</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Grant <code>cluster-reader</code> privileges to the Prometheus service account:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:enmasse:prometheus-server</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deploy-grafana-oc">4.3. Deploying Grafana</h3>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Create the Grafana deployment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">oc create -f ./resources/grafana/grafana.yaml -n enmasse</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Expose the Grafana service:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">oc expose service grafana</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Grafana accepts the default username <code>admin</code> and default password <code>admin</code>. For more information about how to connect Grafana to Prometheus, see the <a href="https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source" target="_blank" rel="noopener">Prometheus documentation</a>. If connecting Grafana to Prometheus, use <code>prometheus.enmasse.svc.cluster.local</code> as the Prometheus host name.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="monitoring-kube-kube">4.4. Monitoring AMQ Online on Kubernetes</h3>
-<div class="paragraph">
-<p>You can use Prometheus and Grafana for monitoring the AMQ Online service.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deploy-prometheus-kube">4.5. Deploying Prometheus</h3>
-<div class="ulist">
-<div class="title">Prerequisites</div>
-<ul>
-<li>
-<p>For Prometheus to monitor pods in the cluster, <code>cluster-admin</code> privileges are required.</p>
-</li>
-</ul>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Create the Prometheus deployment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">kubectl create -f ./resources/prometheus/prometheus.yaml -n enmasse</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deploy-grafana-kube">4.6. Deploying Grafana</h3>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Create the Grafana deployment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">kubectl create -f ./resources/grafana/grafana.yaml -n enmasse</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Expose the Grafana service:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">kubectl expose service grafana</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Grafana accepts the default username <code>admin</code> and default password <code>admin</code>. For more information about how to connect Grafana to Prometheus, see the <a href="https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source" target="_blank" rel="noopener">Prometheus documentation</a>. If connecting Grafana to Prometheus, use <code>prometheus.enmasse.svc.cluster.local</code> as the Prometheus host name.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="managing_address_spaces_and_addresses">5. Managing address spaces and addresses</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="con-address-space-messaging">5.1. Address space</h3>
+<h3 id="con-address-space-messaging">3.1. Address space</h3>
 <div class="paragraph">
 <p>An address space is a group of addresses that can be accessed through a single connection (per protocol). This means that clients connected to the endpoints of an address space can send messages to or receive messages from any authorized address within that address space. An address space can support multiple protocols, as defined by the address space type.</p>
 </div>
 <div class="paragraph">
-<p>AMQ Online has two types of address spaces:
-* Standard
-* Brokered</p>
+<p>AMQ Online has two types of address spaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standard</p>
+</li>
+<li>
+<p>Brokered</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-address-messaging">5.2. Address</h3>
+<h3 id="con-address-messaging">3.2. Address</h3>
 <div class="paragraph">
 <p>An address is part of an address space and represents a destination for sending and receiving messages. An address has a type, which defines the semantics of sending messages to and receiving messages from that address.</p>
 </div>
@@ -1821,7 +1454,7 @@ data:
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-standard-address-space-messaging">5.3. Standard Address Space</h3>
+<h3 id="con-standard-address-space-messaging">3.3. Standard Address Space</h3>
 <div class="paragraph">
 <p>The standard address space is the default address space in AMQ Online. It consists of an AMQP router network in combination with attachable storage units. The implementation of a storage unit is hidden from the client and the routers with a well-defined API. This address space type is appropriate when you have many connections and addresses. However, it has the following limitations:</p>
 </div>
@@ -1845,7 +1478,7 @@ data:
 <p>Clients connect and send and receive messages in this address space using the AMQP or MQTT protocols. Note that MQTT does not support qos2 or retained messages.</p>
 </div>
 <div class="sect3">
-<h4 id="assembly-standard-address-types-messaging">5.3.1. Standard address types</h4>
+<h4 id="assembly-standard-address-types-messaging">3.3.1. Standard address types</h4>
 <div class="paragraph">
 <p>The standard address space supports five different address types:</p>
 </div>
@@ -1889,7 +1522,7 @@ data:
 <div class="sect4">
 <h5 id="con-standard-multicast-messaging">Multicast</h5>
 <div class="paragraph">
-<p>The multicast address type is a scalable direct address for sending messages to multiple consumers. Messages sent to a multicast address are forwarded to all consumers receiving messages on that address. Because message acknowledgments from consumers are not propagated to producers, only pre-settled messages can be sent to multicast addresses,.</p>
+<p>The multicast address type is a scalable direct address for sending messages to multiple consumers. Messages sent to a multicast address are forwarded to all consumers receiving messages on that address. Because message acknowledgments from consumers are not propagated to producers, only pre-settled messages can be sent to multicast addresses.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1901,7 +1534,7 @@ data:
 </div>
 </div>
 <div class="sect2">
-<h3 id="con-brokered-address-space-messaging">5.4. Brokered address space</h3>
+<h3 id="con-brokered-address-space-messaging">3.4. Brokered address space</h3>
 <div class="paragraph">
 <p>The brokered address space is designed to support broker-specific features, at the cost of limited
 scale in terms of the number of connections and addresses. This address space supports JMS
@@ -1911,7 +1544,7 @@ transactions, message groups, and so on.</p>
 <p>Clients connect to and send and receive messages in this address space using the AMQP protocol.</p>
 </div>
 <div class="sect3">
-<h4 id="assembly-brokered-address-types-messaging">5.4.1. Brokered address types</h4>
+<h4 id="assembly-brokered-address-types-messaging">3.4.1. Brokered address types</h4>
 <div class="paragraph">
 <p>The brokered address space supports two address types:</p>
 </div>
@@ -1943,27 +1576,28 @@ message groups, transactions, and other JMS features.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configure-address-spaces-addresses-cli-kube-kube">5.5. Configuring address spaces and addresses from the command line on Kubernetes</h3>
+<h3 id="configure-address-spaces-addresses-cli-oc-okd">3.5. Configuring address spaces and addresses from the command line on OpenShift</h3>
 <div class="paragraph">
 <p>AMQ Online is configured to support manipulating address spaces and addresses by using the
 ifdef::Kubernetes[Kubernetes and] OpenShift command-line tools.</p>
 </div>
 <div class="sect3">
-<h4 id="create-address-space-cli-kube">5.5.1. Creating an address space</h4>
+<h4 id="create-address-space-cli-okd">3.5.1. Creating an address space</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>In a <code>space.yaml</code> file, save the following YAML data:</p>
+<p>Create an address space definition:</p>
 <div class="listingblock">
+<div class="title"><a href="resources/standard-address-space.yaml">standard-address-space.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: AddressSpace
 metadata:
-    name: myspace
+  name: myspace
 spec:
-    type: standard
-    plan: unlimited-standard</code></pre>
+  type: standard
+  plan: unlimited-standard</code></pre>
 </div>
 </div>
 </li>
@@ -1971,15 +1605,26 @@ spec:
 <p>Create the address space:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} create -f space.yaml</code></pre>
+<pre class="nowrap">oc create -f standard-address-space.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The address space is ready for use when <code>.status.isReady</code> field is set to <code>true</code>.</p>
+</div>
+</li>
+<li>
+<p>Check the status of the address space:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oc get addressspace myspace -o jsonpath={.status.isReady}</pre>
 </div>
 </div>
 </li>
 <li>
-<p>List the address spaces:</p>
+<p>Retrieve console URL:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} get addressspaces</code></pre>
+<pre class="nowrap">oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'console\')].host}</pre>
 </div>
 </div>
 </li>
@@ -1987,13 +1632,14 @@ spec:
 </div>
 </div>
 <div class="sect3">
-<h4 id="create-address-cli-kube">5.5.2. Creating an address</h4>
+<h4 id="create-address-cli-okd">3.5.2. Creating an address</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>In a <code>address.yaml</code> file, save the following YAML data:</p>
+<p>Create an address definition:</p>
 <div class="listingblock">
+<div class="title"><a href="resources/standard-pooled-queue.yaml">standard-pooled-queue.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: Address
@@ -2004,9 +1650,6 @@ spec:
     type: queue
     plan: pooled-queue</code></pre>
 </div>
-</div>
-</li>
-</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2020,13 +1663,12 @@ Prefixing the name with the address space name is required to ensure addresses f
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
-<p>From the command line, create the address:</p>
+<p>Create the address:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} create -f address.yaml</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">oc create -f standard-pooled-queue.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -2034,7 +1676,7 @@ Prefixing the name with the address space name is required to ensure addresses f
 <p>List the addresses:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} get addresses</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">oc get addresses -o yaml</code></pre>
 </div>
 </div>
 </li>
@@ -2043,27 +1685,28 @@ Prefixing the name with the address space name is required to ensure addresses f
 </div>
 </div>
 <div class="sect2">
-<h3 id="configure-address-spaces-addresses-cli-oc-okd">5.6. Configuring address spaces and addresses from the command line on OpenShift</h3>
+<h3 id="configure-address-spaces-addresses-cli-kube-kube">3.6. Configuring address spaces and addresses from the command line on Kubernetes</h3>
 <div class="paragraph">
 <p>AMQ Online is configured to support manipulating address spaces and addresses by using the
 ifdef::Kubernetes[Kubernetes and] OpenShift command-line tools.</p>
 </div>
 <div class="sect3">
-<h4 id="create-address-space-cli-okd">5.6.1. Creating an address space</h4>
+<h4 id="create-address-space-cli-kube">3.6.1. Creating an address space</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>In a <code>space.yaml</code> file, save the following YAML data:</p>
+<p>Create an address space definition:</p>
 <div class="listingblock">
+<div class="title"><a href="resources/standard-address-space.yaml">standard-address-space.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: AddressSpace
 metadata:
-    name: myspace
+  name: myspace
 spec:
-    type: standard
-    plan: unlimited-standard</code></pre>
+  type: standard
+  plan: unlimited-standard</code></pre>
 </div>
 </div>
 </li>
@@ -2071,15 +1714,26 @@ spec:
 <p>Create the address space:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} create -f space.yaml</code></pre>
+<pre class="nowrap">kubectl create -f standard-address-space.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The address space is ready for use when <code>.status.isReady</code> field is set to <code>true</code>.</p>
+</div>
+</li>
+<li>
+<p>Check the status of the address space:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">kubectl get addressspace myspace -o jsonpath={.status.isReady}</pre>
 </div>
 </div>
 </li>
 <li>
-<p>List the address spaces:</p>
+<p>Retrieve console URL:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} get addressspaces</code></pre>
+<pre class="nowrap">kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'console\')].host}</pre>
 </div>
 </div>
 </li>
@@ -2087,13 +1741,14 @@ spec:
 </div>
 </div>
 <div class="sect3">
-<h4 id="create-address-cli-okd">5.6.2. Creating an address</h4>
+<h4 id="create-address-cli-kube">3.6.2. Creating an address</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>In a <code>address.yaml</code> file, save the following YAML data:</p>
+<p>Create an address definition:</p>
 <div class="listingblock">
+<div class="title"><a href="resources/standard-pooled-queue.yaml">standard-pooled-queue.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: Address
@@ -2104,9 +1759,6 @@ spec:
     type: queue
     plan: pooled-queue</code></pre>
 </div>
-</div>
-</li>
-</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2120,13 +1772,12 @@ Prefixing the name with the address space name is required to ensure addresses f
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
-<p>From the command line, create the address:</p>
+<p>Create the address:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} create -f address.yaml</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">kubectl create -f standard-pooled-queue.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -2134,7 +1785,7 @@ Prefixing the name with the address space name is required to ensure addresses f
 <p>List the addresses:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">{cmdcli} get addresses</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">kubectl get addresses -o yaml</code></pre>
 </div>
 </div>
 </li>
@@ -2143,7 +1794,7 @@ Prefixing the name with the address space name is required to ensure addresses f
 </div>
 </div>
 <div class="sect2">
-<h3 id="configure-address-spaces-addresses-restapi-messaging">5.7. Configuring address spaces and addresses using the REST API</h3>
+<h3 id="configure-address-spaces-addresses-restapi-messaging">3.7. Configuring address spaces and addresses using the REST API</h3>
 <div class="paragraph">
 <p>AMQ Online provides an API that you can use to configure address spaces and their addresses. Clients can be configured to authenticate using
 <a href="https://kubernetes.io/docs/admin/authorization/rbac/" target="_blank" rel="noopener">RBAC</a>.</p>
@@ -2163,7 +1814,7 @@ namespace. Addresses are within the scope of an address space. This means that:<
 </ul>
 </div>
 <div class="sect3">
-<h4 id="create-address-space-restapi-messaging">5.7.1. Creating an address space</h4>
+<h4 id="create-address-space-restapi-messaging">3.7.1. Creating an address space</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -2225,7 +1876,7 @@ object.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="create-address-restapi-messaging">5.7.2. Creating addresses</h4>
+<h4 id="create-address-restapi-messaging">3.7.2. Creating addresses</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -2287,7 +1938,7 @@ address is set to <code>true</code>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="managing-users-managing-users">6. Managing users</h2>
+<h2 id="managing-users-managing-users">4. Managing users</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>AMQ Online user management is only supported when using the standard authentication service. Users can
@@ -2305,14 +1956,14 @@ be managed using a Kubernetes native REST API and custom resources using the com
 </ul>
 </div>
 <div class="sect2">
-<h3 id="con-user-model-managing-users">6.1. User model</h3>
+<h3 id="con-user-model-managing-users">4.1. User model</h3>
 <div class="paragraph">
 <p>Users define authentication and authorization for messaging clients and console users. Users are
 configured as <code>MessagingUsers</code> resources. Users can only be created, deleted, read and listed (not
 modified). Following is an example user:</p>
 </div>
 <div class="listingblock">
-<div class="title"><a href="common/user-example1.yaml">user-example1.yaml</a></div>
+<div class="title"><a href="resources/user-example1.yaml">user-example1.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: user.enmasse.io/v1alpha1
 kind: MessagingUser
@@ -2354,7 +2005,7 @@ spec:
 <code>spec.authorization</code> defines the authorization policies for that user.</p>
 </div>
 <div class="sect3">
-<h4 id="authentication">6.1.1. Authentication</h4>
+<h4 id="authentication">4.1.1. Authentication</h4>
 <div class="paragraph">
 <p>The supported values for the authentication type are <code>password</code> and <code>federated</code>.</p>
 </div>
@@ -2389,7 +2040,7 @@ identity provider.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="authorization">6.1.2. Authorization</h4>
+<h4 id="authorization">4.1.2. Authorization</h4>
 <div class="paragraph">
 <p>In addition, authorization policies can be defined using operations and addresses. Valid operations
 are <code>send</code>, <code>recv</code>, <code>view</code>, <code>manage</code>. If addresses are omitted, operations will be applied to all
@@ -2406,7 +2057,7 @@ addresses.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-creating-users-cli-managing-users">6.2. Creating users using the command line</h3>
+<h3 id="proc-creating-users-cli-managing-users">4.2. Creating users using the command line</h3>
 <div class="paragraph">
 <p>In AMQ Online users can be created using standard command-line tools.</p>
 </div>
@@ -2424,7 +2075,7 @@ addresses.</p>
 <li>
 <p>Save the user definition to a file:</p>
 <div class="listingblock">
-<div class="title"><a href="common/user-example1.yaml">user-example1.yaml</a></div>
+<div class="title"><a href="resources/user-example1.yaml">user-example1.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: user.enmasse.io/v1alpha1
 kind: MessagingUser
@@ -2447,7 +2098,7 @@ spec:
 <p>Create the user:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc create -f user-example1.yaml</pre>
+<pre class="nowrap">kubectl create -f user-example1.yaml</pre>
 </div>
 </div>
 </li>
@@ -2463,7 +2114,7 @@ spec:
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-deleting-users-cli-managing-users">6.3. Deleting users using the command line</h3>
+<h3 id="proc-deleting-users-cli-managing-users">4.3. Deleting users using the command line</h3>
 <div class="paragraph">
 <p>Users can in AMQ Online can be deleted using standard command line tools.</p>
 </div>
@@ -2485,7 +2136,7 @@ spec:
 <p>List the current users:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc get messagingusers</pre>
+<pre class="nowrap">kubectl get messagingusers</pre>
 </div>
 </div>
 </li>
@@ -2493,7 +2144,7 @@ spec:
 <p>Delete the desired user:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc delete messaginguser myspace.user1</pre>
+<pre class="nowrap">kubectl delete messaginguser myspace.user1</pre>
 </div>
 </div>
 </li>
@@ -2519,49 +2170,47 @@ spec:
 </div>
 </div>
 <div class="sect1">
-<h2 id="connecting_applications_to_amq_online">7. Connecting applications to AMQ Online</h2>
+<h2 id="assembly-connecting-applications-messaging">5. Connecting applications to AMQ Online</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="connecting">7.1. Connecting to AMQ Online</h3>
 <div class="paragraph">
-<p>To connect to the messaging service from outside the openshift or
-kubernetes cluster, TLS must be used with SNI set to specify the fully
-qualified hostname for the address-space. The port used is 443.</p>
-</div>
-<div class="paragraph">
-<p>The messaging protocols supported depends on the type of the
-address-space.</p>
-</div>
-<div class="sect3">
-<h4 id="client_examples">7.1.1. Client Examples</h4>
-<div class="paragraph">
-<p>Simple examples are shown here for the following clients:</p>
+<p>You can connect your application to AMQ Online using one of the following client examples.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>AMQ Python</p>
+<p><a href="#ref-python-example-messaging">Apache Qpid Proton Python</a></p>
 </li>
 <li>
-<p>AMQ JMS</p>
+<p><a href="#ref-jms-example-messaging">Apache Qpid JMS</a></p>
 </li>
 <li>
-<p>AMQ JavaScript</p>
+<p><a href="#ref-javascript-example-messaging">Rhea JavaScript Client</a></p>
 </li>
 <li>
-<p>AMQ C++</p>
+<p><a href="#ref-cpp-example-messaging">Apache Qpid Proton C++</a></p>
 </li>
 <li>
-<p>AMQ .NET</p>
+<p><a href="#ref-dotnet-example-messaging">AMQP.Net Lite</a></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These all assume you have created an address of type 'queue' named
-'myqueue'.</p>
+<p>To connect to the messaging service from outside the OpenShift
+or Kubernetes
+cluster, TLS must be used with SNI set to specify the fully qualified host name for the address space. The port used is 443.</p>
 </div>
-<div class="sect4">
-<h5 id="amq_python">AMQ Python</h5>
+<div class="paragraph">
+<p>The messaging protocols supported depends on the type of address space used. For more information, see the  <a href="#con-address-space-messaging">address space</a> section.</p>
+</div>
+<div class="sect2">
+<h3 id="client-examples-messaging">5.1. Client examples</h3>
+
+</div>
+<div class="sect2">
+<h3 id="ref-python-example-messaging">5.2. Apache Qpid Proton Python example</h3>
+<div class="paragraph">
+<p>You can use the following Apache Qpid Proton Python example to connect your application to AMQ Online. This example assumes you have created an address of type <code>queue</code> named <code>myqueue</code>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-python hljs" data-lang="python">from __future__ import print_function, unicode_literals
@@ -2591,9 +2240,11 @@ class HelloWorld(MessagingHandler):
 Container(HelloWorld("amqps://&lt;messaging-route-hostname&gt;:443", "myqueue")).run()</code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="ref-jms-example-messaging">5.2.1. Apache Qpid JMS example</h4>
+<div class="paragraph">
+<p>You can use the following Apache Qpid JMS example to connect your application to AMQ Online. This example assumes you have created an address of type <code>queue</code> named <code>myqueue</code>.</p>
 </div>
-<div class="sect4">
-<h5 id="amq_jms">AMQ JMS</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">package org.apache.qpid.jms.example;
@@ -2671,8 +2322,11 @@ queue.myQueueLookup = myqueue</code></pre>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="amq_javascript">AMQ JavaScript</h5>
+<div class="sect3">
+<h4 id="ref-javascript-example-messaging">5.2.2. Rhea JavaScript Client example</h4>
+<div class="paragraph">
+<p>You can use the following Rhea JavaScript Client example to connect your application to AMQ Online. This example assumes you have created an address of type <code>queue</code> named <code>myqueue</code>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-javascript hljs" data-lang="javascript">var container = require('rhea');
@@ -2691,9 +2345,8 @@ container.on('sendable', function (context) {
 container.connect({username: '&lt;username&gt;', password: '&lt;password&gt;', port:443, host:'&lt;messaging-route-hostname&gt;', transport:'tls', rejectUnauthorized:false});</code></pre>
 </div>
 </div>
-</div>
 <div class="sect4">
-<h5 id="amq_javascript_using_websockets">AMQ JavaScript using WebSockets</h5>
+<h5 id="rhea_javascript_client_example_using_websockets">Rhea JavaScript Client example using WebSockets</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-javascript hljs" data-lang="javascript">var container = require('rhea');
@@ -2717,10 +2370,11 @@ container.connect({username: '&lt;username&gt;', password: '&lt;password&gt;', c
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="amq_c">AMQ C++</h5>
+</div>
+<div class="sect3">
+<h4 id="ref-cpp-example-messaging">5.2.3. Apache Qpid Proton C++ example</h4>
 <div class="paragraph">
-<p>The C client has equivalent simple_recv and simple_send examples with the same options as python. However, the C library does not perform the same level of processing on the URL; in particular it won&#8217;t take amqps:// to imply using TLS, so the example needs to be modified as follows:</p>
+<p>The C client has equivalent `simple_recv` and `simple_send` examples with the same options as Python. However, the C library does not perform the same level of processing on the URL; in particular it won&#8217;t take <code>amqps://</code> to imply using TLS, so the example needs to be modified as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2787,8 +2441,11 @@ int main(int argc, char **argv) {
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="amq_net">AMQ .NET</h5>
+<div class="sect3">
+<h4 id="ref-dotnet-example-messaging">5.2.4. AMQP.Net Lite example</h4>
+<div class="paragraph">
+<p>You can use the following AMQP.Net Lite example to connect your application to AMQ Online. This example assumes you have created an address of type <code>queue</code> named <code>myqueue</code>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-csharp hljs" data-lang="csharp">using System;
@@ -2825,6 +2482,385 @@ namespace Test
 }</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="address_space_and_address_plans">6. Address space and address plans</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="plans-messaging">6.1. Plans</h3>
+<div class="paragraph">
+<p>Plans are used to configure quotas and control the resources consumed by a particular deployment. Plans are configured by the AMQ Online service operator and are selected when creating an address space and an address.</p>
+</div>
+<div class="paragraph">
+<p>Resource definitions are a description of resources referenced by the plans, which can be configured with a template and parameters to be used when instantiating the template.</p>
+</div>
+<div class="paragraph">
+<p>By default, AMQ Online comes with a set of plans and resource definitions that are
+sufficient for most use cases.</p>
+</div>
+<div class="sect3">
+<h4 id="con-address-space-plans-messaging">6.1.1. Address space plans</h4>
+<div class="paragraph">
+<p>Address space plans specify the quota available to a given address space. By default, AMQ Online includes an unlimited quota plan for both the standard and brokered address spaces.</p>
+</div>
+<div class="paragraph">
+<p>Plans are configured as <code>ConfigMaps</code>. Following is an example plan for the standard address space:</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="resources/restrictive-plan.yaml">restrictive-plan.yaml</a></div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: restrictive-plan
+  labels:
+    type: address-space-plan
+data:
+  definition: |-
+    {
+      "apiVersion": "enmasse.io/v1",
+      "kind": "AddressSpacePlan",
+      "metadata": {
+        "name": "restrictive-plan"
+        "annotations": {
+          "defined-by": "standard-space"
+        }
+      },
+      "displayName": "Restrictive Plan",
+      "displayOrder": 0,
+      "shortDescription": "A plan with restrictive quotas",
+      "longDescription": "A plan with restrictive quotas for the standard address space",
+      "uuid": "74b9a40e-117e-11e8-b4e1-507b9def37d9",
+      "addressSpaceType": "standard",
+      "addressPlans": [
+        "small-queue",
+        "small-anycast"
+      ],
+      "resources": [
+        {
+          "name": "router",
+          "min": "0.0",
+          "max": "2.0"
+        },
+        {
+          "name": "broker",
+          "min": "0.0",
+          "max": "2.0"
+        },
+        {
+          "name": "aggregate",
+          "min": "0.0",
+          "max": "2.0"
+        }
+      ]
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following fields are required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>metadata.name</code></p>
+</li>
+<li>
+<p><code>resources</code></p>
+</li>
+<li>
+<p><code>addressPlans</code></p>
+</li>
+<li>
+<p><code>addressSpaceType</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The other fields are used by the AMQ Online console UI. Note the annotation <code>defined-by</code>, which points to a resource definition describing the infrastructure that must be deployed when an address space using this plan is created.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="con-address-plans-messaging">6.1.2. Address plans</h4>
+<div class="paragraph">
+<p>Address plans specify the expected resource usage of a given address. The sum of the resource usage for all resource types determines the amount of infrastructure provisioned for an address space. A single router and broker pod has a maximum usage of one. If a new address requires additional resources and the resource consumption is within the address space plan limits, a new pod will be created automatically to handle the increased load.</p>
+</div>
+<div class="paragraph">
+<p>In the <a href="#con-address-space-plans-messaging">Address space plans</a> section, the address space plan references two address plans: <code>small-queue</code> and <code>small-anycast</code>. These address plans are stored as <code>ConfigMaps</code> and are defined as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="resources/small-queue-plan.yaml">small-queue-plan.yaml</a></div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: small-queue-plan
+  labels:
+    type: address-plan
+data:
+  definition: |-
+    {
+      "apiVersion": "enmasse.io/v1",
+      "kind": "AddressPlan",
+      "metadata": {
+        "name": "small-queue"
+      },
+      "displayName": "Small queue plan",
+      "displayOrder": 0,
+      "shortDescription": "A plan for small queues",
+      "longDescription": "A plan for small queues that consume little resources",
+      "uuid": "98feabb6-1183-11e8-a769-507b9def37d9",
+      "addressType": "queue",
+      "requiredResources": [
+        {
+          "name": "router",
+          "credit": 0.2
+        },
+        {
+          "name": "broker",
+          "credit": 0.3
+        }
+      ]
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following fields are required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>metadata.name</code></p>
+</li>
+<li>
+<p><code>requiredResources</code></p>
+</li>
+<li>
+<p><code>addressType</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A single router can support five instances of addresses and broker can support three instances of addresses with this plan. If the number of addresses with this plan increases to four, another broker is created. If it increases further to six, another router is created as well.</p>
+</div>
+<div class="paragraph">
+<p>Note, however, that although the address space plan allows two routers and two brokers to be deployed, it only allows two pods to be deployed in total. This means that the address space is restricted to three addresses with the <code>small-queue</code> plan.</p>
+</div>
+<div class="paragraph">
+<p>The <code>small-anycast</code> plan does not consume any broker resources, and can provision two routers at the expense of not being able to create any brokers:</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="resources/small-anycast-plan.yaml">small-anycast-plan.yaml</a></div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: small-anycast-plan
+  labels:
+    type: address-plan
+data:
+  definition: |-
+    {
+      "apiVersion": "enmasse.io/v1",
+      "kind": "AddressPlan",
+      "metadata": {
+        "name": "small-anycast"
+      },
+      "displayName": "Small anycast plan",
+      "displayOrder": 0,
+      "shortDescription": "A plan for small anycast addresses",
+      "longDescription": "A plan for small anycast addresses that consume little resources",
+      "uuid": "cb61f440-1184-11e8-adda-507b9def37d9",
+      "addressType": "anycast",
+      "requiredResources": [
+        {
+          "name": "router",
+          "credit": 0.2
+        }
+      ]
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this plan, up to 10 addresses can be created.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="con-resource-definitions-messaging">6.1.3. Resource definitions</h4>
+<div class="paragraph">
+<p>A resource describes a template along with a set of parameters. The resource definition is referenced from the plans. At present, only three resource definitions are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>router</code></p>
+</li>
+<li>
+<p><code>broker</code></p>
+</li>
+<li>
+<p><code>broker-topic</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Resource definitions with other names will not work with AMQ Online. It is, however, possible to modify these resource definitions to change the template and template parameters used when instantiating the infrastructure. For instance, the following configuration map that increases the memory available for brokers can replace the default one provided by AMQ Online:</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="resources/broker-resource.yaml">broker-resource.yaml</a></div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: broker-resource
+  labels:
+    type: resource-definition
+data:
+  definition: |-
+    {
+      "apiVersion": "enmasse.io/v1",
+      "kind": "ResourceDefinition",
+      "metadata": {
+        "name": "broker"
+      },
+      "template": "queue-persisted",
+      "parameters": [
+        {
+          "name": "BROKER_MEMORY_LIMIT",
+          "value": "2Gi"
+        }
+      ]
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="monitoring">7. Monitoring</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="monitoring-oc-oc">7.1. Monitoring AMQ Online on OpenShift</h3>
+<div class="paragraph">
+<p>You can use Prometheus and Grafana for monitoring the AMQ Online service.</p>
+</div>
+<div class="sect3">
+<h4 id="deploy-prometheus-oc">7.1.1. Deploying Prometheus</h4>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>For Prometheus to monitor pods in the cluster, <code>cluster-admin</code> privileges are required.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create the Prometheus deployment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oc create -f ./resources/prometheus/prometheus.yaml -n enmasse</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Grant <code>cluster-reader</code> privileges to the Prometheus service account:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:enmasse:prometheus-server</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deploy-grafana-oc">7.1.2. Deploying Grafana</h4>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create the Grafana deployment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oc create -f ./resources/grafana/grafana.yaml -n enmasse</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Expose the Grafana service:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oc expose service grafana</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Grafana accepts the default username <code>admin</code> and default password <code>admin</code>. For more information about how to connect Grafana to Prometheus, see the <a href="https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source" target="_blank" rel="noopener">Prometheus documentation</a>. If connecting Grafana to Prometheus, use <code>prometheus.enmasse.svc.cluster.local</code> as the Prometheus host name.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="monitoring-kube-kube">7.2. Monitoring AMQ Online on Kubernetes</h3>
+<div class="paragraph">
+<p>You can use Prometheus and Grafana for monitoring the AMQ Online service.</p>
+</div>
+<div class="sect3">
+<h4 id="deploy-prometheus-kube">7.2.1. Deploying Prometheus</h4>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>For Prometheus to monitor pods in the cluster, <code>cluster-admin</code> privileges are required.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create the Prometheus deployment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">kubectl create -f ./resources/prometheus/prometheus.yaml -n enmasse</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deploy-grafana-kube">7.2.2. Deploying Grafana</h4>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create the Grafana deployment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">kubectl create -f ./resources/grafana/grafana.yaml -n enmasse</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Expose the Grafana service:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">kubectl expose service grafana</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Grafana accepts the default username <code>admin</code> and default password <code>admin</code>. For more information about how to connect Grafana to Prometheus, see the <a href="https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source" target="_blank" rel="noopener">Prometheus documentation</a>. If connecting Grafana to Prometheus, use <code>prometheus.enmasse.svc.cluster.local</code> as the Prometheus host name.</p>
 </div>
 </div>
 </div>
@@ -2900,7 +2936,7 @@ on your machine.</p>
 <p>Deploy using <code>enmasse-with-none-authservice</code> template</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc process -f examples/templates/enmasse-with-none-authservice.yaml NAMESPACE=enmasse | oc apply -f -</pre>
+<pre class="nowrap">oc process -f install/templates/enmasse-with-none-authservice.yaml NAMESPACE=enmasse | oc apply -f -</pre>
 </div>
 </div>
 </li>
@@ -2908,19 +2944,14 @@ on your machine.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="getting-started-configuring-address-spaces-quickstartopenshift">A.1.2. Configuring address spaces</h4>
-<div class="paragraph">
-<p>AMQ Online support the <code>brokered</code> and <code>standard</code> address spaces. This guide will use the
-<code>standard</code> address space.  For more information about the differences, see
-<a href="#con-address-space-messaging">Address space</a>.</p>
-</div>
+<h4 id="create-address-space-cli-quickstartopenshift">A.1.2. Creating an address space</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Create an address space definition:</p>
 <div class="listingblock">
-<div class="title"><a href="standard-address-space.yaml">standard-address-space.yaml</a></div>
+<div class="title"><a href="resources/standard-address-space.yaml">standard-address-space.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: AddressSpace
@@ -2940,11 +2971,11 @@ spec:
 </div>
 </div>
 <div class="paragraph">
-<p>The address space is ready for use when the field <code>.status.isReady</code> is set to <code>true</code>.</p>
+<p>The address space is ready for use when <code>.status.isReady</code> field is set to <code>true</code>.</p>
 </div>
 </li>
 <li>
-<p>Check status of address space:</p>
+<p>Check the status of the address space:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">oc get addressspace myspace -o jsonpath={.status.isReady}</pre>
@@ -2955,7 +2986,7 @@ spec:
 <p>Retrieve console URL:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name=='console')].host}</pre>
+<pre class="nowrap">oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'console\')].host}</pre>
 </div>
 </div>
 </li>
@@ -2995,7 +3026,7 @@ spec:
 <li>
 <p>Create an address list definition</p>
 <div class="listingblock">
-<div class="title"><a href="standard-addresses.yaml">standard-addresses.yaml</a></div>
+<div class="title"><a href="resources/standard-addresses.yaml">standard-addresses.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: AddressList
@@ -3064,7 +3095,7 @@ and
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">./simple_recv.py -a "amqps://$(oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name=='messaging')].host):443/myanycast" -m 10</pre>
+<pre class="nowrap">./simple_recv.py -a "amqps://$(oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'messaging\')].host):443/myanycast" -m 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3072,7 +3103,7 @@ and
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">./simple_send.py -a "amqps://$(oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name=='messaging')].host):443/myanycast" -m 10</pre>
+<pre class="nowrap">./simple_send.py -a "amqps://$(oc get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'messaging\')].host):443/myanycast" -m 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3082,14 +3113,14 @@ self-signed certificates. To fetch the certificate, run:</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">mkdir -p certs
-oc get secret $(oc get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name=='messaging')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
+oc get secret $(oc get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name==\'messaging\')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can modify the client code to use this cert to verify the server connection.</p>
 </div>
 <div class="paragraph">
-<p>Have a look at <a href="#connecting">Connecting to AMQ Online</a> for more client examples.</p>
+<p>For more information, see <a href="#client-examples-messaging">Client examples</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3101,7 +3132,7 @@ fetch the server certificate:</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">mkdir -p certs
-oc get secret $(oc get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name=='mqtt')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
+oc get secret $(oc get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name==\'mqtt\')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
 </div>
 </div>
 <div class="sect5">
@@ -3273,7 +3304,7 @@ client.loop_forever()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The the publisher publishes the message and disconnects from EnMasse. The message is received by the previous connected subscriber.</p>
+<p>The publisher publishes the message and disconnects from EnMasse. The message is received by the previous connected subscriber.</p>
 </div>
 </div>
 </div>
@@ -3282,8 +3313,7 @@ client.loop_forever()</code></pre>
 <div class="sect3">
 <h4 id="conclusion-openshift">A.1.5. Conclusion</h4>
 <div class="paragraph">
-<p>We have seen how to setup AMQ Online on OpenShift, and how to communicate with it using AMQP and MQTT clients.
-:context: messaging</p>
+<p>We have seen how to setup AMQ Online on OpenShift, and how to communicate with it using AMQP and MQTT clients.</p>
 </div>
 </div>
 </div>
@@ -3321,7 +3351,7 @@ kubectl config set-context $(kubectl config current-context) --namespace=enmasse
 <p>Replace namespace references in bundle</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">sed -i "s/namespace: .*/namespace: enmasse/" examples/bundles/enmasse-with-none-authservice/*.yaml</pre>
+<pre class="nowrap">sed -i "s/myproject/enmasse/" install/bundles/enmasse-with-none-authservice/*.yaml</pre>
 </div>
 </div>
 </li>
@@ -3329,7 +3359,7 @@ kubectl config set-context $(kubectl config current-context) --namespace=enmasse
 <p>Deploy using <code>enmasse-with-none-authservice</code> template</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl create -f examples/bundles/enmasse-with-none-authservice</pre>
+<pre class="nowrap">kubectl create -f install/bundles/enmasse-with-none-authservice</pre>
 </div>
 </div>
 </li>
@@ -3337,19 +3367,14 @@ kubectl config set-context $(kubectl config current-context) --namespace=enmasse
 </div>
 </div>
 <div class="sect3">
-<h4 id="getting-started-configuring-address-spaces-quickstartkube">A.2.2. Configuring address spaces</h4>
-<div class="paragraph">
-<p>AMQ Online support the <code>brokered</code> and <code>standard</code> address spaces. This guide will use the
-<code>standard</code> address space.  For more information about the differences, see
-<a href="#con-address-space-messaging">Address space</a>.</p>
-</div>
+<h4 id="create-address-space-cli-quickstartkube">A.2.2. Creating an address space</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Create an address space definition:</p>
 <div class="listingblock">
-<div class="title"><a href="standard-address-space.yaml">standard-address-space.yaml</a></div>
+<div class="title"><a href="resources/standard-address-space.yaml">standard-address-space.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: AddressSpace
@@ -3369,11 +3394,11 @@ spec:
 </div>
 </div>
 <div class="paragraph">
-<p>The address space is ready for use when the field <code>.status.isReady</code> is set to <code>true</code>.</p>
+<p>The address space is ready for use when <code>.status.isReady</code> field is set to <code>true</code>.</p>
 </div>
 </li>
 <li>
-<p>Check status of address space:</p>
+<p>Check the status of the address space:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">kubectl get addressspace myspace -o jsonpath={.status.isReady}</pre>
@@ -3384,7 +3409,7 @@ spec:
 <p>Retrieve console URL:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name=='console')].host}</pre>
+<pre class="nowrap">kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'console\')].host}</pre>
 </div>
 </div>
 </li>
@@ -3424,7 +3449,7 @@ spec:
 <li>
 <p>Create an address list definition</p>
 <div class="listingblock">
-<div class="title"><a href="standard-addresses.yaml">standard-addresses.yaml</a></div>
+<div class="title"><a href="resources/standard-addresses.yaml">standard-addresses.yaml</a></div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: enmasse.io/v1alpha1
 kind: AddressList
@@ -3494,7 +3519,7 @@ and
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">./simple_recv.py -a "amqps://$(kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name=='messaging')].host):443/myanycast" -m 10</pre>
+<pre class="nowrap">./simple_recv.py -a "amqps://$(kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'messaging\')].host):443/myanycast" -m 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3502,7 +3527,7 @@ and
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">./simple_send.py -a "amqps://$(kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name=='messaging')].host):443/myanycast" -m 10</pre>
+<pre class="nowrap">./simple_send.py -a "amqps://$(kubectl get addressspace myspace -o jsonpath={.status.endpointStatuses[?(@.name==\'messaging\')].host):443/myanycast" -m 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3512,14 +3537,14 @@ self-signed certificates. To fetch the certificate, run:</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">mkdir -p certs
-kubectl get secret $(kubectl get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name=='messaging')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
+kubectl get secret $(kubectl get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name==\'messaging\')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can modify the client code to use this cert to verify the server connection.</p>
 </div>
 <div class="paragraph">
-<p>Have a look at <a href="#connecting">Connecting to AMQ Online</a> for more client examples.</p>
+<p>For more information, see <a href="#client-examples-messaging">Client examples</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3531,7 +3556,7 @@ fetch the server certificate:</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">mkdir -p certs
-kubectl get secret $(kubectl get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name=='mqtt')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
+kubectl get secret $(kubectl get addressspace myspace -o jsonpath={.spec.endpoints[?(@.name==\'mqtt\')].cert.secretName}) -o jsonpath='{.data.tls\.crt}' | base64 -d &gt; certs/tls.crt</pre>
 </div>
 </div>
 <div class="sect5">
@@ -3703,7 +3728,7 @@ client.loop_forever()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The the publisher publishes the message and disconnects from EnMasse. The message is received by the previous connected subscriber.</p>
+<p>The publisher publishes the message and disconnects from EnMasse. The message is received by the previous connected subscriber.</p>
 </div>
 </div>
 </div>
@@ -7641,7 +7666,7 @@ communicate with it using python example AMQP clients.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-25 11:36:58 CEST
+Last updated 2018-10-10 20:09:49 BST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
