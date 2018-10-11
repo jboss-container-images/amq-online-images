@@ -8,6 +8,10 @@ do_patch () {
         for patch in $(find ${PATCH_DIR} -type f -name "*.patch"); do
             echo Applying patch ${patch}
             patch --remove-empty-files --merge -f -d "${PATCH_TARGET}" -p1 < $patch
+            if [[ $rc != 0 ]]; then
+                1>&2 echo "$0: Patch ${patch} failed."
+                exit $rc
+            fi
         done;
     fi
 }
@@ -97,7 +101,7 @@ make -C ${WORKDIR} \
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-address-space-controller-openshift:${VERSION} \
     API_SERVER_IMAGE=${DOCKER_ORG}/amqmaas10-api-server-openshift:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-standard-controller-openshift:${VERSION} \
-    ROUTER_IMAGE=${DOCKER_ORG}/amqmaas10-router-openshift:${VERSION} \
+    ROUTER_IMAGE=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/amq-interconnect/amq-interconnect-1.2-openshift:1.0-6 \
     ARTEMIS_IMAGE=${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION} \
     TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amqmaas10-topic-forwarder-openshift:${VERSION} \
     AGENT_IMAGE=${DOCKER_ORG}/amqmaas10-agent-openshift:${VERSION} \
