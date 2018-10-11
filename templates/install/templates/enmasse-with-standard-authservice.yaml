@@ -237,7 +237,7 @@ objects:
                   value: "INFER"
                 - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                   value: "qdrouterd-headless-${INFRA_UUID}"
-                image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/amq-interconnect/amq-interconnect-1.2-openshift:1.0-6
+                image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-6
                 livenessProbe:
                   initialDelaySeconds: 60
                   tcpSocket:
@@ -858,7 +858,7 @@ objects:
                   value: "INFER"
                 - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                   value: "qdrouterd-headless-${INFRA_UUID}"
-                image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/amq-interconnect/amq-interconnect-1.2-openshift:1.0-6
+                image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-6
                 livenessProbe:
                   initialDelaySeconds: 60
                   tcpSocket:

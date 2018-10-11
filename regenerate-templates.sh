@@ -101,7 +101,7 @@ make -C ${WORKDIR} \
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-address-space-controller-openshift:${VERSION} \
     API_SERVER_IMAGE=${DOCKER_ORG}/amqmaas10-api-server-openshift:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-standard-controller-openshift:${VERSION} \
-    ROUTER_IMAGE=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/amq-interconnect/amq-interconnect-1.2-openshift:1.0-6 \
+    ROUTER_IMAGE=amq-interconnect/amq-interconnect-1.2-openshift:1.0-6 \
     ARTEMIS_IMAGE=${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION} \
     TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amqmaas10-topic-forwarder-openshift:${VERSION} \
     AGENT_IMAGE=${DOCKER_ORG}/amqmaas10-agent-openshift:${VERSION} \
