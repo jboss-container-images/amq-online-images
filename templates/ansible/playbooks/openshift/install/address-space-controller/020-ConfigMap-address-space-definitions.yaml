@@ -228,7 +228,7 @@ data:
                 value: "INFER"
               - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                 value: "qdrouterd-headless-${INFRA_UUID}"
-              image: rh-amqmaas-1/amqmaas10-router-openshift:dev
+              image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-6
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -262,32 +262,6 @@ data:
                 readOnly: true
               - mountPath: /etc/qpid-dispatch/config
                 name: qdrouterd-config
-            - env:
-              - name: ROUTER_HOST
-                value: 127.0.0.1
-              - name: ROUTER_PORT
-                value: '55671'
-              - name: CERT_DIR
-                value: /etc/enmasse-certs
-              image: rh-amqmaas-1/router-metrics:latest
-              livenessProbe:
-                initialDelaySeconds: 60
-                tcpSocket:
-                  port: routermetrics
-              name: metrics
-              ports:
-              - containerPort: 8080
-                name: routermetrics
-                protocol: TCP
-              resources:
-                limits:
-                  memory: 32Mi
-                requests:
-                  memory: 32Mi
-              volumeMounts:
-              - mountPath: /etc/enmasse-certs
-                name: router-internal-cert
-                readOnly: true
             volumes:
             - name: ssl-certs
               secret:
@@ -431,6 +405,8 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
+              - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
+                value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
               - name: ADDRESS_SPACE
                 value: ${ADDRESS_SPACE}
               - name: ADDRESS_SPACE_NAMESPACE
@@ -614,6 +590,8 @@ data:
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
     - description: The URL to use for OAUTH (if not set, OAUTH is not used)
       name: AUTHENTICATION_SERVICE_OAUTH_URL
+    - description: Name of Keycloak Identification Provider Hint
+      name: AUTHENTICATION_SERVICE_KC_IDP_HINT
     - description: Enable logging of kubernetes events
       name: ENABLE_EVENT_LOGGER
       value: 'false'
@@ -871,7 +849,7 @@ data:
                 value: "INFER"
               - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                 value: "qdrouterd-headless-${INFRA_UUID}"
-              image: rh-amqmaas-1/amqmaas10-router-openshift:dev
+              image: amq-interconnect/amq-interconnect-1.2-openshift:1.0-6
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -905,32 +883,6 @@ data:
                 readOnly: true
               - mountPath: /etc/qpid-dispatch/config
                 name: qdrouterd-config
-            - env:
-              - name: ROUTER_HOST
-                value: 127.0.0.1
-              - name: ROUTER_PORT
-                value: '55671'
-              - name: CERT_DIR
-                value: /etc/enmasse-certs
-              image: rh-amqmaas-1/router-metrics:latest
-              livenessProbe:
-                initialDelaySeconds: 60
-                tcpSocket:
-                  port: routermetrics
-              name: metrics
-              ports:
-              - containerPort: 8080
-                name: routermetrics
-                protocol: TCP
-              resources:
-                limits:
-                  memory: 32Mi
-                requests:
-                  memory: 32Mi
-              volumeMounts:
-              - mountPath: /etc/enmasse-certs
-                name: router-internal-cert
-                readOnly: true
             volumes:
             - name: ssl-certs
               secret:
@@ -1074,6 +1026,8 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
+              - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
+                value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
               - name: ADDRESS_SPACE
                 value: ${ADDRESS_SPACE}
               - name: ADDRESS_SPACE_NAMESPACE
@@ -1457,6 +1411,8 @@ data:
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
     - description: The URL to use for OAUTH (if not set, OAUTH is not used)
       name: AUTHENTICATION_SERVICE_OAUTH_URL
+    - description: Name of Keycloak Identification Provider Hint
+      name: AUTHENTICATION_SERVICE_KC_IDP_HINT
     - description: Enable logging of kubernetes events
       name: ENABLE_EVENT_LOGGER
       value: 'false'
@@ -1716,6 +1672,8 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
+              - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
+                value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
               image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
               livenessProbe:
                 httpGet:
@@ -1817,6 +1775,8 @@ data:
       name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
     - description: The URL to use for OAUTH (if not set, OAUTH is not used)
       name: AUTHENTICATION_SERVICE_OAUTH_URL
+    - description: Name of Keycloak Identification Provider Hint
+      name: AUTHENTICATION_SERVICE_KC_IDP_HINT
     - description: Enable logging of kubernetes events
       name: ENABLE_EVENT_LOGGER
       value: 'false'
