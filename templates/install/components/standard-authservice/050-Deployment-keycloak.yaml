@@ -16,6 +16,7 @@ spec:
       - env:
         - name: JAVA_OPTS_APPEND
           value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
+            -Xms512m -Xmx1024m
         - name: SSO_ADMIN_USERNAME
           valueFrom:
             secretKeyRef:
@@ -53,21 +54,23 @@ spec:
             path: /auth
             port: https
             scheme: HTTPS
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /auth
-            port: https
-            scheme: HTTPS
-          initialDelaySeconds: 30
+          initialDelaySeconds: 120
         name: keycloak
         ports:
         - containerPort: 5671
           name: amqps
         - containerPort: 8443
           name: https
+        readinessProbe:
+          httpGet:
+            path: /auth
+            port: https
+            scheme: HTTPS
+          initialDelaySeconds: 60
         resources:
           limits:
+            memory: 2Gi
+          requests:
             memory: 2Gi
         volumeMounts:
         - mountPath: /opt/eap/providers
