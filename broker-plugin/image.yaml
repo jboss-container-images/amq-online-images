@@ -1,7 +1,7 @@
 schema_version: 1
 
 name: rh-amqmaas-1/amqmaas10-broker-openshift
-description: "amqmaas image for artemis broker."
+description: "amqmaas initialization image for artemis broker."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
@@ -14,16 +14,16 @@ labels:
     - name: "io.openshift.tags"
       value: "amqmaas, broker, artemis"
 envs:
-    - name: "VERSION"
-      value: "2.6.1"
     - name: "ARTEMIS_HOME"
-      value: "/opt/apache-artemis-2.6.1"
+      value: "/opt/amq"
 
 packages:
     repositories:
         - jboss-os
+# Need to switch the repository definition to, and have an override for building on fedora:
+#       - name: OS
+#         id: rhel-server-os-7-rpms
     install:
-        - libaio
         - python
         - gettext
         - hostname
@@ -35,21 +35,13 @@ modules:
           - git:
                   url: https://github.com/jboss-openshift/cct_module.git
                   ref: master
-          - name: broker.common
-            path: modules/common
-          - name: broker.rhel
-            path: modules/rhel
-          - name: common.java
-            path: ../modules/common/java
+          - path: modules
       install:
-          - name: broker.common
+          - name: broker.plugin.installer
           - name: dynamic-resources
           - name: os-java-run
 
 artifacts:
-    - path: apache-artemis-2.6.1.amq-720004-redhat-1-bin.tar.gz
-      md5: b87bd36a8bed2725a86ab8af57709af9
-      name: apache-artemis-bin.tar.gz
     - path: shutdown-hook-0.23.0.redhat-00003.jar
       md5: 4867202d58b54be0c525425af0c8c4c7
       name: shutdown-hook.jar
@@ -69,13 +61,10 @@ artifacts:
       md5: f9410ba141f63cff9202149efc321657
       name: netty-tcnative-boringssl-static-linux-x86_64.jar
 
-volumes:
-    - name: "volume.broker"
-      path: "/var/run/artemis"
 run:
       user: 185
       cmd:
-          - "/opt/apache-artemis-2.6.1/bin/launch.sh"
+          - "/opt/amq/broker-plugin/bin/init-broker.sh"
 osbs:
       repository:
             name: containers/amqmaas-1

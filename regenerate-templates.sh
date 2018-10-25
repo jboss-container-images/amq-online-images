@@ -5,7 +5,7 @@ do_patch () {
     PATCH_TARGET=$2
     if [ -d "${PATCH_DIR}" ]
     then
-        for patch in $(find ${PATCH_DIR} -type f -name "*.patch"); do
+        for patch in $(find ${PATCH_DIR} -type f -name "*.patch" | sort -g); do
             echo Applying patch ${patch}
             patch --remove-empty-files --merge -f -d "${PATCH_TARGET}" -p1 < $patch
             if [[ $rc != 0 ]]; then
@@ -93,7 +93,11 @@ else
     echo No patches to apply
 fi
 
+
 echo Building templates
+export BROKER_PLUGIN_IMAGE="${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION}"
+envsubst '$${BROKER_PLUGIN_IMAGE}' < ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml > ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml.tmp && mv ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml.tmp ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml
+envsubst '$${BROKER_PLUGIN_IMAGE}' < ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml > ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml.tmp && mv ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml.tmp ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml
 
 make -C ${WORKDIR} \
     DOCKER_ORG=${DOCKER_ORG} \
@@ -102,7 +106,7 @@ make -C ${WORKDIR} \
     API_SERVER_IMAGE=${DOCKER_ORG}/amqmaas10-api-server-openshift:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-standard-controller-openshift:${VERSION} \
     ROUTER_IMAGE=amq-interconnect/amq-interconnect-1.2-openshift:1.0-6 \
-    ARTEMIS_IMAGE=${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION} \
+    ARTEMIS_IMAGE=amq-broker-7/amq-broker-72-openshift:1.0 \
     TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amqmaas10-topic-forwarder-openshift:${VERSION} \
     AGENT_IMAGE=${DOCKER_ORG}/amqmaas10-agent-openshift:${VERSION} \
     MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amqmaas10-mqtt-gateway-openshift:${VERSION} \
