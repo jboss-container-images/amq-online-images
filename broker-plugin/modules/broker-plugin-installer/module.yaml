@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: broker.common
+name: broker.plugin.installer
 version: '1.0'
 
 execute:

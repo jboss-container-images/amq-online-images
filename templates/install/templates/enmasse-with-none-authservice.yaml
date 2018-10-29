@@ -8,6 +8,284 @@ parameters:
   required: true
 objects:
 - apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: address-space-controller
+    labels:
+      app: enmasse
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-brokered-queue
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "brokered-queue"
+        },
+        "displayName": "Brokered Queue",
+        "displayOrder": 0,
+        "shortDescription": "Creates a queue on a broker.",
+        "longDescription": "Creates a queue on a broker.",
+        "uuid": "69f82df8-0501-11e8-a0a8-507b9def37d9",
+        "addressType": "queue",
+        "requiredResources": [
+          {
+            "name": "broker",
+            "credit": 0.0
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-brokered-topic
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "brokered-topic"
+        },
+        "displayName": "Brokered Topic",
+        "displayOrder": 0,
+        "shortDescription": "Creates a topic on a broker.",
+        "longDescription": "Creates a topic on a broker.",
+        "uuid": "a991e6fc-0501-11e8-8230-507b9def37d9",
+        "addressType": "topic",
+        "requiredResources": [
+          {
+            "name": "broker",
+            "credit": 0.0
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-pooled-queue
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "pooled-queue"
+        },
+        "displayName": "Pooled Queue",
+        "displayOrder": 0,
+        "shortDescription": "Creates a queue on a pooled broker.",
+        "longDescription": "Creates a queue on a pooled broker shared with other queues.",
+        "uuid": "0843743a-0503-11e8-91df-507b9def37d9",
+        "addressType": "queue",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          },
+          {
+            "name": "broker",
+            "credit": 0.01
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-pooled-topic
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "pooled-topic"
+        },
+        "displayName": "Pooled Topic",
+        "displayOrder": 0,
+        "shortDescription": "Creates a topic on a shared broker.",
+        "longDescription": "Creates a topic on a shared broker with other topics.",
+        "uuid": "45e0bc24-155e-11e8-8962-507b9def37d9",
+        "addressType": "topic",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          },
+          {
+            "name": "broker",
+            "credit": 0.01
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-sharded-queue
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "sharded-queue"
+        },
+        "displayName": "Sharded Queue",
+        "displayOrder": 0,
+        "shortDescription": "Creates a queue on a standalone broker.",
+        "longDescription": "Creates a queue on a standalone broker that can be sharded.",
+        "uuid": "aeddd606-0502-11e8-ad75-507b9def37d9",
+        "addressType": "queue",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          },
+          {
+            "name": "broker",
+            "credit": 1.0
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-sharded-topic
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "sharded-topic"
+        },
+        "displayName": "Sharded Topic",
+        "displayOrder": 0,
+        "shortDescription": "Creates a topic on a standalone broker.",
+        "longDescription": "Creates a topic on a standalone broker that can be sharded.",
+        "uuid": "de256d34-0502-11e8-98c9-507b9def37d9",
+        "addressType": "topic",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          },
+          {
+            "name": "broker",
+            "credit": 1.0
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-standard-anycast
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "standard-anycast"
+        },
+        "displayName": "Standard",
+        "displayOrder": 0,
+        "shortDescription": "Creates a direct anycast address.",
+        "longDescription": "Creates a direct anycast address where messages go via a router that does not take ownership of the messages.",
+        "uuid": "45edd942-0503-11e8-84ce-507b9def37d9",
+        "addressType": "anycast",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-standard-multicast
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "standard-multicast"
+        },
+        "displayName": "Standard",
+        "displayOrder": 0,
+        "shortDescription": "Creates a direct multicast address.",
+        "longDescription": "Creates a direct multicast address where messages go via a router that does not take ownership of the messages.",
+        "uuid": "60fc2702-0503-11e8-b60e-507b9def37d9",
+        "addressType": "multicast",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          }
+        ]
+      }
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: address-plan-standard-subscription
+    labels:
+      type: address-plan
+      app: enmasse
+  data:
+    definition: |-
+      {
+        "apiVersion": "enmasse.io/v1",
+        "kind": "AddressPlan",
+        "metadata": {
+          "name": "standard-subscription"
+        },
+        "displayName": "Topic Subscription",
+        "displayOrder": 0,
+        "shortDescription": "Creates a durable subscription on a topic.",
+        "longDescription": "Creates a durable subscription on a topic, which is then accessed as a distinct address.",
+        "uuid": "146ee531-2999-4015-85b9-a32931d7bcc5",
+        "addressType": "subscription",
+        "requiredResources": [
+          {
+            "name": "router",
+            "credit": 0.01
+          },
+          {
+            "name": "broker",
+            "credit": 0.01
+          }
+        ]
+      }
+- apiVersion: v1
   kind: ConfigMap
   metadata:
     labels:
@@ -1799,284 +2077,6 @@ objects:
           a quarter of BROKER_MEMORY_LIMIT
         name: GLOBAL_MAX_SIZE
         value: -1
-- apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: address-space-controller
-    labels:
-      app: enmasse
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-brokered-queue
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "brokered-queue"
-        },
-        "displayName": "Brokered Queue",
-        "displayOrder": 0,
-        "shortDescription": "Creates a queue on a broker.",
-        "longDescription": "Creates a queue on a broker.",
-        "uuid": "69f82df8-0501-11e8-a0a8-507b9def37d9",
-        "addressType": "queue",
-        "requiredResources": [
-          {
-            "name": "broker",
-            "credit": 0.0
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-brokered-topic
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "brokered-topic"
-        },
-        "displayName": "Brokered Topic",
-        "displayOrder": 0,
-        "shortDescription": "Creates a topic on a broker.",
-        "longDescription": "Creates a topic on a broker.",
-        "uuid": "a991e6fc-0501-11e8-8230-507b9def37d9",
-        "addressType": "topic",
-        "requiredResources": [
-          {
-            "name": "broker",
-            "credit": 0.0
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-pooled-queue
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "pooled-queue"
-        },
-        "displayName": "Pooled Queue",
-        "displayOrder": 0,
-        "shortDescription": "Creates a queue on a pooled broker.",
-        "longDescription": "Creates a queue on a pooled broker shared with other queues.",
-        "uuid": "0843743a-0503-11e8-91df-507b9def37d9",
-        "addressType": "queue",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          },
-          {
-            "name": "broker",
-            "credit": 0.01
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-pooled-topic
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "pooled-topic"
-        },
-        "displayName": "Pooled Topic",
-        "displayOrder": 0,
-        "shortDescription": "Creates a topic on a shared broker.",
-        "longDescription": "Creates a topic on a shared broker with other topics.",
-        "uuid": "45e0bc24-155e-11e8-8962-507b9def37d9",
-        "addressType": "topic",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          },
-          {
-            "name": "broker",
-            "credit": 0.01
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-sharded-queue
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "sharded-queue"
-        },
-        "displayName": "Sharded Queue",
-        "displayOrder": 0,
-        "shortDescription": "Creates a queue on a standalone broker.",
-        "longDescription": "Creates a queue on a standalone broker that can be sharded.",
-        "uuid": "aeddd606-0502-11e8-ad75-507b9def37d9",
-        "addressType": "queue",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          },
-          {
-            "name": "broker",
-            "credit": 1.0
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-sharded-topic
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "sharded-topic"
-        },
-        "displayName": "Sharded Topic",
-        "displayOrder": 0,
-        "shortDescription": "Creates a topic on a standalone broker.",
-        "longDescription": "Creates a topic on a standalone broker that can be sharded.",
-        "uuid": "de256d34-0502-11e8-98c9-507b9def37d9",
-        "addressType": "topic",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          },
-          {
-            "name": "broker",
-            "credit": 1.0
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-standard-anycast
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "standard-anycast"
-        },
-        "displayName": "Standard",
-        "displayOrder": 0,
-        "shortDescription": "Creates a direct anycast address.",
-        "longDescription": "Creates a direct anycast address where messages go via a router that does not take ownership of the messages.",
-        "uuid": "45edd942-0503-11e8-84ce-507b9def37d9",
-        "addressType": "anycast",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-standard-multicast
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "standard-multicast"
-        },
-        "displayName": "Standard",
-        "displayOrder": 0,
-        "shortDescription": "Creates a direct multicast address.",
-        "longDescription": "Creates a direct multicast address where messages go via a router that does not take ownership of the messages.",
-        "uuid": "60fc2702-0503-11e8-b60e-507b9def37d9",
-        "addressType": "multicast",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          }
-        ]
-      }
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: address-plan-standard-subscription
-    labels:
-      type: address-plan
-      app: enmasse
-  data:
-    definition: |-
-      {
-        "apiVersion": "enmasse.io/v1",
-        "kind": "AddressPlan",
-        "metadata": {
-          "name": "standard-subscription"
-        },
-        "displayName": "Topic Subscription",
-        "displayOrder": 0,
-        "shortDescription": "Creates a durable subscription on a topic.",
-        "longDescription": "Creates a durable subscription on a topic, which is then accessed as a distinct address.",
-        "uuid": "146ee531-2999-4015-85b9-a32931d7bcc5",
-        "addressType": "subscription",
-        "requiredResources": [
-          {
-            "name": "router",
-            "credit": 0.01
-          },
-          {
-            "name": "broker",
-            "credit": 0.01
-          }
-        ]
-      }
 - apiVersion: v1
   kind: ConfigMap
   metadata:
