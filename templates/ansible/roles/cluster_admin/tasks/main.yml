@@ -12,9 +12,6 @@
     replace: "{{ namespace }}"
   with_items: "{{ yamls.files }}"
 - import_role:
-    name: none_authservice
-  when: '"none" in authentication_services'
-- import_role:
     name: standard_authservice
   when: '"standard" in authentication_services'
 - import_role:
