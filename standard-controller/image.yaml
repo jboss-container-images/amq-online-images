@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, standard-controller"
 envs:
   - name: "VERSION"
-    value: "latest"
+    value: "0.24.0-rc1"
 
 modules:
       repositories:
@@ -37,8 +37,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: standard-controller-0.23.0.redhat-00003.jar
-      md5: ba78b62f95d09338743d4423df657bad
+    - path: standard-controller-0.24.0.rc1-redhat-00002.jar
+      md5: 235d0af6a6a8ef8c3bded775eaa2cd19
       name: standard-controller.jar
 
 run:

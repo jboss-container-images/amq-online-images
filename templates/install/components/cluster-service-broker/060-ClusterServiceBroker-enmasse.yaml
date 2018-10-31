@@ -5,10 +5,10 @@ metadata:
   labels:
     app: enmasse
 spec:
-  url: "https://service-broker.myproject.svc:8443/osbapi/"
+  url: "https://service-broker.amq-online-infra.svc:8443/osbapi/"
   authInfo:
     bearer:
       secretRef:
         name: service-catalog-credentials
-        namespace: myproject
+        namespace: amq-online-infra
   insecureSkipTLSVerify: true
