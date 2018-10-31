@@ -94,7 +94,8 @@ else
 fi
 
 
-make -C ${WORKDIR} \
+pushd ${WORKDIR}
+make \
     DOCKER_ORG=${DOCKER_ORG} \
     DOCKER_REGISTRY_PREFIX="" \
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-address-space-controller-openshift:${VERSION} \
@@ -112,10 +113,19 @@ make -C ${WORKDIR} \
     KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-auth-controller-openshift:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amqmaas10-service-broker-openshift:${VERSION} \
     templates
+mvn clean install -DskipTests -T 2C
+popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
 rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-latest/* ${TARGET_TEMPLATE_DIR}
+
+ADDRESS_CONTROLLER_RESOURCES=$DIR/address-space-controller/modules/common/added
+mkdir -p ${ADDRESS_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/addressplans ${ADDRESS_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/addressspaceplans ${ADDRESS_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/brokeredinfraconfigs ${ADDRESS_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/standardinfraconfigs ${ADDRESS_CONTROLLER_RESOURCES}
 
 rm -rf templates/docs
 
