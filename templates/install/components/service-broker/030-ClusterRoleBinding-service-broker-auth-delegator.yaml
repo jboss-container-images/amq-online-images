@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: "enmasse.io:service-broker-auth-delegator-myproject"
+  name: "enmasse.io:service-broker-auth-delegator-amq-online-infra"
   labels:
     app: enmasse
 roleRef:
@@ -11,4 +11,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: service-broker
-  namespace: myproject
+  namespace: amq-online-infra

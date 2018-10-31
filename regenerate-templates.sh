@@ -94,11 +94,6 @@ else
 fi
 
 
-echo Building templates
-export BROKER_PLUGIN_IMAGE="${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION}"
-envsubst '$${BROKER_PLUGIN_IMAGE}' < ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml > ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml.tmp && mv ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml.tmp ${WORKDIR}/templates/address-space-controller/020-ConfigMap-address-space-definitions.yaml
-envsubst '$${BROKER_PLUGIN_IMAGE}' < ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml > ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml.tmp && mv ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml.tmp ${WORKDIR}/templates/address-space-controller/020-ConfigMap-standard-broker-definitions.yaml
-
 make -C ${WORKDIR} \
     DOCKER_ORG=${DOCKER_ORG} \
     DOCKER_REGISTRY_PREFIX="" \
@@ -121,6 +116,8 @@ make -C ${WORKDIR} \
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
 rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-latest/* ${TARGET_TEMPLATE_DIR}
+
+rm -rf templates/docs
 
 if [[ ${KEEP_WORK_DIR} -eq 0 ]]; then
     rm -rf ${WORKDIR}

@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, address-space-controller"
 envs:
   - name: "VERSION"
-    value: "latest"
+    value: "0.24.0-rc1"
 
 modules:
       repositories:
@@ -37,8 +37,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: address-space-controller-0.23.0.redhat-00003.jar
-      md5: 1a269a61923e1ba5cd4d7d4f36b93e56
+    - path: address-space-controller-0.24.0.rc1-redhat-00002.jar
+      md5: 2eae0ad5e6d92c5bb379410ac67e0904
       name: address-space-controller.jar
 
 run:
