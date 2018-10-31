@@ -1,0 +1,16 @@
+apiVersion: admin.enmasse.io/v1alpha1
+kind: BrokeredInfraConfig
+metadata:
+  name: default
+  labels:
+    app: enmasse
+spec:
+  version: 0.24-SNAPSHOT
+  admin:
+    resources:
+      memory: 512Mi
+  broker:
+    resources:
+      memory: 512Mi
+      storage: 5Gi
+    addressFullPolicy: FAIL
