@@ -16,6 +16,8 @@ labels:
 envs:
     - name: "VERSION"
       value: "0.24.0-rc2.jbossorg-1"
+    - name: "LOG_LEVEL"
+      value: "info"
 modules:
       repositories:
           - git:
