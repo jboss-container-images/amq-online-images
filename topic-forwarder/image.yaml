@@ -17,7 +17,7 @@ envs:
     - name: "JAVA_HOME"
       value: "/usr/lib/jvm/java"
     - name: "VERSION"
-      value: "0.24.0-rc1"
+      value: "0.24.0-rc2.jbossorg-1"
 modules:
       repositories:
           - git:
@@ -31,8 +31,8 @@ modules:
           - name: topic-forwarder
           - name: common.java
 artifacts:
-    - path: topic-forwarder-0.24.0.rc1-redhat-00002.jar
-      md5: 99f1e2f8301fd48339332788a95f6a29
+    - path: topic-forwarder-0.24.0.rc2-redhat-00001.jar
+      md5: 1377ebe6ea99cc9ad14712ed65a5a06d
       name: topic-forwarder.jar
 run:
       user: 185

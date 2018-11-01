@@ -2544,19 +2544,6 @@ objects:
     - apiGroups: [ "oauth.openshift.io" ]
       resources: [ "oauthclients" ]
       verbs: [ "create", "get" ]
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    labels:
-      app: enmasse
-      template: postgresql-persistent-template
-    name: postgresql
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: 2Gi
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
