@@ -14,7 +14,7 @@
 - name: Replace namespace in configuration
   replace:
     dest: "{{item.path}}"
-    regexp: "enmasse-infra"
+    regexp: "amq-online-infra"
     replace: "{{ namespace }}"
   with_items: "{{ yamls.files }}"
 - import_role:
