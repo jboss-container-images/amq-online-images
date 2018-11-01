@@ -77,7 +77,7 @@ spec:
       volumes:
       - name: postgresql-data
         persistentVolumeClaim:
-          claimName: postgresql
+          claimName: postgresql-data
   test: false
   triggers:
   - imageChangeParams:
