@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, mqtt-gateway"
 envs:
     - name: "VERSION"
-      value: "0.24.0-rc1"
+      value: "0.24.0-rc2.jbossorg-1"
 modules:
       repositories:
           - name: common.java
@@ -41,8 +41,8 @@ modules:
           - name: mqtt-gateway
           - name: common.java
 artifacts:
-    - path: mqtt-gateway-0.24.0.rc1-redhat-00002.jar
-      md5: c575b01a85560ea488408fb8707684b1
+    - path: mqtt-gateway-0.24.0.rc2-redhat-00001.jar
+      md5: 11447840c9ea129a6730afbcde4426d5
       name: mqtt-gateway.jar
 run:
       user: 185
