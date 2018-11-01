@@ -120,12 +120,12 @@ echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
 rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-latest/* ${TARGET_TEMPLATE_DIR}
 
-ADDRESS_CONTROLLER_RESOURCES=$DIR/address-space-controller/modules/common/added
-mkdir -p ${ADDRESS_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/addressplans ${ADDRESS_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/addressspaceplans ${ADDRESS_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/brokeredinfraconfigs ${ADDRESS_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/standardinfraconfigs ${ADDRESS_CONTROLLER_RESOURCES}
+ADDRESS_SPACE_CONTROLLER_RESOURCES=$DIR/address-space-controller/modules/common/added
+mkdir -p ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/addressplans ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/addressspaceplans ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/brokeredinfraconfigs ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
+rsync -a ${WORKDIR}/address-space-controller/target/classes/standardinfraconfigs ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
 
 rm -rf templates/docs
 
