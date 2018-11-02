@@ -500,6 +500,8 @@ data:
                 name: broker-custom
                 readOnly: false
             volumes:
+            - name: broker-custom
+              emptyDir: {}
             - name: authservice-ca
               secret:
                 secretName: authservice-ca.${INFRA_UUID}

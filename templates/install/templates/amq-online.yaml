@@ -2065,6 +2065,8 @@ objects:
                   name: broker-custom
                   readOnly: false
               volumes:
+              - emptyDir: {}
+                name: broker-custom
               - name: authservice-ca
                 secret:
                   secretName: authservice-ca.${INFRA_UUID}
