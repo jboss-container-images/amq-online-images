@@ -20,7 +20,6 @@ cp -r ${BROKER_PLUGIN_DIR}/bin $BROKER_CUSTOM
 function configure_brokered() {
     cp $CONFIG_TEMPLATES/brokered/broker.xml /tmp/broker.xml
     cp $CONFIG_TEMPLATES/brokered/login.config /tmp/login.config
-    echo "export AMQ_ROLE=admin" >> $BROKER_CUSTOM/bin/env.sh
     export HAWTIO_ROLE=admin
 }
 
@@ -33,7 +32,7 @@ function configure_standard() {
         cp $CONFIG_TEMPLATES/standard/colocated/broker.xml /tmp/broker.xml
     fi
 
-    echo "export AMQ_ROLE=manage" >> $BROKER_CUSTOM/bin/env.sh
+    cp $CONFIG_TEMPLATES/standard/login.config /tmp/login.config
     export HAWTIO_ROLE=manage
 }
 
@@ -45,7 +44,7 @@ function pre_configuration() {
     echo "export AMQ_REQUIRE_LOGIN=false" >> $BROKER_CUSTOM/bin/env.sh
     echo "export AMQ_TRANSPORTS=amqp" >> $BROKER_CUSTOM/bin/env.sh
     echo "export AMQ_NAME=$AMQ_NAME" >> $BROKER_CUSTOM/bin/env.sh
-
+    echo "export AMQ_ROLE=admin" >> $BROKER_CUSTOM/bin/env.sh
     echo "export CONTAINER_ID=$HOSTNAME" >> $BROKER_CUSTOM/bin/env.sh
     echo "export KEYSTORE_PATH=$instanceDir/etc/enmasse-keystore.jks" >> $BROKER_CUSTOM/bin/env.sh
     echo "export TRUSTSTORE_PATH=$instanceDir/etc/enmasse-truststore.jks" >> $BROKER_CUSTOM/bin/env.sh
@@ -118,6 +117,9 @@ function configure_ssl() {
     keytool -importkeystore -srcstorepass ${KEYSTORE_PASS} -deststorepass ${KEYSTORE_PASS} -destkeystore $CUSTOM_KEYSTORE_PATH -srckeystore /tmp/enmasse-keystore.p12 -srcstoretype PKCS12
     keytool -import -noprompt -file /etc/enmasse-certs/ca.crt -alias firstCA -deststorepass ${TRUSTSTORE_PASS} -keystore $CUSTOM_TRUSTSTORE_PATH
 
+    cp /etc/pki/java/cacerts ${CUSTOM_AUTH_TRUSTSTORE_PATH}
+    chmod 644 ${CUSTOM_AUTH_TRUSTSTORE_PATH}
+    keytool -storepasswd -storepass changeit -new ${TRUSTSTORE_PASS} -keystore $CUSTOM_AUTH_TRUSTSTORE_PATH
     keytool -import -noprompt -file /etc/authservice-ca/tls.crt -alias firstCA -deststorepass ${TRUSTSTORE_PASS} -keystore $CUSTOM_AUTH_TRUSTSTORE_PATH
 
     if [ -d /etc/external-certs ]
