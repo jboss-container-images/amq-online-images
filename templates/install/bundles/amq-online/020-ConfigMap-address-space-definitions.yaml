@@ -1326,3 +1326,7 @@ data:
     - description: Broker address full policy
       name: BROKER_ADDRESS_FULL_POLICY
       value: FAIL
+    - description: The name of broker
+      displayName: AMQ Name
+      name: AMQ_NAME
+      value: broker

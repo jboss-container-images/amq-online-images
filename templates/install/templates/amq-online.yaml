@@ -1550,6 +1550,10 @@ objects:
       - description: Broker address full policy
         name: BROKER_ADDRESS_FULL_POLICY
         value: FAIL
+      - description: The name of broker
+        displayName: AMQ Name
+        name: AMQ_NAME
+        value: broker
 - apiVersion: v1
   data:
     config.yaml: '{"hostPort": "127.0.0.1:1099", "rules": [{"labels": {"broker":
