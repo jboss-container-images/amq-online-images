@@ -3,4 +3,5 @@ schema_version: 1
 name: mqtt-gateway
 version: '1.0'
 execute:
+  - script: licenses.sh
   - script: install.sh
