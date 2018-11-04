@@ -30,6 +30,6 @@ copyartifact:
 	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(NEW_ABSOLUTE_LOCAL_ARTIFACT)
 
 clean:
-	rm -rf build
+	rm -rf build target
 
 .PHONY: all push snapshot clean

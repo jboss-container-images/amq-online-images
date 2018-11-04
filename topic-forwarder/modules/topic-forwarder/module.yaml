@@ -3,4 +3,5 @@ schema_version: 1
 name: topic-forwarder
 version: '1.0'
 execute:
+  - script: licenses.sh
   - script: install.sh
