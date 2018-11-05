@@ -1,4 +1,4 @@
-- name: "Deploy EnMasse"
+- name: "Deploy AMQ Online"
   hosts: enmasse
   roles:
     - cluster_admin

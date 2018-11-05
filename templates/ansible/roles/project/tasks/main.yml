@@ -1,6 +1,6 @@
 ---
 - name: Create project namespace
-  shell: oc new-project {{ namespace }} --description="EnMasse Infrastructure"
+  shell: oc new-project {{ namespace }} --description="AMQ Online Infrastructure"
   register: namespace_exists
   failed_when: namespace_exists.stderr != '' and 'already exists' not in namespace_exists.stderr
   changed_when: namespace_exists.rc == 0

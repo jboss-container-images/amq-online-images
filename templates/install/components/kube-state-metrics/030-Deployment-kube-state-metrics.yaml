@@ -28,4 +28,4 @@ spec:
           - --telemetry-port=8081
           - --namespace=amq-online-infra
           - --collectors=pods
-      serviceAccount: kube-state-metrics
+      serviceAccountName: kube-state-metrics
