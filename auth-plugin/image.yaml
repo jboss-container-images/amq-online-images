@@ -19,7 +19,7 @@ envs:
     - name: "KEYCLOAK_PLUGIN_DIR"
       value: "/keycloak-plugin"
     - name: "VERSION"
-      value: "0.24.0-rc2.jbossorg-1"
+      value: "0.24.0.jbossorg-2"
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 packages:
@@ -41,8 +41,8 @@ modules:
           - name: auth.rhel.install
           - name: common.java
 artifacts:
-    - path: sasl-plugin-0.24.0.rc2-redhat-00001.jar 
-      md5: 0abfce7659f9d7e328184dc84d9798f4
+    - path: sasl-plugin-0.24.0.redhat-00003.jar
+      md5: 493b55439410e9fbd892147454e3d0a9
       name: sasl-plugin.jar
 
 run:

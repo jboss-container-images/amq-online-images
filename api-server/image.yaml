@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, api-server"
 envs:
   - name: "VERSION"
-    value: "0.24.0-rc2.jbossorg-1"
+    value: "0.24.0.jbossorg-2"
   - name: "LOG_LEVEL"
     value: "info"
 
@@ -33,8 +33,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: api-server-0.24.0.rc2-redhat-00001.jar
-      md5: e2b8672d0a116c69cf320390e5cecfb8
+    - path: api-server-0.24.0.redhat-00003.jar
+      md5: 190151dc977217d691b2f67768df1a64
       name: api-server.jar
 
 run:
