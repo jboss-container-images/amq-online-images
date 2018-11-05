@@ -8,7 +8,7 @@ labels:
     - name: "com.redhat.component"
       value: "rh-amqmaas-1-amqmaas10-agent-openshift-container"
     - name: "io.k8s.description"
-      value: "console for enmaase"
+      value: "console for AMQ Online"
     - name: "io.k8s.display-name"
       value: "AMQ Online Console"
     - name: "io.openshift.tags"
