@@ -5,7 +5,7 @@ set -e
 PRODUCT_IDENTIFIER=$(echo ${JBOSS_IMAGE_NAME} | awk -F'/' '{print $2}')
 SOURCES_DIR=/tmp/artifacts/
 
-for jar in amqp-connector sasl-delegation jmx-exporter
+for jar in amqp-connector sasl-delegation
 do
     LICENSE_DIR=/root/licenses/${PRODUCT_IDENTIFIER}/${jar}
     mkdir -p ${LICENSE_DIR}
