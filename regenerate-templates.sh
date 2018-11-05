@@ -101,7 +101,7 @@ make \
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-address-space-controller-openshift:${VERSION} \
     API_SERVER_IMAGE=${DOCKER_ORG}/amqmaas10-api-server-openshift:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-standard-controller-openshift:${VERSION} \
-    ROUTER_IMAGE=amq-interconnect/amq-interconnect-1.2-openshift:1.0-6 \
+    ROUTER_IMAGE=amq-interconnect/amq-interconnect-1.2-openshift:1.0 \
     ARTEMIS_IMAGE=amq-broker-7/amq-broker-72-openshift:1.0 \
     TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amqmaas10-topic-forwarder-openshift:${VERSION} \
     AGENT_IMAGE=${DOCKER_ORG}/amqmaas10-agent-openshift:${VERSION} \
