@@ -1,16 +1,16 @@
 schema_version: 1
 
 name: rh-amqmaas-1/amqmaas10-service-broker-openshift
-description: "global component that implements the Open Service Broker API for provisioning messaging."
+description: "Global component that implements the Open Service Broker API for provisioning messaging."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "amqmaas-1-amqmaas10-service-broker-openshift-container"
+      value: "rh-amqmaas-1-amqmaas10-service-broker-openshift-container"
     - name: "io.k8s.description"
-      value: "component that implements the Open Service Broker API for provisioning messaging."
+      value: "Component that implements the Open Service Broker API for provisioning messaging."
     - name: "io.k8s.display-name"
-      value: "AMQ Maas Service Broker"
+      value: "AMQ Online Service Broker"
     - name: "io.openshift.tags"
       value: "amqmaas, service-broker"
 envs:

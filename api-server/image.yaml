@@ -1,16 +1,16 @@
 schema_version: 1
 
 name: rh-amqmaas-1/amqmaas10-api-server-openshift
-description: "global component that implements an API for creating and deleting AMQ Maas address spaces and addresses."
+description: "global component that implements an API for creating and deleting AMQ Online address spaces and addresses."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "amqmaas-1-amqmaas10-api-server-openshift-container"
+      value: "rh-amqmaas-1-amqmaas10-api-server-openshift-container"
     - name: "io.k8s.description"
-      value: "component that implements an API for creating and deleting AMQ Maas address spaces and addresses."
+      value: "component that implements an API for creating and deleting AMQ Online address spaces and addresses."
     - name: "io.k8s.display-name"
-      value: "AMQ Maas API Server"
+      value: "AMQ Online API Server"
     - name: "io.openshift.tags"
       value: "amqmaas, api-server"
 envs:

@@ -1,16 +1,16 @@
 schema_version: 1
 
 name: rh-amqmaas-1/amqmaas10-broker-openshift
-description: "amqmaas initialization image for artemis broker."
+description: "AMQ Online initialization image for AMQ Broker."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "amqmaas-1-amqmaas10-broker-openshift-container"
+      value: "rh-amqmaas-1-amqmaas10-broker-openshift-container"
     - name: "io.k8s.description"
-      value: "implementation of the artemis broker"
+      value: "Implementation of the AMQ Broker"
     - name: "io.k8s.display-name"
-      value: "AMQMaas Broker"
+      value: "AMQ Online Broker"
     - name: "io.openshift.tags"
       value: "amqmaas, broker, artemis"
 envs:

@@ -2,15 +2,15 @@ schema_version: 1
 
 version: 1.0
 name: rh-amqmaas-1/amqmaas10-agent-openshift
-description: "AMQMaas console"
+description: "AMQ Online console"
 from: rhscl/nodejs-6-rhel7:latest
 labels:
     - name: "com.redhat.component"
-      value: "amqmaas-1-amqmaas10-agent-openshift-container"
+      value: "rh-amqmaas-1-amqmaas10-agent-openshift-container"
     - name: "io.k8s.description"
       value: "console for enmaase"
     - name: "io.k8s.display-name"
-      value: "AMQMaas Console"
+      value: "AMQ Online Console"
     - name: "io.openshift.tags"
       value: "amqmaas, console, agent"
 envs:
