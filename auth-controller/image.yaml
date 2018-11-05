@@ -2,15 +2,15 @@ schema_version: 1
 
 version: 1.0
 name: rh-amqmaas-1/amqmaas10-auth-controller-openshift
-description: "AMQMaas SSO Controller for authentication"
+description: "AMQ Online SSO Controller for authentication"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "amqmaas-1-amqmaas10-auth-controller-openshift-container"
+      value: "rh-amqmaas-1-amqmaas10-auth-controller-openshift-container"
     - name: "io.k8s.description"
-      value: "AMQMaas Authentication Controller using SSO"
+      value: "AMQ Online Authentication Controller using SSO"
     - name: "io.k8s.display-name"
-      value: "AMQMaas Authentication Controller"
+      value: "AMQ Online Authentication Controller"
     - name: "io.openshift.tags"
       value: "amqmaas, sso-controller, authentication"
 envs:

@@ -1,16 +1,16 @@
 schema_version: 1
 
 name: rh-amqmaas-1/amqmaas10-standard-controller-openshift
-description: "global component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance."
+description: "global component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "amqmaas-1-amqmaas10-standard-controller-openshift-container"
+      value: "rh-amqmaas-1-amqmaas10-standard-controller-openshift-container"
     - name: "io.k8s.description"
-      value: "component that implements an API for creating and deleting AMQ Maas infrastructure instances, and modifying the address configuration per instance"
+      value: "component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance"
     - name: "io.k8s.display-name"
-      value: "AMQ Maas Standard Controller"
+      value: "AMQ Online Standard Controller"
     - name: "io.openshift.tags"
       value: "amqmaas, standard-controller"
 envs:
