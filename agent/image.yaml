@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, console, agent"
 envs:
     - name: "VERSION"
-      value: "0.24.0-rc2.jbossorg-1"
+      value: "0.24.0.jbossorg-2"
 modules:
       repositories:
           - name: agent
@@ -24,8 +24,8 @@ modules:
           - name: agent
 
 artifacts:
-    - path: agent-0.24.0.rc2-redhat-00001-dist.zip
-      md5: 5bbccec303f89e5c45345a439ea6c7dd
+    - path: agent-0.24.0.redhat-00003-dist.zip
+      md5: b502c798c0faee9527e61d2ee5949083
       name: agent-dist.zip
 
 ports:
