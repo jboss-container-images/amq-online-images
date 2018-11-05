@@ -474,7 +474,7 @@ data:
               - mountPath: /opt/agent/messaging-cert
                 name: messaging-cert
                 readOnly: true
-            serviceAccount: ${ADDRESS_SPACE_ADMIN_SA}
+            serviceAccountName: ${ADDRESS_SPACE_ADMIN_SA}
             volumes:
             - name: console-secret
               secret:
@@ -1230,7 +1230,7 @@ data:
               - mountPath: /opt/agent/messaging-cert
                 name: messaging-cert
                 readOnly: true
-            serviceAccount: ${ADDRESS_SPACE_ADMIN_SA}
+            serviceAccountName: ${ADDRESS_SPACE_ADMIN_SA}
             volumes:
             - name: authservice-ca
               secret:
@@ -1322,11 +1322,11 @@ data:
     - description: Global max size for all addresses in broker. Cannot be larger than
         a quarter of BROKER_MEMORY_LIMIT
       name: GLOBAL_MAX_SIZE
-      value: -1
+      value: "-1"
     - description: Broker address full policy
       name: BROKER_ADDRESS_FULL_POLICY
       value: FAIL
-    - description: The name of broker
+    - description: The name of the broker
       displayName: AMQ Name
       name: AMQ_NAME
       value: broker

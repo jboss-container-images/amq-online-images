@@ -7,7 +7,7 @@ metadata:
   annotations:
     enmasse.io/with-mqtt: true
 spec:
-  version: 0.24.0-rc2.jbossorg-1
+  version: 0.24.0.jbossorg-2
   admin:
     resources:
       memory: 512Mi

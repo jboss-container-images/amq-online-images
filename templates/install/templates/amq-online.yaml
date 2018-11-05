@@ -4,7 +4,7 @@ metadata:
   name: amq-online
 parameters:
 - name: NAMESPACE
-  description: Namespace where EnMasse should be deployed
+  description: Namespace where AMQ Online should be deployed
   required: true
 objects:
 - apiVersion: apiextensions.k8s.io/v1beta1
@@ -698,7 +698,7 @@ objects:
                 - mountPath: /opt/agent/messaging-cert
                   name: messaging-cert
                   readOnly: true
-              serviceAccount: ${ADDRESS_SPACE_ADMIN_SA}
+              serviceAccountName: ${ADDRESS_SPACE_ADMIN_SA}
               volumes:
               - name: console-secret
                 secret:
@@ -1454,7 +1454,7 @@ objects:
                 - mountPath: /opt/agent/messaging-cert
                   name: messaging-cert
                   readOnly: true
-              serviceAccount: ${ADDRESS_SPACE_ADMIN_SA}
+              serviceAccountName: ${ADDRESS_SPACE_ADMIN_SA}
               volumes:
               - name: authservice-ca
                 secret:
@@ -1546,11 +1546,11 @@ objects:
       - description: Global max size for all addresses in broker. Cannot be larger than
           a quarter of BROKER_MEMORY_LIMIT
         name: GLOBAL_MAX_SIZE
-        value: -1
+        value: "-1"
       - description: Broker address full policy
         name: BROKER_ADDRESS_FULL_POLICY
         value: FAIL
-      - description: The name of broker
+      - description: The name of the broker
         displayName: AMQ Name
         name: AMQ_NAME
         value: broker
@@ -1842,7 +1842,7 @@ objects:
       - description: Global max size for all addresses in broker. Cannot be larger than
           a quarter of BROKER_MEMORY_LIMIT
         name: GLOBAL_MAX_SIZE
-        value: -1
+        value: "-1"
       - description: The name of the broker
         displayName: AMQ Name
         name: AMQ_NAME
@@ -2021,7 +2021,7 @@ objects:
                 - mountPath: /etc/enmasse-certs
                   name: broker-internal-cert
                   readOnly: true
-              initContainers:
+             initContainers:
               - env:
                 - name: INFRA_UUID
                   value: ${INFRA_UUID}
@@ -2071,8 +2071,8 @@ objects:
                   name: broker-custom
                   readOnly: false
               volumes:
-              - emptyDir: {}
-                name: broker-custom
+              - name: broker-custom
+                emptyDir: {}
               - name: authservice-ca
                 secret:
                   secretName: authservice-ca.${INFRA_UUID}
@@ -2142,12 +2142,11 @@ objects:
       - description: Global max size for all addresses in broker. Cannot be larger than
           a quarter of BROKER_MEMORY_LIMIT
         name: GLOBAL_MAX_SIZE
-        value: -1
+        value: "-1"
       - description: The name of the broker
         displayName: AMQ Name
         name: AMQ_NAME
         value: broker
-  
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: Role
   metadata:
@@ -2240,10 +2239,6 @@ objects:
         - env:
           - name: JAVA_OPTS
             value: -verbose:gc
-          - name: STANDARD_AUTHSERVICE_CONFIG_NAME
-            value: keycloak-config
-          - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
-            value: standard-authservice-cert
           - name: ENABLE_EVENT_LOGGER
             valueFrom:
               configMapKeyRef:
@@ -2314,7 +2309,7 @@ objects:
           - mountPath: /address-space-definitions
             name: address-space-definitions
             readOnly: true
-        serviceAccount: address-space-controller
+        serviceAccountName: address-space-controller
         volumes:
         - configMap:
             name: address-space-definitions
@@ -2372,7 +2367,7 @@ objects:
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
-    name: "enmasse.io:apiserver-authentication-reader"
+    name: "enmasse.io:apiserver-authentication-reader-${NAMESPACE}"
     namespace: kube-system
     labels:
       app: enmasse
@@ -2489,7 +2484,7 @@ objects:
           - mountPath: /api-server-cert
             name: api-server-cert
             readOnly: true
-        serviceAccount: api-server
+        serviceAccountName: api-server
         volumes:
         - name: api-server-cert
           secret:
@@ -2655,7 +2650,7 @@ objects:
               memory: 256Mi
             requests:
               memory: 256Mi
-        serviceAccount: keycloak-controller
+        serviceAccountName: keycloak-controller
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
