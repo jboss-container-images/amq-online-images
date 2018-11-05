@@ -2,7 +2,7 @@
 localhost ansible_connection=local
 
 [enmasse:vars]
-namespace=enmasse-infra
+namespace=amq-online-infra
 enable_rbac=False
 api_server=True
 service_catalog=False

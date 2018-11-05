@@ -271,7 +271,7 @@ data:
     - description: Global max size for all addresses in broker. Cannot be larger than
         a quarter of BROKER_MEMORY_LIMIT
       name: GLOBAL_MAX_SIZE
-      value: -1
+      value: "-1"
     - description: The name of the broker
       displayName: AMQ Name
       name: AMQ_NAME
@@ -450,7 +450,7 @@ data:
               - mountPath: /etc/enmasse-certs
                 name: broker-internal-cert
                 readOnly: true
-            initContainers:
+           initContainers:
             - env:
               - name: INFRA_UUID
                 value: ${INFRA_UUID}
@@ -571,9 +571,8 @@ data:
     - description: Global max size for all addresses in broker. Cannot be larger than
         a quarter of BROKER_MEMORY_LIMIT
       name: GLOBAL_MAX_SIZE
-      value: -1
+      value: "-1"
     - description: The name of the broker
       displayName: AMQ Name
       name: AMQ_NAME
       value: broker
-
