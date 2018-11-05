@@ -18,6 +18,13 @@ cp -r ${BROKER_PLUGIN_DIR}/bin $BROKER_CUSTOM
 #cp -r ${BROKER_PLUGIN_DIR}/conf $BROKER_CUSTOM
 
 function configure_brokered() {
+    DISABLE_AUTHORIZATION=$(echo ${DISABLE_AUTHORIZATION-false} | tr '[:upper:]' '[:lower:]')
+    if [ "${DISABLE_AUTHORIZATION}" == "true" ]
+    then
+        export KEYCLOAK_GROUP_PERMISSIONS=false
+    else
+        export KEYCLOAK_GROUP_PERMISSIONS=true
+    fi
     cp $CONFIG_TEMPLATES/brokered/broker.xml /tmp/broker.xml
     cp $CONFIG_TEMPLATES/brokered/login.config /tmp/login.config
     export HAWTIO_ROLE=admin
