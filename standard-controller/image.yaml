@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, standard-controller"
 envs:
   - name: "VERSION"
-    value: "0.24.0-rc2.jbossorg-1"
+    value: "0.24.0.jbossorg-2"
   - name: "LOG_LEVEL"
     value: "info"
 
@@ -39,8 +39,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: standard-controller-0.24.0.rc2-redhat-00001.jar
-      md5: 235b4f2ab16bb875c93c11ca7355d8e5
+    - path: standard-controller-0.24.0.redhat-00003.jar
+      md5: 00ed16254513c21a96a886ca0d101b92
       name: standard-controller.jar
 
 run:

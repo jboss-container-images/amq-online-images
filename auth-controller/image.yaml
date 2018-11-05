@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, sso-controller, authentication"
 envs:
     - name: "VERSION"
-      value: "0.24.0-rc2.jbossorg-1"
+      value: "0.24.0.jbossorg-2"
     - name: "LOG_LEVEL"
       value: "info"
 modules:
@@ -31,8 +31,8 @@ modules:
           - name: common.java
           - name: keycloak-controller
 artifacts:
-    - path: keycloak-controller-0.24.0.rc2-redhat-00001.jar 
-      md5: 00c290e05484d71425ca0bf98ae6b04a
+    - path: keycloak-controller-0.24.0.redhat-00003.jar
+      md5: 449f0a67c22e9585fe273aec6ee5726a
       name: keycloak-controller.jar
 run:
       user: 185
