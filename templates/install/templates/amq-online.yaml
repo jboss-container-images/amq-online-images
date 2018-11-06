@@ -595,7 +595,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                 - name: MESSAGING_SECRET
                   value: ${MESSAGING_SECRET}
-                image: rh-amqmaas-1/amqmaas10-standard-controller-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-standard-controller-openshift:1.0
                 livenessProbe:
                   httpGet:
                     path: /health
@@ -657,7 +657,7 @@ objects:
                   value: ${ADDRESS_SPACE_NAMESPACE}
                 - name: MESSAGING_CERT
                   value: /opt/agent/messaging-cert/tls.crt
-                image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
                 livenessProbe:
                   httpGet:
                     path: /probe
@@ -923,7 +923,7 @@ objects:
                 command:
                 - /opt/app-root/src/bin/launch_node.sh
                 - /opt/app-root/src/bin/subserv.js
-                image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
                 livenessProbe:
                   initialDelaySeconds: 60
                   tcpSocket:
@@ -1017,7 +1017,7 @@ objects:
                   value: '8883'
                 - name: ENMASSE_MQTT_MAXMESSAGESIZE
                   value: ${MQTT_MAXMESSAGESIZE}
-                image: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:1.0
                 livenessProbe:
                   initialDelaySeconds: 60
                   tcpSocket:
@@ -1031,7 +1031,7 @@ objects:
                 - mountPath: /etc/mqtt-gateway/ssl
                   name: ssl-certs
                   readOnly: true
-              - image: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift:dev
+              - image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:1.0
                 env:
                 - name: MESSAGING_SERVICE_HOST
                   value: messaging-${INFRA_UUID}
@@ -1090,7 +1090,7 @@ objects:
                   value: 55671
                 - name: MESSAGING_SERVICE_ROUTE_CONTAINER_PORT
                   value: 56671
-                image: rh-amqmaas-1/amqmaas10-mqtt-lwt-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-lwt-openshift:1.0
                 name: mqtt-lwt
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -1271,7 +1271,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: ${AMQ_NAME}
-                image: rh-amqmaas-1/amqmaas10-broker-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -1419,7 +1419,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
                   value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
-                image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
                 livenessProbe:
                   httpGet:
                     path: /probe
@@ -1755,7 +1755,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: ${AMQ_NAME}
-                image: rh-amqmaas-1/amqmaas10-broker-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -2002,7 +2002,7 @@ objects:
                   value: ${NAME}
                 - name: CERT_DIR
                   value: /etc/enmasse-certs
-                image: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:1.0
                 livenessProbe:
                   httpGet:
                     path: /health
@@ -2055,7 +2055,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: ${AMQ_NAME}
-                image: rh-amqmaas-1/amqmaas10-broker-openshift:dev
+                image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -2285,7 +2285,7 @@ objects:
                 key: recheckInterval
                 name: address-space-controller-config
                 optional: true
-          image: rh-amqmaas-1/amqmaas10-address-space-controller-openshift:dev
+          image: rh-amqmaas-1-tech-preview/amqmaas10-address-space-controller-openshift:1.0
           livenessProbe:
             httpGet:
               path: /healthz
@@ -2457,7 +2457,7 @@ objects:
             value: keycloak-credentials
           - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
             value: standard-authservice-cert
-          image: rh-amqmaas-1/amqmaas10-api-server-openshift:dev
+          image: rh-amqmaas-1-tech-preview/amqmaas10-api-server-openshift:1.0
           livenessProbe:
             httpGet:
               path: /healthz
@@ -2643,7 +2643,7 @@ objects:
             value: "keycloak-credentials"
           - name: KEYCLOAK_CERT_SECRET_NAME
             value: "standard-authservice-cert"
-          image: rh-amqmaas-1/amqmaas10-auth-controller-openshift:dev
+          image: rh-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0
           name: keycloak-controller
           resources:
             limits:
@@ -2743,7 +2743,7 @@ objects:
         - env:
           - name: KEYCLOAK_DIR
             value: /opt/eap
-          image: rh-amqmaas-1/amqmaas10-auth-plugin-openshift:dev
+          image: rh-amqmaas-1-tech-preview/amqmaas10-auth-plugin-openshift:1.0
           name: keycloak-plugin
           volumeMounts:
           - mountPath: /opt/eap/providers
