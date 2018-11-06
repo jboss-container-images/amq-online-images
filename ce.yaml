@@ -1,0 +1,34 @@
+builds:
+  - name: "amqmaas10-address-space-controller-openshift-dev"
+    descriptor: "address-space-controller/image.yaml"
+    product: true
+  - name: "amqmaas10-agent-openshift-dev"
+    descriptor: "agent/image.yaml"
+    product: true
+  - name: "amqmaas10-api-server-openshift-dev"
+    descriptor: "api-server/image.yaml"
+    product: true
+  - name: "amqmaas10-auth-controller-openshift-dev"
+    descriptor: "auth-controller/image.yaml"
+    product: true
+  - name: "amqmaas10-auth-plugin-openshift-dev"
+    descriptor: "auth-plugin/image.yaml"
+    product: true
+  - name: "amqmaas10-broker-openshift-dev"
+    descriptor: "amqmaas10-dev/broker-plugin/image.yaml"
+    product: true
+  - name: "amqmaas10-mqtt-gateway-openshift-dev"
+    descriptor: "mqtt-gateway/image.yaml"
+    product: true
+  - name: "amqmaas10-mqtt-lwt-openshift-dev"
+    descriptor: "mqtt-lwt/image.yaml"
+    product: true
+  - name: "amqmaas10-service-broker-openshift-dev"
+    descriptor: "service-broker/image.yaml"
+    product: true
+  - name: "amqmaas10-standard-controller-openshift-dev"
+    descriptor: "standard-controller/image.yaml"
+    product: true
+  - name: "amqmaas10-topic-forwarder-openshift-dev"
+    descriptor: "topic-forwarder/image.yaml"
+    product: true
