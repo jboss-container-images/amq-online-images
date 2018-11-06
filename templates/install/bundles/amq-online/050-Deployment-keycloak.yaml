@@ -90,7 +90,7 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/eap
-        image: rh-amqmaas-1/amqmaas10-auth-plugin-openshift:dev
+        image: rh-amqmaas-1-tech-preview/amqmaas10-auth-plugin-openshift:1.0
         name: keycloak-plugin
         volumeMounts:
         - mountPath: /opt/eap/providers

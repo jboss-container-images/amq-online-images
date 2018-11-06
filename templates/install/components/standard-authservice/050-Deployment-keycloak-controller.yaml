@@ -28,7 +28,7 @@ spec:
           value: "keycloak-credentials"
         - name: KEYCLOAK_CERT_SECRET_NAME
           value: "standard-authservice-cert"
-        image: rh-amqmaas-1/amqmaas10-auth-controller-openshift:dev
+        image: rh-amqmaas-1-tech-preview/amqmaas10-auth-controller-openshift:1.0
         name: keycloak-controller
         resources:
           limits:

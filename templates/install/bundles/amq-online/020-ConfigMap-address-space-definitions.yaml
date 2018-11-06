@@ -371,7 +371,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: MESSAGING_SECRET
                 value: ${MESSAGING_SECRET}
-              image: rh-amqmaas-1/amqmaas10-standard-controller-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-standard-controller-openshift:1.0
               livenessProbe:
                 httpGet:
                   path: /health
@@ -433,7 +433,7 @@ data:
                 value: ${ADDRESS_SPACE_NAMESPACE}
               - name: MESSAGING_CERT
                 value: /opt/agent/messaging-cert/tls.crt
-              image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
               livenessProbe:
                 httpGet:
                   path: /probe
@@ -699,7 +699,7 @@ data:
               command:
               - /opt/app-root/src/bin/launch_node.sh
               - /opt/app-root/src/bin/subserv.js
-              image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -793,7 +793,7 @@ data:
                 value: '8883'
               - name: ENMASSE_MQTT_MAXMESSAGESIZE
                 value: ${MQTT_MAXMESSAGESIZE}
-              image: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:1.0
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -807,7 +807,7 @@ data:
               - mountPath: /etc/mqtt-gateway/ssl
                 name: ssl-certs
                 readOnly: true
-            - image: rh-amqmaas-1/amqmaas10-mqtt-gateway-openshift:dev
+            - image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:1.0
               env:
               - name: MESSAGING_SERVICE_HOST
                 value: messaging-${INFRA_UUID}
@@ -866,7 +866,7 @@ data:
                 value: 55671
               - name: MESSAGING_SERVICE_ROUTE_CONTAINER_PORT
                 value: 56671
-              image: rh-amqmaas-1/amqmaas10-mqtt-lwt-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-lwt-openshift:1.0
               name: mqtt-lwt
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -1047,7 +1047,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: rh-amqmaas-1/amqmaas10-broker-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -1195,7 +1195,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
                 value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
-              image: rh-amqmaas-1/amqmaas10-agent-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
               livenessProbe:
                 httpGet:
                   path: /probe
