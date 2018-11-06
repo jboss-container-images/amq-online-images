@@ -39,8 +39,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: address-space-controller-0.24.0.redhat-00004.jar
-      md5: 758c6090f7ee24fcc1e5dc45a2b7f762
+    - path: address-space-controller-0.24.0.redhat-00006.jar
+      md5: 4a2fd9e071c8fdb970c5764dfc8de247
       name: address-space-controller.jar
 
 run:
