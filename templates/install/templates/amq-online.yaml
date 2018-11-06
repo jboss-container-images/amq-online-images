@@ -2021,7 +2021,7 @@ objects:
                 - mountPath: /etc/enmasse-certs
                   name: broker-internal-cert
                   readOnly: true
-             initContainers:
+              initContainers:
               - env:
                 - name: INFRA_UUID
                   value: ${INFRA_UUID}

@@ -15,7 +15,7 @@ labels:
       value: "amqmaas, mqtt-gateway"
 envs:
     - name: "VERSION"
-      value: "0.24.0.jbossorg-3"
+      value: "0.24.0.jbossorg-5"
     - name: "LOG_LEVEL"
       value: "info"
 modules:
