@@ -33,8 +33,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: api-server-0.24.0.redhat-00004.jar
-      md5: 1f361a4ba5ddc5e04536128c464b8c6a
+    - path: api-server-0.24.0.redhat-00006.jar
+      md5: b7d2f6594da501ae9e2524c207e7e0a3
       name: api-server.jar
 
 run:

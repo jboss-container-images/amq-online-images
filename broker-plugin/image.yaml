@@ -46,8 +46,8 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: shutdown-hook-0.24.0.redhat-00004.jar
-      md5: bb69a0fccde7a9e4e99c76292b573948
+    - path: shutdown-hook-0.24.0.redhat-00006.jar
+      md5: a4bf170ab2d27cad36ad22af3d1d5341
       name: shutdown-hook.jar
     - path: amqp-connector-0.24.0.redhat-00004.jar
       md5: c2f263a9c833cd0bccc5648f84877de8
