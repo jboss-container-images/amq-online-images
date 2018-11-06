@@ -105,6 +105,7 @@ make \
     ARTEMIS_IMAGE=amq-broker-7/amq-broker-72-openshift:1.0 \
     TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amqmaas10-topic-forwarder-openshift:${VERSION} \
     AGENT_IMAGE=${DOCKER_ORG}/amqmaas10-agent-openshift:${VERSION} \
+    BROKER_PLUGIN_IMAGE=${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION} \
     MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amqmaas10-mqtt-gateway-openshift:${VERSION} \
     MQTT_LWT_IMAGE=${DOCKER_ORG}/amqmaas10-mqtt-lwt-openshift:${VERSION} \
     NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amqmaas10-none-auth-openshift:${VERSION} \

@@ -17,7 +17,7 @@ envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "0.24.0.jbossorg-2"
+      value: "0.24.0.jbossorg-3"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -46,14 +46,14 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: shutdown-hook-0.24.0.redhat-00003.jar
-      md5: 9d9d991fcedabb30566034c6886d4305
+    - path: shutdown-hook-0.24.0.redhat-00004.jar
+      md5: bb69a0fccde7a9e4e99c76292b573948
       name: shutdown-hook.jar
-    - path: amqp-connector-0.24.0.redhat-00003.jar
-      md5: bc9e82a9de8f3c659c841d61897770d9
+    - path: amqp-connector-0.24.0.redhat-00004.jar
+      md5: c2f263a9c833cd0bccc5648f84877de8
       name: amqp-connector.jar
-    - path: sasl-delegation-0.24.0.redhat-00003.jar
-      md5: fa07240a509b74675697bb70a4c80cc2
+    - path: sasl-delegation-0.24.0.redhat-00004.jar
+      md5: 0d25429af5a667004d2ae0d26406e743
       name: sasl-delegation.jar
     - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
       md5: 89e83b40f70c9ca43a409e5b485555bc
