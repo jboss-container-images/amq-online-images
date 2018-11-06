@@ -184,7 +184,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: rh-amqmaas-1/amqmaas10-broker-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -431,7 +431,7 @@ data:
                 value: ${NAME}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              image: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-topic-forwarder-openshift:1.0
               livenessProbe:
                 httpGet:
                   path: /health
@@ -484,7 +484,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: rh-amqmaas-1/amqmaas10-broker-openshift:dev
+              image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs

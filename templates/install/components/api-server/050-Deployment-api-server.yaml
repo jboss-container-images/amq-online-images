@@ -41,7 +41,7 @@ spec:
           value: keycloak-credentials
         - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
           value: standard-authservice-cert
-        image: rh-amqmaas-1/amqmaas10-api-server-openshift:dev
+        image: rh-amqmaas-1-tech-preview/amqmaas10-api-server-openshift:1.0
         livenessProbe:
           httpGet:
             path: /healthz
