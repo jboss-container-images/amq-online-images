@@ -31,8 +31,8 @@ modules:
           - name: mqtt-lwt
           - name: common.java
 artifacts:
-    - path: mqtt-lwt-0.24.0.redhat-00004.jar
-      md5: d248c7f961600a8c109a21b30b3682ea
+    - path: mqtt-lwt-0.24.0.redhat-00006.jar
+      md5: 39282c06295b305e28adc9c240896169
       name: mqtt-lwt.jar
 run:
       user: 185
