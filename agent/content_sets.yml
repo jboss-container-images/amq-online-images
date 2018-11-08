@@ -2,3 +2,4 @@
 x86_64:
 - rhel-7-server-rpms
 - rhel-server-rhscl-7-rpms
+- rhel-7-server-optional-rpms
