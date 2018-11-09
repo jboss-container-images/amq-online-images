@@ -16,3 +16,4 @@ ADDED_DIR=${SCRIPT_DIR}/added
 
 groupadd -r jboss -g 185 && useradd -u 185 -r -g jboss -m -d /home/jboss -s /sbin/nologin -c "JBoss user" jboss
 chown -R jboss:root /opt/app-root
+yum -y remove git
