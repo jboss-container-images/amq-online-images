@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: rh-amqmaas-1/amqmaas10-topic-forwarder-openshift
+name: amq7/amq-online-1.0-topic-forwarder
 description: "Message forwarder for topics in AMQ Online, currently used with the AMQ Broker broker"
 from: jboss/openjdk18-rhel7:1.1
 labels:
