@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: rh-amqmaas-1/amqmaas10-mqtt-lwt-openshift
+name: amq7/amq-online-1.0-mqtt-lwt
 description: "AMQ Online MQTT Last Will and Testament"
 from: jboss/openjdk18-rhel7:1.1
 labels:
