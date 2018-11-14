@@ -1,0 +1,69 @@
+schema_version: 1
+
+name: rh-amqmaas-1/amqmaas10-broker-openshift
+description: "AMQ Online initialization image for AMQ Broker."
+version: "1.0"
+from: jboss/openjdk18-rhel7:1.1
+labels:
+    - name: "com.redhat.component"
+      value: "rh-amqmaas-1-amqmaas10-broker-openshift-container"
+    - name: "io.k8s.description"
+      value: "Implementation of the AMQ Broker"
+    - name: "io.k8s.display-name"
+      value: "AMQ Online Broker"
+    - name: "io.openshift.tags"
+      value: "amqmaas, broker, artemis"
+envs:
+    - name: "ARTEMIS_HOME"
+      value: "/opt/amq"
+    - name: "VERSION"
+      value: "${GIT_TAG}"
+    - name: "LOG_LEVEL"
+      value: "info"
+
+packages:
+    repositories:
+        - jboss-os
+# Need to switch the repository definition to, and have an override for building on fedora:
+#       - name: OS
+#         id: rhel-server-os-7-rpms
+    install:
+        - python
+        - gettext
+        - hostname
+        - iputils
+        - openssl
+
+modules:
+      repositories:
+          - git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: master
+          - path: modules
+      install:
+          - name: broker.plugin.installer
+          - name: dynamic-resources
+          - name: os-java-run
+
+artifacts:
+    - path: ${ARTIFACT}
+      md5: ${ARTIFACT_MD5}
+      name: broker-plugin.jar
+    - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
+      md5: 89e83b40f70c9ca43a409e5b485555bc
+      name: jmx-exporter.jar
+    - path: netty-tcnative-boringssl-static-2.0.7.Final.jar
+      md5: 5da2f900047b0a53bf526dd9f37d4ffd
+      name: netty-tcnative-boringssl-static.jar
+    - path: netty-tcnative-boringssl-static-2.0.7.Final-linux-x86_64.jar
+      md5: f9410ba141f63cff9202149efc321657
+      name: netty-tcnative-boringssl-static-linux-x86_64.jar
+
+run:
+      user: 185
+      cmd:
+          - "/opt/amq/broker-plugin/bin/init-broker.sh"
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-broker-openshift-rhel-7

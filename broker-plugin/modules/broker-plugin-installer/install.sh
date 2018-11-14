@@ -5,22 +5,18 @@ set -e
 SOURCES_DIR=/tmp/artifacts/
 SCRIPT_DIR=$(dirname $0)
 ADDED_DIR=${SCRIPT_DIR}/added
-BROKER_PLUGIN_DIR=/opt/amq/broker-plugin
+BROKER_PLUGIN_DIR=/opt/broker-plugin
 
 {
-    mkdir -p ${BROKER_PLUGIN_DIR}/shutdown-hook
     mkdir -p ${BROKER_PLUGIN_DIR}/bin
     mkdir -p ${BROKER_PLUGIN_DIR}/lib
     mkdir -p ${BROKER_PLUGIN_DIR}/jmx_exporter
 
-    mv ${ADDED_DIR}/config_templates ${BROKER_PLUGIN_DIR}
-    mv ${ADDED_DIR}/shutdown-hook.sh ${BROKER_PLUGIN_DIR}/shutdown-hook/shutdown-hook.sh
+	unzip "${SOURCES_DIR}/broker-plugin.zip"
+
     mv ${ADDED_DIR}/init-broker.sh ${BROKER_PLUGIN_DIR}/bin/init-broker.sh
     mv ${ADDED_DIR}/launch-broker.sh ${BROKER_PLUGIN_DIR}/bin/launch-broker.sh
-    mv ${ADDED_DIR}/probe.sh ${BROKER_PLUGIN_DIR}/bin/probe.sh
  
-    mv ${SOURCES_DIR}/amqp-connector.jar ${BROKER_PLUGIN_DIR}/lib/amqp-connector.jar
-    mv ${SOURCES_DIR}/sasl-delegation.jar ${BROKER_PLUGIN_DIR}/lib/sasl-delegation.jar
     mv ${SOURCES_DIR}/jmx-exporter.jar ${BROKER_PLUGIN_DIR}/jmx_exporter/jmx-exporter.jar
 
     mv ${SOURCES_DIR}/netty-tcnative-boringssl-static.jar ${BROKER_PLUGIN_DIR}/lib/
