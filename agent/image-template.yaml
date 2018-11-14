@@ -1,0 +1,44 @@
+schema_version: 1
+
+version: 1.0
+name: rh-amqmaas-1/amqmaas10-agent-openshift
+description: "AMQ Online console"
+from: rhscl/nodejs-6-rhel7:latest
+labels:
+    - name: "com.redhat.component"
+      value: "rh-amqmaas-1-amqmaas10-agent-openshift-container"
+    - name: "io.k8s.description"
+      value: "console for AMQ Online"
+    - name: "io.k8s.display-name"
+      value: "AMQ Online Console"
+    - name: "io.openshift.tags"
+      value: "amqmaas, console, agent"
+envs:
+    - name: "VERSION"
+      value: "${GIT_TAG}"
+modules:
+      repositories:
+          - name: agent
+            path: modules/platform/rhel
+      install:
+          - name: agent
+
+artifacts:
+    - path: ${ARTIFACT}
+      md5: ${ARTIFACT_MD5}
+      name: agent-dist.zip
+
+ports:
+    - value: 56720
+    - value: 8080
+
+run:
+      user: 185
+      cmd:
+          - "/opt/app-root/src/bin/launch_node.sh"
+          - "/opt/app-root/src/bin/agent.js"
+
+osbs:
+      repository:
+            name: containers/amqmaas-1
+            branch: rh-amqmaas-1.0-agent-openshift-rhel-7

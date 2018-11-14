@@ -16,6 +16,9 @@ all: build
 	echo "Running docker rhel build $(REPO)"
 	concreate build --descriptor $(IMAGE_FILE) --build-tech-preview
 
+generate:
+	if [ -f image-template.yaml ]; then GIT_TAG=$(GIT_TAG) ARTIFACT=$(ARTIFACT) ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < image-template.yaml > image.yaml; fi
+
 push:
 	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
 	$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
@@ -32,4 +35,4 @@ copyartifact:
 clean:
 	rm -rf build target
 
-.PHONY: all push snapshot clean
+.PHONY: all push snapshot clean generate
