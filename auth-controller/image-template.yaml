@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: rh-amqmaas-1/amqmaas10-auth-controller-openshift
+name: amq7/amq-online-1.0-auth-controller
 description: "AMQ Online SSO Controller for authentication"
 from: jboss/openjdk18-rhel7:1.1
 labels:

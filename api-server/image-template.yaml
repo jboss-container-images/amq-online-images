@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: rh-amqmaas-1/amqmaas10-api-server-openshift
+name: amq7/amq-online-1.0-api-server
 description: "global component that implements an API for creating and deleting AMQ Online address spaces and addresses."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
