@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: amq7/amq-online-1.0-agent
+name: amq7/amq-online-1-agent
 description: "AMQ Online console"
 from: rhscl/nodejs-6-rhel7:latest
 labels:
