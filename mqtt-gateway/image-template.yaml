@@ -1,7 +1,7 @@
 schema_version: 1
 
 version: 1.0
-name: amq7/amq-online-1.0-mqtt-gateway
+name: amq7/amq-online-1-mqtt-gateway
 description: "AMQ Online MQTT gateway"
 from: jboss/openjdk18-rhel7:1.1
 labels:
