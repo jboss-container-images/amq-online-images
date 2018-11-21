@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: amq7/amq-online-1.0-service-broker
+name: amq7/amq-online-1-service-broker
 description: "Global component that implements the Open Service Broker API for provisioning messaging."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1

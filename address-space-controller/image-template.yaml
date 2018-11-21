@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: amq7/amq-online-1.0-address-space-controller
+name: amq7/amq-online-1-address-space-controller
 description: "global component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1

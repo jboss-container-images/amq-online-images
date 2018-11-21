@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: amq7/amq-online-1.0-broker-plugin
+name: amq7/amq-online-1-broker-plugin
 description: "AMQ Online initialization image for AMQ Broker."
 version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
