@@ -23,8 +23,8 @@ do_usage_and_exit () {
 }
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-DOCKER_ORG=rh-amqmaas-1-tech-preview
-VERSION=1.0
+DOCKER_ORG=amq7
+VERSION=dev
 KEEP_WORK_DIR=0
 
 
@@ -98,21 +98,21 @@ pushd ${WORKDIR}
 make \
     DOCKER_ORG=${DOCKER_ORG} \
     DOCKER_REGISTRY_PREFIX="" \
-    ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-address-space-controller-openshift:${VERSION} \
-    API_SERVER_IMAGE=${DOCKER_ORG}/amqmaas10-api-server-openshift:${VERSION} \
-    STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-standard-controller-openshift:${VERSION} \
+    ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1.0-address-space-controller:${VERSION} \
+    API_SERVER_IMAGE=${DOCKER_ORG}/amq-api-server:${VERSION} \
+    STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1.0-standard-controller:${VERSION} \
     ROUTER_IMAGE=amq-interconnect/amq-interconnect-1.2-openshift:1.0 \
     ARTEMIS_IMAGE=amq-broker-7/amq-broker-72-openshift:1.0 \
-    TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amqmaas10-topic-forwarder-openshift:${VERSION} \
-    AGENT_IMAGE=${DOCKER_ORG}/amqmaas10-agent-openshift:${VERSION} \
-    BROKER_PLUGIN_IMAGE=${DOCKER_ORG}/amqmaas10-broker-openshift:${VERSION} \
-    MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amqmaas10-mqtt-gateway-openshift:${VERSION} \
-    MQTT_LWT_IMAGE=${DOCKER_ORG}/amqmaas10-mqtt-lwt-openshift:${VERSION} \
-    NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amqmaas10-none-auth-openshift:${VERSION} \
+    TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amq-online-1.0-topic-forwarder:${VERSION} \
+    AGENT_IMAGE=${DOCKER_ORG}/amq-online-1.0-agent:${VERSION} \
+    BROKER_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1.0-broker-plugin:${VERSION} \
+    MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amq-online-1.0-mqtt-gateway:${VERSION} \
+    MQTT_LWT_IMAGE=${DOCKER_ORG}/amq-online-1.0-mqtt-lwt:${VERSION} \
+    NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amq-online-1.0-none-auth:${VERSION} \
     KEYCLOAK_IMAGE=redhat-sso-7/sso72-openshift:1.1 \
-    KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amqmaas10-auth-plugin-openshift:${VERSION} \
-    KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amqmaas10-auth-controller-openshift:${VERSION} \
-    SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amqmaas10-service-broker-openshift:${VERSION} \
+    KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1.0-auth-plugin:${VERSION} \
+    KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1.0-auth-controller:${VERSION} \
+    SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1.0-service-broker:${VERSION} \
     templates
 mvn clean install -DskipTests -T 2C
 popd
