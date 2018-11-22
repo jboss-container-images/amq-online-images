@@ -52,4 +52,4 @@ run:
 osbs:
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-address-space-controller-openshift-container
+            branch: amq7-amq-online-1-address-space-controller-rhel-7

@@ -47,4 +47,4 @@ run:
 osbs:
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-service-broker-openshift-container
+            branch: amq7-amq-online-1-service-broker-rhel-7

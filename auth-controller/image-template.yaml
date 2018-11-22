@@ -47,4 +47,4 @@ run:
 osbs:
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-auth-controller-openshift-container
+            branch: amq7-amq-online-1-auth-controller-rhel-7
