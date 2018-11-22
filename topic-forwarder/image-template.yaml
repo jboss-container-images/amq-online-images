@@ -6,13 +6,14 @@ description: "Message forwarder for topics in AMQ Online, currently used with th
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-topic-forwarder-openshift-container"
+      value: "amq7-amq-online-1-topic-forwarder-openshift-container"
     - name: "io.k8s.description"
       value: "Message forwarder for topics in AMQ Online, currently used with the AMQ Broker broker"
     - name: "io.k8s.display-name"
-      value: "AMQ Online topic-forwarder"
+      value: "AMQ Online Topic Forwarder"
     - name: "io.openshift.tags"
-      value: "amqmaas, topic-forwarder"
+      value: "amq7, amq-online, topic-forwarder"
+
 envs:
     - name: "JAVA_HOME"
       value: "/usr/lib/jvm/java"
@@ -20,6 +21,7 @@ envs:
       value: "${GIT_TAG}"
     - name: "LOG_LEVEL"
       value: "info"
+
 modules:
       repositories:
           - git:
@@ -32,10 +34,12 @@ modules:
       install:
           - name: topic-forwarder
           - name: common.java
+
 artifacts:
     - path: ${ARTIFACT}
       md5: ${ARTIFACT_MD5}
       name: topic-forwarder.jar
+
 run:
       user: 185
       cmd:
@@ -44,5 +48,5 @@ run:
 
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-topic-forwarder-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-topic-forwarder-rhel-7
