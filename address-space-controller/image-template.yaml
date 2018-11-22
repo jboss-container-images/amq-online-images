@@ -1,23 +1,24 @@
 schema_version: 1
 
+version: 1.0
 name: amq7/amq-online-1-address-space-controller
 description: "global component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance."
-version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-address-space-controller-openshift-container"
+      value: "amq7-amq-online-1-address-space-controller-openshift-container"
     - name: "io.k8s.description"
       value: "component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance"
     - name: "io.k8s.display-name"
       value: "AMQ Online Address Space Controller"
     - name: "io.openshift.tags"
-      value: "amqmaas, address-space-controller"
+      value: "amq7, amq-online, address-space-controller"
+
 envs:
-  - name: "VERSION"
-    value: "${GIT_TAG}"
-  - name: "LOG_LEVEL"
-    value: "info"
+    - name: "VERSION"
+      value: "${GIT_TAG}"
+    - name: "LOG_LEVEL"
+      value: "info"
 
 modules:
       repositories:
@@ -50,5 +51,5 @@ run:
           - "/opt/address-space-controller.jar"
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-address-space-controller-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-address-space-controller-openshift-container

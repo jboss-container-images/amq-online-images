@@ -6,18 +6,20 @@ description: "AMQ Online MQTT Last Will and Testament"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-mqtt-lwt-openshift-container"
+      value: "amq7-amq-online-1-mqtt-lwt-openshift-container"
     - name: "io.k8s.description"
       value: "MQTT LWT for AMQ Online"
     - name: "io.k8s.display-name"
-      value: "AMQ Online MQTT LWT"
+      value: "AMQ Online MQTT LwT Service"
     - name: "io.openshift.tags"
-      value: "amqmaas, mqtt-gateway"
+      value: "amq7, amq-online, mqtt-gateway"
+
 envs:
     - name: "VERSION"
       value: "${GIT_TAG}"
     - name: "LOG_LEVEL"
       value: "info"
+
 modules:
       repositories:
           - git:
@@ -30,10 +32,12 @@ modules:
       install:
           - name: mqtt-lwt
           - name: common.java
+
 artifacts:
     - path: ${ARTIFACT}
       md5: ${ARTIFACT_MD5}
       name: mqtt-lwt.jar
+
 run:
       user: 185
       cmd:
@@ -42,5 +46,5 @@ run:
 
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-mqtt-lwt-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-mqtt-lwt-openshift-container

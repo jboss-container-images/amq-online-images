@@ -1,23 +1,24 @@
 schema_version: 1
 
+version: 1.0
 name: amq7/amq-online-1-service-broker
 description: "Global component that implements the Open Service Broker API for provisioning messaging."
-version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-service-broker-openshift-container"
+      value: "amq7-amq-online-1-service-broker-openshift-container"
     - name: "io.k8s.description"
       value: "Component that implements the Open Service Broker API for provisioning messaging."
     - name: "io.k8s.display-name"
       value: "AMQ Online Service Broker"
     - name: "io.openshift.tags"
-      value: "amqmaas, service-broker"
+      value: "amq7, amq-online, service-broker"
+
 envs:
-  - name: "VERSION"
-    value: "0.24.0.jbossorg-5"
-  - name: "LOG_LEVEL"
-    value: "info"
+    - name: "VERSION"
+      value: "${GIT_TAG}"
+    - name: "LOG_LEVEL"
+      value: "info"
 
 modules:
       repositories:
@@ -42,7 +43,8 @@ run:
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/service-broker.jar"
+
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-service-broker-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-service-broker-openshift-container

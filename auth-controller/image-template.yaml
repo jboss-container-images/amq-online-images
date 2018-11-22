@@ -6,18 +6,20 @@ description: "AMQ Online SSO Controller for authentication"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-auth-controller-openshift-container"
+      value: "amq7-amq-online-1-auth-controller-openshift-container"
     - name: "io.k8s.description"
       value: "AMQ Online Authentication Controller using SSO"
     - name: "io.k8s.display-name"
       value: "AMQ Online Authentication Controller"
     - name: "io.openshift.tags"
-      value: "amqmaas, sso-controller, authentication"
+      value: "amq7, amq-online, sso-controller, authentication"
+
 envs:
     - name: "VERSION"
       value: "${GIT_TAG}"
     - name: "LOG_LEVEL"
       value: "info"
+
 modules:
       repositories:
           - git:
@@ -30,16 +32,19 @@ modules:
       install:
           - name: common.java
           - name: keycloak-controller
+
 artifacts:
     - path: ${ARTIFACT}
       md5: ${ARTIFACT_MD5}
       name: keycloak-controller.jar
+
 run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
           - "/opt/keycloak-controller.jar"
+
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-auth-controller-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-auth-controller-openshift-container
