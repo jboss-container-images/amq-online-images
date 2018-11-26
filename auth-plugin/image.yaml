@@ -1,27 +1,29 @@
 schema_version: 1
 
 version: 1.0
-name: rh-amqmaas-1/amqmaas10-auth-plugin-openshift
+name: amq7/amq-online-1-auth-plugin
 description: "AMQ Online SSO for authentication"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-auth-plugin-openshift-container"
+      value: "amq7-amq-online-1-auth-plugin-openshift-container"
     - name: "io.k8s.description"
       value: "AMQ Online Authentication using SSO"
     - name: "io.k8s.display-name"
-      value: "AMQ Online Authentication"
+      value: "AMQ Online Authentication Plugin"
     - name: "io.openshift.tags"
-      value: "amqmaas, sso, authentication"
+      value: "amq7, amq-online, sso, authentication"
+
 envs:
     - name: "KEYCLOAK_DIR"
       value: "/opt/eap/"
     - name: "KEYCLOAK_PLUGIN_DIR"
       value: "/keycloak-plugin"
     - name: "VERSION"
-      value: "0.24.0.jbossorg-5"
+      value: "0.25.0.redhat-00016"
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
+
 packages:
     repositories:
       - jboss-os
@@ -40,16 +42,18 @@ modules:
       install:
           - name: auth.rhel.install
           - name: common.java
+
 artifacts:
-    - path: sasl-plugin-0.24.0.redhat-00006.jar
-      md5: f10be4f479adf44684d2bb4e7cd160a6
+    - path: sasl-plugin-0.25.0.redhat-00016.jar
+      md5: 11111c2250aa0467c631fd3c6cb16b61
       name: sasl-plugin.jar
 
 run:
       user: 185
       entrypoint:
           - "/keycloak-plugin/bin/init-keycloak.sh"
+
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-auth-plugin-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-auth-plugin-rhel-7
