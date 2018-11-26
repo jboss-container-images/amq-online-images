@@ -113,7 +113,7 @@ make \
     KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-auth-plugin:${VERSION} \
     KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-auth-controller:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
-    templates
+    templates || true
 popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
