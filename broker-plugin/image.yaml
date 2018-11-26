@@ -1,23 +1,24 @@
 schema_version: 1
 
-name: rh-amqmaas-1/amqmaas10-broker-openshift
+version: 1.0
+name: amq7/amq-online-1-broker-plugin
 description: "AMQ Online initialization image for AMQ Broker."
-version: "1.0"
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
-      value: "rh-amqmaas-1-amqmaas10-broker-openshift-container"
+      value: "amq7-amq-online-1-broker-plugin-openshift-container"
     - name: "io.k8s.description"
       value: "Implementation of the AMQ Broker"
     - name: "io.k8s.display-name"
-      value: "AMQ Online Broker"
+      value: "AMQ Online Broker Plugin"
     - name: "io.openshift.tags"
-      value: "amqmaas, broker, artemis"
+      value: "amq7, amq-online, broker, artemis"
+
 envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "0.24.0.jbossorg-5"
+      value: "0.25.0.redhat-00016"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -46,15 +47,9 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: shutdown-hook-0.24.0.redhat-00006.jar
-      md5: a4bf170ab2d27cad36ad22af3d1d5341
-      name: shutdown-hook.jar
-    - path: amqp-connector-0.24.0.redhat-00004.jar
-      md5: c2f263a9c833cd0bccc5648f84877de8
-      name: amqp-connector.jar
-    - path: sasl-delegation-0.24.0.redhat-00004.jar
-      md5: 0d25429af5a667004d2ae0d26406e743
-      name: sasl-delegation.jar
+    - path: broker-plugin-0.25.0.redhat-00016-dist.zip
+      md5: b492346709e60197402250ef3b562fca
+      name: broker-plugin.zip
     - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
       md5: 89e83b40f70c9ca43a409e5b485555bc
       name: jmx-exporter.jar
@@ -69,7 +64,8 @@ run:
       user: 185
       cmd:
           - "/opt/amq/broker-plugin/bin/init-broker.sh"
+
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-broker-openshift-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-broker-plugin-rhel-7
