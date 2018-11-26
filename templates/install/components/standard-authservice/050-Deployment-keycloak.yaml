@@ -6,6 +6,9 @@ metadata:
   name: keycloak
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
+    rollingUpdate: null
   selector:
     matchLabels:
       app: enmasse
@@ -52,6 +55,7 @@ spec:
               key: database-password
               name: postgresql
         image: redhat-sso-7/sso72-openshift:1.1
+        imagePullPolicy: Always
         livenessProbe:
           httpGet:
             path: /auth
@@ -90,7 +94,8 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/eap
-        image: rh-amqmaas-1-tech-preview/amqmaas10-auth-plugin-openshift:1.0
+        image: amq7/amq-online-1-auth-plugin:dev
+        imagePullPolicy: Always
         name: keycloak-plugin
         volumeMounts:
         - mountPath: /opt/eap/providers

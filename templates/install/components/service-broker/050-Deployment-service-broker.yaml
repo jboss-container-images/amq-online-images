@@ -37,7 +37,8 @@ spec:
           value: /service-broker-cert
         - name: LISTEN_PORT
           value: '8443'
-        image: rh-amqmaas-1-tech-preview/amqmaas10-service-broker-openshift:1.0
+        image: amq7/amq-online-1-service-broker:dev
+        imagePullPolicy: Always
         livenessProbe:
           httpGet:
             path: /healthz
