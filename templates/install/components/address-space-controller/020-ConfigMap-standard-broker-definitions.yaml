@@ -108,7 +108,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: amq-broker-7/amq-broker-72-openshift:1.0
+              image: amq-broker-7/amq-broker-72-openshift:1.1
               command:
               - /opt/amq/custom/bin/launch-broker.sh
               lifecycle:
@@ -380,7 +380,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: amq-broker-7/amq-broker-72-openshift:1.0
+              image: amq-broker-7/amq-broker-72-openshift:1.1
               command:
               - /opt/amq/custom/bin/launch-broker.sh
               lifecycle:
