@@ -42,7 +42,7 @@ packages:
 artifacts:
     - path: ${ARTIFACT}
       md5: ${ARTIFACT_MD5}
-      name: address-space-controller.jar
+      name: address-space-controller.zip
 
 run:
       user: 185

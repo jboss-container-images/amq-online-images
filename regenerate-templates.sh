@@ -114,19 +114,11 @@ make \
     KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-auth-controller:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
     templates
-mvn clean install -DskipTests -T 2C -B -q
 popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
 rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-latest/* ${TARGET_TEMPLATE_DIR}
-
-ADDRESS_SPACE_CONTROLLER_RESOURCES=$DIR/address-space-controller/modules/common/added
-mkdir -p ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/addressplans ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/addressspaceplans ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/brokeredinfraconfigs ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
-rsync -a ${WORKDIR}/address-space-controller/target/classes/standardinfraconfigs ${ADDRESS_SPACE_CONTROLLER_RESOURCES}
 
 rm -rf templates/docs
 
