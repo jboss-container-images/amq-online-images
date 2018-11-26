@@ -236,6 +236,7 @@ data:
               - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                 value: "qdrouterd-headless-${INFRA_UUID}"
               image: amq-interconnect/amq-interconnect-1.2-openshift:1.0
+              imagePullPolicy: Always
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -371,7 +372,8 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: MESSAGING_SECRET
                 value: ${MESSAGING_SECRET}
-              image: rh-amqmaas-1-tech-preview/amqmaas10-standard-controller-openshift:1.0
+              image: amq7/amq-online-1-standard-controller:dev
+              imagePullPolicy: Always
               livenessProbe:
                 httpGet:
                   path: /health
@@ -433,7 +435,8 @@ data:
                 value: ${ADDRESS_SPACE_NAMESPACE}
               - name: MESSAGING_CERT
                 value: /opt/agent/messaging-cert/tls.crt
-              image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
+              image: amq7/amq-online-1-agent:dev
+              imagePullPolicy: Always
               livenessProbe:
                 httpGet:
                   path: /probe
@@ -699,7 +702,8 @@ data:
               command:
               - /opt/app-root/src/bin/launch_node.sh
               - /opt/app-root/src/bin/subserv.js
-              image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
+              image: amq7/amq-online-1-agent:dev
+              imagePullPolicy: Always
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -793,7 +797,8 @@ data:
                 value: '8883'
               - name: ENMASSE_MQTT_MAXMESSAGESIZE
                 value: ${MQTT_MAXMESSAGESIZE}
-              image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:1.0
+              image: amq7/amq-online-1-mqtt-gateway:dev
+              imagePullPolicy: Always
               livenessProbe:
                 initialDelaySeconds: 60
                 tcpSocket:
@@ -807,7 +812,8 @@ data:
               - mountPath: /etc/mqtt-gateway/ssl
                 name: ssl-certs
                 readOnly: true
-            - image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-gateway-openshift:1.0
+            - image: amq7/amq-online-1-mqtt-gateway:dev
+              imagePullPolicy: Always
               env:
               - name: MESSAGING_SERVICE_HOST
                 value: messaging-${INFRA_UUID}
@@ -866,7 +872,8 @@ data:
                 value: 55671
               - name: MESSAGING_SERVICE_ROUTE_CONTAINER_PORT
                 value: 56671
-              image: rh-amqmaas-1-tech-preview/amqmaas10-mqtt-lwt-openshift:1.0
+              image: amq7/amq-online-1-mqtt-lwt:dev
+              imagePullPolicy: Always
               name: mqtt-lwt
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -983,6 +990,7 @@ data:
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
               image: amq-broker-7/amq-broker-72-openshift:1.0
+              imagePullPolicy: Always
               command:
               - /opt/amq/custom/bin/launch-broker.sh
               livenessProbe:
@@ -1047,7 +1055,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: rh-amqmaas-1-tech-preview/amqmaas10-broker-openshift:1.0
+              image: amq7/amq-online-1-broker-plugin:dev
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -1195,7 +1203,8 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
                 value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
-              image: rh-amqmaas-1-tech-preview/amqmaas10-agent-openshift:1.0
+              image: amq7/amq-online-1-agent:dev
+              imagePullPolicy: Always
               livenessProbe:
                 httpGet:
                   path: /probe

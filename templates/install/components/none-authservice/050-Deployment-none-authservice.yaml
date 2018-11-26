@@ -20,7 +20,8 @@ spec:
       - env:
         - name: LISTENPORT
           value: '5671'
-        image: rh-amqmaas-1-tech-preview/amqmaas10-none-auth-openshift:1.0
+        image: amq7/amq-online-1-none-auth:dev
+        imagePullPolicy: Always
         livenessProbe:
           initialDelaySeconds: 60
           tcpSocket:
