@@ -15,7 +15,7 @@ builds:
     descriptor: "auth-plugin/image.yaml"
     product: true
   - name: "amq-online-10-broker-plugin-openshift-dev"
-    descriptor: "amq-online-10-dev/broker-plugin/image.yaml"
+    descriptor: "broker-plugin/image.yaml"
     product: true
   - name: "amq-online-10-mqtt-gateway-openshift-dev"
     descriptor: "mqtt-gateway/image.yaml"
