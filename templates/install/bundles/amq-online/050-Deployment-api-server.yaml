@@ -41,7 +41,7 @@ spec:
           value: keycloak-credentials
         - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
           value: standard-authservice-cert
-        image: amq7/amq-api-server:dev
+        image: amq7/amq-online-1-api-server:dev
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
