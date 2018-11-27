@@ -123,6 +123,13 @@ objects:
             properties:
               version:
                 type: string
+              networkPolicy:
+                type: object
+                properties:
+                  ingress:
+                    type: array
+                  egress:
+                    type: array
               admin:
                 type: object
                 properties:
@@ -172,6 +179,13 @@ objects:
             properties:
               version:
                 type: string
+              networkPolicy:
+                type: object
+                properties:
+                  ingress:
+                    type: array
+                  egress:
+                    type: array
               admin:
                 type: object
                 properties:
