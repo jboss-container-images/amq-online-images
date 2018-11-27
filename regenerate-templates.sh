@@ -99,7 +99,7 @@ make \
     DOCKER_ORG=${DOCKER_ORG} \
     DOCKER_REGISTRY_PREFIX="" \
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-address-space-controller:${VERSION} \
-    API_SERVER_IMAGE=${DOCKER_ORG}/amq-api-server:${VERSION} \
+    API_SERVER_IMAGE=${DOCKER_ORG}/amq-online-1-api-server:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-standard-controller:${VERSION} \
     ROUTER_IMAGE=amq-interconnect/amq-interconnect-1.2-openshift:1.0 \
     ARTEMIS_IMAGE=amq-broker-7/amq-broker-72-openshift:1.0 \
@@ -113,7 +113,7 @@ make \
     KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-auth-plugin:${VERSION} \
     KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-auth-controller:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
-    templates || true
+    templates
 popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
