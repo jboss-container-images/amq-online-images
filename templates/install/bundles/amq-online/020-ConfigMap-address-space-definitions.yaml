@@ -372,7 +372,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: MESSAGING_SECRET
                 value: ${MESSAGING_SECRET}
-              image: amq7/amq-online-1-standard-controller:1.0
+              image: amq7/amq-online-1-standard-controller:dev
               imagePullPolicy: Always
               livenessProbe:
                 httpGet:
@@ -435,7 +435,7 @@ data:
                 value: ${ADDRESS_SPACE_NAMESPACE}
               - name: MESSAGING_CERT
                 value: /opt/agent/messaging-cert/tls.crt
-              image: amq7/amq-online-1-agent:1.0
+              image: amq7/amq-online-1-agent:dev
               imagePullPolicy: Always
               livenessProbe:
                 httpGet:
@@ -702,7 +702,7 @@ data:
               command:
               - /opt/app-root/src/bin/launch_node.sh
               - /opt/app-root/src/bin/subserv.js
-              image: amq7/amq-online-1-agent:1.0
+              image: amq7/amq-online-1-agent:dev
               imagePullPolicy: Always
               livenessProbe:
                 initialDelaySeconds: 60
@@ -797,7 +797,7 @@ data:
                 value: '8883'
               - name: ENMASSE_MQTT_MAXMESSAGESIZE
                 value: ${MQTT_MAXMESSAGESIZE}
-              image: amq7/amq-online-1-mqtt-gateway:1.0
+              image: amq7/amq-online-1-mqtt-gateway:dev
               imagePullPolicy: Always
               livenessProbe:
                 initialDelaySeconds: 60
@@ -812,7 +812,7 @@ data:
               - mountPath: /etc/mqtt-gateway/ssl
                 name: ssl-certs
                 readOnly: true
-            - image: amq7/amq-online-1-mqtt-gateway:1.0
+            - image: amq7/amq-online-1-mqtt-gateway:dev
               imagePullPolicy: Always
               env:
               - name: MESSAGING_SERVICE_HOST
@@ -872,7 +872,7 @@ data:
                 value: 55671
               - name: MESSAGING_SERVICE_ROUTE_CONTAINER_PORT
                 value: 56671
-              image: amq7/amq-online-1-mqtt-lwt:1.0
+              image: amq7/amq-online-1-mqtt-lwt:dev
               imagePullPolicy: Always
               name: mqtt-lwt
               volumeMounts:
@@ -1055,7 +1055,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: amq7/amq-online-1-broker-plugin:1.0
+              image: amq7/amq-online-1-broker-plugin:dev
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -1203,7 +1203,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
                 value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
-              image: amq7/amq-online-1-agent:1.0
+              image: amq7/amq-online-1-agent:dev
               imagePullPolicy: Always
               livenessProbe:
                 httpGet:

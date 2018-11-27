@@ -185,7 +185,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: amq7/amq-online-1-broker-plugin:1.0
+              image: amq7/amq-online-1-broker-plugin:dev
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -433,7 +433,7 @@ data:
                 value: ${NAME}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              image: amq7/amq-online-1-topic-forwarder:1.0
+              image: amq7/amq-online-1-topic-forwarder:dev
               imagePullPolicy: Always
               livenessProbe:
                 httpGet:
@@ -487,7 +487,7 @@ data:
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
                 value: ${AMQ_NAME}
-              image: amq7/amq-online-1-broker-plugin:1.0
+              image: amq7/amq-online-1-broker-plugin:dev
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
