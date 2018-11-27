@@ -94,7 +94,7 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/eap
-        image: amq7/amq-online-1-auth-plugin:dev
+        image: amq7/amq-online-1-auth-plugin:1.0
         imagePullPolicy: Always
         name: keycloak-plugin
         volumeMounts:

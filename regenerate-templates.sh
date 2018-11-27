@@ -24,7 +24,7 @@ do_usage_and_exit () {
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 DOCKER_ORG=amq7
-VERSION=dev
+VERSION=1.0
 KEEP_WORK_DIR=0
 
 
