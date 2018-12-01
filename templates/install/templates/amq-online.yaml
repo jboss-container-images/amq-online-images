@@ -85,13 +85,10 @@ objects:
               type: object
               required:
               - name
-              - min
               - max
               properties:
                 name:
                   type: string
-                min:
-                  type: number
                 max:
                   type: number
           addressPlans:
@@ -218,6 +215,8 @@ objects:
                     properties:
                       memory:
                         type: string
+                  minReplicas:
+                    type: integer
                   linkCapacity:
                     type: integer
 - apiVersion: v1
@@ -585,6 +584,8 @@ objects:
                   value: ${STANDARD_INFRA_CONFIG_NAME}
                 - name: ADDRESS_SPACE
                   value: ${ADDRESS_SPACE}
+                - name: ADDRESS_SPACE_NAMESPACE
+                  value: ${ADDRESS_SPACE_NAMESPACE}
                 - name: INFRA_UUID
                   value: ${INFRA_UUID}
                 - name: ADDRESS_SPACE_PLAN
@@ -615,7 +616,7 @@ objects:
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
-                    path: /health
+                    path: /healthz
                     port: http
                     scheme: HTTP
                   initialDelaySeconds: 30
@@ -625,7 +626,7 @@ objects:
                   name: http
                 readinessProbe:
                   httpGet:
-                    path: /health
+                    path: /healthz
                     port: http
                     scheme: HTTP
                   initialDelaySeconds: 30
@@ -678,7 +679,7 @@ objects:
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
-                    path: /probe
+                    path: /healthz
                     port: http
                     scheme: HTTP
                   periodSeconds: 30
@@ -693,7 +694,7 @@ objects:
                   name: amqp-ws
                 readinessProbe:
                   httpGet:
-                    path: /probe
+                    path: /healthz
                     port: http
                     scheme: HTTP
                   periodSeconds: 30
@@ -767,6 +768,25 @@ objects:
           - name: amqp
             port: 5671
             targetPort: 55671
+          selector:
+            name: admin
+            infraUuid: ${INFRA_UUID}
+      - apiVersion: v1
+        kind: Service
+        metadata:
+          annotations:
+            addressSpace: ${ADDRESS_SPACE}
+          labels:
+            app: enmasse
+            infraType: standard
+            infraUuid: ${INFRA_UUID}
+          name: standard-controller-${INFRA_UUID}
+        spec:
+          ports:
+          - name: health
+            port: 8080
+            protocol: TCP
+            targetPort: 8889
           selector:
             name: admin
             infraUuid: ${INFRA_UUID}
@@ -1428,7 +1448,7 @@ objects:
                   value: /etc/console-certs
                 - name: MESSAGING_CERT
                   value: /opt/agent/messaging-cert/tls.crt
-                - name: PROBE_PORT
+                - name: HEALTH_PORT
                   value: '8088'
                 - name: AUTHENTICATION_SERVICE_HOST
                   value: ${AUTHENTICATION_SERVICE_HOST}
@@ -1446,7 +1466,7 @@ objects:
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
-                    path: /probe
+                    path: /healthz
                     port: http
                     scheme: HTTP
                 name: agent
@@ -1462,7 +1482,7 @@ objects:
                   name: http
                 readinessProbe:
                   httpGet:
-                    path: /probe
+                    path: /healthz
                     port: http
                     scheme: HTTP
                 volumeMounts:
@@ -1509,6 +1529,9 @@ objects:
           - name: https
             port: 8081
             targetPort: 8080
+          - name: health
+            port: 8088
+            targetPort: 8088
           selector:
             role: agent
             infraUuid: ${INFRA_UUID}
@@ -2330,9 +2353,9 @@ objects:
               scheme: HTTP
           resources:
             limits:
-              memory: 256Mi
+              memory: 512Mi
             requests:
-              memory: 128Mi
+              memory: 256Mi
           volumeMounts:
           - mountPath: /address-space-definitions
             name: address-space-definitions
@@ -2705,7 +2728,7 @@ objects:
         containers:
         - env:
           - name: JAVA_OPTS_APPEND
-            value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
+            value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true -Duser.timezone=UTC
           - name: SSO_ADMIN_USERNAME
             valueFrom:
               secretKeyRef:

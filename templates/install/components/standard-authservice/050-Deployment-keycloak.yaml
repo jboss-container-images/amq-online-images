@@ -22,7 +22,7 @@ spec:
       containers:
       - env:
         - name: JAVA_OPTS_APPEND
-          value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true
+          value: -Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true -Duser.timezone=UTC
         - name: SSO_ADMIN_USERNAME
           valueFrom:
             secretKeyRef:
