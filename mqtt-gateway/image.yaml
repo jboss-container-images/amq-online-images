@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00024"
+      value: "0.25.0.redhat-00025"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -47,8 +47,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: mqtt-gateway-0.25.0.redhat-00024.jar
-      md5: 3fce85590364af0642e25f3f1f084653
+    - path: mqtt-gateway-0.25.0.redhat-00025.jar
+      md5: 512d41b46cf133a21a3df69c7af2764b
       name: mqtt-gateway.jar
 
 run:

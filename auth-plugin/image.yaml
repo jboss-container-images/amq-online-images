@@ -20,7 +20,7 @@ envs:
     - name: "KEYCLOAK_PLUGIN_DIR"
       value: "/keycloak-plugin"
     - name: "VERSION"
-      value: "0.25.0.redhat-00024"
+      value: "0.25.0.redhat-00025"
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 
@@ -44,8 +44,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: sasl-plugin-0.25.0.redhat-00024.jar
-      md5: 295ea442fdff57d770cd7886fb0bed72
+    - path: sasl-plugin-0.25.0.redhat-00025.jar
+      md5: b3c55edea27d0e81feaca8a8ce8b14c2
       name: sasl-plugin.jar
 
 run:
