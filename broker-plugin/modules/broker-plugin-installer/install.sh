@@ -12,7 +12,7 @@ BROKER_PLUGIN_DIR=/opt/broker-plugin
     mkdir -p ${BROKER_PLUGIN_DIR}/lib
     mkdir -p ${BROKER_PLUGIN_DIR}/jmx_exporter
 
-	unzip "${SOURCES_DIR}/broker-plugin.zip"
+	unzip "${SOURCES_DIR}/broker-plugin.zip" -d /
 
     mv ${ADDED_DIR}/init-broker.sh ${BROKER_PLUGIN_DIR}/bin/init-broker.sh
     mv ${ADDED_DIR}/launch-broker.sh ${BROKER_PLUGIN_DIR}/bin/launch-broker.sh

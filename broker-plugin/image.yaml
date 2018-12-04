@@ -63,7 +63,7 @@ artifacts:
 run:
       user: 185
       cmd:
-          - "/opt/amq/broker-plugin/bin/init-broker.sh"
+          - "/opt/broker-plugin/bin/init-broker.sh"
 
 osbs:
       repository:
