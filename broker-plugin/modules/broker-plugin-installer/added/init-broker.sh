@@ -101,9 +101,7 @@ function pre_configuration() {
     export ARTEMIS_INSTANCE_ETC_URI=file:${instanceDir}/etc/
     envsubst < $CONFIG_TEMPLATES/artemis.profile > $BROKER_CONF_DIR/artemis.profile
 
-    if [ "$DEBUG_LOGGING" == "true" ]; then
-        cp $CONFIG_TEMPLATES/logging.properties $BROKER_CONF_DIR/logging.properties
-    fi
+    cp $CONFIG_TEMPLATES/logging.properties $BROKER_CONF_DIR/logging.properties
 }
 
 function configure_ssl() {
