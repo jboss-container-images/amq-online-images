@@ -18,7 +18,7 @@ envs:
     - name: "JAVA_HOME"
       value: "/usr/lib/jvm/java"
     - name: "VERSION"
-      value: "0.25.0.redhat-00028"
+      value: "0.25.0.redhat-00029"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -36,8 +36,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: topic-forwarder-0.25.0.redhat-00028.jar
-      md5: 108842342e3ef748cef04e07aa6e9d71
+    - path: topic-forwarder-0.25.0.redhat-00029.jar
+      md5: b1bfb523e4d548e5be81793053f2615a
       name: topic-forwarder.jar
 
 run:
