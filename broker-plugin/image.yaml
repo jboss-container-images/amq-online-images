@@ -2,13 +2,13 @@ schema_version: 1
 
 version: 1.0
 name: amq7/amq-online-1-broker-plugin
-description: "AMQ Online initialization image for AMQ Broker."
+description: "AMQ Online initialization plugin image for AMQ Broker."
 from: jboss/openjdk18-rhel7:1.1
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-broker-plugin-openshift-container"
     - name: "io.k8s.description"
-      value: "Implementation of the AMQ Broker"
+      value: "AMQ Online Broker Initializer Plugin"
     - name: "io.k8s.display-name"
       value: "AMQ Online Broker Plugin"
     - name: "io.openshift.tags"
@@ -63,7 +63,7 @@ artifacts:
 run:
       user: 185
       cmd:
-          - "/opt/amq/broker-plugin/bin/init-broker.sh"
+          - "/opt/broker-plugin/bin/init-broker.sh"
 
 osbs:
       repository:
