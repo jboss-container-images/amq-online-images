@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00032"
+      value: "0.25.0.redhat-00033"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -40,8 +40,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: address-space-controller-0.25.0.redhat-00032-dist.zip
-      md5: 32b551ac154e798a049a9d9594167ffa
+    - path: address-space-controller-0.25.0.redhat-00033-dist.zip
+      md5: 263046ed60241b1b6def8699539a77aa
       name: address-space-controller.zip
 
 run:
