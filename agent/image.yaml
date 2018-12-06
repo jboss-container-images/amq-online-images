@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00034"
+      value: "0.25.0.redhat-00035"
 
 modules:
       repositories:
@@ -26,8 +26,8 @@ modules:
           - name: agent
 
 artifacts:
-    - path: agent-0.25.0.redhat-00034-dist.zip
-      md5: 453f0b618b43a7730e3825afec4973db
+    - path: agent-0.25.0.redhat-00035-dist.zip
+      md5: 118e663d380d4a169d648a4dcb5d9430
       name: agent-dist.zip
 
 ports:
