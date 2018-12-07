@@ -18,7 +18,7 @@ envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "0.25.0.redhat-00037"
+      value: "0.25.0.redhat-00038"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -47,8 +47,8 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: broker-plugin-0.25.0.redhat-00037-dist.zip
-      md5: a9e22e827ac1313c76292e401bfed436
+    - path: broker-plugin-0.25.0.redhat-00038-dist.zip
+      md5: 1f6b416f6a5e154335e968e83a283215
       name: broker-plugin.zip
     - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
       md5: 89e83b40f70c9ca43a409e5b485555bc
