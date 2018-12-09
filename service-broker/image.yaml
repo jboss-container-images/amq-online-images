@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00049"
+      value: "0.25.0.redhat-00050"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -34,8 +34,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: service-broker-0.25.0.redhat-00049.jar
-      md5: 9a1ac79fd49141c79a4ea56b5b90c7ba
+    - path: service-broker-0.25.0.redhat-00050.jar
+      md5: 1fdba6240d5ec4cb5e23a6a26a016d30
       name: service-broker.jar
 
 run:
