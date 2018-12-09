@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00048"
+      value: "0.25.0.redhat-00049"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -34,8 +34,8 @@ modules:
           - name: keycloak-controller
 
 artifacts:
-    - path: keycloak-controller-0.25.0.redhat-00048.jar
-      md5: 7a656e29317d8c5e039730c534c8235f
+    - path: keycloak-controller-0.25.0.redhat-00049.jar
+      md5: 98c3906d6965fde8f1a975349d186081
       name: keycloak-controller.jar
 
 run:
