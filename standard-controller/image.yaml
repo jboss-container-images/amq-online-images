@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00054"
+      value: "0.25.0.redhat-00055"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -40,8 +40,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: standard-controller-0.25.0.redhat-00054.jar
-      md5: d81b1b212d76d4e608e0010bc47471e4
+    - path: standard-controller-0.25.0.redhat-00055.jar
+      md5: 06e9f764fb91a2d7b5b6b9520aaa9fa7
       name: standard-controller.jar
 
 run:
