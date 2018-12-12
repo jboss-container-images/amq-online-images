@@ -38,14 +38,14 @@ modules:
           - name: common.java
 
 packages:
-    repositories:
-        - jboss-os
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
     install:
         - openssl
 
 artifacts:
-    - path: ${ARTIFACT}
-      md5: ${ARTIFACT_MD5}
+    - md5: ${ARTIFACT_MD5}
       name: address-space-controller.zip
 
 run:
@@ -54,6 +54,10 @@ run:
           - "/bin/launch_java.sh"
           - "/opt/address-space-controller.jar"
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-address-space-controller-rhel-7

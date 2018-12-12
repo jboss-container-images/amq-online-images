@@ -23,11 +23,9 @@ envs:
       value: "info"
 
 packages:
-    repositories:
-        - jboss-os
-# Need to switch the repository definition to, and have an override for building on fedora:
-#       - name: OS
-#         id: rhel-server-os-7-rpms
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
     install:
         - python
         - gettext
@@ -51,17 +49,13 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - path: broker-plugin-0.25.0.redhat-00061-dist.zip
-      md5: a2ea126817e4b56e0d26117273fd2794
+    - md5: a2ea126817e4b56e0d26117273fd2794
       name: broker-plugin.zip
-    - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
-      md5: 89e83b40f70c9ca43a409e5b485555bc
+    - md5: 89e83b40f70c9ca43a409e5b485555bc
       name: jmx-exporter.jar
-    - path: netty-tcnative-boringssl-static-2.0.7.Final.jar
-      md5: 5da2f900047b0a53bf526dd9f37d4ffd
+    - md5: 5da2f900047b0a53bf526dd9f37d4ffd
       name: netty-tcnative-boringssl-static.jar
-    - path: netty-tcnative-boringssl-static-2.0.7.Final-linux-x86_64.jar
-      md5: f9410ba141f63cff9202149efc321657
+    - md5: f9410ba141f63cff9202149efc321657
       name: netty-tcnative-boringssl-static-linux-x86_64.jar
 
 run:
@@ -70,6 +64,10 @@ run:
           - "/opt/broker-plugin/bin/init-broker.sh"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-broker-plugin-rhel-7

@@ -37,9 +37,13 @@ modules:
           - name: common.java
           - name: keycloak-controller
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: keycloak-controller-0.25.0.redhat-00061.jar
-      md5: 9efebce6f7cbe9eb3a1f9183e2d0031f
+    - md5: 9efebce6f7cbe9eb3a1f9183e2d0031f
       name: keycloak-controller.jar
 
 run:
@@ -49,6 +53,10 @@ run:
           - "/opt/keycloak-controller.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-auth-controller-rhel-7

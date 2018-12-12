@@ -44,8 +44,7 @@ packages:
         - openssl
 
 artifacts:
-    - path: standard-controller-0.25.0.redhat-00061.jar
-      md5: f8c86358b5064a17b78f069a959a9923
+    - md5: f8c86358b5064a17b78f069a959a9923
       name: standard-controller.jar
 
 run:
@@ -55,6 +54,10 @@ run:
           - "/opt/standard-controller.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-standard-controller-rhel-7
