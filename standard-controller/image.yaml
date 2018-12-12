@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: amq7/amq-online-1-standard-controller
 description: "global component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance."
-from: jboss/openjdk18-rhel7:1.1
+from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-standard-controller-openshift-container"
@@ -16,20 +16,24 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00059"
+      value: "0.25.0.redhat-00061"
     - name: "LOG_LEVEL"
       value: "info"
 
 modules:
       repositories:
-          - git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
           - name: standardcontroller.common
             path: modules/common
           - name: common.java
             path: ../modules/common/java
       install:
+          - name: jboss.container.user
+          - name: jboss.container.openjdk.jdk
+            version: "8"
           - name: standardcontroller.common
           - name: common.java
 
@@ -40,8 +44,8 @@ packages:
         - openssl
 
 artifacts:
-    - path: standard-controller-0.25.0.redhat-00059.jar
-      md5: 75d0296580c2e0f74263a8c0db62adcc
+    - path: standard-controller-0.25.0.redhat-00061.jar
+      md5: f8c86358b5064a17b78f069a959a9923
       name: standard-controller.jar
 
 run:

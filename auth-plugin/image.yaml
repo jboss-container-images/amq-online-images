@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: amq7/amq-online-1-auth-plugin
 description: "AMQ Online SSO for authentication"
-from: jboss/openjdk18-rhel7:1.1
+from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-auth-plugin-openshift-container"
@@ -20,7 +20,7 @@ envs:
     - name: "KEYCLOAK_PLUGIN_DIR"
       value: "/keycloak-plugin"
     - name: "VERSION"
-      value: "0.25.0.redhat-00059"
+      value: "0.25.0.redhat-00061"
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 
@@ -32,20 +32,24 @@ packages:
 
 modules:
       repositories:
-          - git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
           - name: auth.rhel.install
             path: modules
           - name: common.java
             path: ../modules/common/java
       install:
+          - name: jboss.container.user
+          - name: jboss.container.openjdk.jdk
+            version: "8"
           - name: auth.rhel.install
           - name: common.java
 
 artifacts:
-    - path: sasl-plugin-0.25.0.redhat-00059.jar
-      md5: 33228263f9416fdf4e4bc6333ede8422
+    - path: sasl-plugin-0.25.0.redhat-00061.jar
+      md5: a73bb8f2c156eddb5d10595ef009dddc
       name: sasl-plugin.jar
 
 run:

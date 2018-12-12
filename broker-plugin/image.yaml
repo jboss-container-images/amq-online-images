@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: amq7/amq-online-1-broker-plugin
 description: "AMQ Online initialization plugin image for AMQ Broker."
-from: jboss/openjdk18-rhel7:1.1
+from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-broker-plugin-openshift-container"
@@ -18,7 +18,7 @@ envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "0.25.0.redhat-00059"
+      value: "0.25.0.redhat-00061"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -37,18 +37,22 @@ packages:
 
 modules:
       repositories:
-          - git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
           - path: modules
       install:
+          - name: jboss.container.user
+          - name: jboss.container.openjdk.jdk
+            version: "8"
           - name: broker.plugin.installer
           - name: dynamic-resources
           - name: os-java-run
 
 artifacts:
-    - path: broker-plugin-0.25.0.redhat-00059-dist.zip
-      md5: 88ba6af377a7110accabcaebe6b4ee9a
+    - path: broker-plugin-0.25.0.redhat-00061-dist.zip
+      md5: a2ea126817e4b56e0d26117273fd2794
       name: broker-plugin.zip
     - path: jmx_prometheus_javaagent-0.10.0.redhat-2.jar
       md5: 89e83b40f70c9ca43a409e5b485555bc
