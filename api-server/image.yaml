@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00058"
+      value: "0.25.0.redhat-00059"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -34,8 +34,8 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: api-server-0.25.0.redhat-00058.jar
-      md5: 6c923bf82b2aafb6d407665b61857e4f
+    - path: api-server-0.25.0.redhat-00059.jar
+      md5: 6e523f898a8cbe640bf3df798c9b8dc9
       name: api-server.jar
 
 run:
