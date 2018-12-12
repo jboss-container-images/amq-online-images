@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: amq7/amq-online-1-topic-forwarder
 description: "Message forwarder for topics in AMQ Online, currently used with the AMQ Broker broker"
-from: jboss/openjdk18-rhel7:1.1
+from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-topic-forwarder-openshift-container"
@@ -24,14 +24,18 @@ envs:
 
 modules:
       repositories:
-          - git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
           - name: common.java
             path: ../modules/common/java
           - name: topic-forwarder
             path: modules
       install:
+          - name: jboss.container.user
+          - name: jboss.container.openjdk.jdk
+            version: "8"
           - name: topic-forwarder
           - name: common.java
 
