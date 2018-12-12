@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: amq7/amq-online-1-mqtt-gateway
 description: "AMQ Online MQTT gateway"
-from: jboss/openjdk18-rhel7:1.1
+from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-mqtt-gateway-openshift-container"
@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00059"
+      value: "0.25.0.redhat-00061"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -35,20 +35,24 @@ ports:
 
 modules:
       repositories:
-          - git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: master
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
           - name: common.java
             path: ../modules/common/java
           - name: mqtt-gateway
             path: modules
       install:
+          - name: jboss.container.user
+          - name: jboss.container.openjdk.jdk
+            version: "8"
           - name: mqtt-gateway
           - name: common.java
 
 artifacts:
-    - path: mqtt-gateway-0.25.0.redhat-00059.jar
-      md5: 11ab4e2f50efe5c67bfb3ed98ba62284
+    - path: mqtt-gateway-0.25.0.redhat-00061.jar
+      md5: e365c97b7b648eca3744bb414b9fe64d
       name: mqtt-gateway.jar
 
 run:
