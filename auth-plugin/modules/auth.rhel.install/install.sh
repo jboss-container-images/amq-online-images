@@ -5,6 +5,7 @@ set -e
 SOURCES_DIR=/tmp/artifacts/
 SCRIPT_DIR=$(dirname $0)
 ADDED_DIR=${SCRIPT_DIR}/added
+KEYCLOAK_PLUGIN_DIR=/keycloak-plugin
 
 {
 	mkdir -p ${KEYCLOAK_PLUGIN_DIR}/configuration
