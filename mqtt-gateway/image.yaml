@@ -50,9 +50,13 @@ modules:
           - name: mqtt-gateway
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: mqtt-gateway-0.25.0.redhat-00063.jar
-      md5: 372b78fbc65bfdbec79b9f0c30cdf774
+    - md5: e365c97b7b648eca3744bb414b9fe64d
       name: mqtt-gateway.jar
 
 run:
@@ -62,6 +66,10 @@ run:
           - "/opt/mqtt-gateway.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-mqtt-gateway-rhel-7

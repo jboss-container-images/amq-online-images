@@ -37,9 +37,13 @@ modules:
           - name: mqtt-lwt
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: mqtt-lwt-0.25.0.redhat-00063.jar
-      md5: 176fab89382ede065d0d792a6b30b468
+    - md5: 85e65aa6307f8374183d021b226de574
       name: mqtt-lwt.jar
 
 run:
@@ -49,6 +53,10 @@ run:
           - "/mqtt-lwt.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-mqtt-lwt-rhel-7

@@ -26,8 +26,7 @@ modules:
           - name: agent
 
 artifacts:
-    - path: agent-0.25.0.redhat-00063-dist.zip
-      md5: dde86929bc08887628164f79dcf71950
+    - md5: 8a2be6a548fdfd4b4371bea01e7734a1
       name: agent-dist.zip
 
 ports:
@@ -41,6 +40,10 @@ run:
           - "/opt/app-root/src/bin/agent.js"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-agent-rhel-7
