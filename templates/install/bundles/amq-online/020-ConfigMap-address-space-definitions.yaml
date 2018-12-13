@@ -207,6 +207,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: qdrouterd-${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/operator-infra
+                      operator: In
+                      values:
+                        - "true"
         serviceName: qdrouterd-headless-${INFRA_UUID}
         replicas: 1
         selector:
@@ -311,6 +321,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: admin.${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/operator-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         strategy:
           type: Recreate
@@ -695,6 +715,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: subserv.${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/messaging-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         selector:
           matchLabels:
@@ -785,6 +815,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: mqtt-gateway.${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/messaging-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         selector:
           matchLabels:
@@ -866,6 +906,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: mqtt-lwt.${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/messaging-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         selector:
           matchLabels:
@@ -964,6 +1014,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: broker.${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/messaging-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         strategy:
           type: Recreate
@@ -996,8 +1056,6 @@ data:
                 value: ${BROKER_ADDRESS_FULL_POLICY}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              - name: GLOBAL_MAX_SIZE
-                value: ${GLOBAL_MAX_SIZE}
               - name: AUTHENTICATION_SERVICE_HOST
                 value: ${AUTHENTICATION_SERVICE_HOST}
               - name: AUTHENTICATION_SERVICE_PORT
@@ -1009,7 +1067,7 @@ data:
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
-                value: ${AMQ_NAME}
+                value: broker
               image: amq-broker-7/amq-broker-72-openshift:1.1
               imagePullPolicy: Always
               command:
@@ -1019,7 +1077,7 @@ data:
                   command:
                   - sh
                   - -c
-                  - $AMQ_HOME/custom/bin/probe.sh
+                  - $ARTEMIS_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 120
               name: broker
               ports:
@@ -1038,7 +1096,7 @@ data:
                   command:
                   - sh
                   - -c
-                  - $AMQ_HOME/custom/bin/probe.sh
+                  - $ARTEMIS_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 10
               resources:
                 limits:
@@ -1075,8 +1133,8 @@ data:
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
-                value: ${AMQ_NAME}
-              image: amq7/amq-online-1-broker-plugin:dev
+                value: broker
+              image: amq7/broker-plugin:latest
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -1164,6 +1222,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: agent.${INFRA_UUID}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/operator-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         strategy:
           type: Recreate
@@ -1359,7 +1427,3 @@ data:
     - description: Broker address full policy
       name: BROKER_ADDRESS_FULL_POLICY
       value: FAIL
-    - description: The name of the broker
-      displayName: AMQ Name
-      name: AMQ_NAME
-      value: broker

@@ -18,7 +18,7 @@ envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "0.25.0.redhat-00065"
+      value: "0.25.0.redhat-00067"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -49,7 +49,7 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - md5: eadf612e561f697f0a8014df90d33347
+    - md5: 3e4f5d83e92421198e25c70ae5075699
       name: broker-plugin.zip
     - md5: 89e83b40f70c9ca43a409e5b485555bc
       name: jmx-exporter.jar

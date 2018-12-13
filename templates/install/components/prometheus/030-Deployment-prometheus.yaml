@@ -16,6 +16,16 @@ spec:
         app: enmasse
         name: prometheus
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: node-role.enmasse.io/operator-infra
+                    operator: In
+                    values:
+                      - "true"
       containers:
       - image: prom/prometheus:v2.4.3
         imagePullPolicy: Always
