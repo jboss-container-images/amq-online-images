@@ -45,6 +45,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: ${NAME}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/messaging-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         serviceName: ${NAME}
         selector:
@@ -80,10 +90,6 @@ data:
                 value: 56671
               - name: MESSAGING_SERVICE_PORT_AMQPS_NORMAL
                 value: 55671
-              - name: QUEUE_SCHEDULER_SERVICE_HOST
-                value: queue-scheduler-${INFRA_UUID}
-              - name: QUEUE_SCHEDULER_SERVICE_PORT
-                value: 5672
               - name: INFRA_UUID
                 value: ${INFRA_UUID}
               - name: QUEUE_NAME
@@ -92,8 +98,6 @@ data:
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              - name: GLOBAL_MAX_SIZE
-                value: ${GLOBAL_MAX_SIZE}
               - name: ADDRESS_FULL_POLICY
                 value: ${BROKER_ADDRESS_FULL_POLICY}
               - name: AUTHENTICATION_SERVICE_HOST
@@ -105,24 +109,19 @@ data:
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
-                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
               - name: AMQ_NAME
-                value: ${AMQ_NAME}
+                value: broker
               image: amq-broker-7/amq-broker-72-openshift:1.1
               imagePullPolicy: Always
               command:
               - /opt/amq/custom/bin/launch-broker.sh
-              lifecycle:
-                preStop:
-                  exec:
-                    command:
-                    - $AMQ_HOME/custom/shutdown-hook/shutdown-hook.sh
               livenessProbe:
                 exec:
                   command:
                   - sh
                   - -c
-                  - $AMQ_HOME/custom/bin/probe.sh
+                  - $ARTEMIS_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 120
               name: broker
               ports:
@@ -137,7 +136,7 @@ data:
                   command:
                   - sh
                   - -c
-                  - $AMQ_HOME/custom/bin/probe.sh
+                  - $ARTEMIS_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 10
               resources:
                 limits:
@@ -169,6 +168,8 @@ data:
                 value: ${ADDRESS}
               - name: CLUSTER_ID
                 value: ${CLUSTER_ID}
+              - name: ADDRESS_FULL_POLICY
+                value: ${BROKER_ADDRESS_FULL_POLICY}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
               - name: GLOBAL_MAX_SIZE
@@ -184,8 +185,8 @@ data:
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
-                value: ${AMQ_NAME}
-              image: amq7/amq-online-1-broker-plugin:dev
+                value: broker
+              image: amq7/broker-plugin:latest
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -273,10 +274,6 @@ data:
         a quarter of BROKER_MEMORY_LIMIT
       name: GLOBAL_MAX_SIZE
       value: "-1"
-    - description: The name of the broker
-      displayName: AMQ Name
-      name: AMQ_NAME
-      value: broker
   topic-persisted.yaml: |-
     apiVersion: v1
     kind: Template
@@ -318,6 +315,16 @@ data:
           infraUuid: ${INFRA_UUID}
         name: ${NAME}
       spec:
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                preference:
+                  matchExpressions:
+                    - key: node-role.enmasse.io/messaging-infra
+                      operator: In
+                      values:
+                        - "true"
         replicas: 1
         serviceName: ${NAME}
         selector:
@@ -355,18 +362,12 @@ data:
                 value: 56671
               - name: MESSAGING_SERVICE_PORT_AMQPS_NORMAL
                 value: 55671
-              - name: QUEUE_SCHEDULER_SERVICE_HOST
-                value: queue-scheduler-${INFRA_UUID}
-              - name: QUEUE_SCHEDULER_SERVICE_PORT
-                value: 5672
               - name: TOPIC_NAME
                 value: ${ADDRESS}
               - name: CLUSTER_ID
                 value: ${CLUSTER_ID}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
-              - name: GLOBAL_MAX_SIZE
-                value: ${GLOBAL_MAX_SIZE}
               - name: ADDRESS_FULL_POLICY
                 value: ${BROKER_ADDRESS_FULL_POLICY}
               - name: AUTHENTICATION_SERVICE_HOST
@@ -378,24 +379,19 @@ data:
               - name: AUTHENTICATION_SERVICE_SASL_INIT_HOST
                 value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
-                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
+                value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
               - name: AMQ_NAME
-                value: ${AMQ_NAME}
+                value: broker
               image: amq-broker-7/amq-broker-72-openshift:1.1
               imagePullPolicy: Always
               command:
               - /opt/amq/custom/bin/launch-broker.sh
-              lifecycle:
-                preStop:
-                  exec:
-                    command:
-                    - $AMQ_HOME/custom/shutdown-hook/shutdown-hook.sh
               livenessProbe:
                 exec:
                   command:
                   - sh
                   - -c
-                  - $AMQ_HOME/custom/bin/probe.sh
+                  - $ARTEMIS_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 120
               name: broker
               ports:
@@ -410,7 +406,7 @@ data:
                   command:
                   - sh
                   - -c
-                  - $AMQ_HOME/custom/bin/probe.sh
+                  - $ARTEMIS_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 10
               resources:
                 limits:
@@ -471,6 +467,8 @@ data:
                 value: ${ADDRESS}
               - name: CLUSTER_ID
                 value: ${CLUSTER_ID}
+              - name: ADDRESS_FULL_POLICY
+                value: ${BROKER_ADDRESS_FULL_POLICY}
               - name: CERT_DIR
                 value: /etc/enmasse-certs
               - name: GLOBAL_MAX_SIZE
@@ -486,8 +484,8 @@ data:
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
               - name: AMQ_NAME
-                value: ${AMQ_NAME}
-              image: amq7/amq-online-1-broker-plugin:dev
+                value: broker
+              image: amq7/broker-plugin:latest
               name: broker-plugin
               volumeMounts:
               - mountPath: /etc/enmasse-certs
@@ -575,7 +573,3 @@ data:
         a quarter of BROKER_MEMORY_LIMIT
       name: GLOBAL_MAX_SIZE
       value: "-1"
-    - description: The name of the broker
-      displayName: AMQ Name
-      name: AMQ_NAME
-      value: broker
