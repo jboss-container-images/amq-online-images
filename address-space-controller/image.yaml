@@ -16,15 +16,9 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00063"
+      value: "0.25.0.redhat-00064"
     - name: "LOG_LEVEL"
       value: "info"
-packages:
-    content_sets:
-        x86_64:
-            - rhel-7-server-rpms
-    install:
-        - openssl
 
 modules:
       repositories:
@@ -43,8 +37,15 @@ modules:
           - name: addresscontroller.common
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+    install:
+        - openssl
+
 artifacts:
-    - md5: 99f4f6487cf071f2ac00913d5c8d06e3
+    - md5: 0cbe9464e82454f70f0a0fc9600570dd
       name: address-space-controller.zip
 
 run:
