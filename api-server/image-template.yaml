@@ -37,9 +37,13 @@ modules:
           - name: apiserver.common
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: ${ARTIFACT}
-      md5: ${ARTIFACT_MD5}
+    - md5: ${ARTIFACT_MD5}
       name: api-server.jar
 
 run:
@@ -49,6 +53,10 @@ run:
           - "/opt/api-server.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-api-server-rhel-7

@@ -37,9 +37,13 @@ modules:
           - name: apiserver.common
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: api-server-0.25.0.redhat-00063.jar
-      md5: 913383c003e010b9768e5308c1f1d4e5
+    - md5: 5719adb49473e68114f575571e95bd7a
       name: api-server.jar
 
 run:
@@ -49,6 +53,10 @@ run:
           - "/opt/api-server.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-api-server-rhel-7

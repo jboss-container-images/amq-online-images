@@ -25,10 +25,11 @@ envs:
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 
 packages:
-    repositories:
-      - jboss-os
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
     install:
-      - openssl
+        - openssl
 
 modules:
       repositories:
@@ -48,8 +49,7 @@ modules:
           - name: common.java
 
 artifacts:
-    - path: sasl-plugin-0.25.0.redhat-00063.jar
-      md5: 3561beb389a59fb181a9d17ac4172567
+    - md5: a73bb8f2c156eddb5d10595ef009dddc
       name: sasl-plugin.jar
 
 run:
@@ -58,6 +58,10 @@ run:
           - "/keycloak-plugin/bin/init-keycloak.sh"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-auth-plugin-rhel-7

@@ -47,9 +47,13 @@ modules:
           - name: auth.rhel.install
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: ${ARTIFACT}
-      md5: ${ARTIFACT_MD5}
+    - md5: ${ARTIFACT_MD5}
       name: sasl-plugin.jar
 
 run:
@@ -58,6 +62,10 @@ run:
           - "/keycloak-plugin/bin/init-keycloak.sh"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-auth-plugin-rhel-7

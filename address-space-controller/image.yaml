@@ -19,6 +19,12 @@ envs:
       value: "0.25.0.redhat-00063"
     - name: "LOG_LEVEL"
       value: "info"
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+    install:
+        - openssl
 
 modules:
       repositories:
@@ -37,15 +43,8 @@ modules:
           - name: addresscontroller.common
           - name: common.java
 
-packages:
-    repositories:
-        - jboss-os
-    install:
-        - openssl
-
 artifacts:
-    - path: address-space-controller-0.25.0.redhat-00063-dist.zip
-      md5: 508cb4dfff4873c9e634059302db8981
+    - md5: 99f4f6487cf071f2ac00913d5c8d06e3
       name: address-space-controller.zip
 
 run:
@@ -54,6 +53,10 @@ run:
           - "/bin/launch_java.sh"
           - "/opt/address-space-controller.jar"
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-address-space-controller-rhel-7

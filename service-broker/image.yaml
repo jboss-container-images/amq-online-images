@@ -37,9 +37,13 @@ modules:
           - name: servicebroker.common
           - name: common.java
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
 artifacts:
-    - path: service-broker-0.25.0.redhat-00063.jar
-      md5: 41ccc06207e5ded4091a6930767a3812
+    - md5: bc48abbe61941c533e2a3dfcfad15c37
       name: service-broker.jar
 
 run:
@@ -49,6 +53,10 @@ run:
           - "/opt/service-broker.jar"
 
 osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
       repository:
             name: containers/amq-online-1
             branch: amq7-amq-online-1-service-broker-rhel-7
