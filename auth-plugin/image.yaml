@@ -51,6 +51,8 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
+    install:
+        - openssl
 
 artifacts:
     - md5: 8a783d562c2d76b2c3b7d233a5d7c279
