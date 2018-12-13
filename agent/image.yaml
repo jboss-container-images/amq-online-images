@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00061"
+      value: "0.25.0.redhat-00063"
 
 modules:
       repositories:
