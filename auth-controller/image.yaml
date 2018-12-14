@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00070"
+      value: "0.25.0.redhat-00071"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -43,7 +43,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: c0df8555e9e5169d08279a65adfabc16
+    - md5: 3639373d97456fb60a9eba908b232781
       name: keycloak-controller.jar
 
 run:

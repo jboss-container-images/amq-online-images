@@ -1077,7 +1077,7 @@ data:
                   command:
                   - sh
                   - -c
-                  - $ARTEMIS_HOME/custom/bin/probe.sh
+                  - $AMQ_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 120
               name: broker
               ports:
@@ -1096,7 +1096,7 @@ data:
                   command:
                   - sh
                   - -c
-                  - $ARTEMIS_HOME/custom/bin/probe.sh
+                  - $AMQ_HOME/custom/bin/probe.sh
                 initialDelaySeconds: 10
               resources:
                 limits:
