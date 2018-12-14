@@ -18,7 +18,7 @@ envs:
     - name: "JAVA_HOME"
       value: "/usr/lib/jvm/java"
     - name: "VERSION"
-      value: "0.25.0.redhat-00069"
+      value: "0.25.0.redhat-00070"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: cb4f681dae3f5b3ce8137c6782ad919c
+    - md5: 699652d1ec4706826f025620513971d3
       name: topic-forwarder.jar
 
 run:
