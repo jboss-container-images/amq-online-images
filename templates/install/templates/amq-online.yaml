@@ -1323,7 +1323,7 @@ objects:
                     command:
                     - sh
                     - -c
-                    - $ARTEMIS_HOME/custom/bin/probe.sh
+                    - $AMQ_HOME/custom/bin/probe.sh
                   initialDelaySeconds: 120
                 name: broker
                 ports:
@@ -1342,7 +1342,7 @@ objects:
                     command:
                     - sh
                     - -c
-                    - $ARTEMIS_HOME/custom/bin/probe.sh
+                    - $AMQ_HOME/custom/bin/probe.sh
                   initialDelaySeconds: 10
                 resources:
                   limits:
@@ -1811,7 +1811,7 @@ objects:
                     command:
                     - sh
                     - -c
-                    - $ARTEMIS_HOME/custom/bin/probe.sh
+                    - $AMQ_HOME/custom/bin/probe.sh
                   initialDelaySeconds: 120
                 name: broker
                 ports:
@@ -1826,7 +1826,7 @@ objects:
                     command:
                     - sh
                     - -c
-                    - $ARTEMIS_HOME/custom/bin/probe.sh
+                    - $AMQ_HOME/custom/bin/probe.sh
                   initialDelaySeconds: 10
                 resources:
                   limits:
@@ -2081,7 +2081,7 @@ objects:
                     command:
                     - sh
                     - -c
-                    - $ARTEMIS_HOME/custom/bin/probe.sh
+                    - $AMQ_HOME/custom/bin/probe.sh
                   initialDelaySeconds: 120
                 name: broker
                 ports:
@@ -2096,7 +2096,7 @@ objects:
                     command:
                     - sh
                     - -c
-                    - $ARTEMIS_HOME/custom/bin/probe.sh
+                    - $AMQ_HOME/custom/bin/probe.sh
                   initialDelaySeconds: 10
                 resources:
                   limits:
