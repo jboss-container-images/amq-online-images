@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00080"
+      value: "0.25.0.redhat-00081"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -43,7 +43,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: c874a8537b182227ae501a244ebca37d
+    - md5: 7d304487b09a1f543f961edafc82a75a
       name: service-broker.jar
 
 run:
