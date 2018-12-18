@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.25.0.redhat-00088"
+      value: "0.25.0.redhat-00089"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -43,7 +43,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: ec805cc4c2dd2b7fd2b21585be9a4e7f
+    - md5: f7d34847d2da40d2a403cfa1c1faddf2
       name: api-server.jar
 
 run:
