@@ -1350,6 +1350,8 @@ objects:
                   requests:
                     memory: ${BROKER_MEMORY_LIMIT}
                 volumeMounts:
+                - mountPath: /var/run/artemis
+                  name: data
                 - mountPath: /etc/prometheus-config
                   name: broker-prometheus-config
                   readOnly: true
@@ -1383,6 +1385,8 @@ objects:
                 image: amq7/amq-online-1-broker-plugin:dev
                 name: broker-plugin
                 volumeMounts:
+                - mountPath: /var/run/artemis
+                  name: data
                 - mountPath: /etc/enmasse-certs
                   name: broker-internal-cert
                   readOnly: true
@@ -1399,11 +1403,11 @@ objects:
                   name: broker-custom
                   readOnly: false
               volumes:
-              - emptyDir: {}
-                name: broker-custom
               - name: data
                 persistentVolumeClaim:
                   claimName: broker-data.${INFRA_UUID}
+              - emptyDir: {}
+                name: broker-custom
               - name: broker-prometheus-config
                 configMap:
                   name: broker-prometheus-config
@@ -1801,7 +1805,9 @@ objects:
                 - name: AUTHENTICATION_SERVICE_OAUTH_URL
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
-                  value: broker
+                  value: serverData
+                - name: HOME
+                  value: /var/run/artemis/split-1/
                 image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
@@ -1834,6 +1840,8 @@ objects:
                   requests:
                     memory: ${BROKER_MEMORY_LIMIT}
                 volumeMounts:
+                - mountPath: /var/run/artemis
+                  name: data
                 - mountPath: /etc/prometheus-config
                   name: broker-prometheus-config
                   readOnly: true
@@ -2071,7 +2079,9 @@ objects:
                 - name: AUTHENTICATION_SERVICE_OAUTH_URL
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
-                  value: broker
+                  value: serverData
+                - name: HOME
+                  value: /var/run/artemis/split-1/
                 image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
@@ -2669,6 +2679,12 @@ objects:
     name: keycloak-controller
     labels:
       app: enmasse
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: standard-authservice
+    labels:
+      app: enmasse
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:
@@ -2712,6 +2728,20 @@ objects:
   subjects:
   - kind: ServiceAccount
     name: keycloak-controller
+    namespace: ${NAMESPACE}
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: "enmasse.io:std-authsvc-auth-delegator-${NAMESPACE}"
+    labels:
+      app: enmasse
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:auth-delegator
+  subjects:
+  - kind: ServiceAccount
+    name: standard-authservice
     namespace: ${NAMESPACE}
 - apiVersion: v1
   kind: Service
@@ -2919,6 +2949,7 @@ objects:
           - mountPath: /opt/enmasse/cert
             name: standard-authservice-cert
             readOnly: false
+        serviceAccountName: standard-authservice
         volumes:
         - name: standard-authservice-cert
           secret:
