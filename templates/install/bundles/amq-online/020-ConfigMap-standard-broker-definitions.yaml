@@ -111,7 +111,9 @@ data:
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
               - name: AMQ_NAME
-                value: broker
+                value: serverData
+              - name: HOME
+                value: /var/run/artemis/split-1/
               image: amq-broker-7/amq-broker-72-openshift:1.1
               imagePullPolicy: Always
               command:
@@ -144,6 +146,8 @@ data:
                 requests:
                   memory: ${BROKER_MEMORY_LIMIT}
               volumeMounts:
+              - mountPath: /var/run/artemis
+                name: data
               - mountPath: /etc/prometheus-config
                 name: broker-prometheus-config
                 readOnly: true
@@ -381,7 +385,9 @@ data:
               - name: AUTHENTICATION_SERVICE_OAUTH_URL
                 value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
               - name: AMQ_NAME
-                value: broker
+                value: serverData
+              - name: HOME
+                value: /var/run/artemis/split-1/
               image: amq-broker-7/amq-broker-72-openshift:1.1
               imagePullPolicy: Always
               command:
