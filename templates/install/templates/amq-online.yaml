@@ -1805,9 +1805,7 @@ objects:
                 - name: AUTHENTICATION_SERVICE_OAUTH_URL
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
-                  value: serverData
-                - name: HOME
-                  value: /var/run/artemis/split-1/
+                  value: broker
                 image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
@@ -2079,9 +2077,7 @@ objects:
                 - name: AUTHENTICATION_SERVICE_OAUTH_URL
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
-                  value: serverData
-                - name: HOME
-                  value: /var/run/artemis/split-1/
+                  value: broker
                 image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
