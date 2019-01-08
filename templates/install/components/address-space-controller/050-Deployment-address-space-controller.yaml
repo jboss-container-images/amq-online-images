@@ -79,7 +79,7 @@ spec:
               key: recheckInterval
               name: address-space-controller-config
               optional: true
-        image: amq7/address-space-controller:latest
+        image: amq7/amq-online-1-address-space-controller:dev
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

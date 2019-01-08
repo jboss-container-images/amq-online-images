@@ -30,7 +30,7 @@ spec:
       - env:
         - name: LISTENPORT
           value: '5671'
-        image: amq7/none-authservice:latest
+        image: amq7/amq-online-1-none-auth:dev
         imagePullPolicy: Always
         livenessProbe:
           initialDelaySeconds: 60
