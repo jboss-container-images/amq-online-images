@@ -38,7 +38,7 @@ spec:
           value: "keycloak-credentials"
         - name: KEYCLOAK_CERT_SECRET_NAME
           value: "standard-authservice-cert"
-        image: amq7/amq-online-1-auth-controller:dev
+        image: amq7/keycloak-controller:latest
         imagePullPolicy: Always
         name: keycloak-controller
         resources:

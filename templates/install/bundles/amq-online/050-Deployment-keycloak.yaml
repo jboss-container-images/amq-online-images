@@ -64,7 +64,7 @@ spec:
             secretKeyRef:
               key: database-password
               name: postgresql
-        image: redhat-sso-7/sso72-openshift:1.1
+        image: jboss/keycloak-openshift:3.4.3.Final
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -104,7 +104,7 @@ spec:
       - env:
         - name: KEYCLOAK_DIR
           value: /opt/eap
-        image: amq7/amq-online-1-auth-plugin:dev
+        image: amq7/keycloak-plugin:latest
         imagePullPolicy: Always
         name: keycloak-plugin
         volumeMounts:
