@@ -491,7 +491,7 @@ objects:
                   value: "INFER"
                 - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                   value: "qdrouterd-headless-${INFRA_UUID}"
-                image: amq-interconnect/amq-interconnect-1.2-openshift:1.0
+                image: amq7/amq-interconnect:latest
                 imagePullPolicy: Always
                 livenessProbe:
                   initialDelaySeconds: 60
