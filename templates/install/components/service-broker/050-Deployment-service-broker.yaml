@@ -47,7 +47,7 @@ spec:
           value: /service-broker-cert
         - name: LISTEN_PORT
           value: '8443'
-        image: amq7/service-broker:latest
+        image: amq7/amq-online-1-service-broker:dev
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

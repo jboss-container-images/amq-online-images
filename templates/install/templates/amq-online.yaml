@@ -491,7 +491,7 @@ objects:
                   value: "INFER"
                 - name: QDROUTERD_AUTO_MESH_SERVICE_NAME
                   value: "qdrouterd-headless-${INFRA_UUID}"
-                image: amq7/router:latest
+                image: amq-interconnect/amq-interconnect-1.2-openshift:1.0
                 imagePullPolicy: Always
                 livenessProbe:
                   initialDelaySeconds: 60
@@ -640,7 +640,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_SASL_INIT_HOST}
                 - name: MESSAGING_SECRET
                   value: ${MESSAGING_SECRET}
-                image: amq7/standard-controller:latest
+                image: amq7/amq-online-1-standard-controller:dev
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -703,7 +703,7 @@ objects:
                   value: ${ADDRESS_SPACE_NAMESPACE}
                 - name: MESSAGING_CERT
                   value: /opt/agent/messaging-cert/tls.crt
-                image: amq7/agent:latest
+                image: amq7/amq-online-1-agent:dev
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -999,7 +999,7 @@ objects:
                 command:
                 - /opt/app-root/src/bin/launch_node.sh
                 - /opt/app-root/src/bin/subserv.js
-                image: amq7/agent:latest
+                image: amq7/amq-online-1-agent:dev
                 imagePullPolicy: Always
                 livenessProbe:
                   initialDelaySeconds: 60
@@ -1104,7 +1104,7 @@ objects:
                   value: '8883'
                 - name: ENMASSE_MQTT_MAXMESSAGESIZE
                   value: ${MQTT_MAXMESSAGESIZE}
-                image: amq7/mqtt-gateway:latest
+                image: amq7/amq-online-1-mqtt-gateway:dev
                 imagePullPolicy: Always
                 livenessProbe:
                   initialDelaySeconds: 60
@@ -1119,7 +1119,7 @@ objects:
                 - mountPath: /etc/mqtt-gateway/ssl
                   name: ssl-certs
                   readOnly: true
-              - image: amq7/mqtt-gateway:latest
+              - image: amq7/amq-online-1-mqtt-gateway:dev
                 imagePullPolicy: Always
                 env:
                 - name: MESSAGING_SERVICE_HOST
@@ -1189,7 +1189,7 @@ objects:
                   value: 55671
                 - name: MESSAGING_SERVICE_ROUTE_CONTAINER_PORT
                   value: 56671
-                image: amq7/mqtt-lwt:latest
+                image: amq7/amq-online-1-mqtt-lwt:dev
                 imagePullPolicy: Always
                 name: mqtt-lwt
                 volumeMounts:
@@ -1314,7 +1314,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: broker
-                image: amq7/artemis:latest
+                image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
                 - /opt/amq/custom/bin/launch-broker.sh
@@ -1382,7 +1382,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: broker
-                image: amq7/broker-plugin:latest
+                image: amq7/amq-online-1-broker-plugin:dev
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /var/run/artemis
@@ -1542,7 +1542,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AUTHENTICATION_SERVICE_KC_IDP_HINT
                   value: ${AUTHENTICATION_SERVICE_KC_IDP_HINT}
-                image: amq7/agent:latest
+                image: amq7/amq-online-1-agent:dev
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -1806,7 +1806,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
                   value: broker
-                image: amq7/artemis:latest
+                image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
                 - /opt/amq/custom/bin/launch-broker.sh
@@ -1882,7 +1882,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: broker
-                image: amq7/broker-plugin:latest
+                image: amq7/amq-online-1-broker-plugin:dev
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -2078,7 +2078,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
                   value: broker
-                image: amq7/artemis:latest
+                image: amq-broker-7/amq-broker-72-openshift:1.1
                 imagePullPolicy: Always
                 command:
                 - /opt/amq/custom/bin/launch-broker.sh
@@ -2125,7 +2125,7 @@ objects:
                   value: ${NAME}
                 - name: CERT_DIR
                   value: /etc/enmasse-certs
-                image: amq7/topic-forwarder:latest
+                image: amq7/amq-online-1-topic-forwarder:dev
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -2181,7 +2181,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: broker
-                image: amq7/broker-plugin:latest
+                image: amq7/amq-online-1-broker-plugin:dev
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -2417,7 +2417,7 @@ objects:
                 key: recheckInterval
                 name: address-space-controller-config
                 optional: true
-          image: amq7/address-space-controller:latest
+          image: amq7/amq-online-1-address-space-controller:dev
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
@@ -2600,7 +2600,7 @@ objects:
             value: keycloak-credentials
           - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
             value: standard-authservice-cert
-          image: amq7/api-server:latest
+          image: amq7/amq-online-1-api-server:dev
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
@@ -2817,7 +2817,7 @@ objects:
             value: "keycloak-credentials"
           - name: KEYCLOAK_CERT_SECRET_NAME
             value: "standard-authservice-cert"
-          image: amq7/keycloak-controller:latest
+          image: amq7/amq-online-1-auth-controller:dev
           imagePullPolicy: Always
           name: keycloak-controller
           resources:
@@ -2892,7 +2892,7 @@ objects:
               secretKeyRef:
                 key: database-password
                 name: postgresql
-          image: jboss/keycloak-openshift:3.4.3.Final
+          image: redhat-sso-7/sso72-openshift:1.1
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
@@ -2932,7 +2932,7 @@ objects:
         - env:
           - name: KEYCLOAK_DIR
             value: /opt/eap
-          image: amq7/keycloak-plugin:latest
+          image: amq7/amq-online-1-auth-plugin:dev
           imagePullPolicy: Always
           name: keycloak-plugin
           volumeMounts:
