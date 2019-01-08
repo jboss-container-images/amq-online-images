@@ -98,6 +98,7 @@ pushd ${WORKDIR}
 make \
     DOCKER_ORG=${DOCKER_ORG} \
     DOCKER_REGISTRY_PREFIX="" \
+    IMAGE_PULL_POLICY=Always
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-address-space-controller:${VERSION} \
     API_SERVER_IMAGE=${DOCKER_ORG}/amq-online-1-api-server:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-standard-controller:${VERSION} \
