@@ -15,13 +15,20 @@ objects:
       app: enmasse
   spec:
     group: admin.enmasse.io
-    version: v1alpha1
+    version: v1beta1
     scope: Namespaced
     names:
       kind: AddressPlan
       listKind: AddressPlanList
       singular: addressplan
       plural: addressplans
+    versions:
+      - name: v1beta1
+        served: true
+        storage: true
+      - name: v1alpha1
+        served: true
+        storage: false
     validation:
       openAPIV3Schema:
         properties:
@@ -57,13 +64,20 @@ objects:
       app: enmasse
   spec:
     group: admin.enmasse.io
-    version: v1alpha1
+    version: v1beta1
     scope: Namespaced
     names:
       kind: AddressSpacePlan
       listKind: AddressSpacePlanList
       singular: addressspaceplan
       plural: addressspaceplans
+    versions:
+      - name: v1beta1
+        served: true
+        storage: true
+      - name: v1alpha1
+        served: true
+        storage: false
     validation:
       openAPIV3Schema:
         properties:
@@ -103,13 +117,20 @@ objects:
       app: enmasse
   spec:
     group: admin.enmasse.io
-    version: v1alpha1
+    version: v1beta1
     scope: Namespaced
     names:
       kind: BrokeredInfraConfig
       listKind: BrokeredInfraConfigList
       singular: brokeredinfraconfig
       plural: brokeredinfraconfigs
+    versions:
+      - name: v1beta1
+        served: true
+        storage: true
+      - name: v1alpha1
+        served: true
+        storage: false
     validation:
       openAPIV3Schema:
         properties:
@@ -163,13 +184,20 @@ objects:
       app: enmasse
   spec:
     group: admin.enmasse.io
-    version: v1alpha1
+    version: v1beta1
     scope: Namespaced
     names:
       kind: StandardInfraConfig
       listKind: StandardInfraConfigList
       singular: standardinfraconfig
       plural: standardinfraconfigs
+    versions:
+      - name: v1beta1
+        served: true
+        storage: true
+      - name: v1alpha1
+        served: true
+        storage: false
     validation:
       openAPIV3Schema:
         properties:
@@ -331,9 +359,16 @@ objects:
             }
   
             listener {
+              host: 127.0.0.1
+              port: 7777
+              authenticatePeer: no
+            }
+  
+            listener {
               host: 0.0.0.0
               port: 5672
               saslPlugin: auth_service
+              authenticatePeer: yes
               linkCapacity: ${ROUTER_LINK_CAPACITY}
             }
   
@@ -369,6 +404,7 @@ objects:
               saslPlugin: auth_service
               sslProfile: ssl_details
               requireSsl: true
+              authenticatePeer: yes
               linkCapacity: ${ROUTER_LINK_CAPACITY}
             }
   
@@ -497,6 +533,10 @@ objects:
                   initialDelaySeconds: 60
                   tcpSocket:
                     port: amqp
+                readinessProbe:
+                  initialDelaySeconds: 60
+                  tcpSocket:
+                    port: amqps-probe
                 name: router
                 resources:
                   limits:
@@ -518,6 +558,9 @@ objects:
                   protocol: TCP
                 - containerPort: 56671
                   name: amqps-broker
+                  protocol: TCP
+                - containerPort: 56711
+                  name: amqps-probe
                   protocol: TCP
                 volumeMounts:
                 - mountPath: /etc/qpid-dispatch/ssl
@@ -2579,7 +2622,7 @@ objects:
         containers:
         - env:
           - name: JAVA_OPTS
-            value: -verbose:gc
+            value: -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps
           - name: CERT_DIR
             value: /api-server-cert
           - name: ENABLE_RBAC
@@ -2662,6 +2705,36 @@ objects:
       name: api-server
       namespace: ${NAMESPACE}
     version: v1alpha1
+    versionPriority: 15
+- apiVersion: apiregistration.k8s.io/v1beta1
+  kind: APIService
+  metadata:
+    labels:
+      app: enmasse
+    name: v1beta1.enmasse.io
+  spec:
+    group: enmasse.io
+    groupPriorityMinimum: 1000
+    insecureSkipTLSVerify: true
+    service:
+      name: api-server
+      namespace: ${NAMESPACE}
+    version: v1beta1
+    versionPriority: 15
+- apiVersion: apiregistration.k8s.io/v1beta1
+  kind: APIService
+  metadata:
+    labels:
+      app: enmasse
+    name: v1beta1.user.enmasse.io
+  spec:
+    group: user.enmasse.io
+    groupPriorityMinimum: 1000
+    insecureSkipTLSVerify: true
+    service:
+      name: api-server
+      namespace: ${NAMESPACE}
+    version: v1beta1
     versionPriority: 15
 - apiVersion: v1
   kind: ServiceAccount
