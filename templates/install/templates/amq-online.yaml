@@ -1314,7 +1314,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}
                 - name: AMQ_NAME
                   value: broker
-                image: amq-broker-7/amq-broker-72-openshift:1.1
+                image: amq-broker-7/amq-broker-72-openshift:latest
                 imagePullPolicy: Always
                 command:
                 - /opt/amq/custom/bin/launch-broker.sh
@@ -1806,7 +1806,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
                   value: broker
-                image: amq-broker-7/amq-broker-72-openshift:1.1
+                image: amq-broker-7/amq-broker-72-openshift:latest
                 imagePullPolicy: Always
                 command:
                 - /opt/amq/custom/bin/launch-broker.sh
@@ -2078,7 +2078,7 @@ objects:
                   value: ${AUTHENTICATION_SERVICE_OAUTH_URL}                
                 - name: AMQ_NAME
                   value: broker
-                image: amq-broker-7/amq-broker-72-openshift:1.1
+                image: amq-broker-7/amq-broker-72-openshift:latest
                 imagePullPolicy: Always
                 command:
                 - /opt/amq/custom/bin/launch-broker.sh
