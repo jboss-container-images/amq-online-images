@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.26.0.redhat-00008"
+      value: "0.26-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -43,7 +43,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: b357740c222adf6c2e16f51c3dd6319a
+    - md5: 4381a89ef1e9f25b2852d0288c63738f
       name: mqtt-lwt.jar
 
 run:
