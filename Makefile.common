@@ -17,7 +17,7 @@ all: build
 	concreate build --descriptor $(IMAGE_FILE) --build-tech-preview
 
 generate:
-	if [ -f image-template.yaml ]; then GIT_TAG=$(GIT_TAG) ARTIFACT=$(ARTIFACT) ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < image-template.yaml > image.yaml; fi
+	if [ -f image-template.yaml ]; then RELEASE_VERSION=$(RELEASE_VERSION) ARTIFACT=$(ARTIFACT) ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < image-template.yaml > image.yaml; fi
 
 push:
 	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
