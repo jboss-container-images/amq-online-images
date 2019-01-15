@@ -18,7 +18,7 @@ envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "${GIT_TAG}"
+      value: "${RELEASE_VERSION}"
     - name: "LOG_LEVEL"
       value: "info"
 

@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "${GIT_TAG}"
+      value: "${RELEASE_VERSION}"
 
 modules:
       repositories:
