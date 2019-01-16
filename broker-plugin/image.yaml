@@ -18,7 +18,7 @@ envs:
     - name: "ARTEMIS_HOME"
       value: "/opt/amq"
     - name: "VERSION"
-      value: "0.26-SNAPSHOT"
+      value: ""
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -49,7 +49,7 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - md5: 74ca83021c132fa2a8973572f8283d3d
+    - md5: e4ceebc697da8f1614c176ded907dab1
       name: broker-plugin.zip
 
 run:
