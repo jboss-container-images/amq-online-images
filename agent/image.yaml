@@ -16,7 +16,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.26-SNAPSHOT"
+      value: ""
 
 modules:
       repositories:
@@ -26,7 +26,7 @@ modules:
           - name: agent
 
 artifacts:
-    - md5: b5bd5f07d126aabe3939994414d6fbf4
+    - md5: 8928607cbc095b943a26ff456660f4be
       name: agent-dist.zip
 
 ports:
