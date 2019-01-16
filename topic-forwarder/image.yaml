@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: d01a7abbee95617da42bdd0c931fa9e1
+    - md5: fb66c4c06ef2a2e78044c4943fbd8b39
       name: topic-forwarder.jar
 
 run:
