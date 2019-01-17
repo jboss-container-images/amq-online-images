@@ -49,7 +49,7 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - md5: 530de1aa9354ce0ea974e523202c6d7c
+    - md5: b5d4556300b6cc877d370da1b2f39d3b
       name: broker-plugin.zip
 
 run:
