@@ -258,6 +258,12 @@ objects:
 - apiVersion: v1
   kind: ServiceAccount
   metadata:
+    name: address-space-admin
+    labels:
+      app: enmasse
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
     name: address-space-controller
     labels:
       app: enmasse
@@ -957,7 +963,7 @@ objects:
         value: '10000'
       - description: The service account with address space admin privileges
         name: ADDRESS_SPACE_ADMIN_SA
-        required: true
+        value: address-space-admin
       - description: Memory limits for admin
         name: ADMIN_MEMORY_LIMIT
         value: 512Mi
@@ -1706,7 +1712,7 @@ objects:
         value: 'false'
       - description: The service account with address space admin privileges
         name: ADDRESS_SPACE_ADMIN_SA
-        required: true
+        value: address-space-admin
       - description: Memory limits for admin
         name: ADMIN_MEMORY_LIMIT
         value: 512Mi
@@ -2322,6 +2328,34 @@ objects:
     - apiGroups: [ "admin.enmasse.io" ]
       resources: [ "addressplans", "addressspaceplans", "brokeredinfraconfigs", "standardinfraconfigs" ]
       verbs: [ "get", "list", "watch" ]
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    name: adress-space-admin-admin
+    labels:
+      app: enmasse
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: admin
+  subjects:
+  - kind: ServiceAccount
+    name: address-space-admin
+    namespace: ${NAMESPACE}
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    name: adress-space-admin-admin-reader
+    labels:
+      app: enmasse
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: enmasse.io:admin-reader
+  subjects:
+  - kind: ServiceAccount
+    name: address-space-admin
+    namespace: ${NAMESPACE}
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
