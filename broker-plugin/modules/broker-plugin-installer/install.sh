@@ -14,9 +14,6 @@ BROKER_PLUGIN_DIR=/opt/broker-plugin
 	unzip "${SOURCES_DIR}/broker-plugin.zip" -d /
 
     mv ${SOURCES_DIR}/jmx-exporter.jar ${BROKER_PLUGIN_DIR}/jmx_exporter/
-
-    mv ${SOURCES_DIR}/netty-tcnative-boringssl-static.jar ${BROKER_PLUGIN_DIR}/lib/
-    mv ${SOURCES_DIR}/netty-tcnative-boringssl-static-linux-x86_64.jar ${BROKER_PLUGIN_DIR}/lib/
 }
 
 chown -R 185:0 /home/jboss
