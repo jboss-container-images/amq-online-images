@@ -53,10 +53,6 @@ artifacts:
       name: broker-plugin.zip
     - md5: 620d5c068e4ca408ad99c244f8706fce
       name: jmx-exporter.jar
-    - md5: 60f88be0fa76bc2d1b89f71725910441
-      name: netty-tcnative-boringssl-static.jar
-    - md5: 937aaba484e64f035cc85239a1e2e184
-      name: netty-tcnative-boringssl-static-linux-x86_64.jar
 
 run:
       user: 185
