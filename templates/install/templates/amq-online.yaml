@@ -1432,6 +1432,7 @@ objects:
                 - name: AMQ_NAME
                   value: broker
                 image: amq7/amq-online-1-broker-plugin:dev
+                imagePullPolicy: Always
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /var/run/artemis
@@ -1932,6 +1933,7 @@ objects:
                 - name: AMQ_NAME
                   value: broker
                 image: amq7/amq-online-1-broker-plugin:dev
+                imagePullPolicy: Always
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
@@ -2231,6 +2233,7 @@ objects:
                 - name: AMQ_NAME
                   value: broker
                 image: amq7/amq-online-1-broker-plugin:dev
+                imagePullPolicy: Always
                 name: broker-plugin
                 volumeMounts:
                 - mountPath: /etc/enmasse-certs
