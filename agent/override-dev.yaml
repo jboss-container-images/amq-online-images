@@ -1,4 +1,4 @@
 osbs:
       repository:
-            name: containers/amqmaas-1
-            branch: rh-amqmaas-1.0-agent-openshift-dev-rhel-7
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-agent-dev-rhel-7
