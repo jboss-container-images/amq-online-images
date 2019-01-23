@@ -14,7 +14,7 @@ labels:
     - name: "io.openshift.tags"
       value: "amq7, amq-online, api-server"
     - name: "maintainer"
-      value: "amq-online-devel@redhat.com"
+      value: "AMQ Online Engineering <amq-online-devel@redhat.com>"
 
 envs:
     - name: "VERSION"
