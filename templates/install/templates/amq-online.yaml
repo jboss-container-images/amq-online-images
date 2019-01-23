@@ -172,6 +172,7 @@ objects:
                     - PAGE
                     - BLOCK
                     - FAIL
+                    - DROP
                   storageClassName:
                     type: string
                   updatePersistentVolumeClaim:
@@ -239,6 +240,7 @@ objects:
                     - PAGE
                     - BLOCK
                     - FAIL
+                    - DROP
                   storageClassName:
                     type: string
                   updatePersistentVolumeClaim:

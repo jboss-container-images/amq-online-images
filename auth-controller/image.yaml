@@ -43,7 +43,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 09708ffdb388aec9dac84533cda31781
+    - md5: 12d32a54621a7b194615d9e97031973c
       name: keycloak-controller.jar
 
 run:
