@@ -1152,6 +1152,7 @@ data:
               - name: AMQ_NAME
                 value: broker
               image: amq7/amq-online-1-broker-plugin:dev
+              imagePullPolicy: Always
               name: broker-plugin
               volumeMounts:
               - mountPath: /var/run/artemis
