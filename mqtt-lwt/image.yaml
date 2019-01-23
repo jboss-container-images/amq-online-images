@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 701e1018fe004cea7c76861a9ca8f564
+    - md5: e39e4515ae32c74f6e48c24d817d1672
       name: mqtt-lwt.jar
 
 run:
