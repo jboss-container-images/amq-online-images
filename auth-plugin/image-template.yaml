@@ -26,12 +26,6 @@ envs:
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 
-packages:
-    repositories:
-      - jboss-os
-    install:
-      - openssl
-
 modules:
       repositories:
           - name: cct_module
