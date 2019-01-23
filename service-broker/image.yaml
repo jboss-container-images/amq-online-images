@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.26-SNAPSHOT"
+      value: "0.26"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 68f3ef4a0322824a9a3a3637c88908a2
+    - md5: 7f2bcb686e6d8c0034deba773756f932
       name: service-broker.jar
 
 run:
