@@ -41,6 +41,13 @@ run:
           - "/opt/app-root/src/bin/launch_node.sh"
           - "/opt/app-root/src/bin/agent.js"
 
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+            - rhel-server-rhscl-7-rpms
+            - rhel-7-server-optional-rpms
+
 osbs:
       configuration:
             container:
