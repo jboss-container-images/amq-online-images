@@ -1,8 +1,8 @@
+TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
 IMAGE_FILE?=image.yaml
-COMMIT?=$(shell git rev-parse HEAD | cut -c1-8)
-IMAGE_VERSION?=latest
-DOCKERFILE_DIR?=build
+IMAGE_VERSION?=dev
 REPO?=$(shell cat $(IMAGE_FILE) | grep "^name:" | cut -d' ' -f2)
+VERSION?=$(shell cat $(IMAGE_FILE) | grep "^version:" | cut -d ' ' -f2)
 DOCKER_BUILD_OPTS?=
 DOCKER?=docker
 PRODUCT_DIR?=../../enmasse
@@ -14,18 +14,17 @@ NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 
 all: build 
 	echo "Running docker rhel build $(REPO)"
-	concreate build --descriptor $(IMAGE_FILE) --build-tech-preview
+	cekit build --descriptor $(IMAGE_FILE)
 
 generate:
 	if [ -f image-template.yaml ]; then RELEASE_VERSION=$(RELEASE_VERSION) ARTIFACT=$(ARTIFACT) ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < image-template.yaml > image.yaml; fi
 
-push:
-	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
-	$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(COMMIT)
+tag:
+	$(DOCKER) tag $(REPO):$(VERSION) $(REPO):$(IMAGE_VERSION)
+	$(DOCKER) tag $(REPO):$(VERSION) $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)
 
-snapshot:
-	$(DOCKER) tag $(REPO):$(COMMIT) $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)
-	$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)
+push:
+	bash $(TOPDIR)/scripts/retry.sh "$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)" 10 10
 
 copyartifact:
 	echo "Copying local artifacts from $(ABSOLUTE_LOCAL_ARTIFACT_DIR) TO $(NEW_ABSOLUTE_LOCAL_ARTIFACT)"
@@ -35,4 +34,4 @@ copyartifact:
 clean:
 	rm -rf build target
 
-.PHONY: all push snapshot clean generate
+.PHONY: all push tag clean generate
