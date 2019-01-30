@@ -1,3 +1,4 @@
+TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
 SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt topic-forwarder auth-controller auth-plugin api-server service-broker broker-plugin
 
 all:
@@ -10,9 +11,9 @@ pushall:
 		$(MAKE) -C $$dir push; \
 	done
 
-snapshotall:
+tagall:
 	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir snapshot; \
+		$(MAKE) -C $$dir tag; \
 	done
 
 cleanall:
@@ -28,4 +29,4 @@ copyartifactall:
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: all $(SUBDIRS) push snapshot clean pushall snapshotall cleanall
+.PHONY: all $(SUBDIRS) push tag clean pushall tagall cleanall
