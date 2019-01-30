@@ -26,13 +26,6 @@ envs:
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 
-packages:
-    content_sets:
-        x86_64:
-            - rhel-7-server-rpms
-    install:
-        - openssl
-
 modules:
       repositories:
           - name: cct_module
@@ -58,7 +51,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: c6c2fd596af99cffac8f42cf3aa505e9
+    - md5: deb343e932aa5af72497bfe39b8197eb
       name: sasl-plugin.jar
 
 run:
