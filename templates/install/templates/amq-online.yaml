@@ -3004,7 +3004,7 @@ objects:
               secretKeyRef:
                 key: database-password
                 name: postgresql
-          image: redhat-sso-7/sso72-openshift:1.1
+          image: redhat-sso-7/sso72-openshift:latest
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
