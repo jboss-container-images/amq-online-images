@@ -28,7 +28,7 @@ modules:
           - name: agent
 
 artifacts:
-    - md5: 9c5e44be2f205feefa72693c01945927
+    - md5: c0aea2de89cd5cf3fe9ea3ee1d7b1822
       name: agent-dist.zip
 
 ports:
