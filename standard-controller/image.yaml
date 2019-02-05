@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.26-SNAPSHOT"
+      value: "0.26"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: fe7cd931ea09beb6dc4ea8ef709744d6
+    - md5: ea466bae44f76747603ff112c4ad8a31
       name: standard-controller.jar
 
 run:
