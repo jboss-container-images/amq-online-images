@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 10a363a8685fc3c312a67d5fb88f1c3c
+    - md5: 0812c414f11706961650a59b471c8de9
       name: api-server.jar
 
 run:
