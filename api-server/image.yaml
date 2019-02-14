@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.26-SNAPSHOT"
+      value: "0.27-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 2aa9660876524dfd39c3e2509cf15c79
+    - md5: 309118b5db08e04331ebc9c33b2822df
       name: api-server.jar
 
 run:
