@@ -429,7 +429,7 @@ objects:
                 name: address-space-controller-config
                 optional: true
           - name: TEMPLATE_DIR
-            value: /templates
+            value: /opt/templates
           - name: RESOURCES_DIR
             value: /opt
           - name: STANDARD_AUTHSERVICE_CONFIG_NAME
