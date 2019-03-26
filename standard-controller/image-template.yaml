@@ -35,7 +35,7 @@ modules:
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
-            version: "8"
+            version: "11"
           - name: standardcontroller.common
           - name: common.java
 

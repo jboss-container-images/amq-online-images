@@ -45,7 +45,7 @@ modules:
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
-            version: "8"
+            version: "11"
           - name: broker.plugin.installer
           - name: dynamic-resources
           - name: os-java-run
