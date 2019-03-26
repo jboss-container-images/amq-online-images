@@ -1,5 +1,5 @@
 TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
-SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt topic-forwarder auth-controller auth-plugin api-server service-broker broker-plugin
+SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt topic-forwarder auth-plugin api-server service-broker broker-plugin
 
 all:
 	for dir in $(SUBDIRS); do \

@@ -113,7 +113,6 @@ make \
     NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amq-online-1-none-auth:${VERSION} \
     KEYCLOAK_IMAGE=redhat-sso-7/sso72-openshift:latest \
     KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-auth-plugin:${VERSION} \
-    KEYCLOAK_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-auth-controller:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
     templates
 popd
