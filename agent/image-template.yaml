@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.0
 name: amq7/amq-online-1-agent
 description: "AMQ Online console"
-from: rhscl/nodejs-6-rhel7:latest
+from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-agent-openshift-container"
@@ -47,6 +47,9 @@ packages:
             - rhel-7-server-rpms
             - rhel-server-rhscl-7-rpms
             - rhel-7-server-optional-rpms
+    install:
+      - unzip
+      - rh-nodejs10
 
 osbs:
       configuration:
