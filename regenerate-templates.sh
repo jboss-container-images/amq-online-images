@@ -110,10 +110,11 @@ make \
     BROKER_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-broker-plugin:${VERSION} \
     MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amq-online-1-mqtt-gateway:${VERSION} \
     MQTT_LWT_IMAGE=${DOCKER_ORG}/amq-online-1-mqtt-lwt:${VERSION} \
-    NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amq-online-1-none-auth:${VERSION} \
+    NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amq-online-1-none-authservice:${VERSION} \
     KEYCLOAK_IMAGE=redhat-sso-7/sso72-openshift:latest \
     KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-auth-plugin:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
+    ENMASSE_CONTROLLER_MANAGER_IMAGE=${DOCKER_ORG}/amq-online-1-controller-manager:${VERSION} \
     templates
 popd
 
