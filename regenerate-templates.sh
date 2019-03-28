@@ -102,7 +102,7 @@ make \
     ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-address-space-controller:${VERSION} \
     API_SERVER_IMAGE=${DOCKER_ORG}/amq-online-1-api-server:${VERSION} \
     STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-standard-controller:${VERSION} \
-    ROUTER_IMAGE=amq7/amq-interconnect:1.3 \
+    ROUTER_IMAGE=amq7/amq-interconnect:1.4 \
     ARTEMIS_IMAGE=amq-broker-7/amq-broker-72-openshift:latest \
     ARTEMIS_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-broker-plugin:${VERSION} \
     TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amq-online-1-topic-forwarder:${VERSION} \
