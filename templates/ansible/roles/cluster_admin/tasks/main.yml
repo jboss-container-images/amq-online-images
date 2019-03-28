@@ -18,6 +18,8 @@
     replace: "{{ namespace }}"
   with_items: "{{ yamls.files }}"
 - import_role:
+    name: crds
+- import_role:
     name: none_authservice
   when: '"none" in authentication_services'
 - import_role:
@@ -25,6 +27,8 @@
   when: '"standard" in authentication_services'
 - import_role:
     name: address_space_controller
+- import_role:
+    name: enmasse_operator
 - import_role:
     name: service_catalog
   when: service_catalog
@@ -38,8 +42,17 @@
     name: api_service
   when: register_api_server
 - import_role:
-    name: tenant_clusterroles
-  when: install_tenant_clusterroles
+    name: monitoring-infrastructure
+  when: monitoring_infrastructure
 - import_role:
-    name: monitoring
-  when: enable_monitoring
+    name: service-monitors
+  when: service_monitors
+- import_role:
+    name: alerting
+  when: alerting
+- import_role:
+    name: example_plans
+  when: install_example_plans
+- import_role:
+    name: example_roles
+  when: install_example_roles

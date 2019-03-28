@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "${RELEASE_VERSION}"
+      value: "0.27-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
@@ -30,18 +30,15 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: controllermanager.common
-            path: modules/common
       install:
           - name: jboss.container.user
-          - name: controllermanager.common
 
 packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: 903b3dd40b266a847a24d1c167400f63
+    - md5: 39c8ff44d31607ff6c235345bc56dcb0
       name: enmasse-controller-manager.zip
 
 run:
