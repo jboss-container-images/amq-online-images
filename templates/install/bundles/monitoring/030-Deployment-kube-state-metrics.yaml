@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: enmasse
+  name: kube-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enmasse
+      component: kube-metrics
+  template:
+    metadata:
+      labels:
+        app: enmasse
+        component: kube-metrics
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: node-role.enmasse.io/operator-infra
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+      - name: kube-metrics
+        image: quay.io/coreos/kube-state-metrics:v1.4.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: kube-metrics
+        command:
+          - /kube-state-metrics
+          - --port=8080
+          - --telemetry-port=8081
+          - --namespace=amq-online-infra
+          - --collectors=pods
+      serviceAccountName: kube-state-metrics
