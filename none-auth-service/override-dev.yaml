@@ -1,4 +1,4 @@
 osbs:
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-none-authservice-dev-rhel-7
+            branch: amq7-amq-online-1-none-auth-service-dev-rhel-7
