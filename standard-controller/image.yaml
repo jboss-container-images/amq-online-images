@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: bdcf7e7dea20b752424d3926953f7df5
+    - md5: 7666ac991224bb3323a959b27960b53a
       name: standard-controller.jar
 
 run:
