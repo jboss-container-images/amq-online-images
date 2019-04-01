@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: common.go
+version: '1.0'
+
+execute:
+  - script: install.sh
+# FIXME: - script: license.sh
