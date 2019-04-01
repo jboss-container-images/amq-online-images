@@ -43,9 +43,11 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
+    install:
+        - openssl
 
 artifacts:
-    - md5: 94a202955eda89d318ef5962b062889d
+    - md5: ad058f686418f2d25225b11edfe3fe2b
       name: api-server.jar
 
 run:
