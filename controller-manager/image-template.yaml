@@ -30,8 +30,11 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
+          - name: controllermanager.common
+            path: modules/common
       install:
           - name: jboss.container.user
+          - name: controllermanager.common
 
 packages:
     content_sets:
