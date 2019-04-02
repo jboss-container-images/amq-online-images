@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: bd31500185983aed3c33b6b8d9177e9f
+    - md5: 512a7d922444bbcc03dfaebf2c679ad2
       name: api-server.jar
 
 run:
