@@ -20,7 +20,7 @@ spec:
       serviceAccountName: iot-operator
       containers:
       - name: operator
-        image: amq7/amq-online-1-controller-manager:dev
+        image: registry.redhat.io/amq7/enmasse-controller-manager:dev
         imagePullPolicy: Always
         env:
         - name: POD_NAME
