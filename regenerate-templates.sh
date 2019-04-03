@@ -109,7 +109,7 @@ make \
     MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amq-online-1-mqtt-gateway:${VERSION} \
     MQTT_LWT_IMAGE=${DOCKER_ORG}/amq-online-1-mqtt-lwt:${VERSION} \
     NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amq-online-1-none-auth-service:${VERSION} \
-    KEYCLOAK_IMAGE=redhat-sso-7/sso73-openshift:latest \
+    KEYCLOAK_IMAGE=registry.redhat.io/redhat-sso-7/sso73-openshift:latest \
     KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-auth-plugin:${VERSION} \
     SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
     ENMASSE_CONTROLLER_MANAGER_IMAGE=${DOCKER_ORG}/amq-online-1-controller-manager:${VERSION} \
