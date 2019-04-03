@@ -1,0 +1,69 @@
+schema_version: 1
+
+version: 1.1
+name: amq7/amq-online-1-iot-auth-service
+description: "The inter service authentication service for AMQ Online IoT."
+from: rhel7:7-released
+labels:
+    - name: "com.redhat.component"
+      value: "amq7-amq-online-1-iot-auth-service-openshift-container"
+    - name: "io.k8s.description"
+      value: "The inter service authentication service for AMQ Online IoT."
+    - name: "io.k8s.display-name"
+      value: "AMQ Online IoT inter service authentication service"
+    - name: "io.openshift.tags"
+      value: "amq7, amq-online, iot"
+    - name: "maintainer"
+      value: "AMQ Online Engineering <amq-online-devel@redhat.com>"
+
+envs:
+    - name: "VERSION"
+      value: "0.27-SNAPSHOT"
+    - name: "LOG_LEVEL"
+      value: "info"
+
+modules:
+      repositories:
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
+          - name: common.java
+            path: ../modules/common/java
+          - name: hono.ip
+            path: ../modules/hono/ip
+          - name: hono.install
+            path: ../modules/hono/install
+      install:
+          - name: jboss.container.user
+          - name: jboss.container.openjdk.jdk
+            version: "11"
+          - name: hono.ip
+          - name: common.java
+          - name: hono.install
+
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+    install:
+        - openssl
+
+artifacts:
+    - md5: c1952855b7adaa5711b6d1c460f4a769
+      name: iot-component.jar
+
+run:
+      user: 185
+      cmd:
+          - "/bin/launch_java.sh"
+          - "/opt/iot-component.jar"
+
+osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true
+      repository:
+            name: containers/amq-online-1
+            branch: amq7-amq-online-1-iot-auth-service-rhel-7

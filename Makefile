@@ -1,5 +1,26 @@
 TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
-SUBDIRS=standard-controller address-space-controller agent mqtt-gateway mqtt-lwt topic-forwarder auth-plugin api-server service-broker broker-plugin none-auth-service controller-manager
+
+SUBDIRS=\
+	standard-controller \
+	address-space-controller \
+	agent \
+	mqtt-gateway \
+	mqtt-lwt \
+	topic-forwarder \
+	auth-plugin \
+	api-server \
+	service-broker \
+	broker-plugin \
+	none-auth-service \
+	controller-manager \
+	iot-auth-service \
+	iot-device-registry-file \
+	iot-gc \
+	iot-http-adapter \
+	iot-mqtt-adapter \
+	iot-proxy-configurator \
+	iot-tenant-service \
+
 
 all:
 	for dir in $(SUBDIRS); do \
