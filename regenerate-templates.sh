@@ -96,29 +96,16 @@ fi
 
 pushd ${WORKDIR}
 make \
-    DOCKER_ORG=${DOCKER_ORG} \
-    DOCKER_REGISTRY_PREFIX="" \
+    DOCKER_ORG=amq7 \
+    DOCKER_REGISTRY_PREFIX=registry.redhat.io/ \
     IMAGE_PULL_POLICY=Always \
-    ADDRESS_SPACE_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-address-space-controller:${VERSION} \
-    API_SERVER_IMAGE=${DOCKER_ORG}/amq-online-1-api-server:${VERSION} \
-    STANDARD_CONTROLLER_IMAGE=${DOCKER_ORG}/amq-online-1-standard-controller:${VERSION} \
-    ARTEMIS_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-broker-plugin:${VERSION} \
-    TOPIC_FORWARDER_IMAGE=${DOCKER_ORG}/amq-online-1-topic-forwarder:${VERSION} \
-    AGENT_IMAGE=${DOCKER_ORG}/amq-online-1-agent:${VERSION} \
-    BROKER_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-broker-plugin:${VERSION} \
-    MQTT_GATEWAY_IMAGE=${DOCKER_ORG}/amq-online-1-mqtt-gateway:${VERSION} \
-    MQTT_LWT_IMAGE=${DOCKER_ORG}/amq-online-1-mqtt-lwt:${VERSION} \
-    NONE_AUTHSERVICE_IMAGE=${DOCKER_ORG}/amq-online-1-none-auth-service:${VERSION} \
-    KEYCLOAK_IMAGE=registry.redhat.io/redhat-sso-7/sso73-openshift:latest \
-    KEYCLOAK_PLUGIN_IMAGE=${DOCKER_ORG}/amq-online-1-auth-plugin:${VERSION} \
-    SERVICE_BROKER_IMAGE=${DOCKER_ORG}/amq-online-1-service-broker:${VERSION} \
-    ENMASSE_CONTROLLER_MANAGER_IMAGE=${DOCKER_ORG}/amq-online-1-controller-manager:${VERSION} \
+    TAG=${VERSION} \
     templates
 popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
-rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-latest/* ${TARGET_TEMPLATE_DIR}
+rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TARGET_TEMPLATE_DIR}
 
 rm -rf templates/docs
 
