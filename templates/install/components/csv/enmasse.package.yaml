@@ -1,4 +1,4 @@
-packageName: enmasse
+packageName: amq-online
 channels:
-- name: alpha
-  currentCSV: enmasse.0.28-SNAPSHOT
+- name: final
+  currentCSV: amqonline.0.28-SNAPSHOT
