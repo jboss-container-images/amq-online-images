@@ -26,6 +26,12 @@
     name: standard_authservice
   when: '"standard" in authentication_services'
 - import_role:
+    name: example_plans
+  when: install_example_plans
+- import_role:
+    name: example_roles
+  when: install_example_roles
+- import_role:
     name: address_space_controller
 - import_role:
     name: enmasse_operator
@@ -42,6 +48,9 @@
     name: api_service
   when: register_api_server
 - import_role:
+    name: iot
+  when: enable_iot
+- import_role:
     name: monitoring-infrastructure
   when: monitoring_infrastructure
 - import_role:
@@ -50,9 +59,3 @@
 - import_role:
     name: alerting
   when: alerting
-- import_role:
-    name: example_plans
-  when: install_example_plans
-- import_role:
-    name: example_roles
-  when: install_example_roles

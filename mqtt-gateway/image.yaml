@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.27-SNAPSHOT"
+      value: "0.28-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -58,7 +58,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 781f4b5276f0fb9c53938f12bb52e9d3
+    - md5: 333068f1ccfeffb48a68a44500134e6e
       name: mqtt-gateway.jar
 
 run:

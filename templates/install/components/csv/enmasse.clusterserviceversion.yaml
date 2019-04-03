@@ -3,16 +3,18 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: enmasse.0.27-SNAPSHOT
+  name: enmasse.0.28-SNAPSHOT
   namespace: placeholder
   annotations:
     categories: "Streaming & Messaging"
     certified: "false"
     description: EnMasse provides a self-service messaging platform with a uniform interface to manage different messaging infrastructure.
-    containerImage: registry.redhat.io/amq7/enmasse-controller-manager:dev
+    containerImage: registry.redhat.io/amq7/amq-online-1-controller-manager:dev
     createdAt: 2019-02-19T00:00:00Z
+    capabilities: Seamless Upgrades
+    repository: https://github.com/EnMasseProject/enmasse
     support: EnMasse
-    alm-examples: '[{"apiVersion":"admin.enmasse.io/v1beta1","kind":"StandardInfraConfig","metadata":{"name":"my-standard-infra"},"spec":{"version":"0.27-SNAPSHOT","broker":{"resources":{"memory":"1Gi","storage":"5Gi"},"addressFullPolicy":"BLOCK"},"router":{"linkCapacity":50,"resources":{"memory":"512Mi"}}}},{"apiVersion":"admin.enmasse.io/v1beta1","kind":"BrokeredInfraConfig","metadata":{"name":"my-brokered-infra"},"spec":{"version":"0.27-SNAPSHOT","broker":{"resources":{"memory":"4Gi"}}}},{"apiVersion":"admin.enmasse.io/v1beta2","kind":"AddressPlan","metadata":{"name":"small-standard-queue"},"spec":{"addressType":"queue","shortDescription":"Small Queue","resources":{"router":0.01,"broker":0.1}}},{"apiVersion":"admin.enmasse.io/v1beta2","kind":"AddressSpacePlan","metadata":{"name":"standard-small"},"spec":{"addressSpaceType":"standard","infraConfigRef":"my-standard-infra","shortDescription":"Small Address Space Plan","resourceLimits":{"router":1,"broker":2,"aggregate":2},"addressPlans":["small-standard-queue"]}},{"apiVersion":"admin.enmasse.io/v1beta1","kind":"AuthenticationService","metadata":{"name":"none-authservice"},"spec":{"type":"none"}},{"apiVersion":"enmasse.io/v1beta1","kind":"AddressSpace","metadata":{"name":"myspace"},"spec":{"type":"standard","plan":"standard-small"}},{"apiVersion":"enmasse.io/v1beta1","kind":"Address","metadata":{"name":"myspace.myqueue"},"spec":{"address":"myqueue","type":"queue","plan":"small-standard-queue"}},{"apiVersion":"user.enmasse.io/v1beta1","kind":"MessagingUser","metadata":{"name":"myspace.user"},"spec":{"username":"user","authentication":{"type":"password","password":"ZW5tYXNzZQ=="},"authorization":[{"operations":["send","recv"],"addresses":["myqueue"]}]}},{"apiVersion":"iot.enmasse.io/v1alpha1","kind":"IoTConfig","metadata":{"name":"default"},"spec":{}}]'
+    alm-examples: '[{"apiVersion":"admin.enmasse.io/v1beta1","kind":"StandardInfraConfig","metadata":{"name":"my-standard-infra"},"spec":{"version":"","broker":{"resources":{"memory":"1Gi","storage":"5Gi"},"addressFullPolicy":"BLOCK"},"router":{"linkCapacity":50,"resources":{"memory":"512Mi"}}}},{"apiVersion":"admin.enmasse.io/v1beta1","kind":"BrokeredInfraConfig","metadata":{"name":"my-brokered-infra"},"spec":{"version":"","broker":{"resources":{"memory":"4Gi"}}}},{"apiVersion":"admin.enmasse.io/v1beta2","kind":"AddressPlan","metadata":{"name":"small-standard-queue"},"spec":{"addressType":"queue","shortDescription":"Small Queue","resources":{"router":0.01,"broker":0.1}}},{"apiVersion":"admin.enmasse.io/v1beta2","kind":"AddressSpacePlan","metadata":{"name":"standard-small"},"spec":{"addressSpaceType":"standard","infraConfigRef":"my-standard-infra","shortDescription":"Small Address Space Plan","resourceLimits":{"router":1,"broker":2,"aggregate":2},"addressPlans":["small-standard-queue"]}},{"apiVersion":"admin.enmasse.io/v1beta1","kind":"AuthenticationService","metadata":{"name":"none-authservice"},"spec":{"type":"none"}},{"apiVersion":"enmasse.io/v1beta1","kind":"AddressSpace","metadata":{"name":"myspace"},"spec":{"type":"standard","plan":"standard-small"}},{"apiVersion":"enmasse.io/v1beta1","kind":"Address","metadata":{"name":"myspace.myqueue"},"spec":{"address":"myqueue","type":"queue","plan":"small-standard-queue"}},{"apiVersion":"user.enmasse.io/v1beta1","kind":"MessagingUser","metadata":{"name":"myspace.user"},"spec":{"username":"user","authentication":{"type":"password","password":"ZW5tYXNzZQ=="},"authorization":[{"operations":["send","recv"],"addresses":["myqueue"]}]}},{"apiVersion":"iot.enmasse.io/v1alpha1","kind":"IoTConfig","metadata":{"name":"default"},"spec":{}}]'
 spec:
   maturity: beta
   displayName: EnMasse
@@ -27,6 +29,14 @@ spec:
     * **Self-service messaging for applications** - The service admin deploys and manages the messaging infrastructure, while applications can request messaging resources without caring about the messaging infrastructure.
 
     * **Supports a wide variety of messaging patterns** - Choose between JMS-style messaging with strict guarantees, or messaging that supports a larger number of connections and higher throughput.
+
+    ### Examples
+
+    The example resources provided this operator can be categorized into resources managed by the operator admin and resources managed by messaging tenants.
+
+    The `AddressSpacePlan`, `AddressPlan`, `StandardInfraConfig`, `BrokeredInfraConfig` and `AuthenticationService` resources should be created by the operator admin in the same namespace where the operator is running.
+
+    The `AddressSpace`, `Address` and `MessagingUser` resources should be created by the messaging tenant in the same namespace as the application that will use messaging.
 
     ### Documentation
     
@@ -51,7 +61,7 @@ spec:
     ### License
 
     EnMasse is licensed under the [Apache License, Version 2.0](https://github.com/EnMasseProject/enmasse/blob/master/LICENSE) license.
-  version: 0.27-SNAPSHOT
+  version: 0.28-SNAPSHOT
   keywords: ['messaging', 'amqp', 'iot', 'mqtt']
   icon:
     - base64data: PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzlweCIgaGVpZ2h0PSI3OXB4IiB2aWV3Qm94PSIwIDAgNzkgNzkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQyICgzNjc4MSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+dmVyc2lvbnM8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0idmVyc2lvbnMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMDguMDAwMDAwLCAtNzIuMDAwMDAwKSI+CiAgICAgICAgICAgIDxlbGxpcHNlIGlkPSJDb21iaW5lZC1TaGFwZS1Db3B5LTIiIGZpbGw9IiMwMDQ5OUUiIGN4PSIzNDcuNSIgY3k9IjExMS41IiByeD0iMjQuNSIgcnk9IjI0LjUiPjwvZWxsaXBzZT4KICAgICAgICAgICAgPHBhdGggZD0iTTMzOSwxMDIuNjkxMDE0IEMzMzksMTAyLjY5MTAxNCAzNDIuNjkwMjE1LDk0LjQxMDUzMjMgMzUwLjIwNTY1MSwxMDAuOTM1OTEyIEwzNTEuMDE1Njk5LDEwMS43NDU5NTkgQzM1MS4wMTU2OTksMTAxLjc0NTk1OSAzNTIuNzI1Nzk4LDEwMy41MDEwNjEgMzUzLjQ0NTg0LDEwMy41MDEwNjEgQzM1NC4xNjU4ODIsMTAzLjUwMTA2MSAzNTQuMjU1ODg3LDEwMy40MTEwNTYgMzU1Ljk2NTk4NiwxMDEuNzAwOTU2IEMzNTcuNjc2MDg2LDk5Ljk5MDg1NjggMzU3LjQwNjA3LDEwMC4wMzU4NTkgMzU5Ljg4MTIxNCw5Ny43ODU3Mjg2IEMzNjIuMzU2MzU4LDk1LjUzNTU5NzcgMzY1LjY3MTUyMSw5My45MzA1MzQ0IDM2NS42NzE1MjEsOTMuOTMwNTM0NCBDMzY1LjY3MTUyMSw5My45MzA1MzQ0IDM2Ny4yOTE2MTUsOTIuOTEwNDE1MSAzNzAuMjYxNzg4LDkyLjE2MDQwMTUgQzM3My4yMzE5Niw5MS40MTAzODc5IDM3Ny40MDk3MzMsOTAuNjUyODEzOSAzODIsOTEuMTcwMzQ0IEMzODIsOTEuMTcwMzQ0IDM4MC4xMzIzOTEsOTIuMjUwNDA2NyAzNzcuOTI3MjYzLDk4Ljk1NTc5NjYgQzM3NS43MjIxMzUsMTA1LjY2MTE4NiAzNzQuNTA3MDY0LDEwNy43MzEzMDcgMzc0LjUwNzA2NCwxMDcuNzMxMzA3IEMzNzQuNTA3MDY0LDEwNy43MzEzMDcgMzcxLjg1MTkxLDExMy4zNTY2MzQgMzY1LjQ2MTUzOCwxMTQuNTcxNzA0IEMzNjUuNDYxNTM4LDExNC41NzE3MDQgMzY4LjY1NjcyNCwxMTguMzk2OTI3IDM3OS45OTczODQsMTE3LjEzNjg1NCBDMzc5Ljk5NzM4NCwxMTcuMTM2ODU0IDM1OC4wODExMDksMTMxLjE3NzY3IDM0OC4yNzA1MzksMTE0Ljg0MTcyIEMzNDguMDQ4OTQ2LDExNC4zNDQyNjEgMzQ1Ljg0OTM5OCwxMTAuMDI1NDUgMzQ1LjMwMDM2NiwxMDguMjExMzA1IEMzNDQuNjEwMjk2LDEwNS45MzEyMDIgMzQ0LjMwOTEzOSwxMDUuMTI1Mzg1IDM0My4yOTAyNzksMTA0LjE2MTA2OSBDMzQwLjc3MDEzMywxMDEuNzc1OTMxIDMzOSwxMDIuNjkxMDE0IDMzOSwxMDIuNjkxMDE0IiBpZD0iRmlsbC0xLUNvcHktNyIgZmlsbD0iIzc1QTBEMyI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+
@@ -76,7 +86,7 @@ spec:
   - type: OwnNamespace
     supported: true
   - type: SingleNamespace
-    supported: true
+    supported: false
   - type: MultiNamespace
     supported: false
   - type: AllNamespaces
@@ -186,6 +196,54 @@ spec:
           resourceNames: [ "extension-apiserver-authentication" ]
           verbs: [ "get" ]
       deployments:
+      - name: enmasse-operator
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: enmasse
+              name: enmasse-operator
+          template:
+            metadata:
+              labels:
+                app: enmasse
+                name: enmasse-operator
+            spec:
+              affinity:
+                nodeAffinity:
+                  preferredDuringSchedulingIgnoredDuringExecution:
+                    - weight: 1
+                      preference:
+                        matchExpressions:
+                          - key: node-role.enmasse.io/operator-infra
+                            operator: In
+                            values:
+                              - "true"
+              serviceAccountName: enmasse-operator
+              containers:
+              - name: controller
+                image: registry.redhat.io/amq7/amq-online-1-controller-manager:dev
+                imagePullPolicy: Always
+                env:
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: OPERATOR_NAME
+                  value: "enmasse-operator"
+                - name: ENMASSE_DEFAULT_PULL_POLICY
+                  value: "Always"
+                - name: CONTROLLER_DISABLE_ALL
+                  value: "true"
+                - name: CONTROLLER_ENABLE_AUTHENTICATION_SERVICE
+                  value: "true"
+                resources:
+                  limits:
+                    memory: 128Mi
       - name: user-api-server
         spec:
           replicas: 1
@@ -236,7 +294,7 @@ spec:
                     path: /healthz
                     port: http
                     scheme: HTTP
-                  initialDelaySeconds: 30
+                  initialDelaySeconds: 60
                 name: api-server
                 ports:
                 - containerPort: 8080
@@ -308,7 +366,7 @@ spec:
                     path: /healthz
                     port: http
                     scheme: HTTP
-                  initialDelaySeconds: 30
+                  initialDelaySeconds: 60
                 name: api-server
                 ports:
                 - containerPort: 8080
@@ -330,59 +388,9 @@ spec:
                   name: apiservice-cert
                   readOnly: true
               serviceAccountName: api-server
-      - name: enmasse-operator
-        spec:
-          replicas: 1
-          selector:
-            matchLabels:
-              app: enmasse
-              name: enmasse-operator
-          template:
-            metadata:
-              labels:
-                app: enmasse
-                name: enmasse-operator
-            spec:
-              affinity:
-                nodeAffinity:
-                  preferredDuringSchedulingIgnoredDuringExecution:
-                    - weight: 1
-                      preference:
-                        matchExpressions:
-                          - key: node-role.enmasse.io/operator-infra
-                            operator: In
-                            values:
-                              - "true"
-              serviceAccountName: enmasse-operator
-              containers:
-              - name: controller
-                image: registry.redhat.io/amq7/enmasse-controller-manager:dev
-                imagePullPolicy: Always
-                env:
-                - name: POD_NAME
-                  valueFrom:
-                    fieldRef:
-                      fieldPath: metadata.name
-                - name: NAMESPACE
-                  valueFrom:
-                    fieldRef:
-                      fieldPath: metadata.namespace
-                - name: OPERATOR_NAME
-                  value: "enmasse-operator"
-                - name: ENMASSE_DEFAULT_PULL_POLICY
-                  value: "Always"
-                - name: CONTROLLER_DISABLE_ALL
-                  value: "true"
-                - name: CONTROLLER_ENABLE_AUTHENTICATION_SERVICE
-                  value: "true"
-                resources:
-                  limits:
-                    memory: 128Mi
       - name: address-space-controller
         spec:
           replicas: 1
-          strategy:
-            type: Recreate
           selector:
             matchLabels:
               app: enmasse
