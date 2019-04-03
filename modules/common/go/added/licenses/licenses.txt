@@ -1,0 +1,53 @@
+cloud.google.com/go/license_test.go cloud.google.com/go/LICENSE
+github.com/beorn7/perks/LICENSE
+github.com/davecgh/go-spew/LICENSE
+github.com/ghodss/yaml/LICENSE
+github.com/go-logr/logr/LICENSE
+github.com/go-logr/zapr/LICENSE
+github.com/gogo/protobuf/LICENSE
+github.com/golang/glog/LICENSE
+github.com/golang/groupcache/LICENSE
+github.com/golang/protobuf/LICENSE
+github.com/google/btree/LICENSE
+github.com/google/gofuzz/LICENSE
+github.com/google/uuid/LICENSE
+github.com/googleapis/gnostic/LICENSE
+github.com/gregjones/httpcache/LICENSE.txt
+github.com/hashicorp/golang-lru/LICENSE
+github.com/imdario/mergo/testdata/license.yml github.com/imdario/mergo/LICENSE
+github.com/json-iterator/go/LICENSE
+github.com/mattbaird/jsonpatch/LICENSE
+github.com/matttproud/golang_protobuf_extensions/LICENSE
+github.com/modern-go/concurrent/LICENSE
+github.com/modern-go/reflect2/LICENSE
+github.com/openshift/api/LICENSE
+github.com/openshift/client-go/LICENSE
+github.com/operator-framework/operator-sdk/LICENSE
+github.com/pborman/uuid/LICENSE
+github.com/peterbourgon/diskv/LICENSE
+github.com/prometheus/client_golang/LICENSE
+github.com/prometheus/client_model/ruby/LICENSE github.com/prometheus/client_model/LICENSE
+github.com/prometheus/common/LICENSE
+github.com/prometheus/procfs/LICENSE
+github.com/spf13/pflag/LICENSE
+go.uber.org/atomic/LICENSE.txt
+go.uber.org/multierr/LICENSE.txt
+go.uber.org/zap/LICENSE.txt
+golang.org/x/crypto/LICENSE
+golang.org/x/net/LICENSE
+golang.org/x/oauth2/LICENSE
+golang.org/x/sys/LICENSE
+golang.org/x/text/LICENSE
+golang.org/x/time/LICENSE
+golang.org/x/tools/third_party/webcomponents/LICENSE golang.org/x/tools/third_party/typescript/LICENSE golang.org/x/tools/third_party/moduleloader/LICENSE golang.org/x/tools/cmd/getgo/LICENSE golang.org/x/tools/LICENSE
+google.golang.org/appengine/LICENSE
+gopkg.in/inf.v0/LICENSE
+gopkg.in/yaml.v2/LICENSE.libyaml gopkg.in/yaml.v2/LICENSE
+k8s.io/api/LICENSE
+k8s.io/apimachinery/LICENSE
+k8s.io/client-go/LICENSE
+k8s.io/code-generator/LICENSE
+k8s.io/gengo/LICENSE
+k8s.io/klog/LICENSE
+k8s.io/kube-openapi/LICENSE
+sigs.k8s.io/controller-runtime/LICENSE
