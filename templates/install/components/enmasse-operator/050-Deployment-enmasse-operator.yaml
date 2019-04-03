@@ -30,7 +30,7 @@ spec:
       serviceAccountName: enmasse-operator
       containers:
       - name: controller
-        image: registry.redhat.io/amq7/enmasse-controller-manager:dev
+        image: registry.redhat.io/amq7/amq-online-1-controller-manager:dev
         imagePullPolicy: Always
         env:
         - name: POD_NAME
@@ -43,7 +43,7 @@ spec:
               fieldPath: metadata.namespace
         - name: OPERATOR_NAME
           value: "enmasse-operator"
-        - name: ENMASSE_DEFAULT_PULL_POLICY
+        - name: IMAGE_PULL_POLICY
           value: "Always"
         - name: CONTROLLER_DISABLE_ALL
           value: "true"
@@ -51,6 +51,28 @@ spec:
           value: "true"
         - name: CONTROLLER_ENABLE_AUTHENTICATION_SERVICE
           value: "true"
+        - name: IOT_AUTH_SERVICE_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-iot-auth-service:dev
+        - name: IOT_DEVICE_REGISTRY_FILE_IMAGE
+          value: ${IOT_DEVICE_REGISTRY_FILE_IMAGE}
+        - name: IOT_GC_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-iot-gc:dev
+        - name: IOT_HTTP_ADAPTER_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-iot-http-adapter:dev
+        - name: IOT_MQTT_ADAPTER_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-iot-mqtt-adapter:dev
+        - name: IOT_TENANT_SERVICE_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-iot-tenant-service:dev
+        - name: IOT_PROXY_CONFIGURATOR_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-iot-proxy-configurator:dev
+        - name: QDROUTERD_BASE_IMAGE
+          value: registry.redhat.io/amq7/amq-interconnect:1.4
+        - name: NONE_AUTHSERVICE_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-none-auth-service:dev
+        - name: KEYCLOAK_IMAGE
+          value: registry.redhat.io/redhat-sso-7/sso73-openshift:latest
+        - name: KEYCLOAK_PLUGIN_IMAGE
+          value: registry.redhat.io/amq7/amq-online-1-keycloak-plugin:dev
         resources:
           limits:
             memory: 128Mi

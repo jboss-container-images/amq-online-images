@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.27-SNAPSHOT"
+      value: "0.28-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
@@ -41,7 +41,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: 2140a245f5d0f2fbe3c7d1db01869bcd
+    - md5: c4a4ff5cc653f3064b61dbbf5667bb8c
       name: enmasse-controller-manager.zip
 
 run:

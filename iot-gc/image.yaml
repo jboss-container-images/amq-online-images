@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.27-SNAPSHOT"
+      value: "0.28-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -40,7 +40,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: c20577bf5678485296c4bc9b5bab26ba
+    - md5: c87dfa768b565398390fd6013fd169f5
       name: dist-bin.zip
 
 run:

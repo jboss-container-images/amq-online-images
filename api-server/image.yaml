@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.27-SNAPSHOT"
+      value: "0.28-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: db99fc8b9a0e8e83a2a0880f15f4ee2c
+    - md5: 3c69d22f6096aa050dcdabfb43da6d10
       name: api-server.jar
 
 run:

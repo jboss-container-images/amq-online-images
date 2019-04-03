@@ -1,4 +1,4 @@
 packageName: enmasse
 channels:
 - name: alpha
-  currentCSV: enmasse.0.27-SNAPSHOT
+  currentCSV: enmasse.0.28-SNAPSHOT
