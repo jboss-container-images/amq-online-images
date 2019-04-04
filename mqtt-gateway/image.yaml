@@ -58,7 +58,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 4a1a45846ee1d118aa23d23bb12dcec5
+    - md5: afc533d91d557ae9ba5737eb922e886d
       name: mqtt-gateway.jar
 
 run:
