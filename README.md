@@ -15,4 +15,10 @@ EnMasse git repository url.
 
 ./regenerate-templates.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url> 
 
+# Updating Go license files
+
+Requires the tools [retrodep](https://github.com/release-engineering/retrodep) and
+[licenseclassifier](https://github.com/google/licenseclassifier) in $PATH
+
+./regenerate-go-license.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url>
 
