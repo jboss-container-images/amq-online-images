@@ -41,7 +41,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: c7321ee1855571a545d68b0f03be99a5
+    - md5: 22d87c527fff755b8c29e7a8094f6298
       name: enmasse-controller-manager.zip
 
 run:
