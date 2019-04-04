@@ -48,7 +48,7 @@ packages:
 
 artifacts:
     - md5: ${ARTIFACT_MD5}
-      name: standard-controller.jar
+      name: standard-controller.zip
 
 run:
       user: 185

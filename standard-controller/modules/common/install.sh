@@ -9,5 +9,6 @@ DISTRO_NAME=standard-controller
 
 # unpack
 {
-    mv "$SOURCES_DIR/standard-controller.jar" /opt
+    mkdir -p /opt/
+    unzip "${SOURCES_DIR}/standard-controller.zip" -d /opt
 }
