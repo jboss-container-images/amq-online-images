@@ -36,19 +36,19 @@ spec:
         - name: CONTROLLER_DISABLE_ALL
           value: "true"
         - name: IOT_AUTH_SERVICE_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-iot-auth-service:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:dev
         - name: IOT_DEVICE_REGISTRY_FILE_IMAGE
-          value: ${IOT_DEVICE_REGISTRY_FILE_IMAGE}
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-file:dev
         - name: IOT_GC_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-iot-gc:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-gc:dev
         - name: IOT_HTTP_ADAPTER_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-iot-http-adapter:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-http-adapter:dev
         - name: IOT_MQTT_ADAPTER_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-iot-mqtt-adapter:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:dev
         - name: IOT_TENANT_SERVICE_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-iot-tenant-service:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:dev
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-iot-proxy-configurator:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:dev
         - name: QDROUTERD_BASE_IMAGE
           value: registry.redhat.io/amq7/amq-interconnect:1.4
         - name: NONE_AUTHSERVICE_IMAGE
