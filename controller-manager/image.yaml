@@ -47,7 +47,7 @@ artifacts:
 run:
       user: 185
       cmd:
-          - "/opt/enmasse-controller-manager"
+          - "/opt/controller-manager"
 osbs:
       configuration:
             container:
