@@ -5,7 +5,7 @@ metadata:
   labels:
     app: enmasse
 spec:
-  version: ""
+  version: "0.28-SNAPSHOT"
   admin:
     resources:
       memory: 512Mi
