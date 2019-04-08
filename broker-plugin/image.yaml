@@ -51,7 +51,7 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - md5: f0b44d13ae17fab00b69ad21299a6a2b
+    - md5: f286a5a440547d279a67497f546bb506
       name: broker-plugin.zip
     - md5: 620d5c068e4ca408ad99c244f8706fce
       name: jmx-exporter.jar
