@@ -13,6 +13,8 @@ SUBDIRS=\
 	broker-plugin \
 	none-auth-service \
 	controller-manager \
+	console-init \
+	console-httpd \
 	iot-auth-service \
 	iot-device-registry-file \
 	iot-gc \

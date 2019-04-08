@@ -28,24 +28,16 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-      install:
-          - name: jboss.container.user
 
 packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
-    install:
-        - gettext
 
 artifacts:
     - md5: ${ARTIFACT_MD5}
       name: console-init-dist.zip
 
-run:
-      user: 185
-      cmd:
-        - "TODO"
 osbs:
       configuration:
             container:
