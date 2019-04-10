@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.0
+version: 1.1
 name: amq7/amq-online-1-broker-plugin
 description: "AMQ Online initialization plugin image for AMQ Broker."
 from: rhel7:7-released
