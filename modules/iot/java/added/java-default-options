@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -ex
+
+# Reset
+JAVA_DEFAULT_OPTS=""
+
+# Enable container support
+JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -XX:+UseContainerSupport"
+
+# Print final flags 
+JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -XX:+PrintFlagsFinal"
+
+# Exit on OOM
+JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -XX:+ExitOnOutOfMemoryError"
+
+# Default to UTC
+JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -Duser.timezone=UTC"
+
+# Set to a writable location
+JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -Dvertx.cacheDirBase=/tmp"
+
+# Make sure that we use /dev/urandom
+JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -Djava.security.egd=file:/dev/./urandom"
+
+if [[ "${DISABLE_VERTX_DNS}" = "true" ]]; then
+	JAVA_DEFAULT_OPTS="${JAVA_DEFAULT_OPTS} -Dvertx.disableDnsResolver=true"
+fi
+
+echo -n "${JAVA_DEFAULT_OPTS}"
