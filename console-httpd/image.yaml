@@ -28,20 +28,23 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
+          - name: consolehttpd.common
+            path: modules/common
       install:
           - name: jboss.container.user
+          - name: consolehttpd.common
 
 packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
     install:
+        - unzip
         - httpd
         - mod_ssl
-        - mod_proxy
 
 artifacts:
-    - md5: ${ARTIFACT_MD5}
+    - md5: f551cff826e18ef170b198a6e042c173
       name: console-httpd-dist.zip
 
 run:
@@ -56,4 +59,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-console-httpd-rhel-7
+            branch: amq7-amq-online-11-console-httpd-rhel-7

@@ -28,15 +28,26 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
+          - name: consoleinit.common
+            path: modules/common
+      install:
+          - name: consoleinit.common
 
 packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
+    install:
+      - unzip
 
 artifacts:
-    - md5: ${ARTIFACT_MD5}
+    - md5: 05b3a22b98dbb390ac114a8903cf9c39
       name: console-init-dist.zip
+
+run:
+      cmd:
+        - "/oauth-proxy/bin/init.sh"
+        - "/apps/"
 
 osbs:
       configuration:
@@ -45,4 +56,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-console-init-rhel-7
+            branch: amq7-amq-online-11-console-init-rhel-7
