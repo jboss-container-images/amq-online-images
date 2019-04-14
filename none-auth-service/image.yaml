@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.28"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 5135f7287d14e38fcf022f4a6bddf14e
+    - md5: e2ab5accd911157abd14628002fafa12
       name: none-authservice.jar
 
 run:
