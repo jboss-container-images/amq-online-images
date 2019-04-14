@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.28"
     - name: "LOG_LEVEL"
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
@@ -41,7 +41,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: 2ae60e95c24d9f81d5a7eaafb1d71534
+    - md5: a26e0a9b2d0d67b3f43bda7d1aa58aa2
       name: dist-bin.zip
 
 run:

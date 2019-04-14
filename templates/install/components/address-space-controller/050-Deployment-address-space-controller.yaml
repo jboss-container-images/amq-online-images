@@ -80,20 +80,20 @@ spec:
         - name: ROUTER_IMAGE
           value: registry.redhat.io/amq7/amq-interconnect:1.4
         - name: STANDARD_CONTROLLER_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-standard-controller:dev
+          value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.1
         - name: AGENT_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-agent:dev
+          value: registry.redhat.io/amq7/amq-online-1-agent:1.1
         - name: BROKER_IMAGE
           value: registry.redhat.io/amq-broker-7/amq-broker-72-openshift:latest
         - name: BROKER_PLUGIN_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-broker-plugin:dev
+          value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.1
         - name: TOPIC_FORWARDER_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:dev
+          value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:1.1
         - name: MQTT_GATEWAY_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-mqtt-gateway:dev
+          value: registry.redhat.io/amq7/amq-online-1-mqtt-gateway:1.1
         - name: MQTT_LWT_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-mqtt-lwt:dev
-        image: registry.redhat.io/amq7/amq-online-1-address-space-controller:dev
+          value: registry.redhat.io/amq7/amq-online-1-mqtt-lwt:1.1
+        image: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.1
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

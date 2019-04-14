@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.28"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 8bf6df0ca2c8d432825d702763a44356
+    - md5: 37ebe6414713681f2cbb7fbd0ca55c04
       name: address-space-controller.zip
 
 run:

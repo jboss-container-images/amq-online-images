@@ -30,7 +30,7 @@ spec:
       serviceAccountName: enmasse-operator
       containers:
       - name: controller
-        image: registry.redhat.io/amq7/amq-online-1-controller-manager:dev
+        image: registry.redhat.io/amq7/amq-online-1-controller-manager:1.1
         imagePullPolicy: Always
         env:
         - name: POD_NAME
@@ -52,37 +52,37 @@ spec:
         - name: CONTROLLER_ENABLE_AUTHENTICATION_SERVICE
           value: "true"
         - name: IOT_AUTH_SERVICE_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:1.1
         - name: IOT_DEVICE_REGISTRY_FILE_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-file:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-file:1.1
         - name: IOT_GC_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-gc:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-gc:1.1
         - name: IOT_HTTP_ADAPTER_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-http-adapter:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-http-adapter:1.1
         - name: IOT_MQTT_ADAPTER_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:1.1
         - name: IOT_TENANT_SERVICE_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:1.1
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:1.1
         - name: QDROUTERD_BASE_IMAGE
           value: registry.redhat.io/amq7/amq-interconnect:1.4
         - name: NONE_AUTHSERVICE_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-none-auth-service:dev
+          value: registry.redhat.io/amq7/amq-online-1-none-auth-service:1.1
         - name: KEYCLOAK_IMAGE
           value: registry.redhat.io/redhat-sso-7/sso73-openshift:latest
         - name: KEYCLOAK_PLUGIN_IMAGE
-          value: registry.redhat.io/amq7/amq-online-1-auth-plugin:dev
+          value: registry.redhat.io/amq7/amq-online-1-auth-plugin:1.1
         - name: CONTROLLER_ENABLE_CONSOLE_SERVICE
           value: "true"
         - name: CONSOLE_INIT_IMAGE
-          value: "registry.redhat.io/amq7/amq-online-1-console-init:dev"
+          value: "registry.redhat.io/amq7/amq-online-1-console-init:1.1"
         - name: CONSOLE_PROXY_OPENSHIFT_IMAGE
           value: "openshift/oauth-proxy:latest"
         - name: CONSOLE_PROXY_KUBERNETES_IMAGE
           value: "quay.io/pusher/oauth2_proxy:latest"
         - name: CONSOLE_HTTPD_IMAGE
-          value: "registry.redhat.io/amq7/amq-online-1-console-httpd:dev"
+          value: "registry.redhat.io/amq7/amq-online-1-console-httpd:1.1"
         resources:
           limits:
             memory: 128Mi
