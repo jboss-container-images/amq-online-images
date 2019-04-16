@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 9589cddbda834df1efead2b2da602bf4
+    - md5: d5f9aacf25aa1dda0887ec4182ea7c39
       name: standard-controller.zip
 
 run:
