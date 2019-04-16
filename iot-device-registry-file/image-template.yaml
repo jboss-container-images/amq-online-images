@@ -6,7 +6,7 @@ description: "A non-scalable, file base device registry for AMQ Online IoT."
 from: rhel7:7-released
 labels:
     - name: "com.redhat.component"
-      value: "amq7-amq-online-1-iot-http-adapter-openshift-container"
+      value: "amq7-amq-online-1-iot-device-registry-file-openshift-container"
     - name: "io.k8s.description"
       value: "A non-scalable, file base device registry for AMQ Online IoT."
     - name: "io.k8s.display-name"
