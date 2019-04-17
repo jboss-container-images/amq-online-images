@@ -46,7 +46,7 @@ artifacts:
 run:
       user: 185
       cmd:
-          - "/opt/qdr-proxy-configurator"
+          - "/opt/iot-proxy-configurator"
 
 osbs:
       configuration:
