@@ -38,6 +38,11 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
+            - amq-interconnect-1-for-rhel-7-server-rpms
+            - amq-clients-2-for-rhel-7-server-rpms
+    install:
+      - qpid-dispatch-router
+      - qpid-dispatch-tools
 
 artifacts:
     - md5: ${ARTIFACT_MD5}
