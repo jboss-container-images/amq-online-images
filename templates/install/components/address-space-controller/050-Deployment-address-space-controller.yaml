@@ -7,6 +7,8 @@ metadata:
   name: address-space-controller
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: enmasse
