@@ -88,6 +88,8 @@ fi
 pushd ${WORKDIR}
 VENDORLIST=${WORKDIR}/vendor-list.txt
 XMLFILE=$WORKDIR/licenses.xml
+HTMLFILE=$WORKDIR/licenses.html
+XSLFILE=$WORKDIR/licenses.xsl
 LISTFILE=$WORKDIR/licenses.txt
 ARCHIVE=$WORKDIR/licenses.tgz
 
@@ -130,8 +132,9 @@ cat <<EOF>>$XMLFILE
 </licenseSummary>
 EOF
 
+xsltproc ${XSLFILE} ${XMLFILE} > ${HTMLFILE}
 
-cp ${XMLFILE} ${LISTFILE} ${ARCHIVE} ${TARGET_LICENSE_DIR}/
+cp ${XMLFILE} ${LISTFILE} ${ARCHIVE} ${HTMLFILE} ${TARGET_LICENSE_DIR}/
 
 if [[ ${KEEP_WORK_DIR} -eq 0 ]]; then
     rm -rf ${WORKDIR}
