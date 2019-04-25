@@ -26,7 +26,7 @@ spec:
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
   containers:
-  - image: ${OAUTH_PROXY_IMAGE}
+  - image: openshift/oauth-proxy:latest
     imagePullPolicy: Always
     name: oauth-proxy
     ports:
