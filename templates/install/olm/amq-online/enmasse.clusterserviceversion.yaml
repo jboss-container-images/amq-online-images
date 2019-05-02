@@ -169,20 +169,22 @@ spec:
   description: >
     **Red Hat AMQ Online** provides messaging as a managed service on OpenShift.  With Red Hat AMQ Online, administrators can configure a cloud-native, multi-tenant messaging service either in the cloud or on premise. Developers can provision messaging using the AMQ Online console. Multiple development teams can provision the brokers and queues from the console, without requiring each team to install, configure, deploy, maintain, or patch any software. 
 
-    **The core capabilities include**
 
-    * **Built-in authentication and authorization** - Use the built-in or plug in your own authentication service for authentication and authorization of messaging clients.
 
-    * **Self-service messaging for applications** - The service admin deploys and manages the messaging infrastructure, while applications can request messaging resources without caring about the messaging infrastructure.
+    **The core capabilities include:**
 
-    * **Support for a wide variety of messaging patterns** - Choose between JMS-style messaging with strict guarantees, or messaging that supports a larger number of connections and higher throughput.
+      * **Built-in authentication and authorization** - Use the built-in or plug in your own authentication service for authentication and authorization of messaging clients.
+
+      * **Self-service messaging for applications** - The service admin deploys and manages the messaging infrastructure, while applications can request messaging resources without caring about the messaging infrastructure.
+
+      * **Support for a wide variety of messaging patterns** - Choose between JMS-style messaging with strict guarantees, or messaging that supports a larger number of connections and higher throughput.
 
     ### Configuring
 
     The example resources provided this operator can be categorized into resources managed by the operator admin to configure the infrastructure and resources managed by messaging tenants to provision messaging.
 
-    1. Create the `AddressSpacePlan`, `AddressPlan`, `StandardInfraConfig`, `BrokeredInfraConfig` and `AuthenticationService` resources in the namespace where the operator is installed. See the [minimal service configuration](https://enmasse.io/documentation/master/kubernetes/index.html#minimal-service-configuration-messaging) for examples.
-    2. Create the `AddressSpace`, `Address` and `MessagingUser` resources in the same namespace as the application that will use messaging. See the [minimal tenant configuration](https://enmasse.io/documentation/master/kubernetes/index.html#minimal-tenant-configuration-messaging) for examples.
+      1. Create the `AddressSpacePlan`, `AddressPlan`, `StandardInfraConfig`, `BrokeredInfraConfig` and `AuthenticationService` resources in the namespace where the operator is installed. See the [minimal service configuration](https://enmasse.io/documentation/master/kubernetes/index.html#minimal-service-configuration-messaging) for examples.
+      2. Create the `AddressSpace`, `Address` and `MessagingUser` resources in the same namespace as the application that will use messaging. See the [minimal tenant configuration](https://enmasse.io/documentation/master/kubernetes/index.html#minimal-tenant-configuration-messaging) for examples.
 
   version: 1.1.0
   keywords: ['amq', 'messaging', 'amqp', 'iot', 'mqtt']
