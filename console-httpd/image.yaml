@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.29-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -44,7 +44,7 @@ packages:
         - mod_ssl
 
 artifacts:
-    - md5: 416965d3ee95acba5957a04bd4393e8e
+    - md5: 3f308638973674f9ddf84b5e4426b8b9
       name: console-httpd-dist.zip
 
 run:

@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.29-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -45,7 +45,7 @@ packages:
       - qpid-dispatch-tools
 
 artifacts:
-    - md5: 08142ba8d10fd4a9d103a29a8960450a
+    - md5: faa1a6a8d5c74b08ec6637c4e94a103d
       name: dist-bin.zip
 
 run:
