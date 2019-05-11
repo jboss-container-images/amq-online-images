@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.29-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: e6436f83bffa969ef2f4b99c622f32b6
+    - md5: fae5457d5e07d35814a2c5f3c47c84d5
       name: iot-component.jar
 
 run:

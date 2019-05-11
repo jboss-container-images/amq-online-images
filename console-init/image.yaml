@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.29-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -41,7 +41,7 @@ packages:
       - unzip
 
 artifacts:
-    - md5: 52027be6e02965a8488c9fc1d4f0acae
+    - md5: 585f1234afa45c49a6e92b158fe8825a
       name: console-init-dist.zip
 
 run:

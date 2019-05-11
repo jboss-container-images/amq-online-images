@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.28-SNAPSHOT"
+      value: "0.29-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 03711401c83b566a9520d2fa34fd66d9
+    - md5: a682e3530da2f4f29cfe8c95b36416af
       name: standard-controller.zip
 
 run:
