@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: e9c78272e4554a4b0c91bb9a5f0c35b2
+    - md5: db3aef0e8690c74372705551879bee00
       name: iot-component.jar
 
 run:
