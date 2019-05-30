@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.1
 name: amq7/amq-online-1-standard-controller
 description: "global component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance."
-from: rhel7:7-released
+from: ubi7:7-released
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-standard-controller-openshift-container"
