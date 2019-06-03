@@ -12,7 +12,8 @@ metadata:
     containerImage: registry.redhat.io/amq7/amq-online-1-controller-manager:1.1
     createdAt: 2019-04-02
     capabilities: Seamless Upgrades
-    support: Red Hat
+    repository: 
+    support: Red Hat, Inc.
     alm-examples: |-
       [
         {
@@ -159,6 +160,14 @@ metadata:
             "name": "default"
           },
           "spec": {}
+        },
+        {
+          "apiVersion": "enmasse.io/v1beta1",
+          "kind": "AddressSpaceSchema",
+          "metadata": {
+            "name": "undefined"
+          },
+          "spec": {}
         }
       ]
 
@@ -167,12 +176,12 @@ spec:
   displayName: AMQ Online
   description: |
     **Red Hat AMQ Online** provides messaging as a managed service on OpenShift.
-      With AMQ Online, administrators can configure a cloud-native,
-      multi-tenant messaging service either in the cloud or on premise.
-      Developers can provision messaging using the Red Hat AMQ Console.
-      Multiple development teams can provision the brokers and queues from the
-      console, without requiring each team to install, configure, deploy,
-      maintain, or patch any software. 
+    With AMQ Online, administrators can configure a cloud-native,
+    multi-tenant messaging service either in the cloud or on premise.
+    Developers can provision messaging using the Red Hat AMQ Online Console.
+    Multiple development teams can provision the brokers and queues from the
+    console, without requiring each team to install, configure, deploy,
+    maintain, or patch any software. 
 
     **The core capabilities include:**
 
@@ -260,10 +269,6 @@ spec:
         configuration.
 
     You must also create at least one address space plan and one address plan.
-  
-
-   
-     
 
     *Note*: The name of the address space plan and address plan is required
     later when creating new addresses. Some examples use specific plan
@@ -284,8 +289,8 @@ spec:
   version: 1.1.0
   keywords: ['amq', 'messaging', 'amqp', 'iot', 'mqtt']
   icon:
-  - base64data: PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTQ1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2UwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPlJlZEhhdC1Mb2dvLUhhdC1Db2xvcjwvdGl0bGU+PHBhdGggZD0iTTE1Ny43Nyw2Mi42MWExNCwxNCwwLDAsMSwuMzEsMy40MmMwLDE0Ljg4LTE4LjEsMTcuNDYtMzAuNjEsMTcuNDZDNzguODMsODMuNDksNDIuNTMsNTMuMjYsNDIuNTMsNDRhNi40Myw2LjQzLDAsMCwxLC4yMi0xLjk0bC0zLjY2LDkuMDZhMTguNDUsMTguNDUsMCwwLDAtMS41MSw3LjMzYzAsMTguMTEsNDEsNDUuNDgsODcuNzQsNDUuNDgsMjAuNjksMCwzNi40My03Ljc2LDM2LjQzLTIxLjc3LDAtMS4wOCwwLTEuOTQtMS43My0xMC4xM1oiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNDcsODMuNDljMTIuNTEsMCwzMC42MS0yLjU4LDMwLjYxLTE3LjQ2YTE0LDE0LDAsMCwwLS4zMS0zLjQybC03LjQ1LTMyLjM2Yy0xLjcyLTcuMTItMy4yMy0xMC4zNS0xNS43My0xNi42QzEyNC44OSw4LjY5LDEwMy43Ni41LDk3LjUxLjUsOTEuNjkuNSw5MCw4LDgzLjA2LDhjLTYuNjgsMC0xMS42NC01LjYtMTcuODktNS42LTYsMC05LjkxLDQuMDktMTIuOTMsMTIuNSwwLDAtOC40MSwyMy43Mi05LjQ5LDI3LjE2QTYuNDMsNi40MywwLDAsMCw0Mi41Myw0NGMwLDkuMjIsMzYuMywzOS40NSw4NC45NCwzOS40NU0xNjAsNzIuMDdjMS43Myw4LjE5LDEuNzMsOS4wNSwxLjczLDEwLjEzLDAsMTQtMTUuNzQsMjEuNzctMzYuNDMsMjEuNzdDNzguNTQsMTA0LDM3LjU4LDc2LjYsMzcuNTgsNTguNDlhMTguNDUsMTguNDUsMCwwLDEsMS41MS03LjMzQzIyLjI3LDUyLC41LDU1LC41LDc0LjIyYzAsMzEuNDgsNzQuNTksNzAuMjgsMTMzLjY1LDcwLjI4LDQ1LjI4LDAsNTYuNy0yMC40OCw1Ni43LTM2LjY1LDAtMTIuNzItMTEtMjcuMTYtMzAuODMtMzUuNzgiLz48L3N2Zz4=
-    mediatype: image/svg+xml
+    - base64data: PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTQ1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2UwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPlJlZEhhdC1Mb2dvLUhhdC1Db2xvcjwvdGl0bGU+PHBhdGggZD0iTTE1Ny43Nyw2Mi42MWExNCwxNCwwLDAsMSwuMzEsMy40MmMwLDE0Ljg4LTE4LjEsMTcuNDYtMzAuNjEsMTcuNDZDNzguODMsODMuNDksNDIuNTMsNTMuMjYsNDIuNTMsNDRhNi40Myw2LjQzLDAsMCwxLC4yMi0xLjk0bC0zLjY2LDkuMDZhMTguNDUsMTguNDUsMCwwLDAtMS41MSw3LjMzYzAsMTguMTEsNDEsNDUuNDgsODcuNzQsNDUuNDgsMjAuNjksMCwzNi40My03Ljc2LDM2LjQzLTIxLjc3LDAtMS4wOCwwLTEuOTQtMS43My0xMC4xM1oiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNDcsODMuNDljMTIuNTEsMCwzMC42MS0yLjU4LDMwLjYxLTE3LjQ2YTE0LDE0LDAsMCwwLS4zMS0zLjQybC03LjQ1LTMyLjM2Yy0xLjcyLTcuMTItMy4yMy0xMC4zNS0xNS43My0xNi42QzEyNC44OSw4LjY5LDEwMy43Ni41LDk3LjUxLjUsOTEuNjkuNSw5MCw4LDgzLjA2LDhjLTYuNjgsMC0xMS42NC01LjYtMTcuODktNS42LTYsMC05LjkxLDQuMDktMTIuOTMsMTIuNSwwLDAtOC40MSwyMy43Mi05LjQ5LDI3LjE2QTYuNDMsNi40MywwLDAsMCw0Mi41Myw0NGMwLDkuMjIsMzYuMywzOS40NSw4NC45NCwzOS40NU0xNjAsNzIuMDdjMS43Myw4LjE5LDEuNzMsOS4wNSwxLjczLDEwLjEzLDAsMTQtMTUuNzQsMjEuNzctMzYuNDMsMjEuNzdDNzguNTQsMTA0LDM3LjU4LDc2LjYsMzcuNTgsNTguNDlhMTguNDUsMTguNDUsMCwwLDEsMS41MS03LjMzQzIyLjI3LDUyLC41LDU1LC41LDc0LjIyYzAsMzEuNDgsNzQuNTksNzAuMjgsMTMzLjY1LDcwLjI4LDQ1LjI4LDAsNTYuNy0yMC40OCw1Ni43LTM2LjY1LDAtMTIuNzItMTEtMjcuMTYtMzAuODMtMzUuNzgiLz48L3N2Zz4=
+      mediatype: image/svg+xml
   maintainers:
   - name: Red Hat, Inc.
     email: customerservice@redhat.com
@@ -809,6 +814,14 @@ spec:
           path: phase
           x-descriptors:
             - 'urn:alm:descriptor:text'
+    - group: enmasse.io
+      version: v1beta1
+      kind: AddressSpaceSchema
+      name: addressspaceschemas
+      displayName: AddressSpaceSchema
+      description: A resource representing the available schema of plans and authentication services
+      deploymentName: api-server
+      containerPort: 8443
     - group: user.enmasse.io
       version: v1beta1
       kind: MessagingUser
@@ -835,18 +848,6 @@ spec:
             - 'urn:alm:descriptor:com.tectonic.ui:label'
   customresourcedefinitions:
     owned:
-      - group: admin.enmasse.io
-        version: v1beta1
-        kind: AuthenticationService
-        name: authenticationservices.admin.enmasse.io
-        displayName: Authentication Service
-        description: Authentication service configuration available to address spaces.
-        specDescriptors:
-          - description: The type of authentication service
-            displayName: Type
-            path: type
-            x-descriptors:
-              - 'urn:alm:descriptor:com.tectonic.ui:label'
       - group: admin.enmasse.io
         version: v1beta1
         kind: StandardInfraConfig
@@ -928,6 +929,33 @@ spec:
               - 'urn:alm:descriptor:com.tectonic.ui:label'
       - group: admin.enmasse.io
         version: v1beta2
+        kind: AddressPlan
+        name: addressplans.admin.enmasse.io
+        displayName: Address Plan
+        description: Plan describing the resource usage of a given address type
+        specDescriptors:
+          - description: The name to be displayed in the console UI.
+            displayName: Display Name
+            path: displayName
+            x-descriptors:
+              - 'urn:alm:descriptor:com.tectonic.ui:label'
+          - description: The description to be shown in the console UI.
+            displayName: Short Description
+            path: shortDescription
+            x-descriptors:
+              - 'urn:alm:descriptor:com.tectonic.ui:label'
+          - description: The broker resource usage.
+            displayName: Broker Usage
+            path: resources.broker
+            x-descriptors:
+              - 'urn:alm:descriptor:com.tectonic.ui:label'
+          - description: The router resource usage.
+            displayName: Router Usage
+            path: resources.router
+            x-descriptors:
+              - 'urn:alm:descriptor:com.tectonic.ui:label'
+      - group: admin.enmasse.io
+        version: v1beta2
         kind: AddressSpacePlan
         name: addressspaceplans.admin.enmasse.io
         displayName: Address Space Plan
@@ -964,38 +992,17 @@ spec:
             x-descriptors:
               - 'urn:alm:descriptor:com.tectonic.ui:label'
       - group: admin.enmasse.io
-        version: v1beta2
-        kind: AddressPlan
-        name: addressplans.admin.enmasse.io
-        displayName: Address Plan
-        description: Plan describing the resource usage of a given address type
+        version: v1beta1
+        kind: AuthenticationService
+        name: authenticationservices.admin.enmasse.io
+        displayName: Authentication Service
+        description: Authentication service configuration available to address spaces.
         specDescriptors:
-          - description: The name to be displayed in the console UI.
-            displayName: Display Name
-            path: displayName
+          - description: The type of authentication service
+            displayName: Type
+            path: type
             x-descriptors:
               - 'urn:alm:descriptor:com.tectonic.ui:label'
-          - description: The description to be shown in the console UI.
-            displayName: Short Description
-            path: shortDescription
-            x-descriptors:
-              - 'urn:alm:descriptor:com.tectonic.ui:label'
-          - description: The broker resource usage.
-            displayName: Broker Usage
-            path: resources.broker
-            x-descriptors:
-              - 'urn:alm:descriptor:com.tectonic.ui:label'
-          - description: The router resource usage.
-            displayName: Router Usage
-            path: resources.router
-            x-descriptors:
-              - 'urn:alm:descriptor:com.tectonic.ui:label'
-      - group: iot.enmasse.io
-        version: v1alpha1
-        kind: IoTConfig
-        name: iotconfigs.iot.enmasse.io
-        displayName: IoT Config
-        description: IoT Infrastructure Configuration Singleton
       - group: admin.enmasse.io
         version: v1beta1
         kind: ConsoleService
@@ -1028,3 +1035,9 @@ spec:
             path: host
             x-descriptors:
               - 'urn:alm:descriptor:com.tectonic.ui:label'
+      - group: iot.enmasse.io
+        version: v1alpha1
+        kind: IoTConfig
+        name: iotconfigs.iot.enmasse.io
+        displayName: IoT Config
+        description: IoT Infrastructure Configuration Singleton
