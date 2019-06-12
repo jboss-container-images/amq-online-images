@@ -127,7 +127,7 @@ spec:
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 2,
               "mappingType": 1,
-              "pattern": "namespace",
+              "pattern": "exported_namespace",
               "thresholds": [],
               "type": "number",
               "unit": "short"
@@ -261,7 +261,7 @@ spec:
           ],
           "targets": [
             {
-              "expr": "component_health",
+              "expr": "enmasse_component_health",
               "format": "table",
               "instant": true,
               "intervalFactor": 1,
@@ -304,7 +304,7 @@ spec:
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 2,
               "mappingType": 1,
-              "pattern": "kubernetes_pod_name",
+              "pattern": "name",
               "thresholds": [],
               "type": "string",
               "unit": "short"
@@ -358,7 +358,7 @@ spec:
           ],
           "targets": [
             {
-              "expr": "version",
+              "expr": "enmasse_version",
               "format": "table",
               "instant": true,
               "intervalFactor": 1,
@@ -467,7 +467,7 @@ spec:
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 2,
               "mappingType": 1,
-              "pattern": "namespace",
+              "pattern": "exported_namespace",
               "thresholds": [],
               "type": "number",
               "unit": "short"
@@ -489,7 +489,7 @@ spec:
           ],
           "targets": [
             {
-              "expr": "address_spaces_ready_total",
+              "expr": "enmasse_address_spaces_ready_total",
               "format": "table",
               "instant": true,
               "intervalFactor": 1,
@@ -537,7 +537,7 @@ spec:
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 2,
               "mappingType": 1,
-              "pattern": "namespace",
+              "pattern": "exported_namespace",
               "thresholds": [],
               "type": "number",
               "unit": "short"
@@ -578,7 +578,7 @@ spec:
           ],
           "targets": [
             {
-              "expr": "address_spaces_not_ready_total",
+              "expr": "enmasse_address_spaces_not_ready_total",
               "format": "table",
               "instant": true,
               "intervalFactor": 1,
@@ -627,12 +627,12 @@ spec:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "addresses_total",
+              "expr": "enmasse_addresses_total",
               "format": "time_series",
               "instant": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "total {{namespace}}:{{addressspace}}",
+              "legendFormat": "total {{exported_namespace}}:{{addressspace}}",
               "refId": "A"
             }
           ],
@@ -707,7 +707,7 @@ spec:
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 2,
               "mappingType": 1,
-              "pattern": "namespace",
+              "pattern": "exported_namespace",
               "thresholds": [],
               "type": "number",
               "unit": "short"
@@ -764,7 +764,7 @@ spec:
           ],
           "targets": [
             {
-              "expr": "addresses_not_ready_total",
+              "expr": "enmasse_addresses_not_ready_total",
               "format": "table",
               "instant": true,
               "intervalFactor": 1,
