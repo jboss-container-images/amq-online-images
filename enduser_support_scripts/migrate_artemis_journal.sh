@@ -8,8 +8,8 @@ cat << EOF
 
 Remediation for https://issues.jboss.org/browse/ENTMQMAAS-1170
 
-This script will copy the current Artemis journal for broker pods running in this AMQ Online 1.0
-infra namespace to the correct persistent location.  It should be run before upgrade to AMQ Online 1.1.
+This script will copy the current Artemis journal for broker pods running in this AMQ Online 1.0/1.1.0
+infra namespace to the correct persistent location.  It should be run before upgrade to AMQ Online 1.1.1.
 
 It is important that applications using the AMQ Online are shutdown (or quiesced) before you proceed so that
 there is no messaging traffic through the system.
@@ -64,7 +64,7 @@ do
 
 done
 
-echo "All broker pod processed"
+echo "All broker pods processed"
 
 
 
