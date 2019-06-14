@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 8368fa8beda66710bdf9e2f61e8a1f38
+    - md5: a2e09caec5d5bb209d4ceaa1aa0f262b
       name: service-broker.jar
 
 run:
