@@ -18,5 +18,6 @@ mkdir -p ${TARGET_DIR}
 TARGET_ZIP=${TARGET_DIR}/amq-online-install-${TAG}.zip
 
 (cd ${DIR}/templates; zip -qr ${TARGET_ZIP} .)
+(cd ${DIR}/enduser_support_scripts; zip -qr ${TARGET_ZIP} .)
 
 exit 0
