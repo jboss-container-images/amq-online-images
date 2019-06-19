@@ -21,3 +21,8 @@ Requires the tools [retrodep](https://github.com/release-engineering/retrodep) a
 [licenseclassifier](https://github.com/google/licenseclassifier) in `$PATH`
 
     ./regenerate-go-license.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url>
+
+# Producing the install ZIP
+
+./make_install_zip.sh <tag>
+
