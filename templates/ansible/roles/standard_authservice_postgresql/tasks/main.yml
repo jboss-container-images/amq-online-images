@@ -127,7 +127,7 @@
             type: postgresql
             host: postgresql
             port: 5432
-            database: postgresql
+            database: amqonline
             credentialsSecret:
               name: postgresql
       EOF
