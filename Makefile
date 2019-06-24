@@ -1,6 +1,7 @@
 TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
 
 SUBDIRS=\
+	templates \
 	standard-controller \
 	address-space-controller \
 	agent \
@@ -24,32 +25,33 @@ SUBDIRS=\
 	iot-tenant-service \
 
 
-all:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir; \
-	done	
+all: $(SUBDIRS)
 
-pushall:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir push; \
-	done
+push: $(SUBDIRS)
 
-tagall:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir tag; \
-	done
+tag: $(SUBDIRS)
 
-cleanall:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir clean; \
-	done
+clean: $(SUBDIRS)
 
-copyartifactall:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir copyartifact; \
-	done
+copyartifact: $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: all $(SUBDIRS) push tag clean pushall tagall cleanall
+.PHONY: all $(SUBDIRS) \
+	push tag clean copyartifact \
+	pushall tagall cleanall copyartifactall
+
+# legacy targets
+
+pushall:
+	$(MAKE) push
+
+tagall:
+	$(MAKE) tag
+
+cleanall:
+	$(MAKE) clean
+
+copyartifactall:
+	$(MAKE) copyartifact
