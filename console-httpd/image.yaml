@@ -44,7 +44,7 @@ packages:
         - mod_ssl
 
 artifacts:
-    - md5: a1c6bbc2b34a487f472c5cb203dcf663
+    - md5: e0d6216beed5ad5a50305e64159d2bbb
       name: console-httpd-dist.zip
 
 run:
