@@ -41,7 +41,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: c8a88584aaf53f1f814b4949324b8325
+    - md5: 9b07e800d7e20a0e3b0e768f42b3e7f5
       name: dist-bin.zip
 
 run:
