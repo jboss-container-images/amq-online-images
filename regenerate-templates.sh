@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 do_patch () {
     PATCH_DIR=$1
     PATCH_TARGET=$2
@@ -21,15 +19,7 @@ do_patch () {
 do_usage_and_exit () {
     1>&2 echo "$0: Usage $0 [-keep-work-dir] [--tag <tag>] <repo>"
     exit 0;
-}
 
-cleanup () {
-    if [[ ${KEEP_WORK_DIR} -eq 0 ]]; then
-        echo "Cleaning work directory: ${WORKDIR}"
-        rm -rf ${WORKDIR}
-    else
-        echo Retained working directory: ${WORKDIR}
-    fi
 }
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -91,9 +81,6 @@ echo Shallow cloning ${REPO} ${TAG}
 git clone ${GITARGS[*]}
 rc=$?
 
-# cleanup when exiting
-trap 'cleanup' EXIT
-
 if [[ $rc != 0 ]]; then
     1>&2 echo "$0: Git clone failed."
     exit $rc
@@ -106,12 +93,9 @@ else
     echo No patches to apply
 fi
 
-set -o allexport
-source ${DIR}/olm.amqonline.env
-set +o allexport
 
 pushd ${WORKDIR}
-make -e \
+make \
     DOCKER_ORG=amq7 \
     DOCKER_ORG_PREVIEW=amq7-tech-preview \
     DOCKER_REGISTRY_PREFIX=registry.redhat.io/ \
@@ -126,26 +110,10 @@ rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TA
 
 rm -rf templates/docs
 
-rm -Rf templates/install/olm/amq-online
-mv templates/install/olm/enmasse templates/install/olm/amq-online
-pushd templates/install/olm/amq-online
-for i in $(ls *.yaml); do
-	mv "$i" "amq-online-$i"
-done
-rm amq-online-enmasse.package.yaml
-cat << ___EOF___ > amq-online.package.yaml
-packageName: amq-online
-channels:
-- name: stable
-  currentCSV: amqonline.${VERSION}.0
-___EOF___
-
-# fix up the CSV
-mv amq-online-enmasse.clusterserviceversion.yaml amq-online.${VERSION}.0.clusterserviceversion.yaml
-
-# done
-
-popd
-git add --all templates/install/olm/amq-online
+if [[ ${KEEP_WORK_DIR} -eq 0 ]]; then
+    rm -rf ${WORKDIR}
+else
+    echo Retained working directory: ${WORKDIR}
+fi
 
 exit 0
