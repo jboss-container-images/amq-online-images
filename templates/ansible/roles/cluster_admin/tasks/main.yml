@@ -24,10 +24,7 @@
   when: '"none" in authentication_services'
 - import_role:
     name: standard_authservice
-  when: '"standard" in authentication_services and not standard_authentication_service_postgresql'
-- import_role:
-    name: standard_authservice_postgresql
-  when: '"standard" in authentication_services and standard_authentication_service_postgresql'
+  when: '"standard" in authentication_services'
 - import_role:
     name: example_plans
   when: install_example_plans
