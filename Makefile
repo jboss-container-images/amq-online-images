@@ -49,6 +49,11 @@ copyartifactall:
 		$(MAKE) -C $$dir copyartifact; \
 	done
 
+listbuildids:
+	for dir in $(SUBDIRS); do \
+		$(MAKE) -C $$dir listbuildid; \
+	done
+
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 

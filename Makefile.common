@@ -35,6 +35,11 @@ copyartifact:
 	mkdir -p $(ARTIFACT_CACHE_DIR)
 	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(NEW_ABSOLUTE_LOCAL_ARTIFACT)
 
+listbuildid:
+	$(eval BUILD_TAG=$(shell grep -A1 "com.redhat.component" image.yaml | tail -1 | cut -d'"' -f 2))
+	$(eval BUILD=$(shell brew latest-build rhaos-3.11-rhel-7-candidate ${BUILD_TAG} | tail -1 | cut -d ' ' -f 1))
+	brew buildinfo ${BUILD} | head -1 | cut -d '[' -f 2 | cut -d ']' -f 1
+
 clean:
 	rm -rf build target
 
