@@ -7,6 +7,7 @@ DOCKER_BUILD_OPTS?=
 DOCKER?=docker
 PRODUCT_DIR?=../../enmasse
 
+CEKIT_BUILD_ENGINE?=docker
 ifeq ($(TECH_PREVIEW),true)
 	CEKIT_BASE_ARGS=--build-tech-preview
 endif
@@ -18,7 +19,7 @@ NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 
 all: build 
 	echo "Running docker rhel build $(REPO)"
-	cekit build --descriptor $(IMAGE_FILE) $(CEKIT_BASE_ARGS) $(CEKIT_ARGS)
+	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) $(CEKIT_BASE_ARGS) 
 
 generate:
 	if [ -f image-template.yaml ]; then RELEASE_VERSION=$(RELEASE_VERSION) ARTIFACT=$(ARTIFACT) ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < image-template.yaml > image.yaml; fi
