@@ -40,6 +40,11 @@ copyartifact:
 	mkdir -p $(ARTIFACT_CACHE_DIR)
 	cp $(ABSOLUTE_LOCAL_ARTIFACT_DIR) $(NEW_ABSOLUTE_LOCAL_ARTIFACT)
 
+cacheartifact:
+	$(eval MD5SUM=$(shell md5sum ${ABSOLUTE_LOCAL_ARTIFACT_DIR} | cut -f 1 -d ' '))
+	cekit-cache add ${ABSOLUTE_LOCAL_ARTIFACT_DIR} --md5 ${MD5SUM}
+	sed -i 's/- md5:.*/- md5: ${MD5SUM}/' ${IMAGE_FILE}
+
 clean:
 	rm -rf build target
 
