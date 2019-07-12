@@ -3,6 +3,10 @@ schema_version: 1
 name: consoleinit.common
 version: '1.0'
 
+packages:
+    install:
+        - unzip
+
 execute:
     - script: licenses.sh
     - script: install.sh
