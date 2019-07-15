@@ -6,7 +6,7 @@ See link: [LICENSE](LICENSE) file.
 
 # Prerequisites
 
-* Cekit - https://cekit.readthedocs.io/en/latest/
+* Cekit version 3.x - https://cekit.readthedocs.io/en/latest/
 
 # Re-generating templates
 
@@ -25,3 +25,44 @@ Requires the tools [retrodep](https://github.com/release-engineering/retrodep) a
 # Producing the install ZIP
 
     ./make_install_zip.sh <tag>
+
+# Building images
+
+Create a cekit config file
+
+    cat > ~/.cekit/config << EOF
+    [common]
+    redhat = True
+    EOF
+
+## Building images locally
+
+### [optional] Add local artifacts to cekit cache:
+
+Set location of project to pull built artifacts from:
+
+    export PRODUCT_DIR=../../enmasse-gerrit
+
+Set the version that was used to build the artifacts
+
+    export VERSION="0.29-SNAPSHOT"
+
+Add artifacts to the cache, and update the image.yaml files with the md5
+
+    make cacheartifactall
+
+### Build the images
+
+    kinit
+    make
+
+## Building images in osbs
+
+    export CEKIT_BUILD_ENGINE=osbs
+    export CEKIT_ENGINE_ARGS="--release --koji-target amq7-amq-online-1-rhel-7-containers-candidate --nowait"
+    make
+
+## Example of env variable to overridding contents of yaml file
+
+    CEKIT_BUILD_ARGS="--overrides \"{'from': 'rhel7:7.6-.....'}\""
+
