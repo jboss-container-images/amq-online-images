@@ -2,7 +2,7 @@
 
 # License
 
-See link:LICENSE[LICENSE] file.
+See link: [LICENSE](LICENSE) file.
 
 # Prerequisites
 
@@ -13,16 +13,15 @@ See link:LICENSE[LICENSE] file.
 The script regenerate-templates.sh is responsible for the regenerating the contents of the ./templates directory given an
 EnMasse git repository url.
 
-./regenerate-templates.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url> 
+    ./regenerate-templates.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url> 
 
 # Updating Go license files
 
 Requires the tools [retrodep](https://github.com/release-engineering/retrodep) and
-[licenseclassifier](https://github.com/google/licenseclassifier) in $PATH
+[licenseclassifier](https://github.com/google/licenseclassifier) in `$PATH`
 
-./regenerate-go-license.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url>
+    ./regenerate-go-license.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url>
 
 # Producing the install ZIP
 
-./make_install_zip.sh <tag>
-
+    ./make_install_zip.sh <tag>
