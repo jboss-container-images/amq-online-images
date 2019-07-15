@@ -54,6 +54,11 @@ listbuildids:
 		$(MAKE) -C $$dir listbuildid; \
 	done
 
+cacheartifactall:
+	for dir in $(SUBDIRS); do \
+		$(MAKE) -C $$dir cacheartifact; \
+	done
+
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 

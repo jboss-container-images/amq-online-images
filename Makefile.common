@@ -7,8 +7,13 @@ DOCKER_BUILD_OPTS?=
 DOCKER?=docker
 PRODUCT_DIR?=../../enmasse
 
+CEKIT_BUILD_ENGINE?=docker
 ifeq ($(TECH_PREVIEW),true)
-	CEKIT_BASE_ARGS=--build-tech-preview
+	ifeq ($(CEKIT_BUILD_ENGINE), osbs)
+		CEKIT_OSBS_TECH_PREVIEW_ARGS=--tech-preview
+	else
+		CEKIT_LOCAL_TECH_PREVIEW_ARGS=--overrides "{'name': '$(REPO)'}"
+	endif
 endif
 
 NEW_ARTIFACT= $(shell echo $(LOCAL_ARTIFACT_DIR) | rev| cut -d '/' -f 1 |sed 's/\([^0-9]*[\.]\).*[0-9][-]\(.*\)/\1\2/' |rev)
@@ -18,7 +23,7 @@ NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 
 all: build 
 	echo "Running docker rhel build $(REPO)"
-	cekit build --descriptor $(IMAGE_FILE) $(CEKIT_BASE_ARGS) $(CEKIT_ARGS)
+	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_LOCAL_TECH_PREVIEW_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) $(CEKIT_OSBS_TECH_PREVIEW_ARGS) 
 
 generate:
 	if [ -f image-template.yaml ]; then RELEASE_VERSION=$(RELEASE_VERSION) ARTIFACT=$(ARTIFACT) ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < image-template.yaml > image.yaml; fi
@@ -39,6 +44,11 @@ listbuildid:
 	$(eval BUILD_TAG=$(shell grep -A1 "com.redhat.component" image.yaml | tail -1 | cut -d'"' -f 2))
 	$(eval BUILD=$(shell brew latest-build rhaos-3.11-rhel-7-candidate ${BUILD_TAG} | tail -1 | cut -d ' ' -f 1))
 	brew buildinfo ${BUILD} | head -1 | cut -d '[' -f 2 | cut -d ']' -f 1
+
+cacheartifact:
+	$(eval MD5SUM=$(shell md5sum ${ABSOLUTE_LOCAL_ARTIFACT_DIR} | cut -f 1 -d ' '))
+	cekit-cache add ${ABSOLUTE_LOCAL_ARTIFACT_DIR} --md5 ${MD5SUM}
+	sed -i 's/- md5:.*/- md5: ${MD5SUM}/' ${IMAGE_FILE}
 
 clean:
 	rm -rf build target

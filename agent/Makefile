@@ -1,4 +1,4 @@
-LOCAL_ARTIFACT_DIR:=agent/target/agent-${VERSION}-dist.tar.gz
+LOCAL_ARTIFACT_DIR:=agent/target/agent-${VERSION}-dist.zip
 
 include ../Makefile.common
 
