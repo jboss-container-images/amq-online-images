@@ -1,0 +1,7 @@
+schema_version: 1
+
+name: controller-manager.olm-manifest
+version: '1.0'
+
+execute:
+    - script: install.sh
