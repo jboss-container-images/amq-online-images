@@ -1,4 +1,4 @@
-LOCAL_ARTIFACT_DIR:=artemis/plugin/target/broker-plugin-${VERSION}-dist.zip
+LOCAL_ARTIFACT_DIR:=broker-plugin/plugin/target/plugin-${VERSION}-dist.zip
 
 include ../Makefile.common
 

@@ -1,4 +1,4 @@
-LOCAL_ARTIFACT_DIR:=standard-controller/target/standard-controller-${VERSION}.jar
+LOCAL_ARTIFACT_DIR:=standard-controller/target/standard-controller-${VERSION}-dist.zip
 
 include ../Makefile.common
 

@@ -87,6 +87,8 @@ GITARGS+=("--")
 GITARGS+=("${REPO}")
 GITARGS+=("${WORKDIR}")
 
+trap 'rm -Rf "$WORKDIR"' EXIT
+
 echo Shallow cloning ${REPO} ${TAG}
 git clone ${GITARGS[*]}
 rc=$?
