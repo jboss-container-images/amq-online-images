@@ -128,8 +128,7 @@ rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TA
 
 rm -rf templates/docs
 
-rm -Rf templates/install/olm/amq-online
-mv templates/install/olm/enmasse templates/install/olm/amq-online
+rm templates/install/olm/amq-online/amq-online*.yaml
 pushd templates/install/olm/amq-online
 for i in $(ls *.yaml); do
 	mv "$i" "amq-online-$i"
