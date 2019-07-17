@@ -124,12 +124,24 @@ popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
-rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TARGET_TEMPLATE_DIR}
+# if the OLM directory is named "amq-online"
 
+if [ -d ${WORKDIR}/templates/build/enmasse-${VERSION}/install/olm/amq-online ]; then
+	# we temporarily rename it to "enmasse" in order use the same workflow in the next steps
+	mv ${WORKDIR}/templates/build/enmasse-${VERSION}/install/olm/amq-online ${WORKDIR}/templates/build/enmasse-${VERSION}/install/olm/enmasse
+fi
+
+rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TARGET_TEMPLATE_DIR}
 rm -rf templates/docs
 
+# Ensure that we only have new files
+
+## remove all old files
 rm -Rf templates/install/olm/amq-online
+## replace with new content
 mv templates/install/olm/enmasse templates/install/olm/amq-online
+
+# fix up new content
 pushd templates/install/olm/amq-online
 for i in $(ls *.yaml); do
 	mv "$i" "amq-online-$i"
