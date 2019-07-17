@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-console-httpd
 description: "AMQ Online image for the AMQ Online Console HTTPD"
 from: ubi7:7-released

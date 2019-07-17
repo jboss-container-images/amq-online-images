@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-tenant-service
 description: "A component implementating the Eclipse Hono Tenant API based on AMQ Online IoT project information."
 from: ubi7:7-released
