@@ -1,7 +1,6 @@
 TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
 
 SUBDIRS=\
-	templates \
 	standard-controller \
 	address-space-controller \
 	agent \
