@@ -3,13 +3,13 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: amqonline.dev.0
+  name: amqonline.1.2.0
   namespace: placeholder
   annotations:
     categories: "Streaming & Messaging"
     certified: "false"
     description: Red Hat AMQ Online provides messaging as a managed service on OpenShift
-    containerImage: registry.redhat.io/amq7/amq-online-1-controller-manager:1.1
+    containerImage: registry.redhat.io/amq7/amq-online-1-controller-manager:1.2
     createdAt: 2019-04-02
     capabilities: Seamless Upgrades
     repository: 
@@ -209,7 +209,7 @@ spec:
         address spaces.
 
     For a complete overview of how to configure AMQ Online, see
-    [Configuring AMQ Online](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html-single/installing_and_managing_amq_online_on_openshift_container_platform/index#configuring-messaging).
+    [Configuring AMQ Online](https://access.redhat.com/documentation/en-us/red_hat_amq/7.3/html-single/installing_and_managing_amq_online_on_openshift_container_platform/index#configuring-messaging).
 
     ### Quickstart infrastructure configuration
 
@@ -286,7 +286,7 @@ spec:
       * *Address* – A messaging address (address, topic, queue, and so on)
       * *Messaging user* – Manages access to an address
 
-  version: 1.1.0
+  version: 0.29.0.jbossorg-1
   keywords: ['amq', 'messaging', 'amqp', 'iot', 'mqtt']
   icon:
     - base64data: PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTQ1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2UwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPlJlZEhhdC1Mb2dvLUhhdC1Db2xvcjwvdGl0bGU+PHBhdGggZD0iTTE1Ny43Nyw2Mi42MWExNCwxNCwwLDAsMSwuMzEsMy40MmMwLDE0Ljg4LTE4LjEsMTcuNDYtMzAuNjEsMTcuNDZDNzguODMsODMuNDksNDIuNTMsNTMuMjYsNDIuNTMsNDRhNi40Myw2LjQzLDAsMCwxLC4yMi0xLjk0bC0zLjY2LDkuMDZhMTguNDUsMTguNDUsMCwwLDAtMS41MSw3LjMzYzAsMTguMTEsNDEsNDUuNDgsODcuNzQsNDUuNDgsMjAuNjksMCwzNi40My03Ljc2LDM2LjQzLTIxLjc3LDAtMS4wOCwwLTEuOTQtMS43My0xMC4xM1oiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNDcsODMuNDljMTIuNTEsMCwzMC42MS0yLjU4LDMwLjYxLTE3LjQ2YTE0LDE0LDAsMCwwLS4zMS0zLjQybC03LjQ1LTMyLjM2Yy0xLjcyLTcuMTItMy4yMy0xMC4zNS0xNS43My0xNi42QzEyNC44OSw4LjY5LDEwMy43Ni41LDk3LjUxLjUsOTEuNjkuNSw5MCw4LDgzLjA2LDhjLTYuNjgsMC0xMS42NC01LjYtMTcuODktNS42LTYsMC05LjkxLDQuMDktMTIuOTMsMTIuNSwwLDAtOC40MSwyMy43Mi05LjQ5LDI3LjE2QTYuNDMsNi40MywwLDAsMCw0Mi41Myw0NGMwLDkuMjIsMzYuMywzOS40NSw4NC45NCwzOS40NU0xNjAsNzIuMDdjMS43Myw4LjE5LDEuNzMsOS4wNSwxLjczLDEwLjEzLDAsMTQtMTUuNzQsMjEuNzctMzYuNDMsMjEuNzdDNzguNTQsMTA0LDM3LjU4LDc2LjYsMzcuNTgsNTguNDlhMTguNDUsMTguNDUsMCwwLDEsMS41MS03LjMzQzIyLjI3LDUyLC41LDU1LC41LDc0LjIyYzAsMzEuNDgsNzQuNTksNzAuMjgsMTMzLjY1LDcwLjI4LDQ1LjI4LDAsNTYuNy0yMC40OCw1Ni43LTM2LjY1LDAtMTIuNzItMTEtMjcuMTYtMzAuODMtMzUuNzgiLz48L3N2Zz4=
@@ -305,7 +305,7 @@ spec:
   - name: Product Page
     url: https://access.redhat.com/products/red-hat-amq
   - name: Documentation
-    url: https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/using_amq_online_on_openshift_container_platform
+    url: https://access.redhat.com/documentation/en-us/red_hat_amq/7.3/html/using_amq_online_on_openshift_container_platform
 
   installModes:
   - type: OwnNamespace
@@ -332,6 +332,9 @@ spec:
         - apiGroups: [ "", "route.openshift.io" ]
           resources: [ "routes", "routes/custom-host", "routes/status"]
           verbs: [ "create", "update", "patch", "get", "list", "watch", "delete" ]
+        - apiGroups: [ "apps.openshift.io" ]
+          resources: [ "deploymentconfigs"]
+          verbs: [  "get", "list", "watch" ]
         - apiGroups: [ "admin.enmasse.io" ]
           resources: [ "authenticationservices", "authenticationservices/finalizers", "consoleservices", "consoleservices/finalizers" ]
           verbs: [ "get", "list", "watch", "update", "create", "patch" ]
@@ -445,7 +448,7 @@ spec:
               serviceAccountName: enmasse-operator
               containers:
               - name: controller
-                image: registry.redhat.io/amq7/amq-online-1-controller-manager:1.1
+                image: registry.redhat.io/amq7/amq-online-1-controller-manager:1.2
                 imagePullPolicy: Always
                 env:
                 - name: POD_NAME
@@ -467,37 +470,39 @@ spec:
                 - name: CONTROLLER_ENABLE_AUTHENTICATION_SERVICE
                   value: "true"
                 - name: IOT_AUTH_SERVICE_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:1.2
                 - name: IOT_DEVICE_REGISTRY_FILE_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-file:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-file:1.2
                 - name: IOT_GC_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-gc:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-gc:1.2
                 - name: IOT_HTTP_ADAPTER_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-http-adapter:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-http-adapter:1.2
                 - name: IOT_MQTT_ADAPTER_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:1.2
                 - name: IOT_TENANT_SERVICE_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:1.2
                 - name: IOT_PROXY_CONFIGURATOR_IMAGE
-                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:1.1
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:1.2
                 - name: QDROUTERD_BASE_IMAGE
-                  value: registry.redhat.io/amq7/amq-interconnect:1.4
+                  value: registry.redhat.io/amq7/amq-interconnect:1.5
                 - name: NONE_AUTHSERVICE_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-none-auth-service:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-none-auth-service:1.2
                 - name: KEYCLOAK_IMAGE
                   value: registry.redhat.io/redhat-sso-7/sso73-openshift:latest
                 - name: KEYCLOAK_PLUGIN_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-auth-plugin:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-auth-plugin:1.2
                 - name: CONTROLLER_ENABLE_CONSOLE_SERVICE
                   value: "true"
                 - name: CONSOLE_INIT_IMAGE
-                  value: "registry.redhat.io/amq7/amq-online-1-console-init:1.1"
+                  value: "registry.redhat.io/amq7/amq-online-1-console-init:1.2"
                 - name: CONSOLE_PROXY_OPENSHIFT_IMAGE
                   value: "openshift/oauth-proxy:latest"
                 - name: CONSOLE_PROXY_KUBERNETES_IMAGE
                   value: "quay.io/pusher/oauth2_proxy:latest"
                 - name: CONSOLE_HTTPD_IMAGE
-                  value: "registry.redhat.io/amq7/amq-online-1-console-httpd:1.1"
+                  value: "registry.redhat.io/amq7/amq-online-1-console-httpd:1.2"
+                - name: FS_GROUP_OVERRIDE
+                  value: "185"
                 resources:
                   limits:
                     memory: 128Mi
@@ -544,7 +549,7 @@ spec:
                   value: keycloak-credentials
                 - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
                   value: standard-authservice-cert
-                image: registry.redhat.io/amq7/amq-online-1-api-server:1.1
+                image: registry.redhat.io/amq7/amq-online-1-api-server:1.2
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -617,7 +622,7 @@ spec:
                   value: keycloak-credentials
                 - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
                   value: standard-authservice-cert
-                image: registry.redhat.io/amq7/amq-online-1-api-server:1.1
+                image: registry.redhat.io/amq7/amq-online-1-api-server:1.2
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -720,22 +725,24 @@ spec:
                 - name: IMAGE_PULL_POLICY
                   value: Always
                 - name: ROUTER_IMAGE
-                  value: registry.redhat.io/amq7/amq-interconnect:1.4
+                  value: registry.redhat.io/amq7/amq-interconnect:1.5
                 - name: STANDARD_CONTROLLER_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.2
                 - name: AGENT_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-agent:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-agent:1.2
                 - name: BROKER_IMAGE
-                  value: registry.redhat.io/amq-broker-7/amq-broker-72-openshift:latest
+                  value: registry.redhat.io/amq-broker-7/amq-broker-74-openshift:latest
                 - name: BROKER_PLUGIN_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.2
                 - name: TOPIC_FORWARDER_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:1.2
                 - name: MQTT_GATEWAY_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-mqtt-gateway:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-mqtt-gateway:1.2
                 - name: MQTT_LWT_IMAGE
-                  value: registry.redhat.io/amq7/amq-online-1-mqtt-lwt:1.1
-                image: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.1
+                  value: registry.redhat.io/amq7/amq-online-1-mqtt-lwt:1.2
+                - name: FS_GROUP_OVERRIDE
+                  value: "185"
+                image: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.2
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:

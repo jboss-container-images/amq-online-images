@@ -47,7 +47,7 @@ spec:
           value: keycloak-credentials
         - name: STANDARD_AUTHSERVICE_CERT_SECRET_NAME
           value: standard-authservice-cert
-        image: registry.redhat.io/amq7/amq-online-1-api-server:dev
+        image: registry.redhat.io/amq7/amq-online-1-api-server:1.2
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
