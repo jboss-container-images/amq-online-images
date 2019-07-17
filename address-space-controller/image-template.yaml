@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-address-space-controller
 description: "global component that implements an API for creating and deleting AMQ Online infrastructure instances, and modifying the address configuration per instance."
 from: ubi7:7-released
