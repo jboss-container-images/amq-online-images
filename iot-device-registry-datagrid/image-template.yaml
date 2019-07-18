@@ -1,14 +1,14 @@
 schema_version: 1
 
-version: 1.2
-name: amq7/amq-online-1-iot-device-registry-file
-description: "A non-scalable, file based device registry for AMQ Online IoT."
+version: 1.1
+name: amq7/amq-online-1-iot-device-registry-datagrid
+description: "A scalable, Red Hat Data Grid based device registry for AMQ Online IoT."
 from: ubi7:7-released
 labels:
     - name: "com.redhat.component"
-      value: "amq7-amq-online-1-iot-device-registry-file-openshift-container"
+      value: "amq7-amq-online-1-iot-device-registry-datagrid-openshift-container"
     - name: "io.k8s.description"
-      value: "A non-scalable, file base device registry for AMQ Online IoT."
+      value: "A scalable, Red Hat Data Grid base device registry for AMQ Online IoT."
     - name: "io.k8s.display-name"
       value: "AMQ Online IoT device registry"
     - name: "io.openshift.tags"
@@ -66,4 +66,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-iot-device-registry-file-rhel-7
+            branch: amq7-amq-online-11-iot-device-registry-datagrid-rhel-7
