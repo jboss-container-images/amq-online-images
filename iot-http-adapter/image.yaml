@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-http-adapter
 description: "An HTTP protocol adapter for AMQ Online IoT."
 from: ubi7:7-released
@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 99b9c95bffe61490c1ec03804bad1760
+    - md5: bbb9eb50bd3ab3124f47a21915b41dec
       name: iot-component.jar
 
 run:

@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-controller-manager
 description: "operator that manages AMQ Online infrastructure."
 from: ubi7:7-released
@@ -46,7 +46,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: 970cac7869d4346be3aeb06e5878dafa
+    - md5: 443b327690b72397d2041ef012861ba1
       name: dist-bin.zip
     - path: build/manifests.tar.gz
 

@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-api-server
 description: "global component that implements an API for creating and deleting AMQ Online address spaces and addresses."
 from: ubi7:7-released
@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: bbecb15021dbe364c032f9648186242f
+    - md5: 5b83cc321539a92738dcf9aa3016e531
       name: api-server.jar
 
 run:

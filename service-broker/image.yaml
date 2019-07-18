@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-service-broker
 description: "Global component that implements the Open Service Broker API for provisioning messaging."
 from: ubi7:7-released
@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 17a362f403fdaa6299a65438a992ca3d
+    - md5: f0424eea463e34d64d75df099728b111
       name: service-broker.jar
 
 run:

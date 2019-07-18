@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-console-httpd
 description: "AMQ Online image for the AMQ Online Console HTTPD"
 from: ubi7:7-released
@@ -44,7 +44,7 @@ packages:
         - mod_ssl
 
 artifacts:
-    - md5: 68d1ac2b3acb366b2d496b0ffb9f33b7
+    - md5: 2847b8be7585f924e6ec2e3d40e1dc69
       name: console-httpd-dist.zip
 
 run:

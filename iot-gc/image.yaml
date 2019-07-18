@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-gc
 description: "Garbage collector cleaning up IoT related AMQ Online resources."
 from: ubi7:7-released
@@ -40,7 +40,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 5cdb26ed452754f2df4f9b6091e04be1
+    - md5: adddd1642729daa71a35f9c91fa6e28a
       name: dist-bin.zip
 
 run:

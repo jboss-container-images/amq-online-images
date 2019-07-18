@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-none-auth-service
 description: "authentication service implementation that allows any user full access."
 from: ubi7:7-released
@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 3c39263d5ebc8876219336c51c08d747
+    - md5: ecb295350c6418ce0fbbea2cef0865f1
       name: none-authservice.jar
 
 run:
