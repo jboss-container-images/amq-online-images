@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-agent
 description: "AMQ Online console"
 from: ubi7:7-released
@@ -28,7 +28,7 @@ modules:
           - name: agent
 
 artifacts:
-    - md5: e8ad5dc8bde8fa7ce53879780af0209e
+    - md5: c7252c6a005833bf294642061d40ce06
       name: agent-dist.zip
 
 ports:

@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-broker-plugin
 description: "AMQ Online initialization plugin image for AMQ Broker."
 from: ubi7:7-released
@@ -51,7 +51,7 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - md5: 3407531764ffa00599e3c6a7a3ac6020
+    - md5: 8be2453d037490134d3c1b48cd745a9e
       name: broker-plugin.zip
     - md5: 620d5c068e4ca408ad99c244f8706fce
       name: jmx-exporter.jar

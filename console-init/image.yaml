@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-console-init
 description: "AMQ Online image for the AMQ Online Console Init"
 from: ubi7:7-released
@@ -41,7 +41,7 @@ packages:
       - unzip
 
 artifacts:
-    - md5: 8f3aafd31cfa7b65434d4d91f462d32a
+    - md5: b36f844d0be528ffe998afe4a0a25370
       name: console-init-dist.zip
 
 run:

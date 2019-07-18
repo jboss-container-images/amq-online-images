@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-topic-forwarder
 description: "Message forwarder for topics in AMQ Online, currently used with the AMQ Broker broker"
 from: ubi7:7-released
@@ -47,7 +47,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 99927857854884bef401341bddb34a7d
+    - md5: 81894da4cd5c53e6a90be57739542f96
       name: topic-forwarder.jar
 
 run:

@@ -1,8 +1,8 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-device-registry-file
-description: "A non-scalable, file base device registry for AMQ Online IoT."
+description: "A non-scalable, file based device registry for AMQ Online IoT."
 from: ubi7:7-released
 labels:
     - name: "com.redhat.component"
@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 2e621bdada758306f2022866ecafb316
+    - md5: e01e15bc3d3503dec3eb44f57dfd08dc
       name: iot-component.jar
 
 run:

@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-auth-plugin
 description: "AMQ Online SSO for authentication"
 from: ubi7:7-released
@@ -51,7 +51,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 9f285067cd850c151494ae536dc8c52c
+    - md5: 553e43f3cbbc68d5ed36361720136206
       name: sasl-plugin.jar
 
 run:

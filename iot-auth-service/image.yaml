@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-auth-service
 description: "The inter service authentication service for AMQ Online IoT."
 from: ubi7:7-released
@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 60cf15573d4bb494dc746e32d11de643
+    - md5: 25dbe813effa571dcd7aeb1135a5376c
       name: iot-component.jar
 
 run:
