@@ -51,7 +51,7 @@ modules:
           - name: os-java-run
 
 artifacts:
-    - md5: 8be2453d037490134d3c1b48cd745a9e
+    - md5: 9f9738566bf184804fe2be333ac5007e
       name: broker-plugin.zip
     - md5: 620d5c068e4ca408ad99c244f8706fce
       name: jmx-exporter.jar
@@ -68,4 +68,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-broker-plugin-rhel-7
+            branch: amq7-amq-online-12-broker-plugin-rhel-7

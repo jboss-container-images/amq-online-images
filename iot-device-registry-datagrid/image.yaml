@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-device-registry-datagrid
 description: "A scalable, Red Hat Data Grid based device registry for AMQ Online IoT."
 from: ubi7:7-released
@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.29"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 3934cd1187ec3a992670dd4a08a60b8e
+    - md5: f79c3ff1b26479b17f26276d2f961376
       name: iot-component.jar
 
 run:
@@ -66,4 +66,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-iot-device-registry-datagrid-rhel-7
+            branch: amq7-amq-online-12-iot-device-registry-datagrid-rhel-7

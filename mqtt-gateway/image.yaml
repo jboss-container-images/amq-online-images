@@ -58,7 +58,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: b0b56d9d2ba206f82f55e83c9b18b58f
+    - md5: 85ef599e2d815f70f2a590698dec5d64
       name: mqtt-gateway.jar
 
 run:
@@ -74,4 +74,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-mqtt-gateway-rhel-7
+            branch: amq7-amq-online-12-mqtt-gateway-rhel-7

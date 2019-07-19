@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: cff2aa5a22ee4ba6b06dd2a65890f632
+    - md5: d186a96f32e51db7c5e2d5a57e793bd5
       name: standard-controller.zip
 
 run:
@@ -63,4 +63,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-standard-controller-rhel-7
+            branch: amq7-amq-online-12-standard-controller-rhel-7

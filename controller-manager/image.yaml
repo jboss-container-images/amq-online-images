@@ -46,7 +46,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: 443b327690b72397d2041ef012861ba1
+    - md5: 06cd2b34e1c28b3fa11fcf121e307a4b
       name: dist-bin.zip
     - path: build/manifests.tar.gz
 
@@ -61,4 +61,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-controller-manager-rhel-7
+            branch: amq7-amq-online-12-controller-manager-rhel-7

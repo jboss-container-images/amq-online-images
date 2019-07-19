@@ -47,7 +47,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 81894da4cd5c53e6a90be57739542f96
+    - md5: 2765b0c50cc9821724bd64ce5069d526
       name: topic-forwarder.jar
 
 run:
@@ -63,4 +63,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-topic-forwarder-rhel-7
+            branch: amq7-amq-online-12-topic-forwarder-rhel-7

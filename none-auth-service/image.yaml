@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: ecb295350c6418ce0fbbea2cef0865f1
+    - md5: 4d9925b8fa89ac6287763667ab55e018
       name: none-authservice.jar
 
 run:
@@ -61,4 +61,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-none-auth-service-rhel-7
+            branch: amq7-amq-online-12-none-auth-service-rhel-7
