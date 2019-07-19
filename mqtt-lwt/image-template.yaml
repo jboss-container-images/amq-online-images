@@ -61,4 +61,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-mqtt-lwt-rhel-7
+            branch: amq7-amq-online-12-mqtt-lwt-rhel-7
