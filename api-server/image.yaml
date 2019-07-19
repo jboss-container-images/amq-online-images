@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 5b83cc321539a92738dcf9aa3016e531
+    - md5: 8f9b26944027359edc4bf564d65e18eb
       name: api-server.jar
 
 run:
@@ -63,4 +63,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-api-server-rhel-7
+            branch: amq7-amq-online-12-api-server-rhel-7

@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: e3d6baf744e52125b85c46d8bd5a6e15
+    - md5: 6a742e672047c027d595e16e4d5134a7
       name: mqtt-lwt.jar
 
 run:
@@ -61,4 +61,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-mqtt-lwt-rhel-7
+            branch: amq7-amq-online-12-mqtt-lwt-rhel-7

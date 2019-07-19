@@ -50,7 +50,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 75a6c77d5a403e8ceb1d3b31fce7028f
+    - md5: 5773bf3752eabd4a5800cdf7296835c4
       name: iot-component.jar
 
 run:
@@ -66,4 +66,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-iot-mqtt-adapter-rhel-7
+            branch: amq7-amq-online-12-iot-mqtt-adapter-rhel-7

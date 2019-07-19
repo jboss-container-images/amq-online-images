@@ -40,7 +40,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: adddd1642729daa71a35f9c91fa6e28a
+    - md5: 16b33c79b7dfb33693ec6e621c37d4c5
       name: dist-bin.zip
 
 run:
@@ -55,4 +55,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-iot-gc-rhel-7
+            branch: amq7-amq-online-12-iot-gc-rhel-7

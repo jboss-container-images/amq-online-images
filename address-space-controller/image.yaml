@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: e03df81d1df6f37c68c16156fc048228
+    - md5: 6d60f3543c3f68123f4aee0186a7d720
       name: address-space-controller.zip
 
 run:
@@ -62,4 +62,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-11-address-space-controller-rhel-7
+            branch: amq7-amq-online-12-address-space-controller-rhel-7
