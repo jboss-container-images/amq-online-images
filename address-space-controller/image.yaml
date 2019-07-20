@@ -47,7 +47,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 6d60f3543c3f68123f4aee0186a7d720
+    - md5: ebcb292829955a53d973f45b1a40ceab
       name: address-space-controller.zip
 
 run:
