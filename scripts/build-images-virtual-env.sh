@@ -1,8 +1,10 @@
 #!/bin/bash
 
-sudo dnf install -y  python3-virtualenv
+#sudo pip3 install virtualenv
+
 virtualenv ~/cekit
 source ~/cekit/bin/activate
+pip install odcs
 pip install -U cekit
 make
 
