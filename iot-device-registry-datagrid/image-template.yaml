@@ -34,10 +34,13 @@ modules:
             path: ../modules/hono/ip
           - name: hono.install
             path: ../modules/hono/install
+          - name: iot-device-registry-datagrid.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: iot-device-registry-datagrid.install.artifact
           - name: hono.ip
           - name: iot.java
           - name: hono.install
@@ -48,10 +51,6 @@ packages:
             - rhel-7-server-rpms
     install:
         - openssl
-
-artifacts:
-    - md5: ${ARTIFACT_MD5}
-      name: iot-component.jar
 
 run:
       user: 185

@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: iot-tenant-service.install.artifact
+version: '1.0'
+
+artifacts:
+  - md5: 76d6fc5ab50edea88b3c753d57da5127
+    name: iot-component.jar

@@ -5,3 +5,6 @@ version: '1.0'
 
 execute:
     - script: install.sh
+artifacts:
+    - path: build/olm_manifest.tar.gz
+    - path: build/olm_package.tar.gz

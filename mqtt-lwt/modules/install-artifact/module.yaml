@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: mqtt-lwt.install.artifact
+version: '1.0'
+
+artifacts:
+  - md5: a680cdfc47931808ff1bfbe4b573beef
+    name: mqtt-lwt.jar

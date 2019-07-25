@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: addresscontroller.install.artifact
+version: '1.0'
+
+artifacts:
+  - md5: 3c2c5562c5e10f9e91f905b1bade5858
+    name: address-space-controller.zip

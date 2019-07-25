@@ -3,15 +3,15 @@ OLM_VER := $(shell yq r ../templates/install/olm/amq-online/amq-online.package.y
 
 include ../Makefile.common
 
-build: build/olm_manifest.tar.gz build/olm_package.tar.gz
+build: modules/olm-manifest/build/olm_manifest.tar.gz modules/olm-manifest/build/olm_package.tar.gz
 
-build/olm_manifest.tar.gz: $(wildcard ../templates/install/olm/amq-online/*.clusterserviceversion.yaml ../templates/install/olm/amq-online/*.crd.yaml)
+modules/olm-manifest/build/olm_manifest.tar.gz: $(wildcard ../templates/install/olm/amq-online/*.clusterserviceversion.yaml ../templates/install/olm/amq-online/*.crd.yaml)
 	@echo OLM_VER $(OLM_VER)
-	mkdir -p build
+	mkdir -p modules/olm-manifest/build
 	tar czf $@ --transform 's,^,$(OLM_VER)/,' -C $(<D) $(^F)
 	tar tzf $@
 
-build/olm_package.tar.gz: ../templates/install/olm/amq-online/amq-online.package.yaml
-	mkdir -p build
+modules/olm-manifest/build/olm_package.tar.gz: ../templates/install/olm/amq-online/amq-online.package.yaml
+	mkdir -p modules/olm-manifest/build
 	tar czf $@ -C $(<D) $(^F)
 	tar tzf $@
