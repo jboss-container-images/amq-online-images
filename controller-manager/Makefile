@@ -8,7 +8,7 @@ build: build/olm_manifest.tar.gz build/olm_package.tar.gz
 build/olm_manifest.tar.gz: $(wildcard ../templates/install/olm/amq-online/*.clusterserviceversion.yaml ../templates/install/olm/amq-online/*.crd.yaml)
 	@echo OLM_VER $(OLM_VER)
 	mkdir -p build
-	gtar czf $@ --transform 's,^,$(OLM_VER)/,' -C $(<D) $(^F)
+	tar czf $@ --transform 's,^,$(OLM_VER)/,' -C $(<D) $(^F)
 	tar tzf $@
 
 build/olm_package.tar.gz: ../templates/install/olm/amq-online/amq-online.package.yaml
