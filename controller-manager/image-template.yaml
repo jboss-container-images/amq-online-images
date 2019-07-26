@@ -48,7 +48,8 @@ packages:
 artifacts:
     - md5: ${ARTIFACT_MD5}
       name: dist-bin.zip
-    - path: build/manifests.tar.gz
+    - path: build/olm_manifest.tar.gz
+    - path: build/olm_package.tar.gz
 
 run:
       user: 185
