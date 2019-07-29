@@ -1,5 +1,5 @@
 LOCAL_ARTIFACT_DIR:=controller-manager/target/controller-manager-${VERSION}-dist.zip
-OLM_VER := $(shell yq r ../templates/install/olm/amq-online/amq-online.package.yaml channels[0].currentCSV)
+OLM_VER := $(shell yq -r .channels[0].currentCSV  ../templates/install/olm/amq-online/amq-online.package.yaml
 
 include ../Makefile.common
 
