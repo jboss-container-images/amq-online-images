@@ -119,6 +119,7 @@ make -e \
     DOCKER_REGISTRY_PREFIX=registry.redhat.io/ \
     IMAGE_PULL_POLICY=Always \
     TAG=${VERSION} \
+    VERSION=${VERSION} \
     templates
 popd
 
