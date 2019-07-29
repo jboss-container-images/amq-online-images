@@ -8,6 +8,7 @@ See link: [LICENSE](LICENSE) file.
 
 * Cekit version 3.x - https://cekit.readthedocs.io/en/latest/
 * `operator-courier` – https://github.com/operator-framework/operator-courier
+* yq - https://yq.readthedocs.io/en/latest/
 
 # Re-generating templates
 
