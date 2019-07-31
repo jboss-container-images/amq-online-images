@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: none-auth-service.install.artifact
+version: '1.0'
+
+artifacts:
+  - md5: 84d01869b18c08c347e22b4587351716
+    name: none-authservice.jar

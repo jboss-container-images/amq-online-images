@@ -30,8 +30,11 @@ modules:
               ref: master
           - name: common.go
             path: ../modules/common/go
+          - name: iot-proxy-configurator.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
+          - name: iot-proxy-configurator.install.artifact
           - name: common.go
 
 packages:
@@ -43,10 +46,6 @@ packages:
     install:
       - qpid-dispatch-router
       - qpid-dispatch-tools
-
-artifacts:
-    - md5: ${ARTIFACT_MD5}
-      name: dist-bin.zip
 
 run:
       user: 185

@@ -5,6 +5,9 @@
 virtualenv ~/cekit
 source ~/cekit/bin/activate
 pip install odcs
-pip install -U cekit==3.2.0
+pip install docker-py
+pip install docker-squash
+
+pip install -U cekit
 make
 

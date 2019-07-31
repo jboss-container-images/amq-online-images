@@ -28,9 +28,10 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: consolehttpd.common
-            path: modules/common
+          - name: consolehttpd
+            path: modules
       install:
+          - name: console-httpd.install.artifact
           - name: jboss.container.user
           - name: consolehttpd.common
 
@@ -42,10 +43,6 @@ packages:
         - unzip
         - httpd
         - mod_ssl
-
-artifacts:
-    - md5: ${ARTIFACT_MD5}
-      name: console-httpd-dist.zip
 
 run:
       user: 185
