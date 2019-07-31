@@ -28,9 +28,10 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: consoleinit.common
-            path: modules/common
+          - name: consoleinit
+            path: modules
       install:
+          - name: console-init.install.artifact
           - name: consoleinit.common
 
 packages:
@@ -39,10 +40,6 @@ packages:
             - rhel-7-server-rpms
     install:
       - unzip
-
-artifacts:
-    - md5: ${ARTIFACT_MD5}
-      name: console-init-dist.zip
 
 run:
       cmd:

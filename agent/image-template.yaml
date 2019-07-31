@@ -23,13 +23,10 @@ envs:
 modules:
       repositories:
           - name: agent
-            path: modules/platform/rhel
+            path: modules
       install:
+          - name: agent.install.artifact
           - name: agent
-
-artifacts:
-    - md5: ${ARTIFACT_MD5}
-      name: agent-dist.zip
 
 ports:
     - value: 56720

@@ -32,10 +32,13 @@ modules:
             path: modules/common
           - name: common.java
             path: ../modules/common/java
+          - name: api-server.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: api-server.install.artifact
           - name: apiserver.common
           - name: common.java
 
@@ -45,10 +48,6 @@ packages:
             - rhel-7-server-rpms
     install:
         - openssl
-
-artifacts:
-    - md5: ${ARTIFACT_MD5}
-      name: api-server.jar
 
 run:
       user: 185

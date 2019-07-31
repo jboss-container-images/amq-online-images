@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: topic-forwarder.install.artifact
+version: '1.0'
+
+artifacts:
+  - md5: 632df3fe1cc00073a02ea88d5e7473d9
+    name: topic-forwarder.jar
