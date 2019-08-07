@@ -6,6 +6,7 @@ VERSION?=$(shell cat $(IMAGE_FILE) | grep "^version:" | cut -d ' ' -f2)
 DOCKER_BUILD_OPTS?=
 DOCKER?=docker
 PRODUCT_DIR?=../../enmasse
+CEKIT_OUTPUT_FILE?=../build_output.txt
 
 CEKIT_BUILD_ENGINE?=docker --no-squash
 ifeq ($(TECH_PREVIEW),true)
@@ -50,6 +51,31 @@ cacheartifact:
 	$(eval MD5SUM=$(shell md5sum ${ABSOLUTE_LOCAL_ARTIFACT_DIR} | cut -f 1 -d ' '))
 	cekit-cache add ${ABSOLUTE_LOCAL_ARTIFACT_DIR} --md5 ${MD5SUM}
 	sed -i 's/- md5:.*/- md5: ${MD5SUM}/' modules/install-artifact/module.yaml 
+
+pushfrombrew:
+	$(eval SUBDIR_START_LINE=$(shell grep -n -m 1 $(CURDIR) $(CEKIT_OUTPUT_FILE) | cut -f1 -d:))
+	$(eval TOTAL_LINES=$(shell wc -l $(CEKIT_OUTPUT_FILE) | cut -f1 -d ' '))
+	$(eval LINE_TO_TAIL=$(shell echo $(TOTAL_LINES)\-$(SUBDIR_START_LINE) | bc))
+	$(eval URL=$(shell tail -$(LINE_TO_TAIL) $(CEKIT_OUTPUT_FILE) | egrep -e '$(OSBS_URL)\/brew\/taskinfo\?taskID=[0-9]*' -o -m 1))
+
+	if [ -z "$(URL)" ] ; then \
+		echo "No taskinfo for $(CURDIR)" ; \
+		exit 1 ; \
+	fi;
+
+	image=''; wait=1; while [ -z "$$image" ] ; do \
+		if [ "$$wait" -eq 0 ] ; then \
+			echo "Waiting for scratch job to complete .... $(URL)"; \
+			sleep 30s; \
+		fi; \
+		image=`wget -q  --no-cache -O - $(URL) 2>/dev/null | grep "repositories = " | sed -e "s/.*repositories = \([^ ]*\)<br.*/\1/" `; \
+		wait=0; \
+		if [ ! -z "$$image" ] ; then \
+			$(DOCKER) pull $$image; \
+			$(DOCKER) tag $$image $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION); \
+			bash $(TOPDIR)/scripts/retry.sh "$(DOCKER) push $(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION)" 10 10; \
+		fi; \
+	done
 
 clean:
 	rm -rf build target
