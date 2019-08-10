@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-auth-plugin
 description: "AMQ Online SSO for authentication"
 from: ubi7:7-released
@@ -22,7 +22,7 @@ envs:
     - name: "KEYCLOAK_PLUGIN_DIR"
       value: "/keycloak-plugin"
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
 
@@ -33,13 +33,16 @@ modules:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
           - name: auth.rhel.install
-            path: modules
+            path: modules/auth.rhel.install
           - name: common.java
             path: ../modules/common/java
+          - name: auth-plugin.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: auth-plugin.install.artifact
           - name: auth.rhel.install
           - name: common.java
 
@@ -49,10 +52,6 @@ packages:
             - rhel-7-server-rpms
     install:
         - openssl
-
-artifacts:
-    - md5: fd0cfe723d796b72e5d795a311b42d89
-      name: sasl-plugin.jar
 
 run:
       user: 185

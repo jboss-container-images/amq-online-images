@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-iot-auth-service
 description: "The inter service authentication service for AMQ Online IoT."
 from: ubi7:7-released
@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -34,10 +34,13 @@ modules:
             path: ../modules/hono/ip
           - name: hono.install
             path: ../modules/hono/install
+          - name: iot-auth-service.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: iot-auth-service.install.artifact
           - name: hono.ip
           - name: iot.java
           - name: hono.install
@@ -48,10 +51,6 @@ packages:
             - rhel-7-server-rpms
     install:
         - openssl
-
-artifacts:
-    - md5: 6a5e80f70b32bcf8a88ea98342f5ad8d
-      name: iot-component.jar
 
 run:
       user: 185
