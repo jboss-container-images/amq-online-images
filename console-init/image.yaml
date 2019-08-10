@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-console-init
 description: "AMQ Online image for the AMQ Online Console Init"
 from: ubi7:7-released
@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -28,9 +28,10 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: consoleinit.common
-            path: modules/common
+          - name: consoleinit
+            path: modules
       install:
+          - name: console-init.install.artifact
           - name: consoleinit.common
 
 packages:
@@ -39,10 +40,6 @@ packages:
             - rhel-7-server-rpms
     install:
       - unzip
-
-artifacts:
-    - md5: ca6f52468022c59e6409da31721a5073
-      name: console-init-dist.zip
 
 run:
       cmd:

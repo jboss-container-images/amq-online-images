@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-controller-manager
 description: "operator that manages AMQ Online infrastructure."
 from: ubi7:7-released
@@ -20,7 +20,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
@@ -34,10 +34,11 @@ modules:
               ref: master
           - name: common.go
             path: ../modules/common/go
-          - name: controller-manager.olm-manifest
-            path: modules/olm-manifest
+          - name: controller-manager
+            path: modules
       install:
           - name: jboss.container.user
+          - name: controller-manager.install.artifact
           - name: common.go
           - name: controller-manager.olm-manifest
 
@@ -45,10 +46,6 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
-artifacts:
-    - md5: e547f22733a71f60127627d76aec4455
-      name: dist-bin.zip
-    - path: build/manifests.tar.gz
 
 run:
       user: 185

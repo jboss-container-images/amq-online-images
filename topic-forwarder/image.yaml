@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.1
+version: 1.2
 name: amq7/amq-online-1-topic-forwarder
 description: "Message forwarder for topics in AMQ Online, currently used with the AMQ Broker broker"
 from: ubi7:7-released
@@ -20,7 +20,7 @@ envs:
     - name: "JAVA_HOME"
       value: "/usr/lib/jvm/java"
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -38,6 +38,7 @@ modules:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: topic-forwarder.install.artifact
           - name: topic-forwarder
           - name: common.java
 
@@ -45,10 +46,6 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
-
-artifacts:
-    - md5: a47e96963c9ce8c18370a91cd3c3f154
-      name: topic-forwarder.jar
 
 run:
       user: 185
