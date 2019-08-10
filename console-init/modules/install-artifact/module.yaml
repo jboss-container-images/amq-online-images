@@ -4,5 +4,5 @@ name: console-init.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: a2c526bbc629339fb9c1ca5b63460a0d
+  - md5: 275d2da1a3f585292e1dacbc9257b611
     name: console-init-dist.zip
