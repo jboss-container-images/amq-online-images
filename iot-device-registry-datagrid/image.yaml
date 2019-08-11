@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.2
+version: 1.3
 name: amq7/amq-online-1-iot-device-registry-datagrid
 description: "A scalable, Red Hat Data Grid based device registry for AMQ Online IoT."
 from: ubi7:7-released
