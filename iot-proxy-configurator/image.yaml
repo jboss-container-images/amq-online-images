@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -30,8 +30,11 @@ modules:
               ref: master
           - name: common.go
             path: ../modules/common/go
+          - name: iot-proxy-configurator.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
+          - name: iot-proxy-configurator.install.artifact
           - name: common.go
 
 packages:
@@ -43,10 +46,6 @@ packages:
     install:
       - qpid-dispatch-router
       - qpid-dispatch-tools
-
-artifacts:
-    - md5: 7f9ea23914f97c7aca39fc4dc878bfc8
-      name: dist-bin.zip
 
 run:
       user: 185

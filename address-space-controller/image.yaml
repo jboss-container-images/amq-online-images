@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -28,14 +28,15 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: addresscontroller.common
-            path: modules/common
+          - name: addresscontroller
+            path: modules
           - name: common.java
             path: ../modules/common/java
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: addresscontroller.install.artifact
           - name: addresscontroller.common
           - name: common.java
 
@@ -45,10 +46,6 @@ packages:
             - rhel-7-server-rpms
     install:
         - openssl
-
-artifacts:
-    - md5: 7b51aa2678a9fe70abb87a8427a9c3f1
-      name: address-space-controller.zip
 
 run:
       user: 185

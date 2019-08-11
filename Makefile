@@ -40,6 +40,11 @@ listbuildids:
 		$(MAKE) -C $$dir listbuildid; \
 	done
 
+pushfrombrewall:
+	for dir in $(SUBDIRS); do \
+		$(MAKE) -C $$dir pushfrombrew; \
+	done
+
 cacheartifactall:
 	for dir in $(SUBDIRS); do \
 		$(MAKE) -C $$dir cacheartifact; \

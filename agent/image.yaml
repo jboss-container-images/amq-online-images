@@ -18,18 +18,15 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
 
 modules:
       repositories:
           - name: agent
-            path: modules/platform/rhel
+            path: modules
       install:
+          - name: agent.install.artifact
           - name: agent
-
-artifacts:
-    - md5: b483a5320895226e075dad80160b0759
-      name: agent-dist.zip
 
 ports:
     - value: 56720

@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -28,14 +28,15 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: servicebroker.common
-            path: modules/common
+          - name: servicebroker
+            path: modules
           - name: common.java
             path: ../modules/common/java
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: service-broker.install.artifact
           - name: servicebroker.common
           - name: common.java
 
@@ -43,10 +44,6 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
-
-artifacts:
-    - md5: e1f6b8154f0cde3ed9bae83b9bf07cc3
-      name: service-broker.jar
 
 run:
       user: 185

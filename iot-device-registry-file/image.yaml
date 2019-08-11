@@ -2,7 +2,7 @@ schema_version: 1
 
 version: 1.3
 name: amq7/amq-online-1-iot-device-registry-file
-description: "A non-scalable, file base device registry for AMQ Online IoT."
+description: "A non-scalable, file based device registry for AMQ Online IoT."
 from: ubi7:7-released
 labels:
     - name: "com.redhat.component"
@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.29-SNAPSHOT"
+      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -34,10 +34,13 @@ modules:
             path: ../modules/hono/ip
           - name: hono.install
             path: ../modules/hono/install
+          - name: iot-device-registry-file.install.artifact
+            path: modules/install-artifact
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
             version: "11"
+          - name: iot-device-registry-file.install.artifact
           - name: hono.ip
           - name: iot.java
           - name: hono.install
@@ -48,10 +51,6 @@ packages:
             - rhel-7-server-rpms
     install:
         - openssl
-
-artifacts:
-    - md5: bb90334ffa0ecffc359b07623b115f87
-      name: iot-component.jar
 
 run:
       user: 185
