@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.2
+version: 1.3
 name: amq7/amq-online-1-iot-gc
 description: "Garbage collector cleaning up IoT related AMQ Online resources."
 from: ubi7:7-released
