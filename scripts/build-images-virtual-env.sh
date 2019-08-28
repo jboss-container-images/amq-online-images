@@ -1,10 +1,7 @@
 #!/bin/bash
 
-#sudo pip3 install virtualenv
+echo "cekit version = $(cekit --version)"
 
-virtualenv ~/cekit
-source ~/cekit/bin/activate
-pip install odcs
-pip install -U cekit
+
 make
 
