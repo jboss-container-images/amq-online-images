@@ -2,6 +2,11 @@ schema_version: 1
 
 name: agent
 version: '1.0'
+
+packages:
+  install:
+    - unzip
+
 execute:
   - script: licenses.sh
   - script: install.sh
