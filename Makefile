@@ -24,32 +24,43 @@ SUBDIRS=\
 	iot-tenant-service \
 
 
-all:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir; \
-	done	
+all: $(SUBDIRS)
 
-pushall:
+push: $(SUBDIRS)
+
+tag: $(SUBDIRS)
+
+clean: $(SUBDIRS)
+
+copyartifact: $(SUBDIRS)
+
+listbuildids:
 	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir push; \
+		$(MAKE) -C $$dir listbuildid; \
 	done
 
-tagall:
+cacheartifactall:
 	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir tag; \
-	done
-
-cleanall:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir clean; \
-	done
-
-copyartifactall:
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir copyartifact; \
+		$(MAKE) -C $$dir cacheartifact; \
 	done
 
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: all $(SUBDIRS) push tag clean pushall tagall cleanall
+.PHONY: all $(SUBDIRS) \
+	push tag clean copyartifact \
+	pushall tagall cleanall copyartifactall
+
+# legacy targets
+
+pushall:
+	$(MAKE) push
+
+tagall:
+	$(MAKE) tag
+
+cleanall:
+	$(MAKE) clean
+
+copyartifactall:
+	$(MAKE) copyartifact
