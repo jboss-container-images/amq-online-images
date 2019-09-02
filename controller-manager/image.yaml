@@ -46,7 +46,7 @@ packages:
         x86_64:
             - rhel-7-server-rpms
 artifacts:
-    - md5: 1aa66a59dd99f3a8257aa3f35fade08d
+    - md5: 6a64b6bf00378ec0e8935675d305bfae
       name: dist-bin.zip
     - path: build/olm_manifest.tar.gz
     - path: build/olm_package.tar.gz

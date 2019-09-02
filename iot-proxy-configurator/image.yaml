@@ -45,7 +45,7 @@ packages:
       - qpid-dispatch-tools
 
 artifacts:
-    - md5: 4b2d861ce8e0755521c4b8f1b849bff2
+    - md5: d2ce4e6c9932aadcd79b0527842085a0
       name: dist-bin.zip
 
 run:
