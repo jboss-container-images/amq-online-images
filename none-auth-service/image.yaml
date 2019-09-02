@@ -45,7 +45,7 @@ packages:
             - rhel-7-server-rpms
 
 artifacts:
-    - md5: 47ab6d5792cd5f0a410f04a19559a14e
+    - md5: 01bf449a52622214d33bba2eebf10e5e
       name: none-authservice.jar
 
 run:
