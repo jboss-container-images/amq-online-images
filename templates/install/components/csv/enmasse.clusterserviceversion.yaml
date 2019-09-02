@@ -3,7 +3,7 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
-  name: amqonline.1.2.0
+  name: amqonline.1.2.2
   namespace: placeholder
   annotations:
     categories: "Streaming & Messaging"

@@ -1,4 +1,4 @@
 packageName: amq-online
 channels:
 - name: final
-  currentCSV: amqonline.1.2.0
+  currentCSV: amqonline.1.2.2
