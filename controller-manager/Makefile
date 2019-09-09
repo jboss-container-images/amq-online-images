@@ -1,3 +1,8 @@
+
+ifeq (, $(shell which yq))
+ $(error "Required dependency, yq, not found")
+endif
+
 LOCAL_ARTIFACT_DIR:=controller-manager/target/controller-manager-${VERSION}-dist.zip
 OLM_VER := $(shell yq -r .channels[0].currentCSV  ../templates/install/olm/amq-online/amq-online.package.yaml | sed -e 's/^amqonline\.//')
 
