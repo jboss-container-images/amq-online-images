@@ -6,6 +6,5 @@ version: '1.0'
 modules:
       install:
           - name: dynamic-resources
-          - name: os-java-run
 execute:
   - script: install.sh
