@@ -50,7 +50,6 @@ modules:
           - name: broker-plugin.install.artifact
           - name: broker.plugin.installer
           - name: dynamic-resources
-          - name: os-java-run
 
 run:
       user: 185
