@@ -17,6 +17,6 @@ pip install docker-py
 pip install docker-squash
 pip install yq
 
-pip install -U cekit
+pip install -U cekit-3.3.2
 make
 
