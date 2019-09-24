@@ -23,7 +23,8 @@ ABSOLUTE_LOCAL_ARTIFACT_DIR?=$(CURDIR)/$(PRODUCT_DIR)/$(LOCAL_ARTIFACT_DIR)
 NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 
 all: build 
-	echo "Running docker rhel build $(REPO)"
+	@echo "Running docker rhel build $(REPO) using $(IMAGE_FILE):"
+	@cat $(IMAGE_FILE)
 	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_LOCAL_TECH_PREVIEW_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) $(CEKIT_OSBS_TECH_PREVIEW_ARGS) 
 
 generate:
