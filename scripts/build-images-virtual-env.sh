@@ -12,11 +12,11 @@ then
     chmod a+x "${LOCAL_JQ_BIN}"
 fi
 
-pip install odcs
-pip install docker-py
-pip install docker-squash
-pip install yq
+pip3 install odcs
+pip3 install docker-py
+pip3 install docker-squash
+pip3 install yq
 
-pip install -U cekit-3.3.2
+pip3 install -U cekit==3.5.0
 make
 
