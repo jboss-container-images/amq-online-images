@@ -6,7 +6,7 @@ LINE_TO_TAIL=`expr ${TOTAL_LINES} - ${SUBDIR_START_LINE}`;
 URL=`tail -${LINE_TO_TAIL} ${CEKIT_OUTPUT_FILE} | egrep -e "${OSBS_URL}/brew/taskinfo\?taskID=[0-9]*" -o -m 1`;
 
 if [ -z "${URL}" ] ; then
-	echo "No taskinfo for $(pwd)";
+	echo "No taskinfo for ${pwd}";
     exit 1;
 fi
 
