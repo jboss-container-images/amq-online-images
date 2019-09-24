@@ -10,11 +10,7 @@ CEKIT_OUTPUT_FILE?=../build_output.txt
 
 CEKIT_BUILD_ENGINE?=docker --no-squash
 ifeq ($(TECH_PREVIEW),true)
-	ifeq ($(CEKIT_BUILD_ENGINE), osbs)
-		CEKIT_OSBS_TECH_PREVIEW_ARGS=--tech-preview
-	else
-		CEKIT_LOCAL_TECH_PREVIEW_ARGS=--overrides "{'name': '$(REPO)'}"
-	endif
+	CEKIT_TECH_PREVIEW_ARGS=--overrides "{'name': '$(REPO)'}"
 endif
 
 NEW_ARTIFACT= $(shell echo $(LOCAL_ARTIFACT_DIR) | rev| cut -d '/' -f 1 |sed 's/\([^0-9]*[\.]\).*[0-9][-]\(.*\)/\1\2/' |rev)
@@ -25,7 +21,7 @@ NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 all: build 
 	@echo "Running docker rhel build $(REPO) using $(IMAGE_FILE):"
 	@cat $(IMAGE_FILE)
-	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_LOCAL_TECH_PREVIEW_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) $(CEKIT_OSBS_TECH_PREVIEW_ARGS) 
+	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_TECH_PREVIEW_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) 
 
 generate:
 	if [ -f modules/install-artifact/module-template.yaml ]; then ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < modules/install-artifact/module-template.yaml > modules/install-artifact/module.yaml; fi
