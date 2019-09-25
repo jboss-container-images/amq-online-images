@@ -5,8 +5,8 @@ metadata:
 spec:
   services:
     deviceRegistry:
-      infinispan:
-        serverAddress: infinispan-server-hotrod:11222
+      file:
+        numberOfDevicesPerTenant: 100000
   adapters:
     mqtt:
       endpoint:
