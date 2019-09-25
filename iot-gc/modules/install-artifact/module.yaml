@@ -1,8 +1,0 @@
-schema_version: 1
-
-name: iot-gc.install.artifact
-version: '1.0'
-
-artifacts:
-  - md5: f2c4523b08581d885b492c9f03027202
-    name: dist-bin.zip

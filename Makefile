@@ -18,7 +18,6 @@ SUBDIRS=\
 	iot-auth-service \
 	iot-device-registry-file \
 	iot-device-registry-datagrid \
-	iot-gc \
 	iot-http-adapter \
 	iot-mqtt-adapter \
 	iot-proxy-configurator \
