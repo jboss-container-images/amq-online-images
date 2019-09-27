@@ -592,7 +592,7 @@ spec:
                 - name: IOT_PROXY_CONFIGURATOR_IMAGE
                   value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:dev
                 - name: QDROUTERD_BASE_IMAGE
-                  value: registry.redhat.io/amq7/amq-interconnect:1.5
+                  value: registry.redhat.io/amq7/amq-interconnect:1.6
                 - name: NONE_AUTHSERVICE_IMAGE
                   value: registry.redhat.io/amq7/amq-online-1-none-auth-service:dev
                 - name: KEYCLOAK_IMAGE
@@ -822,7 +822,7 @@ spec:
                 - name: IMAGE_PULL_POLICY
                   value: Always
                 - name: ROUTER_IMAGE
-                  value: registry.redhat.io/amq7/amq-interconnect:1.5
+                  value: registry.redhat.io/amq7/amq-interconnect:1.6
                 - name: STANDARD_CONTROLLER_IMAGE
                   value: registry.redhat.io/amq7/amq-online-1-standard-controller:dev
                 - name: AGENT_IMAGE
