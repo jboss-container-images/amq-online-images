@@ -9,6 +9,5 @@ DISTRO_NAME=standard-controller
 
 # unpack
 {
-    mkdir -p /opt/
-    unzip "${SOURCES_DIR}/standard-controller.zip" -d /opt
+    unzip "${SOURCES_DIR}/standard-controller.zip" -d /
 }
