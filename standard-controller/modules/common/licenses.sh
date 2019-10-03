@@ -9,5 +9,5 @@ SOURCES_DIR=/tmp/artifacts/
 unzip "$SOURCES_DIR/standard-controller.zip" -d ${SOURCES_DIR}/standard-controller
 
 mkdir -p ${LICENSE_DIR}
-unzip -nj "$SOURCES_DIR/standard-controller/standard-controller.jar" 'licenses/*' -d ${LICENSE_DIR}
+unzip -nj "$SOURCES_DIR/standard-controller/opt/standard-controller.jar" 'licenses/*' -d ${LICENSE_DIR}
 
