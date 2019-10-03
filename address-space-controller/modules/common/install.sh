@@ -10,6 +10,5 @@ DISTRO_NAME=address-space-controller
 
 # unpack
 {
-    mkdir -p /opt/
-    unzip "${SOURCES_DIR}/address-space-controller.zip" -d /opt
+    unzip "${SOURCES_DIR}/address-space-controller.zip" -d /
 }
