@@ -73,7 +73,7 @@ spec:
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:dev
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:dev
-        - name: QDROUTERD_BASE_IMAGE
+        - name: ROUTER_IMAGE
           value: registry.redhat.io/amq7/amq-interconnect:1.6
         - name: NONE_AUTHSERVICE_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-none-auth-service:dev
