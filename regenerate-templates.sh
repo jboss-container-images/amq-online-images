@@ -108,16 +108,13 @@ else
     echo No patches to apply
 fi
 
-set -o allexport
-source ${DIR}/olm.amqonline.env
-set +o allexport
-
 pushd ${WORKDIR}
 make -e \
     DOCKER_ORG=amq7 \
     DOCKER_ORG_PREVIEW=amq7-tech-preview \
     DOCKER_REGISTRY_PREFIX=registry.redhat.io/ \
     IMAGE_PULL_POLICY=Always \
+    VERSION=${VERSION} \
     TAG=${VERSION} \
     templates
 popd
