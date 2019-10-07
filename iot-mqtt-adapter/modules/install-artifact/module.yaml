@@ -4,5 +4,5 @@ name: iot-mqtt-adapter.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 71b27f8ed5f28e561411f39527071f6e
+  - md5: efae7cc6c98d6e464eefbf8577eb2874
     name: iot-component.jar
