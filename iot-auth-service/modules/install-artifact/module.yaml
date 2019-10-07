@@ -4,5 +4,5 @@ name: iot-auth-service.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: ba530eb273bcc15965b90835d8467387
+  - md5: 350a63cb8ac8ecf3686e223ad7c2a29a
     name: iot-component.jar
