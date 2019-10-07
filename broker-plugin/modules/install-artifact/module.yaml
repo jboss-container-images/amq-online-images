@@ -4,7 +4,7 @@ name: broker-plugin.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 6446986f2f893073cd115176f9d4f0aa
+  - md5: 7d764e4b60ea7b583cbcaaa8670ee8d0
     name: broker-plugin.zip
   - md5: 620d5c068e4ca408ad99c244f8706fce
     name: jmx-exporter.jar

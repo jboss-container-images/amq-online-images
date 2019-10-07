@@ -4,5 +4,5 @@ name: iot-device-registry-datagrid.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 22399777bc490e9bd466ff89cc77aa79
+  - md5: f57a1d048b8042d9afdce1f27577fb05
     name: iot-component.jar
