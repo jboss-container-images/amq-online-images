@@ -4,5 +4,5 @@ name: service-broker.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: bf6672090d77becd9078a067721cb607
+  - md5: e745e520ba7e23254f052b78424186d3
     name: service-broker.jar
