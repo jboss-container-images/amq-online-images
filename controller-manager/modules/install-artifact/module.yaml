@@ -4,6 +4,6 @@ name: controller-manager.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 0a4ad7ede93bfaa245ada2fb1ed780ee
+  - md5: 6a705c67a3745584df880da2a4bd4d68
     name: dist-bin.zip
 
