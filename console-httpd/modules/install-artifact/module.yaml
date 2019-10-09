@@ -4,5 +4,5 @@ name: console-httpd.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 8b4645e3815f141a36f48ef620556ef0
+  - md5: 9148e2be2d33ce70c4ab2113598a245b
     name: console-httpd-dist.zip
