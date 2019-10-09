@@ -4,5 +4,5 @@ name: addresscontroller.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 72a645f703c21470cc4bf01b919cd9e8
+  - md5: fc6276aa6fd3c508f160a51e5367c5f0
     name: address-space-controller.zip
