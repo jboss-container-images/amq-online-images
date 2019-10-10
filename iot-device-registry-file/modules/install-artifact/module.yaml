@@ -4,5 +4,5 @@ name: iot-device-registry-file.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: fce122619816762fe4a75288f1d39d44
+  - md5: 4f97bf58bb532b5525d42477d69e283c
     name: iot-component.jar
