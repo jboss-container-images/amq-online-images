@@ -4,5 +4,5 @@ name: iot-lorawan-adapter.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 5341272e24525cedd5c7e46ac6a4bc2d
+  - md5: 4804134222bf3796f7f703eee58b0ff7
     name: iot-component.jar
