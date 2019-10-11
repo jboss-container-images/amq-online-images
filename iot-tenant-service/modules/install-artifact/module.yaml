@@ -4,5 +4,5 @@ name: iot-tenant-service.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 1731b3443e97897addd98d567f3a50a1
+  - md5: 23d1f9b6165424a116c93f6ba80d5bcc
     name: iot-component.jar
