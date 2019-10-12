@@ -4,5 +4,5 @@ name: agent.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: c16f453b3263db22ede47765bab6eb4e
+  - md5: 3a01cd9e1e2d6a70ce4561964a1ac261
     name: agent-dist.zip
