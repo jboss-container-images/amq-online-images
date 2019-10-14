@@ -3,5 +3,10 @@ schema_version: 1
 name: iot.java
 version: '1.0'
 
+packages:
+  install:
+    - apr
+    - openssl
+
 execute:
   - script: install.sh
