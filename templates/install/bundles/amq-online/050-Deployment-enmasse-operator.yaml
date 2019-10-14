@@ -66,9 +66,9 @@ spec:
         - name: IOT_MQTT_ADAPTER_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:dev
         - name: IOT_LORAWAN_ADAPTER_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-lorawan-adapter:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-lorawan-adapter-rhel7:dev
         - name: IOT_SIGFOX_ADAPTER_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-sigfox-adapter:dev
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-sigfox-adapter-rhel7:dev
         - name: IOT_TENANT_SERVICE_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:dev
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
