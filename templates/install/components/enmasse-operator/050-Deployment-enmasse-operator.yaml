@@ -86,7 +86,7 @@ spec:
         - name: CONSOLE_INIT_IMAGE
           value: "registry.redhat.io/amq7/amq-online-1-console-init:dev"
         - name: CONSOLE_PROXY_OPENSHIFT_IMAGE
-          value: "openshift/oauth-proxy:latest"
+          value: "registry.redhat.io/openshift3/oauth-proxy:latest"
         - name: CONSOLE_PROXY_KUBERNETES_IMAGE
           value: "quay.io/pusher/oauth2_proxy:latest"
         - name: CONSOLE_HTTPD_IMAGE
