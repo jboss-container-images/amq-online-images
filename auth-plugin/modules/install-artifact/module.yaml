@@ -4,5 +4,5 @@ name: auth-plugin.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: c3a384cd9feacb4dff17f3099093d6b8
+  - md5: 3b19650319f286a967344367bcf7b224
     name: sasl-plugin.jar
