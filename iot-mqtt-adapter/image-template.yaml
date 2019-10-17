@@ -63,4 +63,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-iot-mqtt-adapter-rhel-7
+            branch: amq7-amq-online-13-iot-mqtt-adapter-rhel-7
