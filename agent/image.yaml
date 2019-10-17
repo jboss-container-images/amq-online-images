@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.30-SNAPSHOT"
+      value: "0.30"
 
 modules:
       repositories:
@@ -55,4 +55,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-agent-rhel-7
+            branch: amq7-amq-online-13-agent-rhel-7

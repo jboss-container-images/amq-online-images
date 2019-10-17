@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.30-SNAPSHOT"
+      value: "0.30"
     - name: "LOG_LEVEL"
       value: "info"
 
@@ -62,4 +62,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-api-server-rhel-7
+            branch: amq7-amq-online-13-api-server-rhel-7
