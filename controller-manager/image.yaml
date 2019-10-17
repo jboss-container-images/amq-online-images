@@ -20,7 +20,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "0.30-SNAPSHOT"
+      value: "0.30"
     - name: "LOG_LEVEL"
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
@@ -58,4 +58,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-controller-manager-rhel-7
+            branch: amq7-amq-online-13-controller-manager-rhel-7
