@@ -27,7 +27,7 @@ modules:
           - name: cct_module
             git:
               url: https://github.com/jboss-openshift/cct_module.git
-              ref: master
+              ref: 0.37.1
           - name: iot.java
             path: ../modules/iot/java
           - name: hono.ip
