@@ -60,4 +60,4 @@ osbs:
                       pulp_repos: true
       repository:
             name: containers/amq-online-1
-            branch: amq7-amq-online-1-standard-controller-rhel-7
+            branch: amq7-amq-online-13-standard-controller-rhel-7
