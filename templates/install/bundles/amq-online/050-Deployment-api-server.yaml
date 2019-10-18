@@ -41,7 +41,7 @@ spec:
           value: kube-system
         - name: APISERVER_ROUTE_NAME
           value: restapi
-        image: registry.redhat.io/amq7/amq-online-1-api-server:dev
+        image: registry.redhat.io/amq7/amq-online-1-api-server:1.3
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
