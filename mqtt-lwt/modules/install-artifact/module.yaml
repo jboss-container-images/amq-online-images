@@ -4,5 +4,5 @@ name: mqtt-lwt.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 5d842580599e190ed1928a8c12ba5384
+  - md5: 8a03ac79749725d0514b88df9e4f6ea6
     name: mqtt-lwt.jar
