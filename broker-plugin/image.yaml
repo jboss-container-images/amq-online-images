@@ -42,10 +42,7 @@ modules:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
           - name: broker.plugin.installer
-            path: modules/broker-plugin-installer
-          - name: broker-plugin.install.artifact
-            path: modules/install-artifact
-
+            path: modules
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
