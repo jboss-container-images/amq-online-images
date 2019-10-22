@@ -45,7 +45,6 @@ modules:
             path: modules/broker-plugin-installer
           - name: broker-plugin.install.artifact
             path: modules/install-artifact
-
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
