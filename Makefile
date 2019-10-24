@@ -26,7 +26,7 @@ SUBDIRS=\
 	iot-tenant-service \
 
 
-all: $(SUBDIRS)
+all: $(SUBDIRS) watchtaskall
 
 push: $(SUBDIRS)
 
@@ -51,11 +51,17 @@ cacheartifactall:
 		$(MAKE) -C $$dir cacheartifact; \
 	done
 
+watchtaskall:
+	for dir in $(SUBDIRS); do \
+		$(MAKE) -C $$dir watchtaskall; \
+	done
+
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
+
 .PHONY: all $(SUBDIRS) \
-	push tag clean copyartifact \
+	push tag clean copyartifact watchtaskall \
 	pushall tagall cleanall copyartifactall
 
 # legacy targets
