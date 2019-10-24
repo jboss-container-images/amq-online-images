@@ -4,5 +4,5 @@ name: iot-http-adapter.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: c7ccdd0909bcdf3bf2bd117a6131fdff
+  - md5: c14ba015bce8159f35d8b372c24b703e
     name: iot-component.jar
