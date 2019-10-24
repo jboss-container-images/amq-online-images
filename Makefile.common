@@ -6,7 +6,7 @@ VERSION?=$(shell cat $(IMAGE_FILE) | grep "^version:" | cut -d ' ' -f2)
 DOCKER_BUILD_OPTS?=
 DOCKER?=docker
 PRODUCT_DIR?=../../enmasse
-CEKIT_OUTPUT_FILE?=../build_output.txt
+CEKIT_LOG := ./build_output.txt
 
 CEKIT_BUILD_ENGINE?=docker --no-squash
 ifeq ($(TECH_PREVIEW),true)
@@ -21,7 +21,7 @@ NEW_ABSOLUTE_LOCAL_ARTIFACT?=$(ARTIFACT_CACHE_DIR)/$(NEW_ARTIFACT)
 all: build 
 	@echo "Running docker rhel build $(REPO) using $(IMAGE_FILE):"
 	@cat $(IMAGE_FILE)
-	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_TECH_PREVIEW_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) 
+	cekit --descriptor $(IMAGE_FILE) build $(CEKIT_BUILD_ARGS) $(CEKIT_TECH_PREVIEW_ARGS) $(CEKIT_BUILD_ENGINE) $(CEKIT_ENGINE_ARGS) 2>&1 | tee ${CEKIT_LOG}
 
 generate:
 	if [ -f modules/install-artifact/module-template.yaml ]; then ARTIFACT_MD5=$(ARTIFACT_MD5) envsubst < modules/install-artifact/module-template.yaml > modules/install-artifact/module.yaml; fi
@@ -50,7 +50,10 @@ cacheartifact:
 	sed -i 's/- md5:.*/- md5: ${MD5SUM}/' modules/install-artifact/module.yaml 
 
 pushfrombrew:
-	DOCKER=$(DOCKER) DOCKER_IMAGE=$(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION) OSBS_URL=$(OSBS_URL) CEKIT_OUTPUT_FILE=$(CEKIT_OUTPUT_FILE) ../scripts/push-image-from-brew.sh
+	DOCKER=$(DOCKER) DOCKER_IMAGE=$(DOCKER_REGISTRY)/$(REPO):$(IMAGE_VERSION) OSBS_URL=$(OSBS_URL) CEKIT_LOG=$(CEKIT_LOG) ../scripts/push-image-from-brew.sh
+
+watchtask:
+	if [ -s "$(CEKIT_LOG)"  ]; then ../scripts/extract-task-id-from-cekit-log < $(CEKIT_LOG) | xargs brew watch-task ; fi
 
 clean:
 	rm -rf build target

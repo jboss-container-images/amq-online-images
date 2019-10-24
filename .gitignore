@@ -2,3 +2,4 @@ target/
 build/
 openshift.local.clusterup
 .project
+**/build_output.txt
