@@ -4,5 +4,5 @@ name: mqtt-gateway.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: bc4d7d45cfd0909124b0e4af9c2ce149
+  - md5: 8d17a96961557928df59be1154d84ff8
     name: mqtt-gateway.jar
