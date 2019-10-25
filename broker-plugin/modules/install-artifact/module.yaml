@@ -4,5 +4,5 @@ name: broker-plugin.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: c35e6672cf84e6f054f092920c98c983
+  - md5: b0603a695b267df12d498f1f78c4c63f
     name: broker-plugin.zip
