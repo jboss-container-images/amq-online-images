@@ -4,5 +4,5 @@ name: standard-controller.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 8b98c13468850bcd38de9dcd05f8cbea
+  - md5: aad274021774adbf5fe5073cee8bd99d
     name: standard-controller.zip
