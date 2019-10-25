@@ -4,5 +4,5 @@ name: topic-forwarder.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: aa802113a058e5ce1ff3e3e548cc3053
+  - md5: e306c647be47fff5069b78a758079540
     name: topic-forwarder.jar
