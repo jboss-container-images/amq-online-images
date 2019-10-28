@@ -292,7 +292,7 @@ spec:
       * *Address* – A messaging address (address, topic, queue, and so on)
       * *Messaging user* – Manages access to an address
 
-  version: 1.2.2
+  version: 1.2.3
   replaces: amqonline.1.2.1
   keywords: ['amq', 'messaging', 'amqp', 'iot', 'mqtt']
   icon:
