@@ -581,12 +581,18 @@ spec:
                   value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:dev
                 - name: IOT_DEVICE_REGISTRY_FILE_IMAGE
                   value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-file:dev
+                - name: IOT_DEVICE_REGISTRY_INFINISPAN_IMAGE
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-datagrid:dev
                 - name: IOT_GC_IMAGE
                   value: 
                 - name: IOT_HTTP_ADAPTER_IMAGE
                   value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-http-adapter:dev
                 - name: IOT_MQTT_ADAPTER_IMAGE
                   value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-mqtt-adapter:dev
+                - name: IOT_LORAWAN_ADAPTER_IMAGE
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-lorawan-adapter-rhel7:dev
+                - name: IOT_SIGFOX_ADAPTER_IMAGE
+                  value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-sigfox-adapter-rhel7:dev
                 - name: IOT_TENANT_SERVICE_IMAGE
                   value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:dev
                 - name: IOT_PROXY_CONFIGURATOR_IMAGE
