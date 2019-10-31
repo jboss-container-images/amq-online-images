@@ -4,5 +4,5 @@ name: iot-sigfox-adapter.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: a5188251d1b824a25ba7dbc9d6259953
+  - md5: d924208865e1aefc0f2439c9a7b406bc
     name: iot-component.jar
