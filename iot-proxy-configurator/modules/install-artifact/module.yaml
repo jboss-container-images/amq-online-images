@@ -4,5 +4,5 @@ name: iot-proxy-configurator.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: a23984861031854c19daaf3a65692a97
+  - md5: d7f0bc5d42e36fb0c5ccffcc8db60490
     name: dist-bin.zip
