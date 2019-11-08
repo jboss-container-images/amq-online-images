@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.3
+version: 1.4
 name: amq7/amq-online-1-controller-manager
 description: "operator that manages AMQ Online infrastructure."
 from: ubi7:7-released
@@ -19,8 +19,6 @@ labels:
       value: "true" # mark this as the main image, containing the manifest
 
 envs:
-    - name: "VERSION"
-      value: "0.30-SNAPSHOT"
     - name: "LOG_LEVEL"
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
@@ -56,8 +54,3 @@ osbs:
             container:
                   compose:
                       pulp_repos: true
-      repository:
-            name: containers/amq-online-1
-            branch: amq7-amq-online-1-controller-manager-rhel-7
-      koji_target: amq7-amq-online-1-rhel-7-containers-candidate
-
