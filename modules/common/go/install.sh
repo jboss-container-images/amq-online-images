@@ -6,4 +6,7 @@ SOURCES_DIR=/tmp/artifacts/
 
 # unpack
 mkdir -p /opt/
-unzip "${SOURCES_DIR}/dist-bin.zip" -d /opt
+for zip in $(find "${SOURCES_DIR}" -name "*.zip")
+do
+    unzip ${zip} -d /opt
+done

@@ -52,7 +52,7 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/iot-component.jar"
+          - "/opt/iot-auth-service.jar"
 
 osbs:
       configuration:
