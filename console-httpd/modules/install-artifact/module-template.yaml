@@ -1,8 +1,0 @@
-schema_version: 1
-
-name: console-httpd.install.artifact
-version: '1.0'
-
-artifacts:
-  - md5: ${ARTIFACT_MD5}
-    name: console-httpd-dist.zip
