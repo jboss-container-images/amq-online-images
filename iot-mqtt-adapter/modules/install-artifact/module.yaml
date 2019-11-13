@@ -5,4 +5,4 @@ version: '1.0'
 
 artifacts:
   - md5: ""
-    name: iot-component.jar
+    name: iot-mqtt-adapter.jar

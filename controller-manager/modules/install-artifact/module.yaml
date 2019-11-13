@@ -5,5 +5,5 @@ version: '1.0'
 
 artifacts:
   - md5: ""
-    name: dist-bin.zip
+    name: controller-manager-dist.zip
 
