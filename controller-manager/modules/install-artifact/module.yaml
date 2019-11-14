@@ -7,3 +7,5 @@ artifacts:
   - md5: ""
     name: controller-manager-dist.zip
 
+execute:
+  - script: install.sh
