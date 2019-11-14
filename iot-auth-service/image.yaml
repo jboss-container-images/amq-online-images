@@ -29,9 +29,9 @@ modules:
           - name: iot.java
             path: ../modules/iot/java
           - name: hono.ip
-            path: ../modules/hono/ip
+            path: modules/hono/ip
           - name: hono.install
-            path: ../modules/hono/install
+            path: modules/hono/install
           - name: iot-auth-service.install.artifact
             path: modules/install-artifact
       install:

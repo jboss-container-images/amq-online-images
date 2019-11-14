@@ -38,7 +38,7 @@ modules:
           - name: jboss.container.user
           - name: controller-manager.install.artifact
           - name: common.go
-          - name: controller-manager.olm-manifest
+            #          - name: controller-manager.olm-manifest
 
 packages:
     content_sets:
