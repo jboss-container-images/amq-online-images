@@ -1,0 +1,11 @@
+schema_version: 1
+
+name: olm-manifest.install.artifact
+version: '1.0'
+
+artifacts:
+  - md5: ""
+    name: olm-manifest-dist.zip
+
+execute:
+  - script: install.sh

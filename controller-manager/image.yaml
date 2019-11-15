@@ -15,8 +15,6 @@ labels:
       value: "amq7, amq-online, controller-manager"
     - name: "maintainer"
       value: "AMQ Online Engineering <amq-online-devel@redhat.com>"
-    - name: "com.redhat.delivery.appregistry"
-      value: "true" # mark this as the main image, containing the manifest
 
 envs:
     - name: "LOG_LEVEL"
@@ -38,7 +36,6 @@ modules:
           - name: jboss.container.user
           - name: controller-manager.install.artifact
           - name: common.go
-            #          - name: controller-manager.olm-manifest
 
 packages:
     content_sets:
