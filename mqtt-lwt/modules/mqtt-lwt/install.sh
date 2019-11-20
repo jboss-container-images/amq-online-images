@@ -9,6 +9,6 @@ DISTRO_NAME=mqtt-lwt
 
 # unpack
 {
-	mv "${SOURCES_DIR}/mqtt-lwt.jar"  /
+	mv "${SOURCES_DIR}/mqtt-lwt.jar"  /opt
 }
 
