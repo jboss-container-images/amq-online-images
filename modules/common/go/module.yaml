@@ -4,5 +4,4 @@ name: common.go
 version: '1.0'
 
 execute:
-  - script: install.sh
   - script: licenses.sh

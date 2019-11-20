@@ -1,0 +1,37 @@
+schema_version: 1
+
+version: 1.4
+name: amq7/amq-online-1-olm-manifest-rhel7-operator
+description: "Operator manifest for AMQ Online infrastructure."
+from: ubi7:7-released
+labels:
+    - name: "com.redhat.component"
+      value: "amq7-amq-online-1-olm-manifest-operator-container"
+    - name: "io.k8s.description"
+      value: "Operator manifest for AMQ Online infrastructure."
+    - name: "io.k8s.display-name"
+      value: "AMQ Online OLM Manifest"
+    - name: "io.openshift.tags"
+      value: "amq7, amq-online, olm-manifest"
+    - name: "maintainer"
+      value: "AMQ Online Engineering <amq-online-devel@redhat.com>"
+    - name: "com.redhat.delivery.appregistry"
+      value: "true"
+
+modules:
+      repositories:
+          - name: olm-manifest
+            path: modules
+      install:
+          - name: olm-manifest.install.artifact
+
+packages:
+    content_sets:
+        x86_64:
+            - rhel-7-server-rpms
+
+osbs:
+      configuration:
+            container:
+                  compose:
+                      pulp_repos: true

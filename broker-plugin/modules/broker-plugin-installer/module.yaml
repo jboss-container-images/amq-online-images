@@ -8,5 +8,5 @@ execute:
   - script: install.sh
 
 artifacts:
-  - md5: 620d5c068e4ca408ad99c244f8706fce
+  - md5: ""
     name: jmx-exporter.jar

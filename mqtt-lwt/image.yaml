@@ -26,10 +26,10 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: mqtt-lwt
-            path: modules
           - name: common.java
             path: ../modules/common/java
+          - name: mqtt-lwt
+            path: modules
       install:
           - name: jboss.container.user
           - name: jboss.container.openjdk.jdk
@@ -47,7 +47,7 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/mqtt-lwt.jar"
+          - "/opt/mqtt-lwt.jar"
 
 osbs:
       configuration:

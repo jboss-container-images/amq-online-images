@@ -4,4 +4,4 @@ set -e
 
 SOURCES_DIR=/tmp/artifacts/
 
-mv "$SOURCES_DIR/iot-component.jar" /opt
+mv "$SOURCES_DIR/*.jar" /opt

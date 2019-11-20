@@ -4,5 +4,5 @@ name: api-server.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 9cd469b30716438c9fece2d14e7ff4dc
+  - md5: ""
     name: api-server.jar
