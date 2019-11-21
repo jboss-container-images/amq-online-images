@@ -1,7 +1,7 @@
 schema_version: 1
 
 name: hono.ip
-version: '1.1'
+version: '1.4'
 
 execute:
     - script: licenses.sh
