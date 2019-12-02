@@ -9,6 +9,7 @@ SUBDIRS=\
 	topic-forwarder \
 	auth-plugin \
 	api-server \
+	olm-manifest \
 	service-broker \
 	broker-plugin \
 	none-auth-service \
