@@ -20,10 +20,18 @@ labels:
 
 modules:
       repositories:
+          - name: cct_module
+            git:
+              url: https://github.com/jboss-openshift/cct_module.git
+              ref: master
+          - name: common.go
+            path: ../modules/common/go
           - name: olm-manifest
             path: modules
       install:
+          - name: jboss.container.user
           - name: olm-manifest.install.artifact
+          - name: common.go
 
 packages:
     content_sets:
