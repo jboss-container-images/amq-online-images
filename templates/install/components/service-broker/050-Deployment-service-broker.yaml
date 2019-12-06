@@ -47,7 +47,7 @@ spec:
           value: /service-broker-cert
         - name: LISTEN_PORT
           value: '8443'
-        image: registry.redhat.io/amq7/amq-online-1-service-broker:dev
+        image: registry.redhat.io/amq7/amq-online-1-service-broker:1.4
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
