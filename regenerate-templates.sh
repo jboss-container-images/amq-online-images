@@ -34,7 +34,7 @@ cleanup () {
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 DOCKER_ORG=amq7
-VERSION=dev
+VERSION=1.4
 KEEP_WORK_DIR=0
 
 
@@ -121,25 +121,7 @@ popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
-# Remove old content
-rm -Rf templates/install/olm/amq-online
-
 rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TARGET_TEMPLATE_DIR}
 rm -rf templates/docs
-
-# Ensure that we only have new files
-
-# fix up new content
-pushd templates/install/olm/amq-online
-for i in $(ls *.yaml); do
-	mv "$i" "amq-online-$i"
-done
-
-# Rename package and CSV
-mv amq-online-enmasse.package.yaml amq-online.package.yaml
-mv amq-online-enmasse.clusterserviceversion.yaml amq-online.${VERSION}.0.clusterserviceversion.yaml
-
-popd
-git add --all templates/install/olm/amq-online
 
 exit 0
