@@ -4,5 +4,5 @@ name: none-auth-service.install.artifact
 version: '1.0'
 
 artifacts:
-  - md5: 3dbd916fd6f41406ddda879a146e8980
+  - md5: fa75ad6b1590586c3ee23a11233d0a94
     name: none-authservice.jar
