@@ -21,6 +21,8 @@ envs:
       value: "info"
     - name: "ENMASSE_IMAGE_MAP_FILE"
       value: "/opt/etc/operatorImageMap.yaml"
+    - name: "VERSION"
+      value: "1.4"
 
 modules:
       repositories:

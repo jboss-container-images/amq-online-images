@@ -18,6 +18,10 @@ labels:
     - name: "com.redhat.delivery.appregistry"
       value: "true"
 
+envs:
+    - name: "VERSION"
+      value: "1.4"
+
 modules:
       repositories:
           - name: cct_module
