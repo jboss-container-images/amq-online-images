@@ -16,6 +16,10 @@ labels:
     - name: "maintainer"
       value: "AMQ Online Engineering <amq-online-devel@redhat.com>"
 
+envs:
+    - name: "VERSION"
+      value: "1.4"
+
 modules:
       repositories:
           - name: agent
