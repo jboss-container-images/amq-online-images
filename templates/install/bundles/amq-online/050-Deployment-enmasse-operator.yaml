@@ -55,6 +55,8 @@ spec:
           value: "true"
         - name: CONTROLLER_ENABLE_ADDRESS_SPACE_CONTROLLER
           value: "true"
+        - name: CONTROLLER_ENABLE_MESSAGING_USER
+          value: "true"
         - name: ADDRESS_SPACE_CONTROLLER_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.4
         - name: CONTROLLER_MANAGER_IMAGE
