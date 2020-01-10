@@ -9,5 +9,5 @@ spec:
   name: enmasse
   source: enmasse-source
   sourceNamespace: ${OPERATOR_NAMESPACE}
-  startingCSV: enmasse.1.4.0
-  channel: alpha
+  startingCSV: amq-online.1.4.0
+  channel: stable
