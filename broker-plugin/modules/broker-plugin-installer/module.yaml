@@ -6,7 +6,3 @@ version: '1.4'
 execute:
   - script: licenses.sh
   - script: install.sh
-
-artifacts:
-  - md5: 620d5c068e4ca408ad99c244f8706fce
-    name: jmx-exporter.jar
