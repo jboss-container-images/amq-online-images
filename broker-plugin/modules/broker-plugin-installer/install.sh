@@ -9,11 +9,9 @@ BROKER_PLUGIN_DIR=/opt/broker-plugin
 {
     mkdir -p ${BROKER_PLUGIN_DIR}/bin
     mkdir -p ${BROKER_PLUGIN_DIR}/lib
-    mkdir -p ${BROKER_PLUGIN_DIR}/jmx_exporter
+    mkdir -p ${BROKER_PLUGIN_DIR}/web
 
 	unzip "${SOURCES_DIR}/broker-plugin.zip" -d /
-
-    mv ${SOURCES_DIR}/jmx-exporter.jar ${BROKER_PLUGIN_DIR}/jmx_exporter/
 }
 
 chown -R 185:0 /home/jboss
