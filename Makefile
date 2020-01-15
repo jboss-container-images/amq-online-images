@@ -23,6 +23,7 @@ SUBDIRS=\
 	iot-mqtt-adapter \
 	iot-proxy-configurator \
 	iot-sigfox-adapter \
+	iot-tenant-cleanup \
 	iot-tenant-service \
 
 
