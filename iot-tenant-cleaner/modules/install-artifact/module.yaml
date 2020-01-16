@@ -1,0 +1,8 @@
+schema_version: 1
+
+name: iot-tenant-cleaner.install.artifact
+version: '1.4'
+
+artifacts:
+  - md5: ""
+    name: iot-tenant-cleaner.jar
