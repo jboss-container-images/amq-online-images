@@ -1,4 +1,0 @@
-osbs:
-      repository:
-            name: containers/amq-online-1
-            branch: amq7-amq-online-1-iot-device-registry-datagrid-dev-rhel-7
