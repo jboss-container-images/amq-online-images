@@ -86,13 +86,13 @@ spec:
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:1.4
         - name: ROUTER_IMAGE
-          value: registry.redhat.io/amq7/amq-interconnect:1.6
+          value: registry-proxy.engineering.redhat.com/rh-osbs/amq7-amq-interconnect:1.7
         - name: STANDARD_CONTROLLER_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.4
         - name: AGENT_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-agent:1.4
         - name: BROKER_IMAGE
-          value: registry.redhat.io/amq7/amq-broker:7.5
+          value: registry-proxy.engineering.redhat.com/rh-osbs/amq-broker-7-amq-broker-76-openshift:7.6
         - name: BROKER_PLUGIN_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.4
         - name: TOPIC_FORWARDER_IMAGE
