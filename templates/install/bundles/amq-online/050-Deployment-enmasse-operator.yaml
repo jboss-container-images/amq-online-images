@@ -32,9 +32,12 @@ spec:
       - name: controller
         image: registry.redhat.io/amq7/amq-online-1-controller-manager:1.4
         imagePullPolicy: Always
+        resources:
+          limits:
+            memory: 512Mi
+          requests:
+            memory: 512Mi
         env:
-        - name: LOG_LEVEL
-          value: debug
         - name: POD_NAME
           valueFrom:
             fieldRef:
