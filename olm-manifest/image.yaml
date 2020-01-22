@@ -1,12 +1,12 @@
 schema_version: 1
 
 version: 1.4
-name: amq7/amq-online-1-olm-manifest-rhel7-operator
+name: amq7/amq-online-1-controller-manager-rhel7-operator-metadata
 description: "Operator manifest for AMQ Online infrastructure."
-from: ubi7:7-released
+from: scratch
 labels:
     - name: "com.redhat.component"
-      value: "amq7-amq-online-1-olm-manifest-operator-container"
+      value: "amq7-amq-online-1-controller-manager-operator-metadata-container"
     - name: "io.k8s.description"
       value: "Operator manifest for AMQ Online infrastructure."
     - name: "io.k8s.display-name"
