@@ -8,7 +8,7 @@ test_exposed_vars() {
     local -a components suffixes missing_vars
     # To add more components to the list, make sure they exists in both widget
     # repo and product used in CI (part of service repo)
-    components=("controller-manager")
+    components=("amq-online-1-controller-manager-rhel7-operator")
     # In CPaaS we export each container component with the following suffixes
     suffixes=("IMAGE_PULL_URL" "BUILD_INFO_JSON")
     local component normalized suffix
