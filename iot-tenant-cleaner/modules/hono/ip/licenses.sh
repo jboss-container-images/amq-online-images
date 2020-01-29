@@ -8,4 +8,4 @@ SOURCES_DIR=/tmp/artifacts/
 TMP=/tmp
 
 mkdir -p "${LICENSE_DIR}"
-unzip -nj "${SOURCES_DIR}/iot-tenant-cleaner.jar" 'BOOT-INF/classes/licenses/*' -d ${LICENSE_DIR}
+unzip -nj "${SOURCES_DIR}/iot-tenant-cleaner.jar" 'licenses/*' -d ${LICENSE_DIR}
