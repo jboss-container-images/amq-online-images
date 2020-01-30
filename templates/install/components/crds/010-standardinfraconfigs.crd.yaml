@@ -22,6 +22,8 @@ spec:
       storage: false
   validation:
     openAPIV3Schema:
+      type: object
+      description: StandardInfraConfig defines configuration applied to routers and brokers for an instance of the standard address space type. This resource is created by the service administrator.
       properties:
         spec:
           type: object
@@ -74,6 +76,14 @@ spec:
             broker:
               type: object
               properties:
+                minAvailable:
+                  anyOf:
+                  - type: integer
+                  - type: string
+                maxUnavailable:
+                  anyOf:
+                  - type: integer
+                  - type: string
                 podTemplate:
                   type: object
                   properties:
@@ -149,9 +159,13 @@ spec:
                 minReplicas:
                   type: integer
                 minAvailable:
-                  type: integer
+                  anyOf:
+                  - type: integer
+                  - type: string
                 maxUnavailable:
-                  type: integer
+                  anyOf:
+                  - type: integer
+                  - type: string
                 linkCapacity:
                   type: integer
                 idleTimeout:

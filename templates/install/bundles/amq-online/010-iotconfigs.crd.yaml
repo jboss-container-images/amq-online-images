@@ -21,3 +21,11 @@ spec:
     JSONPath: .status.phase
   subresources:
     status: {}
+  validation:
+    openAPIV3Schema:
+      description: IoTConfig deploys the IoT protocol adapters, device registry and tenant management services. This resource is created by the service administrator.
+      properties:
+        spec:
+          type: object
+        status:
+          type: object
