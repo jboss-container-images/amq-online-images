@@ -41,7 +41,7 @@ packages:
       - unzip
 
 artifacts:
-    - md5: 934da6e5ed8da4d9aebbc4c0cce229d4
+    - md5: 1ec7f8e00205a6ab9c8c17268eec3988
       name: console-init-dist.zip
 
 run:

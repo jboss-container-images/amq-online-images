@@ -51,7 +51,7 @@ packages:
         - openssl
 
 artifacts:
-    - md5: 94c2798b3e7d96e1385b02cbad5b4099
+    - md5: 160891c69ec2951b5081e4a32018bfab
       name: sasl-plugin.jar
 
 run:
