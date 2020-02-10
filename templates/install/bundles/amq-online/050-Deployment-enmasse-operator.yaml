@@ -82,7 +82,7 @@ spec:
         - name: IOT_SIGFOX_ADAPTER_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-sigfox-adapter-rhel7:1.4
         - name: IOT_TENANT_CLEANER_IMAGE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-cleaner:1.4
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-cleaner-rhel7:1.4
         - name: IOT_TENANT_SERVICE_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:1.4
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
