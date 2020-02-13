@@ -14,7 +14,7 @@ SUBDIRS=\
 	none-auth-service \
 	controller-manager \
 	console-init \
-	console-httpd \
+	console-server \
 	iot-auth-service \
 	iot-device-registry-file \
 	iot-device-registry-datagrid \

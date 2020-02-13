@@ -1,18 +1,18 @@
 schema_version: 1
 
 version: 1.4
-name: amq7/amq-online-1-console-httpd
-description: "AMQ Online image for the AMQ Online Console HTTPD"
+name: amq7/amq-online-1-console-server-rhel7
+description: "AMQ Online Console Server"
 from: ubi7:7-released
 labels:
     - name: "com.redhat.component"
-      value: "amq7-amq-online-1-console-httpd-openshift-container"
+      value: "amq7-amq-online-1-console-server-openshift-container"
     - name: "io.k8s.description"
-      value: "AMQ Online image for the AMQ Online Console HTTPD"
+      value: "Console server for AMQ Online."
     - name: "io.k8s.display-name"
-      value: "AMQ Online Console HTTPD"
+      value: "AMQ Online Console Server"
     - name: "io.openshift.tags"
-      value: "amq7, amq-online, console"
+      value: "amq7, amq-online, console-server"
     - name: "maintainer"
       value: "AMQ Online Engineering <amq-online-devel@redhat.com>"
 
@@ -28,27 +28,24 @@ modules:
             git:
               url: https://github.com/jboss-openshift/cct_module.git
               ref: master
-          - name: consolehttpd
+          - name: common.go
+            path: ../modules/common/go
+          - name: console-server
             path: modules
       install:
-          - name: console-httpd.install.artifact
           - name: jboss.container.user
-          - name: consolehttpd.common
+          - name: console-server.install.artifact
+          - name: common.go
 
 packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
-    install:
-        - unzip
-        - httpd
-        - mod_ssl
 
 run:
       user: 185
       cmd:
-          - "apachectl"
-          - "-DFOREGROUND"
+          - "/opt/console-server"
 osbs:
       configuration:
             container:
