@@ -13,6 +13,8 @@ spec:
     listKind: StandardInfraConfigList
     singular: standardinfraconfig
     plural: standardinfraconfigs
+    categories:
+    - enmasse
   versions:
     - name: v1beta1
       served: true
@@ -112,6 +114,8 @@ spec:
                       type: string
                     storage:
                       type: string
+                javaOpts:
+                  type: string
                 addressFullPolicy:
                   type: string
                   enum:
