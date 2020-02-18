@@ -137,7 +137,7 @@ done
 
 # Rename package and CSV
 mv amq-online-enmasse.package.yaml amq-online.package.yaml
-mv amq-online-enmasse.clusterserviceversion.yaml amq-online.${VERSION}.0.clusterserviceversion.yaml
+mv amq-online-enmasse.clusterserviceversion.yaml amq-online.${VERSION}.3.clusterserviceversion.yaml
 
 popd
 git add --all templates/install/olm/amq-online
