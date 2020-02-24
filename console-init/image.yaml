@@ -38,8 +38,10 @@ packages:
     content_sets:
         x86_64:
             - rhel-7-server-rpms
+            - rhel-7-server-optional-rpms
     install:
       - unzip
+      - rh-python36
 
 run:
       cmd:
