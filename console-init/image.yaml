@@ -46,8 +46,9 @@ packages:
 
 run:
       cmd:
-        - "/oauth-proxy/bin/init.sh"
-        - "/apps/"
+        - "bash"
+        - "-c"
+        - "scl enable rh-python36 bash && /oauth-proxy/bin/init.sh /apps/"
 
 osbs:
       configuration:
