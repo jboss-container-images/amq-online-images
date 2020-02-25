@@ -88,7 +88,7 @@ spec:
         - name: IOT_PROXY_CONFIGURATOR_IMAGE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:1.4
         - name: ROUTER_IMAGE
-          value: registry-proxy.engineering.redhat.com/rh-osbs/amq7-amq-interconnect:1.7
+          value: registry.redhat.io/amq7/amq-interconnect:1.7
         - name: STANDARD_CONTROLLER_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.4
         - name: AGENT_IMAGE
