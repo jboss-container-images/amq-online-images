@@ -5,5 +5,4 @@ set -e
 SOURCES_DIR=/tmp/artifacts/
 
 # unpack
-mkdir -p /opt/
-unzip ${SOURCES_DIR}/console-server-dist.zip -d /opt
+unzip ${SOURCES_DIR}/console-server-dist.zip -d /

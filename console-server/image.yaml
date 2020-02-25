@@ -45,7 +45,7 @@ packages:
 run:
       user: 185
       cmd:
-          - "/opt/console-server"
+          - "/console-server"
 osbs:
       configuration:
             container:
