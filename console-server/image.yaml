@@ -44,6 +44,7 @@ packages:
 
 run:
       user: 185
+      workdir: "/"
       cmd:
           - "/console-server"
 osbs:
