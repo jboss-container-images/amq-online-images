@@ -37,6 +37,11 @@ clean: $(SUBDIRS)
 
 copyartifact: $(SUBDIRS)
 
+listbuilds:
+	for dir in $(SUBDIRS); do \
+		$(MAKE) -C $$dir listbuilds; \
+	done
+
 listbuildids:
 	for dir in $(SUBDIRS); do \
 		$(MAKE) -C $$dir listbuildid; \
