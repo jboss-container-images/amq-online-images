@@ -6,7 +6,7 @@ metadata:
   labels:
     app: enmasse
 spec:
-  name: enmasse
+  name: amq-online
   source: enmasse-source
   sourceNamespace: ${OPERATOR_NAMESPACE}
   startingCSV: amq-online.1.4.0
