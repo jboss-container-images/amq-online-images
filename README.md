@@ -19,7 +19,7 @@ EnMasse git repository url.
 
 # Updating Go license files
 
-Requires the tool [go-licenses](https://github.com/google/go-licenses)in `$PATH`
+Requires the tool [go-licenses](https://github.com/google/go-licenses)in `$PATH`. Requires Go 1.13 or higher.
 
     ./regenerate-go-license.sh [--tag <tag>] [--keep-work-dir] [--help] <EnMasse git repository url>
 
