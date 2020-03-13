@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 function print {
     cat <<EOF>>$XMLFILE
     <dependency>
@@ -8,17 +10,41 @@ function print {
         <licenses>
             <license>
                 <name>$3</name>
-                <url>./$4</url>
+                <url>$4</url>
             </license>
         </licenses>
     </dependency>
 EOF
 }
 
+
+function get_version() {
+    module=$1
+
+    while true
+    do
+        version=$(GO111MODULE=on go list -m "${module}" 2>/dev/null| awk '{print $2}')
+        if [[ -z ${version} ]]; then
+	    module=$(echo "${module}" | awk  '@include "join"; {split($1,parts,"/"); if (length(parts) > 1) print join(parts,1,length(parts)-1,"/")}')
+            if [[ -z ${module} ]]; then
+                echo Unknown
+                return
+            fi 
+        else
+            echo "$version"
+            return
+	fi
+    done
+}
+
 do_usage_and_exit () {
-    1>&2 echo "$0: Usage $0 [-keep-work-dir] [--tag <tag>] <repo>"
+    1>&2 echo "$0: Usage $0 [--keep-work-dir] [--tag <tag>] <repo>"
     exit 0;
 
+}
+
+clean() {
+    rm -rf ${1}
 }
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -76,7 +102,9 @@ GITARGS+=("--")
 GITARGS+=("${REPO}")
 GITARGS+=("${WORKDIR}")
 
-trap 'rm -Rf "$WORKDIR"' EXIT
+if [[ ${KEEP_WORK_DIR} -eq 0 ]]; then
+    trap clean EXIT
+fi
 
 echo Shallow cloning ${REPO} ${TAG}
 git clone ${GITARGS[*]}
@@ -91,11 +119,14 @@ pushd ${WORKDIR}
 VENDORLIST=${WORKDIR}/vendor-list.txt
 XMLFILE=$WORKDIR/licenses.xml
 HTMLFILE=$WORKDIR/licenses.html
-XSLFILE=$WORKDIR/licenses.xsl
+XSLFILE=$WORKDIR/scripts/licenses.xsl
 LISTFILE=$WORKDIR/licenses.txt
 ARCHIVE=$WORKDIR/licenses.tgz
 
-retrodep . > ${VENDORLIST}
+
+go-licenses csv ./pkg/...  2>/dev/null > ${VENDORLIST}
+
+touch ${LISTFILE}
 
 cat <<EOF>>$XMLFILE
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -103,29 +134,27 @@ cat <<EOF>>$XMLFILE
   <dependencies>
 EOF
 
+#github.com/prometheus/client_model/go,https://github.com/prometheus/client_model/blob/master/go/LICENSE,Apache-2.0
 pushd ${WORKDIR}/vendor
-for m in $(awk '{print $2}' ${VENDORLIST}); do
-    f=$(echo $m | awk -F ':' '{print $1}')
-    v=$(echo $m | awk -F ':' '{print $2}')
-    l=$(find "$f" -iname 'license*')
-    if [[ -z "$l" ]]; then
-        l=$(find "$f" -iname 'readme*')
-    fi
-    if [[ "$l" ]]; then
-        i=$(identify_license $l 2> /dev/null)
-        if [[ -z $i ]]; then
-            echo "$f Unrecognised $l"
-            print $f $v Unrecognised $l
-        else
-            n=$(echo $i | awk '{print $2}')
-            print $f $v $n $l
+while IFS= read -r line ; do
+    module=$(echo $line | awk -F ',' '{print $1}')
+    licenseurl=$(echo $line | awk -F ',' '{print $2}')
+    licensename=$(echo $line | awk -F ',' '{print $3}')
+    version=$(get_version "${module}")
+
+    if [[ -d "${module}" ]]; then
+        licensefile=$(find "${module}" -iname 'license*')
+        if [[ -z "$licensefile" ]]; then
+            licensefile=$(find "${module}" -iname 'readme*')
         fi
-        echo $l >> $LISTFILE
-    else
-        echo "$f Unknown"
-        print $f $v Unknown
+        if [[ "$licensefile" ]]; then
+            echo $licensefile >> $LISTFILE
+        fi
     fi
-done
+
+
+    print ${module} ${version} ${licensename} ${licenseurl}
+done < ${VENDORLIST}
 tar -zcf $ARCHIVE ${WORKDIR}/LICENSE $(cat $LISTFILE)
 
 popd
@@ -138,10 +167,5 @@ xsltproc ${XSLFILE} ${XMLFILE} > ${HTMLFILE}
 
 cp ${XMLFILE} ${LISTFILE} ${ARCHIVE} ${HTMLFILE} ${TARGET_LICENSE_DIR}/
 
-if [[ ${KEEP_WORK_DIR} -eq 0 ]]; then
-    rm -rf ${WORKDIR}
-else
-    echo Retained working directory: ${WORKDIR}
-fi
 
 exit 0
