@@ -94,7 +94,7 @@ spec:
         - name: AGENT_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-agent:1.4
         - name: BROKER_IMAGE
-          value: registry-proxy.engineering.redhat.com/rh-osbs/amq-broker-7-amq-broker-76-openshift:7.6
+          value: registry.redhat.io/amq7/amq-broker:7.6
         - name: BROKER_PLUGIN_IMAGE
           value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.4
         - name: TOPIC_FORWARDER_IMAGE
