@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.4
+version: 1.5
 name: amq7/amq-online-1-agent
 description: "AMQ Online console"
 from: ubi7:7-released
@@ -18,7 +18,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "1.4"
+      value: "1.5"
 
 modules:
       repositories:

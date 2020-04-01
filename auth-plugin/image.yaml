@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.4
+version: 1.5
 name: amq7/amq-online-1-auth-plugin
 description: "AMQ Online SSO for authentication"
 from: ubi7:7-released
@@ -24,7 +24,7 @@ envs:
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
     - name: "VERSION"
-      value: "1.4"
+      value: "1.5"
 
 modules:
       repositories:
