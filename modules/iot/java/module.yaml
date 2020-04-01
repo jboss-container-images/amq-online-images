@@ -1,7 +1,7 @@
 schema_version: 1
 
 name: iot.java
-version: '1.4'
+version: '1.5'
 
 packages:
   install:
