@@ -1,0 +1,14 @@
+schema_version: 1
+
+name: iot-adapters.install.artifact
+version: '1.5'
+
+artifacts:
+  - md5: ""
+    name: iot-http-adapter.jar
+  - md5: ""
+    name: iot-lorawan-adapter.jar
+  - md5: ""
+    name: iot-mqtt-adapter.jar
+  - md5: ""
+    name: iot-sigfox-adapter.jar

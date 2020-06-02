@@ -1,7 +1,0 @@
-schema_version: 1
-
-name: hono.ip
-version: '1.5'
-
-execute:
-    - script: licenses.sh
