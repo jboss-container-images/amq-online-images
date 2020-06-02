@@ -15,14 +15,10 @@ SUBDIRS=\
 	controller-manager \
 	console-init \
 	console-server \
+	iot-adapters \
 	iot-auth-service \
-	iot-device-registry-file \
-	iot-device-registry-datagrid \
-	iot-http-adapter \
-	iot-lorawan-adapter \
-	iot-mqtt-adapter \
+	iot-device-registry \
 	iot-proxy-configurator \
-	iot-sigfox-adapter \
 	iot-tenant-cleaner \
 	iot-tenant-service \
 
