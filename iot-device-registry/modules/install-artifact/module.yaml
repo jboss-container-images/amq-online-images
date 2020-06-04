@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: iot-device-registry-datagrid.install.artifact
+name: iot-device-registry.install.artifact
 version: '1.5'
 
 artifacts:
