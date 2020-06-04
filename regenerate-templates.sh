@@ -34,7 +34,7 @@ cleanup () {
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 DOCKER_ORG=amq7
-VERSION=1.4
+VERSION=1.5
 KEEP_WORK_DIR=0
 
 
