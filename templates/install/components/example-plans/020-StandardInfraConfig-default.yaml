@@ -13,7 +13,7 @@ spec:
       memory: 2Gi
       storage: 5Gi
     addressFullPolicy: FAIL
-    maxUnavailable: 1
+    globalMaxSize: 64Mb
   router:
     minReplicas: 2
     resources:
