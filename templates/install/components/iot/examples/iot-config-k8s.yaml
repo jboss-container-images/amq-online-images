@@ -3,24 +3,38 @@ kind: IoTConfig
 metadata:
   name: default
 spec:
+  enableDefaultRoutes: true
   interServiceCertificates:
     secretCertificatesStrategy:
       caSecretName: iot-service-ca
       serviceSecretNames:
         iot-auth-service: iot-auth-service-tls
+        iot-device-connection: iot-device-connection-tls
         iot-device-registry: iot-device-registry-tls
         iot-tenant-service: iot-tenant-service-tls
+        iot-mesh-inter: iot-mesh-inter-tls
+        iot-command-mesh: iot-command-mesh-tls
   services:
-    deviceRegistry:
-      infinispan:
+    deviceConnection:
+      jdbc:
         server:
           external:
-            host: infinispan
-            port: 11222
-            username: app
-            password: test12
-            saslServerName: hotrod
-            saslRealm: ApplicationRealm
+            username: registry
+            password: user12
+            url: jdbc:postgresql://postgresql/device-registry
+    deviceRegistry:
+      jdbc:
+        server:
+          external:
+            management:
+              connection:
+                username: registry
+                password: user12
+                url: jdbc:postgresql://postgresql/device-registry
+      management:
+        endpoint:
+          secretNameStrategy:
+            secretName: iot-device-registry-tls
   adapters:
     http:
       endpoint:

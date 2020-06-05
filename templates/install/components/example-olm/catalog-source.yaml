@@ -7,6 +7,6 @@ metadata:
     app: enmasse
 spec:
   displayName: EnMasse Operator Source
-  image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator-metadata:1.4
+  image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator-metadata:1.5
   publisher: enmasse
   sourceType: grpc

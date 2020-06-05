@@ -6,11 +6,11 @@ metadata:
   name: enmasse.io:enmasse-operator
 rules:
   - apiGroups: [ "apps" ]
-    resources: [ "deployments", "deployments/finalizers", "replicasets" ]
+    resources: [ "deployments", "deployments/finalizers", "replicasets", "statefulsets" ]
     verbs: [ "get", "list", "watch", "update", "create", "patch", "delete" ]
   - apiGroups: [ "" ]
     resources: [ "configmaps", "secrets", "persistentvolumeclaims", "services", "services/finalizers", "pods" ]
-    verbs: [ "get", "list", "watch", "update", "create", "patch", "delete" ]
+    verbs: [ "get", "list", "watch", "update", "create", "patch", "delete", "deletecollection" ]
   - apiGroups: [ "", "route.openshift.io" ]
     resources: [ "routes", "routes/custom-host", "routes/status"]
     verbs: [ "create", "update", "patch", "get", "list", "watch", "delete" ]

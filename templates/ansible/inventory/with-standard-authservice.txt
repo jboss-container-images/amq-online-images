@@ -11,4 +11,3 @@ standard_authentication_service_postgresql=False
 postgresql_password=password
 monitoring_namespace=enmasse-monitoring
 monitoring_operator=False
-monitoring=False
