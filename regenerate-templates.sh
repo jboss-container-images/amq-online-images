@@ -110,6 +110,7 @@ fi
 
 pushd ${WORKDIR}
 make -e \
+    SKIP_MANIFESTS=true \
     DOCKER_ORG=amq7 \
     DOCKER_ORG_PREVIEW=amq7-tech-preview \
     DOCKER_REGISTRY_PREFIX=registry.redhat.io/ \
