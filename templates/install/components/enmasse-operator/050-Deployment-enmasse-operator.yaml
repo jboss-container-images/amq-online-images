@@ -72,21 +72,21 @@ spec:
         - name: RELATED_IMAGE_IOT_AUTH_SERVICE
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:1.5
         - name: RELATED_IMAGE_IOT_DEVICE_CONNECTION_INFINISPAN
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_DEVICE_CONNECTION_JDBC
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_DEVICE_REGISTRY_INFINISPAN
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_DEVICE_REGISTRY_JDBC
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_HTTP_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_MQTT_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_LORAWAN_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_SIGFOX_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
         - name: RELATED_IMAGE_IOT_TENANT_CLEANER
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-cleaner:1.5
         - name: RELATED_IMAGE_IOT_TENANT_SERVICE
