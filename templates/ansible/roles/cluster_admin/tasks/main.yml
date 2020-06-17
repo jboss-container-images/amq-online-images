@@ -43,6 +43,8 @@
     name: standard_authservice_postgresql
   when: '"standard" in authentication_services and standard_authentication_service_postgresql'
 - import_role:
+    name: upgrade_precheck
+- import_role:
     name: example_plans
   when: install_example_plans
 - import_role:
