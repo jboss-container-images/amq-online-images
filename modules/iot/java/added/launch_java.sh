@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 set -ex
-JAR="$1"
-shift
-
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if [[ "${JAVA_DEBUG}" = "true" ]]; then
@@ -19,4 +16,4 @@ if [[ "${DISABLE_APP_OPTS}" == "true" ]]; then
 fi
 
 export MALLOC_ARENA_MAX=2
-exec java ${JAVA_DEFAULT_OPTS} ${JAVA_APP_OPTS} ${JAVA_OPTS} ${java_debug_args} -jar ${JAR} $@
+exec java ${JAVA_DEFAULT_OPTS} ${JAVA_APP_OPTS} ${JAVA_OPTS} ${java_debug_args} $@

@@ -54,6 +54,7 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
+          - "-jar"
           - "/opt/iot-tenant-service.jar"
 
 osbs:

@@ -54,7 +54,9 @@ run:
       user: 185
       cmd:
           - "/bin/launch_java.sh"
-          - "/opt/iot-tenant-cleaner.jar"
+          - "-cp"
+          - "/opt/iot-tenant-cleaner.jar:/extensions/*"
+          - "io.enmasse.iot.tools.cleanup.Application"
 
 osbs:
       configuration:
