@@ -53,7 +53,7 @@ packages:
 run:
       user: 185
       entrypoint:
-          - "/opt/run-java/launch_java.sh"
+          - "/bin/launch_java.sh"
           - "-Dloader.path=/extensions/"
           - "-jar"
 
