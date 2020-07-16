@@ -18,7 +18,7 @@ spec:
         name: enmasse-operator
       annotations:
         enmasse.io/version: "1.5"
-        enmasse.io/revision: "186fbc8051138e64dde1a4fc5c42f32e9acdf6e2"
+        enmasse.io/revision: "393bf5cc4af761a063f2487049162cad899fbc5c"
     spec:
       affinity:
         nodeAffinity:
@@ -45,7 +45,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: REVISION
-          value: "186fbc8051138e64dde1a4fc5c42f32e9acdf6e2"
+          value: "393bf5cc4af761a063f2487049162cad899fbc5c"
         - name: VERSION
           value: "1.5"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
@@ -129,6 +129,8 @@ spec:
         - name: RELATED_IMAGE_CONSOLE_SERVER
           value: "registry.redhat.io/amq7/amq-online-1-console-server-rhel7:1.5"
         - name: RELATED_IMAGE_CONSOLE_PROXY_OPENSHIFT
+          value: "registry.redhat.io/openshift4/ose-oauth-proxy:latest"
+        - name: RELATED_IMAGE_CONSOLE_PROXY_OPENSHIFT3
           value: "registry.redhat.io/openshift3/oauth-proxy:latest"
         - name: RELATED_IMAGE_CONSOLE_PROXY_KUBERNETES
           value: "quay.io/oauth2-proxy/oauth2-proxy:v5.1.0"
