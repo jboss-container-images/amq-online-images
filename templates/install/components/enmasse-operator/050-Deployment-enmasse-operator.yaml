@@ -18,7 +18,7 @@ spec:
         name: enmasse-operator
       annotations:
         enmasse.io/version: "1.5"
-        enmasse.io/revision: "9a928af9d5cc32bc4ce9131dd9918010a06f608a"
+        enmasse.io/revision: "b3c693f780c13277c40de2622ff51eba255f65a9"
     spec:
       affinity:
         nodeAffinity:
@@ -45,7 +45,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: REVISION
-          value: "9a928af9d5cc32bc4ce9131dd9918010a06f608a"
+          value: "b3c693f780c13277c40de2622ff51eba255f65a9"
         - name: VERSION
           value: "1.5"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
@@ -87,13 +87,13 @@ spec:
         - name: RELATED_IMAGE_IOT_DEVICE_REGISTRY_JDBC
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel7:1.5
         - name: RELATED_IMAGE_IOT_HTTP_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
         - name: RELATED_IMAGE_IOT_MQTT_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
         - name: RELATED_IMAGE_IOT_LORAWAN_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
         - name: RELATED_IMAGE_IOT_SIGFOX_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel-7:1.5
+          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
         - name: RELATED_IMAGE_IOT_TENANT_CLEANER
           value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-cleaner-rhel7:1.5
         - name: RELATED_IMAGE_IOT_TENANT_SERVICE
