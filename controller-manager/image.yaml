@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.5
 name: amq7/amq-online-1-controller-manager-rhel7-operator
 description: "operator that manages AMQ Online infrastructure."
-from: ubi7:7-released
+from: registry.redhat.io/ubi7/ubi
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-controller-manager-operator-container"

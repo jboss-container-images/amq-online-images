@@ -3,7 +3,7 @@ schema_version: 1
 version: 1.5
 name: amq7/amq-online-1-broker-plugin
 description: "AMQ Online initialization plugin image for AMQ Broker."
-from: ubi7:7-released
+from: registry.redhat.io/ubi7/ubi
 labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-broker-plugin-openshift-container"
