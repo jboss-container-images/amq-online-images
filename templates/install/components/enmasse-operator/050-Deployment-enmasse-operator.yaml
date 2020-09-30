@@ -18,7 +18,7 @@ spec:
         name: enmasse-operator
       annotations:
         enmasse.io/version: "1.5"
-        enmasse.io/revision: "b3c693f780c13277c40de2622ff51eba255f65a9"
+        enmasse.io/revision: "743f5417fdfcaf97272ae740e8f6e39b8ea04e0c"
     spec:
       affinity:
         nodeAffinity:
@@ -45,7 +45,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: REVISION
-          value: "b3c693f780c13277c40de2622ff51eba255f65a9"
+          value: "743f5417fdfcaf97272ae740e8f6e39b8ea04e0c"
         - name: VERSION
           value: "1.5"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
