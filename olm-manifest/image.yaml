@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.5
+version: 1.6
 name: amq7/amq-online-1-controller-manager-rhel7-operator-metadata
 description: "Operator manifest for AMQ Online infrastructure."
 from: registry.redhat.io/ubi7/ubi
@@ -20,7 +20,7 @@ labels:
 
 envs:
     - name: "VERSION"
-      value: "1.5"
+      value: "1.6"
 
 modules:
       repositories:

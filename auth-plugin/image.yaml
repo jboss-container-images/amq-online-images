@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.5
+version: 1.6
 name: amq7/amq-online-1-auth-plugin
 description: "AMQ Online SSO for authentication"
 from: registry.redhat.io/ubi7/ubi
@@ -24,7 +24,7 @@ envs:
     - name: "JAVA_OPTS"
       value: "-Dvertx.cacheDirBase=/tmp -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv4Stack=true"
     - name: "VERSION"
-      value: "1.5"
+      value: "1.6"
 
 modules:
       repositories:

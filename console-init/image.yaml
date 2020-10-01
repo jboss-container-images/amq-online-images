@@ -1,6 +1,6 @@
 schema_version: 1
 
-version: 1.5
+version: 1.6
 name: amq7/amq-online-1-console-init
 description: "AMQ Online image for the AMQ Online Console Init"
 from: registry.redhat.io/ubi7/ubi
@@ -20,7 +20,7 @@ envs:
     - name: "LOG_LEVEL"
       value: "info"
     - name: "VERSION"
-      value: "1.5"
+      value: "1.6"
 
 modules:
       repositories:
