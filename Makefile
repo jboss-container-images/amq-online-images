@@ -4,8 +4,6 @@ SUBDIRS=\
 	standard-controller \
 	address-space-controller \
 	agent \
-	mqtt-gateway \
-	mqtt-lwt \
 	topic-forwarder \
 	auth-plugin \
 	olm-manifest \
@@ -14,14 +12,7 @@ SUBDIRS=\
 	none-auth-service \
 	controller-manager \
 	console-init \
-	console-server \
-	iot-adapters \
-	iot-auth-service \
-	iot-device-registry \
-	iot-proxy-configurator \
-	iot-tenant-cleaner \
-	iot-tenant-service \
-
+	console-server
 
 all: $(SUBDIRS) watchtaskall
 
