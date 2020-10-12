@@ -17,8 +17,8 @@ spec:
         app: enmasse
         name: enmasse-operator
       annotations:
-        enmasse.io/version: "1.5"
-        enmasse.io/revision: "743f5417fdfcaf97272ae740e8f6e39b8ea04e0c"
+        enmasse.io/version: "1.6"
+        enmasse.io/revision: "8d16b73379ba7d0dafee1866cf3a0a5b365cb17f"
     spec:
       affinity:
         nodeAffinity:
@@ -33,7 +33,7 @@ spec:
       serviceAccountName: enmasse-operator
       containers:
       - name: controller
-        image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.5
+        image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.6
         imagePullPolicy: Always
         env:
         - name: POD_NAME
@@ -45,13 +45,11 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: REVISION
-          value: "743f5417fdfcaf97272ae740e8f6e39b8ea04e0c"
+          value: "8d16b73379ba7d0dafee1866cf3a0a5b365cb17f"
         - name: VERSION
-          value: "1.5"
+          value: "1.6"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
           value: "false"
-        - name: IOT_CONFIG_NAME
-          value: "default"
         - name: OPERATOR_NAME
           value: "enmasse-operator"
         - name: IMAGE_PULL_POLICY
@@ -59,10 +57,6 @@ spec:
         - name: CONTROLLER_DISABLE_ALL
           value: "true"
         - name: CONTROLLER_ENABLE_UPGRADER
-          value: "true"
-        - name: CONTROLLER_ENABLE_IOT_PROJECT
-          value: "true"
-        - name: CONTROLLER_ENABLE_IOT_CONFIG
           value: "true"
         - name: CONTROLLER_ENABLE_AUTHENTICATION_SERVICE
           value: "true"
@@ -73,61 +67,33 @@ spec:
         - name: ADDRESS_SPACE_CONTROLLER_MEMORY_LIMIT
           value: "1Gi"
         - name: RELATED_IMAGE_ADDRESS_SPACE_CONTROLLER
-          value: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-address-space-controller:1.6
         - name: RELATED_IMAGE_CONTROLLER_MANAGER
-          value: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.5
-        - name: RELATED_IMAGE_IOT_AUTH_SERVICE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-auth-service:1.5
-        - name: RELATED_IMAGE_IOT_DEVICE_CONNECTION_INFINISPAN
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_DEVICE_CONNECTION_JDBC
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_DEVICE_REGISTRY_INFINISPAN
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_DEVICE_REGISTRY_JDBC
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-device-registry-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_HTTP_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_MQTT_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_LORAWAN_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_SIGFOX_ADAPTER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-adapters-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_TENANT_CLEANER
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-cleaner-rhel7:1.5
-        - name: RELATED_IMAGE_IOT_TENANT_SERVICE
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-tenant-service:1.5
-        - name: RELATED_IMAGE_IOT_PROXY_CONFIGURATOR
-          value: registry.redhat.io/amq7-tech-preview/amq-online-1-iot-proxy-configurator:1.5
+          value: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.6
         - name: RELATED_IMAGE_ROUTER
-          value: registry.redhat.io/amq7/amq-interconnect:1.8
+          value: registry.redhat.io/amq7/amq-interconnect:1.9
         - name: RELATED_IMAGE_STANDARD_CONTROLLER
-          value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-standard-controller:1.6
         - name: RELATED_IMAGE_AGENT
-          value: registry.redhat.io/amq7/amq-online-1-agent:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-agent:1.6
         - name: RELATED_IMAGE_BROKER
           value: registry.redhat.io/amq7/amq-broker:7.7
         - name: RELATED_IMAGE_BROKER_PLUGIN
-          value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-broker-plugin:1.6
         - name: RELATED_IMAGE_TOPIC_FORWARDER
-          value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:1.5
-        - name: RELATED_IMAGE_MQTT_GATEWAY
-          value: registry.redhat.io/amq7/amq-online-1-mqtt-gateway:1.5
-        - name: RELATED_IMAGE_MQTT_LWT
-          value: registry.redhat.io/amq7/amq-online-1-mqtt-lwt:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-topic-forwarder:1.6
         - name: RELATED_IMAGE_NONE_AUTHSERVICE
-          value: registry.redhat.io/amq7/amq-online-1-none-auth-service:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-none-auth-service:1.6
         - name: RELATED_IMAGE_KEYCLOAK
           value: registry.redhat.io/redhat-sso-7/sso73-openshift:latest
         - name: RELATED_IMAGE_KEYCLOAK_PLUGIN
-          value: registry.redhat.io/amq7/amq-online-1-auth-plugin:1.5
+          value: registry.redhat.io/amq7/amq7-amq-online-1-auth-plugin:1.6
         - name: CONTROLLER_ENABLE_CONSOLE_SERVICE
           value: "true"
         - name: RELATED_IMAGE_CONSOLE_INIT
-          value: "registry.redhat.io/amq7/amq-online-1-console-init:1.5"
+          value: "registry.redhat.io/amq7/amq7-amq-online-1-console-init:1.6"
         - name: RELATED_IMAGE_CONSOLE_SERVER
-          value: "registry.redhat.io/amq7/amq-online-1-console-server-rhel7:1.5"
+          value: "registry.redhat.io/amq7/amq7-amq-online-1-console-server-rhel7:1.6"
         - name: RELATED_IMAGE_CONSOLE_PROXY_OPENSHIFT
           value: "registry.redhat.io/openshift4/ose-oauth-proxy:latest"
         - name: RELATED_IMAGE_CONSOLE_PROXY_OPENSHIFT3
