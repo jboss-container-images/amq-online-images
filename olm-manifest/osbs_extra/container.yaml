@@ -1,0 +1,6 @@
+operator_manifests:
+  manifests_dir: manifests
+  enable_digest_pinning: true
+  enable_repo_replacements: true
+  enable_registry_replacements: true
+image_build_method: imagebuilder
