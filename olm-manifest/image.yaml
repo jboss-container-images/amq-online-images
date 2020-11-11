@@ -7,14 +7,11 @@
         git:
           url: https://github.com/jboss-openshift/cct_module.git
           ref: master
-      - name: common.go
-        path: ../modules/common/go
       - name: olm-manifest
         path: modules
     install:
       - name: jboss.container.user
       - name: olm-manifest.install.artifact
-      - name: common.go
 
 - version: 1.6
   name: amq7/amq-online-1-controller-manager-rhel7-operator-metadata
