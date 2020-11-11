@@ -1,10 +1,18 @@
-schema_version: 1
+- name: builder
+  version: 1.6
+  from: registry.redhat.io/ubi7/ubi
+  modules:
+    repositories:
+      - name: olm-manifest
+        path: modules
+    install:
+      - name: olm-manifest.install.artifact
 
-version: 1.6
-name: amq7/amq-online-1-controller-manager-rhel7-operator-metadata
-description: "Operator manifest for AMQ Online infrastructure."
-from: scratch
-labels:
+- version: 1.6
+  name: amq7/amq-online-1-controller-manager-rhel7-operator-metadata
+  description: "Operator manifest for AMQ Online infrastructure."
+  from: scratch
+  labels:
     - name: "com.redhat.component"
       value: "amq7-amq-online-1-controller-manager-operator-metadata-container"
     - name: "io.k8s.description"
@@ -31,10 +39,12 @@ labels:
       value: "v4.5,v4.6"
     - name: "com.redhat.delivery.backport"
       value: "true"
-
-modules:
-      repositories:
-          - name: olm-manifest
-            path: modules
-      install:
-          - name: olm-manifest.install.artifact
+  artifacts:
+    - name: metadata
+      image: builder
+      path: /metadata
+      dest: /
+    - name: manifests
+      image: builder
+      path: /manifests
+      dest: /
