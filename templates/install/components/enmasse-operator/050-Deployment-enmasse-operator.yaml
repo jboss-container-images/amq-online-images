@@ -17,7 +17,7 @@ spec:
         app: enmasse
         name: enmasse-operator
       annotations:
-        enmasse.io/version: "1.6"
+        enmasse.io/version: "1.7"
         enmasse.io/revision: "545cbb9899877e979b769b978920da5a35950fd8"
     spec:
       affinity:
@@ -33,7 +33,7 @@ spec:
       serviceAccountName: enmasse-operator
       containers:
       - name: controller
-        image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.6
+        image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.7
         imagePullPolicy: Always
         env:
         - name: POD_NAME
@@ -47,7 +47,7 @@ spec:
         - name: REVISION
           value: "545cbb9899877e979b769b978920da5a35950fd8"
         - name: VERSION
-          value: "1.6"
+          value: "1.7"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
           value: "false"
         - name: OPERATOR_NAME
@@ -67,33 +67,33 @@ spec:
         - name: ADDRESS_SPACE_CONTROLLER_MEMORY_LIMIT
           value: "1Gi"
         - name: RELATED_IMAGE_ADDRESS_SPACE_CONTROLLER
-          value: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.6
+          value: registry.redhat.io/amq7/amq-online-1-address-space-controller:1.7
         - name: RELATED_IMAGE_CONTROLLER_MANAGER
-          value: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.6
+          value: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.7
         - name: RELATED_IMAGE_ROUTER
           value: registry.redhat.io/amq7/amq-interconnect:1.9
         - name: RELATED_IMAGE_STANDARD_CONTROLLER
-          value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.6
+          value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.7
         - name: RELATED_IMAGE_AGENT
-          value: registry.redhat.io/amq7/amq-online-1-agent:1.6
+          value: registry.redhat.io/amq7/amq-online-1-agent:1.7
         - name: RELATED_IMAGE_BROKER
           value: registry.redhat.io/amq7/amq-broker:7.7
         - name: RELATED_IMAGE_BROKER_PLUGIN
-          value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.6
+          value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.7
         - name: RELATED_IMAGE_TOPIC_FORWARDER
-          value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:1.6
+          value: registry.redhat.io/amq7/amq-online-1-topic-forwarder:1.7
         - name: RELATED_IMAGE_NONE_AUTHSERVICE
-          value: registry.redhat.io/amq7/amq-online-1-none-auth-service:1.6
+          value: registry.redhat.io/amq7/amq-online-1-none-auth-service:1.7
         - name: RELATED_IMAGE_KEYCLOAK
           value: registry.redhat.io/redhat-sso-7/sso73-openshift:latest
         - name: RELATED_IMAGE_KEYCLOAK_PLUGIN
-          value: registry.redhat.io/amq7/amq-online-1-auth-plugin:1.6
+          value: registry.redhat.io/amq7/amq-online-1-auth-plugin:1.7
         - name: CONTROLLER_ENABLE_CONSOLE_SERVICE
           value: "true"
         - name: RELATED_IMAGE_CONSOLE_INIT
-          value: "registry.redhat.io/amq7/amq-online-1-console-init:1.6"
+          value: "registry.redhat.io/amq7/amq-online-1-console-init:1.7"
         - name: RELATED_IMAGE_CONSOLE_SERVER
-          value: "registry.redhat.io/amq7/amq-online-1-console-server-rhel7:1.6"
+          value: "registry.redhat.io/amq7/amq-online-1-console-server-rhel7:1.7"
         - name: RELATED_IMAGE_CONSOLE_PROXY_OPENSHIFT
           value: "registry.redhat.io/openshift4/ose-oauth-proxy:latest"
         - name: RELATED_IMAGE_CONSOLE_PROXY_OPENSHIFT3

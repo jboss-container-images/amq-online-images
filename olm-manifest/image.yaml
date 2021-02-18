@@ -1,5 +1,5 @@
 - name: builder
-  version: 1.6
+  version: 1.7
   from: registry.redhat.io/ubi7/ubi
   modules:
     repositories:
@@ -13,7 +13,7 @@
       - name: jboss.container.user
       - name: olm-manifest.install.artifact
 
-- version: 1.6
+- version: 1.7
   name: amq7/amq-online-1-controller-manager-rhel7-operator-metadata
   description: "Operator manifest for AMQ Online infrastructure."
   from: scratch
