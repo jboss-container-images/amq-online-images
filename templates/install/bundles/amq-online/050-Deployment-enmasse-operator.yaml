@@ -18,7 +18,7 @@ spec:
         name: enmasse-operator
       annotations:
         enmasse.io/version: "1.7"
-        enmasse.io/revision: "545cbb9899877e979b769b978920da5a35950fd8"
+        enmasse.io/revision: "91e7bce50ee8bdfa2ac6faf77031d30dbd7ff53a"
     spec:
       affinity:
         nodeAffinity:
@@ -45,7 +45,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: REVISION
-          value: "545cbb9899877e979b769b978920da5a35950fd8"
+          value: "91e7bce50ee8bdfa2ac6faf77031d30dbd7ff53a"
         - name: VERSION
           value: "1.7"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
@@ -71,13 +71,13 @@ spec:
         - name: RELATED_IMAGE_CONTROLLER_MANAGER
           value: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.7
         - name: RELATED_IMAGE_ROUTER
-          value: registry.redhat.io/amq7/amq-interconnect:1.9
+          value: registry.redhat.io/amq7/amq-interconnect:1.10
         - name: RELATED_IMAGE_STANDARD_CONTROLLER
           value: registry.redhat.io/amq7/amq-online-1-standard-controller:1.7
         - name: RELATED_IMAGE_AGENT
           value: registry.redhat.io/amq7/amq-online-1-agent:1.7
         - name: RELATED_IMAGE_BROKER
-          value: registry.redhat.io/amq7/amq-broker:7.7
+          value: registry.redhat.io/amq7/amq-broker:7.8
         - name: RELATED_IMAGE_BROKER_PLUGIN
           value: registry.redhat.io/amq7/amq-online-1-broker-plugin:1.7
         - name: RELATED_IMAGE_TOPIC_FORWARDER
