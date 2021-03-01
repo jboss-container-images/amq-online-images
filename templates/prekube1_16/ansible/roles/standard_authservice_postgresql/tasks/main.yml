@@ -1,0 +1,166 @@
+---
+- name: Create secret with the keycloak credentials
+  shell: oc create secret generic -n {{ namespace }} keycloak-credentials --from-literal=admin.username=admin --from-literal=admin.password={{ keycloak_admin_password }}
+  register: keycloak_secret_exists
+  failed_when: keycloak_secret_exists.stderr != '' and 'already exists' not in keycloak_secret_exists.stderr
+- name: Label keycloak secret
+  shell: oc label secret keycloak-credentials -n {{ namespace }} app=enmasse
+  when: keycloak_secret_exists.rc == 0
+- name: Create secret with the postgresql credentials
+  shell: oc create secret generic -n {{ namespace }} postgresql --from-literal=database-user=admin --from-literal=database-password={{ postgresql_password }} --from-literal=database-name=amqonline
+  register: postgresql_secret_exists
+  failed_when: postgresql_secret_exists.stderr != '' and 'already exists' not in postgresql_secret_exists.stderr
+- name: Label postgresql secret
+  shell: oc label secret postgresql -n {{ namespace }} app=enmasse
+  when: postgresql_secret_exists.rc == 0
+- name: Create postgresql deploymentconfig and pvc
+  shell:
+    cmd: |
+      cat <<EOF | tee /tmp/out | oc apply -f -
+      ---
+        apiVersion: v1
+        kind: List
+        items:
+        - apiVersion: v1
+          kind: Service
+          metadata:
+            annotations:
+              template.openshift.io/expose-uri: postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}
+            labels:
+              app: enmasse
+            name: postgresql
+          spec:
+            ports:
+            - name: postgresql
+              port: 5432
+              protocol: TCP
+              targetPort: 5432
+            selector:
+              name: postgresql
+            type: ClusterIP
+        - apiVersion: v1
+          kind: PersistentVolumeClaim
+          metadata:
+            name: postgresql-data
+            labels:
+              app: enmasse
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 5Gi
+        - apiVersion: apps.openshift.io/v1
+          kind: DeploymentConfig
+          metadata:
+            labels:
+              app: enmasse
+            name: postgresql
+          spec:
+            replicas: 1
+            selector:
+              name: postgresql
+            strategy:
+              activeDeadlineSeconds: 21600
+              recreateParams:
+                timeoutSeconds: 600
+              resources: {}
+              type: Recreate
+            template:
+              metadata:
+                labels:
+                  name: postgresql
+              spec:
+                containers:
+                  - env:
+                      - name: POSTGRESQL_USER
+                        valueFrom:
+                          secretKeyRef:
+                            key: database-user
+                            name: postgresql
+                      - name: POSTGRESQL_PASSWORD
+                        valueFrom:
+                          secretKeyRef:
+                            key: database-password
+                            name: postgresql
+                      - name: POSTGRESQL_DATABASE
+                        valueFrom:
+                          secretKeyRef:
+                            key: database-name
+                            name: postgresql
+                    image: 'postgresql:9.6'
+                    imagePullPolicy: IfNotPresent
+                    livenessProbe:
+                      exec:
+                        command:
+                          - /usr/libexec/check-container
+                          - '--live'
+                      failureThreshold: 3
+                      initialDelaySeconds: 30
+                      periodSeconds: 10
+                      successThreshold: 1
+                      timeoutSeconds: 1
+                    name: postgresql
+                    ports:
+                      - containerPort: 5432
+                        protocol: TCP
+                    readinessProbe:
+                      exec:
+                        command:
+                          - /usr/libexec/check-container
+                      failureThreshold: 3
+                      initialDelaySeconds: 5
+                      periodSeconds: 10
+                      successThreshold: 1
+                      timeoutSeconds: 1
+                    resources:
+                      limits:
+                        memory: 1Gi
+                    volumeMounts:
+                      - mountPath: /var/lib/pgsql/data
+                        name: postgresql-data
+                volumes:
+                  - name: postgresql-data
+                    persistentVolumeClaim:
+                      claimName: postgresql-data
+            test: false
+            triggers:
+              - imageChangeParams:
+                  automatic: true
+                  containerNames:
+                    - postgresql
+                  from:
+                    kind: ImageStreamTag
+                    name: 'postgresql:9.6'
+                    namespace: openshift
+                type: ImageChange
+              - type: ConfigChange
+      EOF
+- name: Apply the Standard Authentication Service configuration
+  shell:
+    cmd: |
+      cat <<EOF | oc apply -f -
+      apiVersion: admin.enmasse.io/v1beta1
+      kind: AuthenticationService
+      metadata:
+        name: standard-authservice
+        labels:
+          app: enmasse
+      spec:
+        type: standard
+        standard:
+          routeName: keycloak
+          serviceName: standard-authservice
+          deploymentName: keycloak
+          credentialsSecret:
+            name: keycloak-credentials
+          storage:
+            type: ephemeral
+          datasource:
+            type: postgresql
+            host: postgresql
+            port: 5432
+            database: amqonline
+            credentialsSecret:
+              name: postgresql
+      EOF

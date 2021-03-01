@@ -1,0 +1,6 @@
+apiVersion: applicationmonitoring.integreatly.org/v1alpha1
+kind: ApplicationMonitoring
+metadata:
+  name: middleware
+spec:
+  labelSelector: "middleware"
