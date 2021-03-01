@@ -73,7 +73,7 @@ if [[ ! -d "${TARGET_TEMPLATE_DIR}" ]]; then
     exit 1
 fi
 TARGET_TEMPLATE_DEFAULT_DIR="${DIR}/templates/default"
-TARGET_TEMPLATE_OCP311_DIR="${DIR}/templates/ocp311"
+TARGET_TEMPLATE_OCP311_DIR="${DIR}/templates/prekube1_16"
 
 WORKDIR=$(mktemp -d)
 
