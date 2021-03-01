@@ -72,6 +72,8 @@ if [[ ! -d "${TARGET_TEMPLATE_DIR}" ]]; then
     1>&2 echo "$0: Target templates directory ${TARGET_TEMPLATE_DIR} does not exist."
     exit 1
 fi
+TARGET_TEMPLATE_DEFAULT_DIR="${DIR}/templates/default"
+TARGET_TEMPLATE_OCP311_DIR="${DIR}/templates/ocp311"
 
 WORKDIR=$(mktemp -d)
 
@@ -120,7 +122,10 @@ popd
 
 echo Rsyncing into ${TARGET_TEMPLATE_DIR}
 
-rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/enmasse-${VERSION}/* ${TARGET_TEMPLATE_DIR}
+mkdir -p ${TARGET_TEMPLATE_DEFAULT_DIR} ${TARGET_TEMPLATE_OCP311_DIR}
+
+rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/default/enmasse-${VERSION}/* ${TARGET_TEMPLATE_DEFAULT_DIR}
+rsync --exclude '*.orig' -a ${WORKDIR}/templates/build/prekube1_16/enmasse-${VERSION}/* ${TARGET_TEMPLATE_OCP311_DIR}
 rm -rf templates/docs
 
 exit 0
