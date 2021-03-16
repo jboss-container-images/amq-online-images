@@ -18,7 +18,7 @@ spec:
         name: enmasse-operator
       annotations:
         enmasse.io/version: "1.7"
-        enmasse.io/revision: "ccf5079cfcdcec200d21fdf77d80a141ec9f47d9"
+        enmasse.io/revision: "41c0ff57ad1a29031b5e4aa4c502f9082ce163b0"
     spec:
       affinity:
         nodeAffinity:
@@ -31,10 +31,18 @@ spec:
                     values:
                       - "true"
       serviceAccountName: enmasse-operator
+      volumes:
+        - name: ca-bundle
+          configMap:
+            name: ca-bundle
+            optional: true
       containers:
       - name: controller
         image: registry.redhat.io/amq7/amq-online-1-controller-manager-rhel7-operator:1.7
         imagePullPolicy: Always
+        volumeMounts:
+          - name: ca-bundle
+            mountPath: /var/run/secrets/enmasse.io
         env:
         - name: POD_NAME
           valueFrom:
@@ -45,7 +53,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: REVISION
-          value: "ccf5079cfcdcec200d21fdf77d80a141ec9f47d9"
+          value: "41c0ff57ad1a29031b5e4aa4c502f9082ce163b0"
         - name: VERSION
           value: "1.7"
         - name: CONTROLLER_ENABLE_MESSAGING_INFRASTRUCTURE
@@ -63,6 +71,8 @@ spec:
         - name: CONTROLLER_ENABLE_ADDRESS_SPACE_CONTROLLER
           value: "true"
         - name: CONTROLLER_ENABLE_MESSAGING_USER
+          value: "true"
+        - name: CONTROLLER_ENABLE_CA_BUNDLE
           value: "true"
         - name: ADDRESS_SPACE_CONTROLLER_MEMORY_LIMIT
           value: "1Gi"
