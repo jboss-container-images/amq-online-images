@@ -16,7 +16,9 @@ fi
 TARGET_DIR=${DIR}/target
 mkdir -p ${TARGET_DIR}
 TARGET_ZIP=${TARGET_DIR}/amq-online-install-${TAG}.zip
+TARGET_ZIP_OCP311=${TARGET_DIR}/amq-online-install-ocp311-${TAG}.zip
 
-(cd ${DIR}/templates; zip -qr ${TARGET_ZIP} .)
+(cd ${DIR}/templates/default; zip -qr ${TARGET_ZIP} .)
+(cd ${DIR}/templates/prekube1_16; zip -qr ${TARGET_ZIP_OCP311} .)
 
 exit 0
